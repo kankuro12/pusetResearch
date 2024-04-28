@@ -1,0 +1,47 @@
+new project 2 user role
+ table:
+  1.book:
+   title
+   eng title
+   issn
+   doi
+   website
+   language of publication
+   image:
+   file:
+   description
+   issue
+   published date:
+   iscurrent:
+  2.team
+   title
+   description
+  3.team members
+   name
+   team degination
+   degination
+   organization
+   address
+   detail
+   phone
+   email
+  4.submition
+   user_id
+   title
+   description
+   file
+   status: [0=pending , 1:view , 2=acceptance ,3= rejected]
+ 5.setting
+    policies:
+    guideline:
+    about:
+ 6.faq
+   title:
+   answer:
+ 7.contact
+   title
+   name
+   post
+   address
+
+

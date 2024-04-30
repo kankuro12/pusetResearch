@@ -10,8 +10,19 @@ use App\Http\Controllers\admin\SubmissionController;
 use App\Http\Controllers\admin\TeamController;
 use App\Http\Controllers\admin\TeamMemberController;
 use App\Http\Controllers\DashbordController;
+use App\Http\Controllers\LoginController;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
+
+// DB::table('users')->insert([
+//     'name' => 'komalstha',
+//     'email' => 'komal@gmail.com',
+//     'password' => bcrypt('password'),
+//      'role' => '0',
+// ]);
+
+Route::match(['GET','POST'],'login',[LoginController::class,'login'])->name('login');
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('index', [DashbordController::class, 'index'])->name('index');
     Route::get('/file', [FileController::class, 'index'])->name('file');

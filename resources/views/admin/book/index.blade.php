@@ -79,7 +79,7 @@
         function getUrls(id) {
             const editURL = "{{ route('admin.book.edit', ['book_id' => 'xxx_id']) }}";
             const delURL = "{{ route('admin.book.del', ['book_id' => 'xxx_id']) }}";
-            const ArticalURL = "{{route('admin.book.artical.indexArtical',['book_id'=>'abc_id'])}}"
+            const ArticalURL = "{{route('admin.book.article.indexArticle',['book_id'=>'abc_id'])}}"
             return '<a href="' + editURL.replace('xxx_id', id) + '" class="btn btn-sm btn-primary">Edit</a> ' +
                 '<a onclick="return yes()" href="' + delURL.replace('xxx_id', id) +
                 '" class="btn btn-sm btn-danger">Delete</a>'+ '<a href="' + ArticalURL.replace('abc_id', id) + '" class="btn btn-sm btn-success">View Book Artical</a> ';

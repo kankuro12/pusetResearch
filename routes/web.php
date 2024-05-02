@@ -41,17 +41,17 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::match(['GET', 'POST'], 'edit/{book_id}', [BookController::class, 'edit'])->name('edit');
         Route::get('del/{book_id}', [BookController::class, 'del'])->name('del');
         Route::get('list', [BookController::class, 'list'])->name('list');
-        Route::prefix('artical')->name('artical.')->group(function () {
-            Route::get('indexArtical/{book_id}', [BookController::class, 'indexArtical'])->name('indexArtical');
-            Route::match(['GET', 'POST'], 'addArtical/{book_id}', [BookController::class, 'addArtical'])->name('addArtical');
-            Route::match(['GET', 'POST'], 'editArtical/{book_id}/{artical_id}', [BookController::class, 'editArtical'])->name('editArtical');
-            Route::get('delArtical/{artical_id}', [BookController::class, 'delArtical'])->name('delArtical');
-            Route::get('listArtical', [BookController::class, 'listArtical'])->name('listArtical');
-            Route::prefix('artical_author')->name('artical_author')->group(function(){
-                Route::get('indexAuthor',[BookController::class,'indexAuthor'])->name('indexAuthor');
-                Route::match(['GET','POST'],'addAuthor',[BookController::class,'addAuthor'])->name('addAuthor');
-                Route::match(['GET','POST'],'editAuthor',[BookController::class,'editAuthor'])->name('editAuthor');
-                Route::match(['GET','POST'],'delAuthor',[BookController::class,'delAuthor'])->name('delAuthor');
+        Route::prefix('article')->name('article.')->group(function () {
+            Route::get('indexArticle/{book_id}', [BookController::class, 'indexArticle'])->name('indexArticle');
+            Route::match(['GET', 'POST'], 'addArticle/{book_id}', [BookController::class, 'addArticle'])->name('addArticle');
+            Route::match(['GET', 'POST'], 'editArticle/{book_id}/{article_id}', [BookController::class, 'editArticle'])->name('editArticle');
+            Route::get('delArticle/{article_id}', [BookController::class, 'delArticle'])->name('delArticle');
+            Route::get('listArticle', [BookController::class, 'listArticle'])->name('listArticle');
+            Route::prefix('articleAuthor')->name('articleAuthor.')->group(function () {
+                Route::post('listAuthor', [BookController::class, 'listAuthor'])->name('listAuthor');
+                Route::get('indexAuthor/{book_id}/{article_id}', [BookController::class, 'indexAuthor'])->name('indexAuthor');
+                Route::match(['POST'], 'addAuthor', [BookController::class, 'addAuthor'])->name('addAuthor');
+                Route::get('delAuthor/{articleAuthor_id}', [BookController::class, 'delAuthor'])->name('delAuthor');
             });
         });
     });

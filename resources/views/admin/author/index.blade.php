@@ -5,11 +5,11 @@
 @section('toolbar')
     <a href="{{route('admin.author.add')}}" class="btn btn-primary">Add</a>
 @endsection
-@section('active','author')
+@section('active','authors')
 @section('content')
     <div class="shadow p-3 mt-3  br-3 bg-white rounded">
         <div class="table-responsive">
-            <table class="table table-bordered" id="authors">
+            <table class="table table-bordered" id="Authors">
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -31,7 +31,7 @@
     <script>
         var table;
         $(document).ready(function() {
-            table = $('#authors').DataTable({
+            table = $('#Authors').DataTable({
                 columnDefs: [{
                         targets: [0, 1],
                         searchable: true

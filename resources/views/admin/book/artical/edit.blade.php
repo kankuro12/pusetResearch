@@ -1,13 +1,13 @@
 @extends('admin.layout.app')
 @section('header-Links')
     <a href="{{ route('admin.book.index') }}">Book</a>
-    <a href="{{ route('admin.book.artical.indexArtical', ['book_id' => $book->id]) }}"> Book Artical</a>
-    <a href="{{ route('admin.book.artical.editArtical', ['book_id' => $book->id, 'artical_id' => $artical->id]) }}">Add</a>
+    <a href="{{ route('admin.book.article.indexArticle', ['book_id' => $book->id]) }}"> Book Artical</a>
+    <a href="{{ route('admin.book.article.editArticle', ['book_id' => $book->id, 'article_id' => $artical->id]) }}">Edit</a>
 @endsection
 @section('active', 'book')
 @section('content')
     <div class="shadow mt-3 p-3 bg-white rounded">
-        <form action="{{ route('admin.book.artical.editArtical', ['book_id' => $book->id, 'artical_id' => $artical->id]) }}"
+        <form action="{{ route('admin.book.article.editArticle', ['book_id' => $book->id, 'article_id' => $artical->id]) }}"
             method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">

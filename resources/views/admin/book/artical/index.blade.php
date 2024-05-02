@@ -1,10 +1,10 @@
 @extends('admin.layout.app')
 @section('header-Links')
     <a href="{{ route('admin.book.index') }}">Book</a>
-    <a href="{{ route('admin.book.artical.indexArtical', ['book_id' => $book->id]) }}">Book Artical</a>
+    <a href="{{ route('admin.book.article.indexArticle', ['book_id' => $book->id]) }}">Book Artical</a>
 @endsection
 @section('toolbar')
-    <a href="{{ route('admin.book.artical.addArtical', ['book_id' => $book->id]) }}" class="btn btn-primary">Add</a>
+    <a href="{{ route('admin.book.article.addArticle', ['book_id' => $book->id]) }}" class="btn btn-primary">Add</a>
 @endsection
 @section('active', 'book')
 @section('content')
@@ -48,7 +48,7 @@
                     }
                 ],
                 ajax: {
-                    url: "{{ route('admin.book.artical.listArtical') }}",
+                    url: "{{ route('admin.book.article.listArticle') }}",
                     dataSrc: ''
                 },
                 columns: [{
@@ -70,6 +70,7 @@
                     {
                         data: null,
                         render: function(data, type, row) {
+                            console.log(data);
                             return getUrls(data.id, data.book_id);
                         }
                     }
@@ -78,12 +79,16 @@
         });
 
         function getUrls(id, book_id) {
-            const editURL = "{{ route('admin.book.artical.editArtical', ['book_id' => 'xxx_id', 'artical_id' => 'xyz']) }}";
-            const delURL = "{{ route('admin.book.artical.delArtical', ['artical_id' => 'xxx_id']) }}";
-                return '<a href="' + editURL.replace('xxx_id', book_id).replace('xyz', id) +
-                    '" class="btn btn-sm btn-primary">Edit</a> ' +
-                    '<a onclick="return yes()" href="' + delURL.replace('xxx_id', id) +
-                    '" class="btn btn-sm btn-danger">Delete</a>';
+            const editURL = "{{ route('admin.book.article.editArticle', ['book_id' => 'xxx_id', 'article_id' => 'xyz']) }}";
+            const delURL = "{{ route('admin.book.article.delArticle', ['article_id' => 'xxx_id']) }}";
+            const authorURL =
+                "{{ route('admin.book.article.articleAuthor.indexAuthor', ['book_id' => 'xxx_id', 'article_id' => 'abc']) }}";
+            return '<a href="' + editURL.replace('xxx_id', book_id).replace('xyz', id) +
+                '" class="btn btn-sm btn-primary">Edit</a> ' +
+                '<a onclick="return yes()" href="' + delURL.replace('xxx_id', id) +
+                '" class="btn btn-sm btn-danger">Delete</a>' + '<a href="' + authorURL.replace('xxx_id', book_id).replace(
+                    'abc', id) +
+                '" class="btn btn-sm btn-success">Author</a> ';
         }
     </script>
 @endsection

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Book;
 use App\Models\BookArtical;
+use App\Models\BookArticalAuthor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -75,24 +76,24 @@ class BookController extends Controller
 
     public function del($book_id)
     {
+        BookArtical::where('book_id',$book_id)->delete();
         Book::where('id', $book_id)->delete();
         return redirect()->back()->with('success', 'succesfully deleted');
     }
 
-    public function indexArtical($book_id)
+    public function indexArticle($book_id)
     {
         $book = Book::where('id', $book_id)->first();
         return view('admin.book.artical.index', compact('book'));
     }
-    public function listArtical()
+    public function listArticle()
     {
-        $articles = BookArtical::select('book_articals.*', 'artical_types.name as artical_type_name', 'book_articals.book_id')
+        $articles = BookArtical::select('book_articals.*', 'artical_types.name as artical_type_name')
             ->join('artical_types', 'book_articals.artical_type_id', '=', 'artical_types.id')
             ->get();
-        // dd($articles);
         return response()->json($articles);
     }
-    public function addArtical(Request $request, $book_id)
+    public function addArticle(Request $request, $book_id)
     {
         $book = Book::where('id', $book_id)->first();
         $articalTypes = DB::table('artical_types')->get();
@@ -111,12 +112,13 @@ class BookController extends Controller
         }
         return redirect()->back()->with('success', 'succesfully added');
     }
-    public function editArtical(Request $request,$book_id,$artical_id){
+    public function editArticle(Request $request, $book_id, $artical_id)
+    {
         $book = Book::where('id', $book_id)->first();
-        $artical = BookArtical::where('id',$artical_id)->first();
+        $artical = BookArtical::where('id', $artical_id)->first();
         $articalTypes = DB::table('artical_types')->get();
         if ($request->getMethod() == "GET") {
-            return view('admin.book.artical.edit', compact('book','artical','articalTypes'));
+            return view('admin.book.artical.edit', compact('book', 'artical', 'articalTypes'));
         } else {
             $artical->title = $request->title;
             $artical->doi = $request->doi;
@@ -132,8 +134,43 @@ class BookController extends Controller
         return redirect()->back()->with('success', 'succesfully updated');
     }
 
-    public function delArtical($artical_id){
-        BookArtical::where('id',$artical_id)->delete();
+    public function delArticle($artical_id)
+    {
+        BookArticalAuthor::where('book_artical_id',$artical_id)->delete();
+        BookArtical::where('id', $artical_id)->delete();
         return redirect()->back()->with('success', 'succesfully deleted');
+    }
+
+    public function listAuthor()
+    {
+        $authors = DB::table('authors')->get(['id', 'name']);
+        return response()->json($authors);
+    }
+
+    public function indexAuthor($book_id, $article_id)
+    {
+        $book = Book::where('id', $book_id)->first();
+        $article = BookArtical::where('id', $article_id)->first();
+        $authors = BookArticalAuthor::where('book_artical_id', $article_id)->get(['id','author_id']);
+        return view('admin.book.artical.author.index', compact('article', 'book','authors'));
+    }
+
+    public function addAuthor(Request $request){
+        if($request->getMethod()=="POST"){
+            $authorArticle = new BookArticalAuthor();
+            $author_ids = $request->input('author_ids');
+            $article_id = $request->input('article_id');
+            foreach ($author_ids as $authorId) {
+                $authorArticle = new BookArticalAuthor();
+                $authorArticle->book_artical_id = $article_id;
+                $authorArticle->author_id = $authorId;
+                $authorArticle->save();
+            }
+        }
+
+    }
+    public function delAuthor($articleAuthor_id){
+        BookArticalAuthor::where('id',$articleAuthor_id)->delete();
+        return redirect()->back()->with('success','successfully deleted');
     }
 }

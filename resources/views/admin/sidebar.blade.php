@@ -7,6 +7,9 @@
             <a class="nav-link" id="dashboard" href="{{ route('admin.index') }}">Dashboard</a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" id="author" href="{{ route('admin.author.index')}}">Author</a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" id="book" href="{{ route('admin.book.index')}}">Book</a>
         </li>
         <li class="nav-item">

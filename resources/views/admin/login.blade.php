@@ -89,7 +89,7 @@
         <div class="row">
             <div class="col-md-5">
                 <div class="login-form">
-                    <h2 class="text-center mb-4" style="color: #3F3F3F;">Welcome to the entrance</h2>
+                    <h2 class="text-center mb-4" style="color: #3F3F3F;">Welcome to login page</h2>
                     <p class="text-center mb-4" style="color: #3F3F3F;">Log in to continue.</p>
                     <form action="{{ Route('login') }}" method="POST">
                         @csrf

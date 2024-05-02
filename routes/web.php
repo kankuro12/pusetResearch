@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\AuthorController;
 use App\Http\Controllers\admin\BookController;
 use App\Http\Controllers\admin\ContactController;
 use App\Http\Controllers\admin\FaqController;
@@ -22,17 +23,37 @@ use Illuminate\Support\Facades\Route;
 //      'role' => '0',
 // ]);
 
-Route::match(['GET','POST'],'login',[LoginController::class,'login'])->name('login');
+Route::match(['GET', 'POST'], 'login', [LoginController::class, 'login'])->name('login');
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('index', [DashbordController::class, 'index'])->name('index');
     Route::get('/file', [FileController::class, 'index'])->name('file');
 
+    Route::prefix('author')->name('author.')->group(function () {
+        Route::get('index', [AuthorController::class, 'index'])->name('index');
+        Route::match(['GET', 'POST'], 'add', [AuthorController::class, 'add'])->name('add');
+        Route::match(['GET', 'POST'], 'edit/{author_id}', [AuthorController::class, 'edit'])->name('edit');
+        Route::get('del/{author_id}', [AuthorController::class, 'del'])->name('del');
+        Route::get('list', [AuthorController::class, 'list'])->name('list');
+    });
     Route::prefix('book')->name('book.')->group(function () {
         Route::get('index', [BookController::class, 'index'])->name('index');
         Route::match(['GET', 'POST'], 'add', [BookController::class, 'add'])->name('add');
         Route::match(['GET', 'POST'], 'edit/{book_id}', [BookController::class, 'edit'])->name('edit');
         Route::get('del/{book_id}', [BookController::class, 'del'])->name('del');
         Route::get('list', [BookController::class, 'list'])->name('list');
+        Route::prefix('artical')->name('artical.')->group(function () {
+            Route::get('indexArtical/{book_id}', [BookController::class, 'indexArtical'])->name('indexArtical');
+            Route::match(['GET', 'POST'], 'addArtical/{book_id}', [BookController::class, 'addArtical'])->name('addArtical');
+            Route::match(['GET', 'POST'], 'editArtical/{book_id}/{artical_id}', [BookController::class, 'editArtical'])->name('editArtical');
+            Route::get('delArtical/{artical_id}', [BookController::class, 'delArtical'])->name('delArtical');
+            Route::get('listArtical', [BookController::class, 'listArtical'])->name('listArtical');
+            Route::prefix('artical_author')->name('artical_author')->group(function(){
+                Route::get('indexAuthor',[BookController::class,'indexAuthor'])->name('indexAuthor');
+                Route::match(['GET','POST'],'addAuthor',[BookController::class,'addAuthor'])->name('addAuthor');
+                Route::match(['GET','POST'],'editAuthor',[BookController::class,'editAuthor'])->name('editAuthor');
+                Route::match(['GET','POST'],'delAuthor',[BookController::class,'delAuthor'])->name('delAuthor');
+            });
+        });
     });
     Route::prefix('team')->name('team.')->group(function () {
         Route::get('index', [TeamController::class, 'index'])->name('index');
@@ -69,7 +90,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('del/{faq_id}', [FaqController::class, 'del'])->name('del');
     });
     Route::prefix('setting')->name('setting.')->group(function () {
-        Route::get('index',[SettingController::class,'index'])->name('index');
+        Route::get('index', [SettingController::class, 'index'])->name('index');
         Route::prefix('policy')->name('policy.')->group(function () {
             Route::get('policy_index', [SettingController::class, 'policy_index'])->name('policy_index');
             Route::match(['POST'], 'policy_add', [SettingController::class, 'policy_add'])->name('policy_add');
@@ -82,9 +103,15 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::match(['POST'], 'about_edit/{about_id}', [SettingController::class, 'about_edit'])->name('about_edit');
             Route::get('about_del/{about_id}', [SettingController::class, 'about_del'])->name('about_del');
         });
-        Route::prefix('contact')->name('contact.')->group(function(){
-            Route::match(['GET','POST'],'index',[ContactController::class,'index'])->name('index');
-            Route::get('del/{contact_id}',[ContactController::class,'del'])->name('del');
+        Route::prefix('contact')->name('contact.')->group(function () {
+            Route::match(['GET', 'POST'], 'index', [ContactController::class, 'index'])->name('index');
+            Route::get('del/{contact_id}', [ContactController::class, 'del'])->name('del');
+        });
+        Route::prefix('article_type')->name('artical_type.')->group(function () {
+            Route::get('indexArtical', [SettingController::class, 'indexArtical'])->name('indexArtical');
+            Route::match(['post'], 'addArtical', [SettingController::class, 'addArtical'])->name('addArtical');
+            Route::match(['post'], 'editArtical/{artical_id}', [SettingController::class, 'editArtical'])->name('editArtical');
+            Route::get('delArtical/{artical_id}', [SettingController::class, 'delArtical'])->name('delArtical');
         });
     });
 });

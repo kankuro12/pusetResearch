@@ -1,0 +1,106 @@
+body {
+  margin: 0;
+  padding: 0 40px;
+  background-color: #EEEEEE;
+}
+body .main-container {
+  width: auto;
+  margin: 0;
+  background-color: #FCFCFC;
+}
+body .main-container .container .topbar {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+body .main-container .container .topbar .social-icons {
+  display: flex;
+  -moz-column-gap: 15px;
+       column-gap: 15px;
+}
+body .main-container .container .topbar .social-icons .facebook-icon {
+  font-size: 18px;
+  color: #3B5999;
+}
+body .main-container .container .topbar .social-icons .twitter-icon {
+  font-size: 18px;
+  color: #55ACEE;
+}
+body .main-container .container .topbar .social-icons .linkedin-icon {
+  font-size: 18px;
+  color: #3B5999;
+}
+body .main-container .container .topbar .social-icons .google-icon {
+  font-size: 18px;
+  color: #DD4B39;
+}
+body .main-container .container .topbar .logins .login-area {
+  display: flex;
+  -moz-column-gap: 15px;
+       column-gap: 15px;
+}
+body .main-container .container .topbar .logins .login-area a {
+  text-decoration: none;
+  color: #7A6696;
+}
+body .main-container .container .navigation .row {
+  align-items: center;
+}
+body .main-container .container .navigation .row .logo a {
+  text-decoration: none;
+}
+body .main-container .container .navigation .row .logo a img {
+  width: 100;
+  height: auto;
+}
+body .main-container .container .navigation .row .headers .navbar ul.navbar-nav #aboutus {
+  padding: 4px;
+}
+body .main-container .container .navigation .row .headers .navbar ul.navbar-nav #aboutus a {
+  font-size: 18px;
+}
+body .main-container .container .navigation .row .headers .navbar ul.navbar-nav #dropdown {
+  padding: 4px;
+}
+body .main-container .container .navigation .row .headers .navbar ul.navbar-nav #dropdown a {
+  font-size: 18px;
+}
+body .main-container .container .navigation .row .headers .navbar #aboutus:hover {
+  border: 1px solid #7A6696;
+  border-radius: 6px;
+}
+body .main-container .container .navigation .row .headers .navbar #aboutus:hover a {
+  color: blue;
+}
+body .main-container .container .navigation .row .headers .navbar #dropdown:hover {
+  border: 1px solid #7A6696;
+  border-radius: 6px;
+}
+body .main-container .container .navigation .row .headers .navbar #dropdown:hover a {
+  color: blue;
+}
+body .main-container .container .books .row .bookimage a img {
+  width: 100%;
+  height: auto;
+}
+body .main-container .container .books .row .banner {
+  padding: 85px 0;
+}
+body .main-container .container .books .row .banner h1 {
+  font-size: 52px;
+  margin: 0 0 32px;
+  padding: 0 0 22px;
+  line-height: 62px;
+  font-weight: 400;
+}
+body .main-container .container .books .row .banner .description {
+  margin: 0;
+  color: #636C77;
+  font-size: 22px;
+  line-height: 32px;
+}
+body .main-container .container .books .row .banner .description a {
+  text-decoration: none;
+}/*# sourceMappingURL=index.css.map */

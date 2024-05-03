@@ -11,6 +11,7 @@ use App\Http\Controllers\admin\SubmissionController;
 use App\Http\Controllers\admin\TeamController;
 use App\Http\Controllers\admin\TeamMemberController;
 use App\Http\Controllers\DashbordController;
+use App\Http\Controllers\FrontController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 //     'password' => bcrypt('password'),
 //      'role' => '0',
 // ]);
+Route::get('index',[FrontController::class,'index'])->name('index');
 
 Route::match(['GET', 'POST'], 'login', [LoginController::class, 'login'])->name('login');
 Route::prefix('admin')->name('admin.')->group(function () {

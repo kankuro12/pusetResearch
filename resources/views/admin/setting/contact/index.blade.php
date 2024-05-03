@@ -148,21 +148,19 @@
                     post: post
                 });
             }
-            $('#individual_contacts').children('.row').each(function() {
-                var id = $(this).attr('id').replace('individual_contact_show_', '');
-                var title = $(`#title_${id}`).val();
-                var name = $(`#name_${id}`).val();
-                var post = $(`#post_${id}`).val();
+            // $('#individual_contacts').children('.row').each(function() {
+            //     var id = $(this).attr('id').replace('individual_contact_show_', '');
+            //     var title = $(`#title_${id}`).val();
+            //     var name = $(`#name_${id}`).val();
+            //     var post = $(`#post_${id}`).val();
 
-                individualContactsDatas.push({
-                    id: id,
-                    title: title,
-                    name: name,
-                    post: post
-                });
-            });
-
-
+            //     individualContactsDatas.push({
+            //         id: id,
+            //         title: title,
+            //         name: name,
+            //         post: post
+            //     });
+            // });
             const data = {
                 individualContactsDatas: individualContactsDatas,
                 cname: cname,

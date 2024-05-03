@@ -11,7 +11,7 @@
                 <input type="text" name="name" id="name" class="form-control">
             </div>
             <div class="col-md-12 mb-2 text-start">
-                <button class="btn btn-primary" onclick="saveData()">
+                <button class="btn btn-primary btn-sm" onclick="saveData()">
                     Add
                 </button>
             </div>
@@ -30,9 +30,9 @@
                             <td><input type="text" name="name" id="name_{{ $artical->id }}" class="form-control"
                                     value="{{ $artical->name }}"> </td>
                             <td>
-                                <button onclick="editData({{ $artical->id }})" class="btn btn-primary">Edit</button>
+                                <button onclick="editData({{ $artical->id }})" class="btn btn-primary btn-sm">Edit</button>
                                 <a href="{{ route('admin.setting.artical_type.delArtical', ['artical_id' => $artical->id]) }}"
-                                    class="btn btn-danger">Del</a>
+                                    class="btn btn-danger btn-sm">Del</a>
                             </td>
                         </tr>
                     @endforeach

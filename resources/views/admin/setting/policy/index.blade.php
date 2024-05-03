@@ -16,7 +16,7 @@
                 <textarea type="text" name="description" id="description" class="form-control"></textarea>
             </div>
             <div class="col-md-12 mb-2 text-start">
-                <button class="btn btn-primary" onclick="saveData()">
+                <button class="btn btn-primary btn-sm" onclick="saveData()">
                     Add
                 </button>
             </div>
@@ -41,9 +41,9 @@
                                 <textarea type="text" name="description" id="description_{{ $policy->id }}" class="form-control">{{ $policy->description }}</textarea>
                             </td>
                             <td>
-                                <button onclick="editData({{ $policy->id }})" class="btn btn-primary">Edit</button>
+                                <button onclick="editData({{ $policy->id }})" class="btn btn-primary btn-sm">Edit</button>
                                 <a href="{{ route('admin.setting.policy.policy_del', ['policy_id' => $policy->id]) }}"
-                                    class="btn btn-danger">Del</a>
+                                    class="btn btn-danger btn-sm">Del</a>
                             </td>
                         </tr>
                     @endforeach

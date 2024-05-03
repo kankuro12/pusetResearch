@@ -16,7 +16,7 @@
                 <textarea type="text" name="answer" id="answer" class="form-control"></textarea>
             </div>
             <div class="col-md-12 mb-2 text-start">
-                <button class="btn btn-primary" onclick="saveData()">
+                <button class="btn btn-primary btn-sm" onclick="saveData()">
                     Add
                 </button>
             </div>

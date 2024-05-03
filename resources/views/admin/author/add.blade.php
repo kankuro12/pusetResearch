@@ -26,7 +26,7 @@
                     <input type="text" name="organization" id="organization" class="form-control">
                 </div>
                 <div class="col-md-12 mb-2 text-start">
-                    <button class="btn btn-primary">
+                    <button class="btn btn-primary btn-sm">
                         Add
                     </button>
                 </div>

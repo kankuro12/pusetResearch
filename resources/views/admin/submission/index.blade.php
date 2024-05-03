@@ -3,7 +3,7 @@
     <a href="{{route('admin.submission.index')}}">Submission</a>
 @endsection
 @section('toolbar')
-    <a href="{{route('admin.submission.add')}}" class="btn btn-primary">Add</a>
+    <a href="{{route('admin.submission.add')}}" class="btn btn-primary btn-sm">Add</a>
 @endsection
 @section('active','submission')
 @section('content')

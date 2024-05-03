@@ -58,7 +58,7 @@
                 <input type="file" name="file" id="file" class="form-control photo" data-default-file="{{vasset($book->file)}}" accept=".pdf, .docx">
             </div>
             <div class="col-md-12 mb-2 text-start">
-                <button class="btn btn-primary">
+                <button class="btn btn-primary btn-sm">
                     update
                 </button>
             </div>

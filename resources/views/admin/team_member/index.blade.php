@@ -5,7 +5,7 @@
 @endsection
 @section('active', 'team')
 @section('toolbar')
-    <a href="{{ route('admin.team.team_member.add', ['team_id' => $team->id]) }}" class="btn btn-primary">Add</a>
+    <a href="{{ route('admin.team.team_member.add', ['team_id' => $team->id]) }}" class="btn btn-primary btn-sm">Add</a>
 @endsection
 @section('content')
     <div class="shadow p-3 mt-3  br-3 bg-white rounded">

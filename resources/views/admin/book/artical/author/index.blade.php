@@ -21,7 +21,7 @@
                 </select>
             </div>
             <div class="col-md-12">
-                <button class="btn btn-primary" onclick="saveAll()">
+                <button class="btn btn-primary btn-sm" onclick="saveAll()">
                     Add Author
                 </button>
             </div>

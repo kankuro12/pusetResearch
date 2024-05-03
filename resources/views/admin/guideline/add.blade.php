@@ -18,7 +18,7 @@
                     <textarea type="text" name="description" id="description" class="form-control note"></textarea>
                 </div>
                 <div class="col-md-12 mb-2 text-start">
-                    <button class="btn btn-primary">
+                    <button class="btn btn-primary btn-sm">
                         Add
                     </button>
                 </div>

@@ -4,7 +4,7 @@
     <a href="{{ route('admin.book.article.indexArticle', ['book_id' => $book->id]) }}">Book Artical</a>
 @endsection
 @section('toolbar')
-    <a href="{{ route('admin.book.article.addArticle', ['book_id' => $book->id]) }}" class="btn btn-primary">Add</a>
+    <a href="{{ route('admin.book.article.addArticle', ['book_id' => $book->id]) }}" class="btn btn-primary btn-sm">Add</a>
 @endsection
 @section('active', 'book')
 @section('content')

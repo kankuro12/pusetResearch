@@ -4,7 +4,7 @@
 @endsection
 @section('active', 'guideline')
 @section('toolbar')
-    <a href="{{ route('admin.guideline.add') }}" class="btn btn-primary">Add</a>
+    <a href="{{ route('admin.guideline.add') }}" class="btn btn-primary btn-sm">Add</a>
 @endsection
 @section('content')
     <div class="shadow p-3 mt-3  br-3 bg-white rounded">

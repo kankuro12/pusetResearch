@@ -16,7 +16,7 @@
                 <textarea type="text" name="description" id="description" class="form-control"></textarea>
             </div>
             <div class="col-md-12 mb-2 text-start">
-                <button class="btn btn-primary" onclick="saveData()">
+                <button class="btn btn-primary btn-sm" onclick="saveData()">
                     Add
                 </button>
             </div>
@@ -41,9 +41,9 @@
                                 <textarea type="text" name="description" id="description_{{ $about->id }}" class="form-control">{{ $about->description }}</textarea>
                             </td>
                             <td>
-                                <button onclick="editData({{ $about->id }})" class="btn btn-primary">Edit</button>
+                                <button onclick="editData({{ $about->id }})" class="btn btn-primary btn-sm">Edit</button>
                                 <a href="{{ route('admin.setting.about.about_del', ['about_id' => $about->id]) }}"
-                                    class="btn btn-danger">Del</a>
+                                    class="btn btn-danger btn-sm">Del</a>
                             </td>
                         </tr>
                     @endforeach

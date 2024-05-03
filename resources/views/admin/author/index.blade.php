@@ -3,7 +3,7 @@
     <a href="{{route('admin.author.index')}}">author</a>
 @endsection
 @section('toolbar')
-    <a href="{{route('admin.author.add')}}" class="btn btn-primary">Add</a>
+    <a href="{{route('admin.author.add')}}" class="btn btn-primary btn-sm">Add</a>
 @endsection
 @section('active','authors')
 @section('content')

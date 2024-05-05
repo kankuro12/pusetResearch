@@ -1,19 +1,19 @@
 @extends('admin.layout.app')
 @section('header-Links')
     <a href="{{ route('admin.book.index') }}">Book</a>
-    <a href="{{ route('admin.book.artical.indexArtical', ['book_id' => $book->id]) }}"> Book Artical</a>
-    <a href="{{ route('admin.book.artical.addArtical', ['book_id' => $book->id]) }}">Add</a>
+    <a href="{{ route('admin.book.article.indexArticle', ['book_id' => $book->id]) }}"> Book Artical</a>
+    <a href="{{ route('admin.book.article.addArticle', ['book_id' => $book->id]) }}">Add</a>
 @endsection
 @section('active', 'book')
 @section('content')
     <div class="shadow mt-3 p-3 bg-white rounded">
-        <form action="{{ route('admin.book.artical.addArtical', ['book_id' => $book->id]) }}" method="POST"
+        <form action="{{ route('admin.book.article.addArticle', ['book_id' => $book->id]) }}" method="POST"
             enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="row">
-                    <div class="col-md-4 mb-2">
-                        <label for="artical_type_id">Select Artical Type</label>
+                    <div class="col-md-4 mb-3">
+                        <label for="artical_type_id" class="mb-1">Select Artical Type</label>
                         <select name="artical_type_id" id="artical_type_id" class="form-control">
                             @foreach ($articalTypes as $item)
                                 <option value="{{ $item->id }}">{{ $item->name }}</option>
@@ -32,6 +32,14 @@
                 <div class="col-md-4 mb-2">
                     <label for="tags">Tags</label>
                     <input type="text" name="tags" id="tags" class="form-control">
+                </div>
+                <div class="col-md-4 mb-2">
+                    <label for="starting_page">Starting Page No</label>
+                    <input type="number" name="starting_page" id="starting_page" class="form-control">
+                </div>
+                <div class="col-md-4 mb-2">
+                    <label for="ending_page">Ending Page No</label>
+                    <input type="number" name="ending_page" id="ending_page" class="form-control">
                 </div>
                 <div class="col-md-9 mb-2">
                     <label for="abstract">Abstract</label>
@@ -57,4 +65,3 @@
         });
     </script>
 @endsection
-

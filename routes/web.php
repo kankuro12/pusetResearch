@@ -27,7 +27,7 @@ Route::get('index',[FrontController::class,'index'])->name('index');
 
 Route::match(['GET', 'POST'], 'login', [LoginController::class, 'login'])->name('login');
 Route::prefix('admin')->name('admin.')->group(function () {
-    Route::get('index', [DashbordController::class, 'index'])->name('index');
+    Route::get('/', [DashbordController::class, 'index'])->name('index');
     Route::get('/file', [FileController::class, 'index'])->name('file');
 
     Route::prefix('author')->name('author.')->group(function () {

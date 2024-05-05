@@ -1,0 +1,63 @@
+.article .container .current-issue {
+  display: flex;
+  flex-direction: column;
+  row-gap: 18x;
+}
+.article .container .current-issue .item {
+  color: var(--text);
+}
+.article .container .current-issue .item strong {
+  font-weight: 500px;
+}
+.article .container .current-issue #other {
+  font-size: 18px;
+}
+.article .container .editorial h5 {
+  font-size: 24px;
+  color: var(--text);
+  text-align: left;
+  font-weight: 400;
+}
+.article .container .data a {
+  text-decoration: none;
+  color: var(--text);
+}
+.article .container .data .head {
+  padding: 0 0 10px;
+}
+.article .container .data .head .authorname {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+  color: var(--text);
+  font-size: 13px;
+  line-height: 13px;
+  margin: 0 0 10px 0px;
+}
+.article .container .data .head h3 {
+  font-size: 16px;
+  font-weight: 500;
+  padding: 0;
+  margin: 0;
+}
+.article .container .data .head h3 a {
+  color: var(--text);
+}
+.article .container .data .bottom .short_desc p {
+  color: var(--text);
+}
+.article .container .data .bottom .page_no {
+  color: var(--text);
+}
+.article .container .data .bottom button {
+  border: none;
+  background-color: var(--text);
+  padding: 6px 20px;
+}
+.article .container .data .bottom button i {
+  color: white;
+}
+.article .container .data .bottom button a {
+  color: white;
+}/*# sourceMappingURL=article.css.map */

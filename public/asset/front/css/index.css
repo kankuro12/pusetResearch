@@ -87,7 +87,7 @@ body .content header .container .navigation .row .headers .navbar #dropdown:hove
 }
 body .content .banner .container .books .row .bookimage a img {
   width: 100%;
-  height: auto;
+  max-height: 700px;
 }
 body .content .banner .container .books .row .banner {
   padding: 85px 0;
@@ -107,6 +107,69 @@ body .content .banner .container .books .row .banner .description {
 }
 body .content .banner .container .books .row .banner .description a {
   text-decoration: none;
+}
+body .content .article .container .current-issue {
+  display: flex;
+  flex-direction: column;
+  row-gap: 18x;
+}
+body .content .article .container .current-issue .item {
+  color: var(--text);
+}
+body .content .article .container .current-issue .item strong {
+  font-weight: 500px;
+}
+body .content .article .container .current-issue #other {
+  font-size: 18px;
+}
+body .content .article .container .editorial h5 {
+  font-size: 24px;
+  color: var(--text);
+  text-align: left;
+  font-weight: 400;
+}
+body .content .article .container .data a {
+  text-decoration: none;
+  color: var(--text);
+}
+body .content .article .container .data .head {
+  padding: 0 0 10px;
+}
+body .content .article .container .data .head .authorname {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+  color: var(--text);
+  font-size: 13px;
+  line-height: 13px;
+  margin: 0 0 10px 0px;
+}
+body .content .article .container .data .head h3 {
+  font-size: 16px;
+  font-weight: 500;
+  padding: 0;
+  margin: 0;
+}
+body .content .article .container .data .head h3 a {
+  color: var(--text);
+}
+body .content .article .container .data .bottom .short_desc p {
+  color: var(--text);
+}
+body .content .article .container .data .bottom .page_no {
+  color: var(--text);
+}
+body .content .article .container .data .bottom button {
+  border: none;
+  background-color: var(--text);
+  padding: 6px 20px;
+}
+body .content .article .container .data .bottom button i {
+  color: white;
+}
+body .content .article .container .data .bottom button a {
+  color: white;
 }
 body .content footer a {
   text-decoration: none;

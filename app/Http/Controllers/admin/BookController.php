@@ -30,12 +30,12 @@ class BookController extends Controller
             $book->eng_title = $request->eng_title;
             $book->issn = $request->issn;
             $book->doi = $request->doi;
-            $book->doi = $request->doi;
             $book->website = $request->website;
             $book->language_of_publication = $request->language_of_publication;
             $book->issue = $request->issue;
             $book->published_date = $request->published_date;
             $book->description = $request->description;
+            $book->s_description = $request->s_description;
             $book->title = $request->title;
             $book->image = $request->file('image')->store('upoads/image');
             $book->file = $request->file('file')->store('upoads/file');
@@ -60,6 +60,7 @@ class BookController extends Controller
             $book->issue = $request->issue;
             $book->published_date = $request->published_date;
             $book->description = $request->description;
+            $book->s_description = $request->s_description;
             $book->title = $request->title;
             if ($request->hasFile('image')) {
                 $book->image = $request->file('image')->store('upoads/image');
@@ -76,6 +77,9 @@ class BookController extends Controller
 
     public function del($book_id)
     {
+        $article = BookArtical::where('book_id',$book_id)->first();
+
+        BookArticalAuthor::where('book_artical_id',$article->id)->delete();
         BookArtical::where('book_id',$book_id)->delete();
         Book::where('id', $book_id)->delete();
         return redirect()->back()->with('success', 'succesfully deleted');
@@ -104,6 +108,8 @@ class BookController extends Controller
             $artical->title = $request->title;
             $artical->doi = $request->doi;
             $artical->tags = $request->tags;
+            $artical->st_page_no = $request->starting_page;
+            $artical->en_page_no = $request->ending_page;
             $artical->abstract = $request->abstract;
             $artical->book_id = $book->id;
             $artical->artical_type_id = $request->artical_type_id;
@@ -123,6 +129,8 @@ class BookController extends Controller
             $artical->title = $request->title;
             $artical->doi = $request->doi;
             $artical->tags = $request->tags;
+            $artical->st_page_no = $request->starting_page;
+            $artical->en_page_no = $request->ending_page;
             $artical->abstract = $request->abstract;
             $artical->book_id = $book->id;
             $artical->artical_type_id = $request->artical_type_id;

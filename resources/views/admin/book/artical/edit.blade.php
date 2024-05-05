@@ -33,6 +33,14 @@
                     <label for="tags">Tags</label>
                     <input type="text" name="tags" id="tags" class="form-control" value="{{$artical->tags}}">
                 </div>
+                <div class="col-md-4 mb-2">
+                    <label for="starting_page">Starting Page No</label>
+                    <input type="number" name="starting_page" id="starting_page" class="form-control" value="{{$artical->st_page_no}}">
+                </div>
+                <div class="col-md-4 mb-2">
+                    <label for="ending_page">Ending Page No</label>
+                    <input type="number" name="ending_page" id="ending_page" class="form-control" value="{{$artical->en_page_no}}">
+                </div>
                 <div class="col-md-9 mb-2">
                     <label for="abstract">Abstract</label>
                     <textarea type="text" name="abstract" id="abstract" class="form-control"> {{$artical->abstract}} </textarea>

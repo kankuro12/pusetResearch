@@ -143,39 +143,7 @@
                 </div>
             </div>
         </header>
-        <div class="banner">
-            <div class="container">
-                <div class="books">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="bookimage">
-                                <a href="#">
-                                    <img src="{{ asset('asset/front/css/img/4828957-removebg-preview.png') }}"
-                                        alt="">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="banner">
-                                <h1 style="color: var(--text)">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                </h1>
-                                <div class="description">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod at fuga voluptates sit
-                                    cum. Hic in tempora, nulla laborum numquam nostrum officia rem voluptatum omnis
-                                    atque
-                                    quod unde odio harum.... <a href="#">Read more</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="main-content">
-            <div class="container">
-            </div>
-        </div>
+        @yield('content')
         <hr>
         <footer>
             <div class="container">

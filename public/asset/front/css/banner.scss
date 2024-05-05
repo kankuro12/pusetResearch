@@ -1,0 +1,40 @@
+
+.banner {
+    .container {
+        .books {
+            .row {
+                .bookimage {
+                    a {
+                        img {
+                            width: 100%;
+                            max-height: 700px;
+                        }
+                    }
+                }
+
+                .banner {
+                    padding: 85px 0;
+
+                    h1 {
+                        font-size: 52px;
+                        margin: 0 0 32px;
+                        padding: 0 0 22px;
+                        line-height: 62px;
+                        font-weight: 400;
+                    }
+
+                    .description {
+                        margin: 0;
+                        color: #636C77;
+                        font-size: 22px;
+                        line-height: 32px;
+
+                        a {
+                            text-decoration: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

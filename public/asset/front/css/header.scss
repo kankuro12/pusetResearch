@@ -1,0 +1,110 @@
+header {
+    .container {
+        .topbar {
+            margin-top: 25px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .social-icons {
+                display: flex;
+                column-gap: 15px;
+
+                .facebook-icon {
+                    font-size: 18px;
+                    color: #3B5999;
+                }
+
+                .twitter-icon {
+                    font-size: 18px;
+                    color: #55ACEE;
+                }
+
+                .linkedin-icon {
+                    font-size: 18px;
+                    color: #3B5999;
+                }
+
+                .google-icon {
+                    font-size: 18px;
+                    color: #DD4B39;
+                }
+            }
+
+            .logins {
+                .login-area {
+                    display: flex;
+                    column-gap: 15px;
+
+                    a {
+                        text-decoration: none;
+                        color: #7A6696;
+                    }
+                }
+            }
+
+        }
+
+        .navigation {
+            .row {
+                align-items: center;
+
+                .logo {
+                    a {
+                        text-decoration: none;
+
+                        img {
+                            width: 100;
+                            height: auto;
+                        }
+                    }
+                }
+
+                .headers {
+                    .navbar {
+                        ul.navbar-nav {
+
+                            // column-gap: 20px;
+                            #aboutus {
+                                padding: 4px;
+
+                                a {
+                                    font-size: 18px;
+                                }
+                            }
+
+                            #dropdown {
+                                padding: 4px;
+
+                                a {
+                                    font-size: 18px;
+                                }
+                            }
+                        }
+
+                        #aboutus:hover {
+                            border: 1px solid #7A6696;
+                            border-radius: 6px;
+
+                            a {
+                                color: blue;
+                            }
+                        }
+
+                        #dropdown:hover {
+                            border: 1px solid #7A6696;
+                            border-radius: 6px;
+
+                            a {
+                                color: blue;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+    }
+}

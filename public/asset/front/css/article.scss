@@ -1,0 +1,87 @@
+.article {
+    .container {
+        .current-issue {
+            display: flex;
+            flex-direction: column;
+            row-gap: 18x;
+
+            .item {
+                color: var(--text);
+
+                strong {
+                    font-weight: 500px;
+                }
+            }
+
+            #other {
+                font-size: 18px;
+            }
+
+        }
+
+        .editorial {
+            h5 {
+                font-size: 24px;
+                color: var(--text);
+                text-align: left;
+                font-weight: 400;
+            }
+        }
+
+        .data {
+            a {
+                text-decoration: none;
+                color: var(--text);
+            }
+
+            .head {
+                padding: 0 0 10px;
+
+                .authorname {
+                    display: flex;
+                    align-items: center;
+                    column-gap: 10px;
+                    color: var(--text);
+                    font-size: 13px;
+                    line-height: 13px;
+                    margin: 0 0 10px 0px;
+                }
+
+                h3 {
+                    font-size: 16px;
+                    font-weight: 500;
+                    padding: 0;
+                    margin: 0;
+                    // line-height: 20px;
+
+                    a {
+                        color: var(--text);
+                    }
+                }
+
+            }
+
+            .bottom {
+                .short_desc {
+                    p {color: var(--text);
+                    }
+                }
+                .page_no{
+                    color: var(--text);
+                }
+                button{
+                    border: none;
+                    // border-radius: 4px;
+                    background-color: var(--text);
+                    padding: 6px 20px;
+                    i{
+                        color: white;
+                    }
+                    a{
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -41,6 +41,10 @@
                 <label for="published_date">Published Date</label>
                 <input type="date" name="published_date" id="published_date" class="form-control">
             </div>
+            <div class="col-md-9 mb-2">
+                <label for="s_description">Short Description</label>
+                <input type="text" name="s_description" id="s_description" class="form-control">
+            </div>
             <div class="col-md-3 mb-2" style="align-content: center">
                 <label for="iscurrent">Iscurrent</label>
                 <input type="checkbox" name="iscurrent" id="iscurrent">

@@ -64,10 +64,8 @@ header {
                 .headers {
                     .navbar {
                         ul.navbar-nav {
-
-                            // column-gap: 20px;
                             #aboutus {
-                                padding: 4px;
+                                padding: 2px;
 
                                 a {
                                     font-size: 18px;
@@ -75,30 +73,53 @@ header {
                             }
 
                             #dropdown {
-                                padding: 4px;
+                                padding: 2px;
 
                                 a {
                                     font-size: 18px;
                                 }
+
+                                .dropdown-item {
+                                    color: #636c77;
+                                }
+
+                                ul {
+                                    .side_menu {
+                                        display: none;
+                                        position: absolute;
+                                        top: 0;
+                                        left: 100%;
+                                        margin-top: 0;
+                                        background-color: white;
+                                        z-index: 1;
+                                    }
+
+                                    #login:hover+.side_menu {
+                                        display: block;
+                                    }
+                                }
+
                             }
                         }
 
                         #aboutus:hover {
-                            border: 1px solid #7A6696;
+                            border: 0.5px solid var(--text);
                             border-radius: 6px;
 
-                            a {
-                                color: blue;
+                            #aboutus_a {
+                                color: #5E9CEA;
                             }
                         }
 
                         #dropdown:hover {
-                            border: 1px solid #7A6696;
+                            border: 0.5px solid var(--text);
                             border-radius: 6px;
 
-                            a {
-                                color: blue;
+
+                            #navbarDropdown {
+                                color: #5E9CEA;
                             }
+
                         }
                     }
                 }

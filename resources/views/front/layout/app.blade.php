@@ -76,7 +76,7 @@
                                                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                                         <li class="nav-item" id="aboutus">
-                                                            <a class="nav-link" href="#">About Us</a>
+                                                            <a class="nav-link" href="#" id="aboutus_a">About Us</a>
                                                         </li>
                                                         <li class="nav-item dropdown" id="dropdown">
                                                             <a class="nav-link dropdown-toggle" href="#"
@@ -115,8 +115,13 @@
                                                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                                                 <li><a class="dropdown-item" href="#">Action</a>
                                                                 </li>
-                                                                <li><a class="dropdown-item" href="#">Another
-                                                                        action</a></li>
+                                                                <li><a class="dropdown-item" href="#" id="login">Login</a></li>
+                                                                <div class="side_menu">
+                                                                    <ul>
+                                                                        <li><a href="#">login</a></li>
+                                                                        <li><a href="#">Register</a></li>
+                                                                    </ul>
+                                                                </div>
                                                                 <li>
                                                                     <hr class="dropdown-divider">
                                                                 </li>

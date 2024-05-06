@@ -1,6 +1,6 @@
 .banner .container .books .row .bookimage a img {
+  max-width: 400px;
   width: 100%;
-  max-height: 700px;
 }
 .banner .container .books .row .banner {
   padding: 85px 0;

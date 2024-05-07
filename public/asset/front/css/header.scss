@@ -86,7 +86,7 @@ header {
 
                                 ul {
                                     .side_menu {
-                                        // display: none;
+                                        display: none;
                                         position: absolute;
                                         top: 42px;
                                         left: 195px;
@@ -109,18 +109,29 @@ header {
                                             }
                                         }
                                     }
-                                    // #login:hover{
-                                    //     background-color:#F7F7F7;
-                                    // }
-
-                                    #login:hover .side_menu {
-                                        display: block;
+                                    #login:hover + .side_menu {
+                                       display: block;
                                         position: absolute;
-                                        top: 0;
-                                        left: 100%;
+                                        top: 42px;
+                                        left: 195px;
                                         margin-top: 0;
                                         background-color: white;
                                         z-index: 1;
+                                        border: 1px solid #D0D0D0;
+                                        border-radius: 2px;
+                                        text-align: left;
+                                        ul{
+                                            list-style: none;
+                                            margin: 0;
+                                            padding: 10px;
+                                            li{
+                                                list-style: none;
+                                                a{
+                                                    text-decoration: none;
+                                                    color: var(--text);
+                                                }
+                                            }
+                                        }
                                     }
                                 }
 

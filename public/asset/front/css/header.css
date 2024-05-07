@@ -64,6 +64,7 @@ header .container .navigation .row .headers .navbar ul.navbar-nav #dropdown .dro
   color: #636c77;
 }
 header .container .navigation .row .headers .navbar ul.navbar-nav #dropdown ul .side_menu {
+  display: none;
   position: absolute;
   top: 42px;
   left: 195px;
@@ -86,14 +87,29 @@ header .container .navigation .row .headers .navbar ul.navbar-nav #dropdown ul .
   text-decoration: none;
   color: var(--text);
 }
-header .container .navigation .row .headers .navbar ul.navbar-nav #dropdown ul #login:hover .side_menu {
+header .container .navigation .row .headers .navbar ul.navbar-nav #dropdown ul #login:hover + .side_menu {
   display: block;
   position: absolute;
-  top: 0;
-  left: 100%;
+  top: 42px;
+  left: 195px;
   margin-top: 0;
   background-color: white;
   z-index: 1;
+  border: 1px solid #D0D0D0;
+  border-radius: 2px;
+  text-align: left;
+}
+header .container .navigation .row .headers .navbar ul.navbar-nav #dropdown ul #login:hover + .side_menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 10px;
+}
+header .container .navigation .row .headers .navbar ul.navbar-nav #dropdown ul #login:hover + .side_menu ul li {
+  list-style: none;
+}
+header .container .navigation .row .headers .navbar ul.navbar-nav #dropdown ul #login:hover + .side_menu ul li a {
+  text-decoration: none;
+  color: var(--text);
 }
 header .container .navigation .row .headers .navbar #aboutus:hover {
   border: 0.5px solid var(--text);

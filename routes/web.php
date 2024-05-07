@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\Route;
 //      'role' => '0',
 // ]);
 Route::get('index',[FrontController::class,'index'])->name('index');
+Route::get('frontlogin',[FrontController::class,'login'])->name('frontlogin');
 
 Route::match(['GET', 'POST'], 'login', [LoginController::class, 'login'])->name('login');
 Route::prefix('admin')->name('admin.')->group(function () {

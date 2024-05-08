@@ -1,0 +1,30 @@
+.inner-banner {
+  background-color: #636C77;
+  color: white;
+  padding: 0 40px;
+}
+.inner-banner .container .row .col-md-12 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0px;
+}
+.inner-banner .container .row .col-md-12 h1 {
+  font-size: 16px;
+  margin: 0px;
+}
+.inner-banner .container .row .col-md-12 .login {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+}
+.inner-banner .container .row .col-md-12 .login a {
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+  font-weight: 400;
+}
+.inner-banner .container .row .col-md-12 .login i {
+  font-size: 6px;
+}/*# sourceMappingURL=innerbanner.css.map */

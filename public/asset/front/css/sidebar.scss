@@ -1,0 +1,25 @@
+.sidebar{
+    padding: 50px 0px;
+    .heading{
+        border-radius: 4px;
+        padding: 10px;
+        background-color:#004E84 ;
+        a{
+            color: white;
+            text-decoration: none;
+        }
+    }
+    .sidebar-content{
+        padding: 40px 0px 0px 0px;
+        h5{
+
+        }
+        a{
+            img{
+                max-width: 100%;
+                width: auto;
+                height: auto;
+            }
+        }
+    }
+}

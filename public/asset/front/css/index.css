@@ -54,6 +54,7 @@ header .container .topbar .logins .login-area a {
   color: #7A6696;
 }
 header .container .navigation {
+  padding: 0px 0px 10px 0px;
   position: relative;
 }
 header .container .navigation .row {
@@ -68,9 +69,11 @@ header .container .navigation .row .logo a img {
 }
 header .container .navigation .row .headers .navbar ul.navbar-nav #aboutus a {
   font-size: 16px;
+  font-weight: 500;
 }
 header .container .navigation .row .headers .navbar ul.navbar-nav #dropdown a {
   font-size: 16px;
+  font-weight: 500;
 }
 header .container .navigation .row .headers .navbar ul.navbar-nav #dropdown .dropdown-item {
   color: #636c77;
@@ -346,4 +349,56 @@ footer .container .copyright {
   padding: 16px 0;
   width: 100%;
   text-align: center;
+}
+
+.sidebar {
+  padding: 50px 0px;
+}
+.sidebar .heading {
+  border-radius: 4px;
+  padding: 10px;
+  background-color: #004E84;
+}
+.sidebar .heading a {
+  color: white;
+  text-decoration: none;
+}
+.sidebar .sidebar-content {
+  padding: 40px 0px 0px 0px;
+}
+.sidebar .sidebar-content a img {
+  max-width: 100%;
+  width: auto;
+  height: auto;
+}
+
+.inner-banner {
+  background-color: #636C77;
+  color: white;
+  padding: 0 40px;
+}
+.inner-banner .container .row .col-md-12 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0px;
+}
+.inner-banner .container .row .col-md-12 h1 {
+  font-size: 16px;
+  margin: 0px;
+}
+.inner-banner .container .row .col-md-12 .login {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+}
+.inner-banner .container .row .col-md-12 .login a {
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+  font-weight: 400;
+}
+.inner-banner .container .row .col-md-12 .login i {
+  font-size: 6px;
 }/*# sourceMappingURL=index.css.map */

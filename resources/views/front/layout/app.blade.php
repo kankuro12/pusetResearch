@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <link rel="stylesheet" href="{{ asset('asset/front/css/index.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/front/css/login/index.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/front/css/aboutus/index.css') }}">
+    <link rel="stylesheet" href="{{asset('asset/front/css/articlesingle/index.css')}}">
     <title>Document</title>
     <style>
 
@@ -58,7 +60,7 @@
                             <div class="row">
                                 <div class="col-md-4 col-4">
                                     <div class="logo">
-                                        <a href="#">
+                                        <a href="{{route('index')}}">
                                             Logo
                                             <img src="#" alt="">
                                         </a>
@@ -77,7 +79,7 @@
                                                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                                         <li class="nav-item" id="aboutus">
-                                                            <a class="nav-link" href="#" id="aboutus_a">About
+                                                            <a class="nav-link" href="{{route('about')}}" id="aboutus_a">About
                                                                 Us</a>
                                                         </li>
                                                         <li class="nav-item dropdown" id="dropdown">
@@ -146,14 +148,37 @@
                 </div>
             </div>
         </header>
+        @if (View::hasSection('hideInnerBanner'))
+            @yield('hideInnerBanner')
+        @else
+            <div class="inner-banner">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-12 col-lg-12 ">
+                            <h1>
+                                @yield('top_name')
+                            </h1>
+                            <div class="login">
+                                <a href="#"> login Register</a><i class="fa-solid fa-circle"></i><a
+                                    href="#"> Home</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
         <div class="container">
             <div class="row">
                 <div class="col-md-10">
                     @yield('content')
                 </div>
+
                 <div class="col-md-2">
                     <div class="sidebar">
-
+                        <div class="heading">
+                            <a href="#">Make a Submission</a>
+                        </div>
+                        @include('front.cache.sidebar')
                     </div>
                 </div>
             </div>

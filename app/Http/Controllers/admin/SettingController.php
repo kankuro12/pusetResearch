@@ -111,9 +111,9 @@ class SettingController extends Controller
 
     public function indexAsso(Request $request)
     {
+        $title = Associatetitle::first();
+        $associates = Associate::get();
         if ($request->getMethod() == "GET") {
-            $title = Associatetitle::first();
-            $associates = Associate::get();
             return view('admin.setting.associate.index',compact('title','associates'));
         } else {
             $associatetitle = new Associatetitle();
@@ -128,8 +128,11 @@ class SettingController extends Controller
                     }
                     $associate->save();
                 }
-            }
-        }
+            };
+            file_put_contents(resource_path('views/front/cache/sidebar.blade.php'),view('admin.templete.sidebar',compact('title','associates')));
+        };
+
+
     }
     public function delAsso($asso_id){
         Associate::where('id',$asso_id)->delete();

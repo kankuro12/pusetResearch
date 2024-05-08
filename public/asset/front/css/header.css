@@ -36,6 +36,7 @@ header .container .topbar .logins .login-area a {
   color: #7A6696;
 }
 header .container .navigation {
+  padding: 0px 0px 10px 0px;
   position: relative;
 }
 header .container .navigation .row {
@@ -50,9 +51,11 @@ header .container .navigation .row .logo a img {
 }
 header .container .navigation .row .headers .navbar ul.navbar-nav #aboutus a {
   font-size: 16px;
+  font-weight: 500;
 }
 header .container .navigation .row .headers .navbar ul.navbar-nav #dropdown a {
   font-size: 16px;
+  font-weight: 500;
 }
 header .container .navigation .row .headers .navbar ul.navbar-nav #dropdown .dropdown-item {
   color: #636c77;

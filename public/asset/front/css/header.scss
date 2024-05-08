@@ -47,6 +47,7 @@ header {
         }
 
         .navigation {
+            padding: 0px 0px 10px 0px;
             position: relative;
             .row {
                 align-items: center;
@@ -69,6 +70,7 @@ header {
 
                                 a {
                                     font-size: 16px;
+                                    font-weight: 500;
                                 }
                             }
 
@@ -76,6 +78,8 @@ header {
 
                                 a {
                                     font-size: 16px;
+                                    font-weight: 500;
+
                                 }
 
                                 .dropdown-item {

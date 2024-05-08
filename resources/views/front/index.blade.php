@@ -1,4 +1,8 @@
 @extends('front.layout.app')
+
+@section('hideInnerBanner')
+
+@endsection
 @section('content')
     <div class="banner">
         <div class="container">
@@ -42,7 +46,7 @@
                                     <i class="fa-regular fa-user"></i> <a href="">Author name</a>
                                 </div>
                                 <h3>
-                                    <a href="">{{$item->title}}</a>
+                                    <a href="{{route('articleSingle',['article'=>$item->id])}}">{{$item->title}}</a>
                                 </h3>
                             </div>
                         </div>

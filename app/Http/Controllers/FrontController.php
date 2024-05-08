@@ -17,4 +17,12 @@ class FrontController extends Controller
     public function login(){
         return view('front.login');
     }
+
+    public function about(){
+        return view('front.aboutus.index');
+    }
+    public function articleSingle($article_id){
+        $article = BookArtical::where('id',$article_id)->first();
+        return view('front.article.single.index',compact('article'));
+    }
 }

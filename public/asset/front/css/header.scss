@@ -66,18 +66,16 @@ header {
                     .navbar {
                         ul.navbar-nav {
                             #aboutus {
-                                padding: 2px;
 
                                 a {
-                                    font-size: 18px;
+                                    font-size: 16px;
                                 }
                             }
 
                             #dropdown {
-                                padding: 2px;
 
                                 a {
-                                    font-size: 18px;
+                                    font-size: 16px;
                                 }
 
                                 .dropdown-item {
@@ -139,8 +137,9 @@ header {
                         }
 
                         #aboutus:hover {
-                            border: 0.5px solid var(--text);
+                            border: 0.5px solid #D4D4D4;
                             border-radius: 6px;
+                            background-color: #fff;
 
                             #aboutus_a {
                                 color: #5E9CEA;
@@ -148,7 +147,8 @@ header {
                         }
 
                         #dropdown:hover {
-                            border: 0.5px solid var(--text);
+                            border: 0.5px solid #D4D4D4;
+                            background-color: #fff;
                             border-radius: 6px;
 
 

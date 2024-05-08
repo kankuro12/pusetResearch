@@ -5,6 +5,8 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\About;
 use App\Models\ArticalType;
+use App\Models\Associate;
+use App\Models\Associatetitle;
 use App\Models\Policies;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -34,6 +36,7 @@ class SettingController extends Controller
     }
     public function policy_edit(Request $request, $policy_id)
     {
+
         $policy = Policies::where('id', $policy_id)->first();
         $policy->title = $request->title;
         $policy->description = $request->description;
@@ -57,15 +60,24 @@ class SettingController extends Controller
     {
         $about = new About();
         $about->title = $request->title;
+        $about->sub_title = $request->sub_title;
         $about->description = $request->description;
         $about->save();
+
+        $abouts = DB::table('abouts')->get();
+        file_put_contents(resource_path('views/front/cache/about.blade.php'), view('admin.templete.about', compact('abouts'))->render());
     }
     public function about_edit(Request $request, $about_id)
     {
         $about = About::where('id', $about_id)->first();
-        $about->title = $request->title;
-        $about->description = $request->description;
-        $about->save();
+        if ($request->getMethod() == "POST") {
+            $about->title = $request->title;
+            $about->sub_title = $request->sub_title;
+            $about->description = $request->description;
+            $about->save();
+        } else {
+            return view('admin.setting.about.edit', compact('about'));
+        }
     }
     public function about_del($about_id)
     {
@@ -73,9 +85,10 @@ class SettingController extends Controller
         return redirect()->back()->with('success', 'successfully deleted');
     }
 
-    public function indexArtical(){
+    public function indexArtical()
+    {
         $articals = DB::table('artical_types')->get();
-        return view('admin.setting.articalType.index',compact('articals'));
+        return view('admin.setting.articalType.index', compact('articals'));
     }
     public function addArtical(Request $request)
     {
@@ -89,8 +102,36 @@ class SettingController extends Controller
         $artical->name = $request->name;
         $artical->save();
     }
-    public function del($artical_id){
-        ArticalType::where('id',$artical_id)->delete();
-        return redirect()->back()->with('success','Successfully Deleted');
+    public function del($artical_id)
+    {
+        ArticalType::where('id', $artical_id)->delete();
+        return redirect()->back()->with('success', 'Successfully Deleted');
+    }
+
+
+    public function indexAsso(Request $request)
+    {
+        if ($request->getMethod() == "GET") {
+            $title = Associatetitle::first();
+            $associates = Associate::get();
+            return view('admin.setting.associate.index',compact('title','associates'));
+        } else {
+            $associatetitle = new Associatetitle();
+            $associatetitle->title = $request->title;
+            $associatetitle->save();
+            if ($request->filled('ids')) {
+                foreach ($request->ids as $key => $id) {
+                    $associate = new Associate();
+                    $associate->link = $request->input('link_' . $id);
+                    if ($request->hasFile('image_' . $id)) {
+                        $associate->image = $request->file('image_' . $id)->store('uploads/associate/image');
+                    }
+                    $associate->save();
+                }
+            }
+        }
+    }
+    public function delAsso($asso_id){
+        Associate::where('id',$asso_id)->delete();
     }
 }

@@ -44,4 +44,9 @@ new project 2 user role
    post
    address
 
+ new
 
+ associate
+  title
+  image
+  link

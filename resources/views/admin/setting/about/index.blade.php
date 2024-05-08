@@ -1,7 +1,7 @@
 @extends('admin.layout.app')
 @section('header-Links')
-<a href="{{ route('admin.setting.index') }}">Setting</a>
-    <a href="{{ route('admin.setting.about.about_index') }}">Policy</a>
+    <a href="{{ route('admin.setting.index') }}">Setting</a>
+    <a href="{{ route('admin.setting.about.about_index') }}">About</a>
 @endsection
 @section('active', 'setting')
 @section('content')
@@ -10,6 +10,10 @@
             <div class="col-md-3 mb-2">
                 <label for="title">Title</label>
                 <input type="text" name="title" id="title" class="form-control">
+            </div>
+            <div class="col-md-3">
+                <label for="sub_title">Sub Title</label>
+                <input type="text" name="sub_title" id="sub_title" class="form-control">
             </div>
             <div class="col-md-12 mb-2">
                 <label for="description">Description</label>
@@ -27,21 +31,25 @@
                     <tr>
                         <th>SN</th>
                         <th>Title</th>
-                        <th>Description</th>
+                        <th>Sub title</th>
                         <th>Manage</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($abouts as $key=>$about)
+                    @foreach ($abouts as $key => $about)
                         <tr>
-                            <td>{{$key+1}}</td>
-                            <td><input type="text" name="title" id="title_{{ $about->id }}" class="form-control"
-                                    value="{{ $about->title }}"> </td>
+                            <td>{{ $key + 1 }}</td>
                             <td>
-                                <textarea type="text" name="description" id="description_{{ $about->id }}" class="form-control">{{ $about->description }}</textarea>
+                                <input type="text" name="title" id="title_{{ $about->id }}" class="form-control"
+                                    value="{{ $about->title }}">
                             </td>
                             <td>
-                                <button onclick="editData({{ $about->id }})" class="btn btn-primary btn-sm">Edit</button>
+                                <input type="text" name="sub_title" id="sub_title_{{ $about->id }}"
+                                    class="form-control" value="{{ $about->sub_title }}">
+                            </td>
+                            <td>
+                                <a
+                                    href="{{ route('admin.setting.about.about_edit', ['about_id' => $about->id]) }}" class="btn btn-primary btn-sm">Edit</a>
                                 <a href="{{ route('admin.setting.about.about_del', ['about_id' => $about->id]) }}"
                                     class="btn btn-danger btn-sm">Del</a>
                             </td>
@@ -56,29 +64,19 @@
     <script>
         function saveData() {
             const title = $('#title').val();
+            const sub_title = $('#sub_title').val();
             const description = $('#description').val();
+
+            console.log('sub_title');
             axios.post('{{ route('admin.setting.about.about_add') }}', {
                 title: title,
+                sub_title: sub_title,
                 description: description,
             }).then(res => {
                 success('succesfully added');
                 location.reload()
             }).catch(err => {
                 error('cannot be added');
-            })
-        }
-
-        function editData(id) {
-            const title = $('#title_' + id).val();
-            const description = $('#description_' + id).val();
-            axios.post('{{ route('admin.setting.about.about_edit',['about_id'=>':id']) }}'.replace(":id",id), {
-                title: title,
-                description: description,
-            }).then(res => {
-                success('succesfully updated');
-                location.reload()
-            }).catch(err => {
-                error('cannot be updated');
             })
         }
     </script>

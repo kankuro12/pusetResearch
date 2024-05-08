@@ -17,7 +17,6 @@
                                 {{ $book->title }}
                             </h1>
                             <div class="description">
-
                                 {{ $book->s_description }} <a href="#">Read more</a>
                             </div>
                         </div>

@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 //     'password' => bcrypt('password'),
 //      'role' => '0',
 // ]);
-Route::get('index',[FrontController::class,'index'])->name('index');
+Route::get('/',[FrontController::class,'index'])->name('index');
 Route::get('frontlogin',[FrontController::class,'login'])->name('frontlogin');
 
 Route::match(['GET', 'POST'], 'login', [LoginController::class, 'login'])->name('login');
@@ -103,7 +103,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::prefix('about')->name('about.')->group(function () {
             Route::get('about_index', [SettingController::class, 'about_index'])->name('about_index');
             Route::match(['POST'], 'about_add', [SettingController::class, 'about_add'])->name('about_add');
-            Route::match(['POST'], 'about_edit/{about_id}', [SettingController::class, 'about_edit'])->name('about_edit');
+            Route::match(['GET','POST'], 'about_edit/{about_id}', [SettingController::class, 'about_edit'])->name('about_edit');
             Route::get('about_del/{about_id}', [SettingController::class, 'about_del'])->name('about_del');
         });
         Route::prefix('contact')->name('contact.')->group(function () {
@@ -115,6 +115,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::match(['post'], 'addArtical', [SettingController::class, 'addArtical'])->name('addArtical');
             Route::match(['post'], 'editArtical/{artical_id}', [SettingController::class, 'editArtical'])->name('editArtical');
             Route::get('delArtical/{artical_id}', [SettingController::class, 'delArtical'])->name('delArtical');
+        });
+        Route::prefix('associate')->name('associate.')->group(function(){
+            Route::match(['GET','POST'],'indexAsso',[SettingController::class,'indexAsso'])->name('indexAsso');
+            Route::match(["POST"],'addAsso',[SettingController::class,'addAsso'])->name('addAsso');
+            Route::match(["POST"],'editAsso',[SettingController::class,'editAsso'])->name('editAsso');
+            Route::match(["GET"],'delAsso/{asso_id}',[SettingController::class,'delAsso'])->name('delAsso');
         });
     });
 });

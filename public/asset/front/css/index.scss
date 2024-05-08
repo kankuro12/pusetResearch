@@ -1,8 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
 :root {
     --text: #636C77;
 }
 
 body {
+
+    font-family: "Quicksand", sans-serif;
+    font-optical-sizing: auto;
     margin: 0;
     padding: 0 40px;
     background-color: #EEEEEE;
@@ -12,10 +16,9 @@ body {
         margin: 0;
         background-color: #FCFCFC;
 
-        @import 'header.scss';
-        @import 'banner.scss';
-        @import 'article.scss';
-        @import 'footer.scss';
     }
-
 }
+@import 'header.scss';
+@import 'banner.scss';
+@import 'article.scss';
+@import 'footer.scss';

@@ -48,17 +48,11 @@ header .container .navigation .row .logo a img {
   width: 100;
   height: auto;
 }
-header .container .navigation .row .headers .navbar ul.navbar-nav #aboutus {
-  padding: 2px;
-}
 header .container .navigation .row .headers .navbar ul.navbar-nav #aboutus a {
-  font-size: 18px;
-}
-header .container .navigation .row .headers .navbar ul.navbar-nav #dropdown {
-  padding: 2px;
+  font-size: 16px;
 }
 header .container .navigation .row .headers .navbar ul.navbar-nav #dropdown a {
-  font-size: 18px;
+  font-size: 16px;
 }
 header .container .navigation .row .headers .navbar ul.navbar-nav #dropdown .dropdown-item {
   color: #636c77;
@@ -112,14 +106,16 @@ header .container .navigation .row .headers .navbar ul.navbar-nav #dropdown ul #
   color: var(--text);
 }
 header .container .navigation .row .headers .navbar #aboutus:hover {
-  border: 0.5px solid var(--text);
+  border: 0.5px solid #D4D4D4;
   border-radius: 6px;
+  background-color: #fff;
 }
 header .container .navigation .row .headers .navbar #aboutus:hover #aboutus_a {
   color: #5E9CEA;
 }
 header .container .navigation .row .headers .navbar #dropdown:hover {
-  border: 0.5px solid var(--text);
+  border: 0.5px solid #D4D4D4;
+  background-color: #fff;
   border-radius: 6px;
 }
 header .container .navigation .row .headers .navbar #dropdown:hover #navbarDropdown {

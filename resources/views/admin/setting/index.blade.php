@@ -19,6 +19,7 @@
                 <div class="mt-2" style="display: flex; column-gap: 30px">
                     <a class="link" href="{{ route('admin.setting.policy.policy_index') }}">Policy</a>
                     <a class="link" href="{{ route('admin.setting.about.about_index') }}">About</a>
+                    <a class="link" href="{{route('admin.setting.associate.indexAsso')}}">Side Bar</a>
                 </div>
             </div>
         </div>

@@ -1,8 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
 :root {
   --text: #636C77;
 }
 
 body {
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
   margin: 0;
   padding: 0 40px;
   background-color: #EEEEEE;
@@ -12,72 +15,67 @@ body .content {
   margin: 0;
   background-color: #FCFCFC;
 }
-body .content header .container .topbar {
+
+header .container .topbar {
   margin-top: 25px;
   margin-bottom: 25px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-body .content header .container .topbar .social-icons {
+header .container .topbar .social-icons {
   display: flex;
   -moz-column-gap: 15px;
        column-gap: 15px;
 }
-body .content header .container .topbar .social-icons .facebook-icon {
+header .container .topbar .social-icons .facebook-icon {
   font-size: 18px;
   color: #3B5999;
 }
-body .content header .container .topbar .social-icons .twitter-icon {
+header .container .topbar .social-icons .twitter-icon {
   font-size: 18px;
   color: #55ACEE;
 }
-body .content header .container .topbar .social-icons .linkedin-icon {
+header .container .topbar .social-icons .linkedin-icon {
   font-size: 18px;
   color: #3B5999;
 }
-body .content header .container .topbar .social-icons .google-icon {
+header .container .topbar .social-icons .google-icon {
   font-size: 18px;
   color: #DD4B39;
 }
-body .content header .container .topbar .logins .login-area {
+header .container .topbar .logins .login-area {
   display: flex;
   -moz-column-gap: 15px;
        column-gap: 15px;
 }
-body .content header .container .topbar .logins .login-area a {
+header .container .topbar .logins .login-area a {
   text-decoration: none;
   color: #7A6696;
 }
-body .content header .container .navigation {
+header .container .navigation {
   position: relative;
 }
-body .content header .container .navigation .row {
+header .container .navigation .row {
   align-items: center;
 }
-body .content header .container .navigation .row .logo a {
+header .container .navigation .row .logo a {
   text-decoration: none;
 }
-body .content header .container .navigation .row .logo a img {
+header .container .navigation .row .logo a img {
   width: 100;
   height: auto;
 }
-body .content header .container .navigation .row .headers .navbar ul.navbar-nav #aboutus {
-  padding: 2px;
+header .container .navigation .row .headers .navbar ul.navbar-nav #aboutus a {
+  font-size: 16px;
 }
-body .content header .container .navigation .row .headers .navbar ul.navbar-nav #aboutus a {
-  font-size: 18px;
+header .container .navigation .row .headers .navbar ul.navbar-nav #dropdown a {
+  font-size: 16px;
 }
-body .content header .container .navigation .row .headers .navbar ul.navbar-nav #dropdown {
-  padding: 2px;
-}
-body .content header .container .navigation .row .headers .navbar ul.navbar-nav #dropdown a {
-  font-size: 18px;
-}
-body .content header .container .navigation .row .headers .navbar ul.navbar-nav #dropdown .dropdown-item {
+header .container .navigation .row .headers .navbar ul.navbar-nav #dropdown .dropdown-item {
   color: #636c77;
 }
-body .content header .container .navigation .row .headers .navbar ul.navbar-nav #dropdown ul .side_menu {
+header .container .navigation .row .headers .navbar ul.navbar-nav #dropdown ul .side_menu {
   display: none;
   position: absolute;
   top: 42px;
@@ -89,19 +87,19 @@ body .content header .container .navigation .row .headers .navbar ul.navbar-nav 
   border-radius: 2px;
   text-align: left;
 }
-body .content header .container .navigation .row .headers .navbar ul.navbar-nav #dropdown ul .side_menu ul {
+header .container .navigation .row .headers .navbar ul.navbar-nav #dropdown ul .side_menu ul {
   list-style: none;
   margin: 0;
   padding: 10px;
 }
-body .content header .container .navigation .row .headers .navbar ul.navbar-nav #dropdown ul .side_menu ul li {
+header .container .navigation .row .headers .navbar ul.navbar-nav #dropdown ul .side_menu ul li {
   list-style: none;
 }
-body .content header .container .navigation .row .headers .navbar ul.navbar-nav #dropdown ul .side_menu ul li a {
+header .container .navigation .row .headers .navbar ul.navbar-nav #dropdown ul .side_menu ul li a {
   text-decoration: none;
   color: var(--text);
 }
-body .content header .container .navigation .row .headers .navbar ul.navbar-nav #dropdown ul #login:hover .side_menu {
+header .container .navigation .row .headers .navbar ul.navbar-nav #dropdown ul #login:hover + .side_menu {
   display: block;
   position: absolute;
   top: 42px;
@@ -113,83 +111,88 @@ body .content header .container .navigation .row .headers .navbar ul.navbar-nav 
   border-radius: 2px;
   text-align: left;
 }
-body .content header .container .navigation .row .headers .navbar ul.navbar-nav #dropdown ul #login:hover .side_menu ul {
+header .container .navigation .row .headers .navbar ul.navbar-nav #dropdown ul #login:hover + .side_menu ul {
   list-style: none;
   margin: 0;
   padding: 10px;
 }
-body .content header .container .navigation .row .headers .navbar ul.navbar-nav #dropdown ul #login:hover .side_menu ul li {
+header .container .navigation .row .headers .navbar ul.navbar-nav #dropdown ul #login:hover + .side_menu ul li {
   list-style: none;
 }
-body .content header .container .navigation .row .headers .navbar ul.navbar-nav #dropdown ul #login:hover .side_menu ul li a {
+header .container .navigation .row .headers .navbar ul.navbar-nav #dropdown ul #login:hover + .side_menu ul li a {
   text-decoration: none;
   color: var(--text);
 }
-body .content header .container .navigation .row .headers .navbar #aboutus:hover {
-  border: 0.5px solid var(--text);
+header .container .navigation .row .headers .navbar #aboutus:hover {
+  border: 0.5px solid #D4D4D4;
   border-radius: 6px;
+  background-color: #fff;
 }
-body .content header .container .navigation .row .headers .navbar #aboutus:hover #aboutus_a {
+header .container .navigation .row .headers .navbar #aboutus:hover #aboutus_a {
   color: #5E9CEA;
 }
-body .content header .container .navigation .row .headers .navbar #dropdown:hover {
-  border: 0.5px solid var(--text);
+header .container .navigation .row .headers .navbar #dropdown:hover {
+  border: 0.5px solid #D4D4D4;
+  background-color: #fff;
   border-radius: 6px;
 }
-body .content header .container .navigation .row .headers .navbar #dropdown:hover #navbarDropdown {
+header .container .navigation .row .headers .navbar #dropdown:hover #navbarDropdown {
   color: #5E9CEA;
 }
-body .content .banner .container .books .row .bookimage a img {
+
+.banner .container .books .row .bookimage a img {
   max-width: 400px;
   width: 100%;
 }
-body .content .banner .container .books .row .banner {
+.banner .container .books .row .banner {
   padding: 85px 0;
 }
-body .content .banner .container .books .row .banner h1 {
-  font-size: 52px;
+.banner .container .books .row .banner h1 {
+  font-size: 42px;
   margin: 0 0 32px;
   padding: 0 0 22px;
   line-height: 62px;
   font-weight: 400;
 }
-body .content .banner .container .books .row .banner .description {
+.banner .container .books .row .banner .description {
   margin: 0;
   color: #636C77;
-  font-size: 22px;
+  font-size: 18px;
   line-height: 32px;
+  text-align: justify;
 }
-body .content .banner .container .books .row .banner .description a {
+.banner .container .books .row .banner .description a {
   text-decoration: none;
 }
-body .content .article .container .current-issue {
+
+.article .container .current-issue {
   display: flex;
   flex-direction: column;
   row-gap: 18x;
 }
-body .content .article .container .current-issue .item {
+.article .container .current-issue .item {
   color: var(--text);
 }
-body .content .article .container .current-issue .item strong {
+.article .container .current-issue .item strong {
   font-weight: 500px;
 }
-body .content .article .container .current-issue #other {
+.article .container .current-issue #other {
   font-size: 18px;
 }
-body .content .article .container .editorial h5 {
+.article .container .editorial h5 {
   font-size: 24px;
   color: var(--text);
   text-align: left;
   font-weight: 400;
 }
-body .content .article .container .data a {
+.article .container .data a {
   text-decoration: none;
   color: var(--text);
 }
-body .content .article .container .data .head {
+.article .container .data .head {
   padding: 0 0 10px;
 }
-body .content .article .container .data .head .authorname {
+.article .container .data .head .authorname {
   display: flex;
   align-items: center;
   -moz-column-gap: 10px;
@@ -199,87 +202,88 @@ body .content .article .container .data .head .authorname {
   line-height: 13px;
   margin: 0 0 10px 0px;
 }
-body .content .article .container .data .head h3 {
+.article .container .data .head h3 {
   font-size: 16px;
   font-weight: 500;
   padding: 0;
   margin: 0;
 }
-body .content .article .container .data .head h3 a {
+.article .container .data .head h3 a {
   color: var(--text);
 }
-body .content .article .container .data .bottom .short_desc p {
+.article .container .data .bottom .short_desc p {
   color: var(--text);
 }
-body .content .article .container .data .bottom .page_no {
+.article .container .data .bottom .page_no {
   color: var(--text);
 }
-body .content .article .container .data .bottom button {
+.article .container .data .bottom button {
   border: none;
   background-color: var(--text);
   padding: 6px 20px;
 }
-body .content .article .container .data .bottom button i {
+.article .container .data .bottom button i {
   color: white;
 }
-body .content .article .container .data .bottom button a {
+.article .container .data .bottom button a {
   color: white;
 }
-body .content footer a {
+
+footer a {
   text-decoration: none;
 }
-body .content footer .container .footer-column {
+footer .container .footer-column {
   padding: 20px 0px;
 }
-body .content footer .container .footer-column .aboutus {
+footer .container .footer-column .aboutus {
   text-align: center;
 }
-body .content footer .container .footer-column .aboutus .logo a img {
+footer .container .footer-column .aboutus .logo a img {
   width: 100%;
   max-height: 150px;
 }
-body .content footer .container .footer-column .aboutus .description {
+footer .container .footer-column .aboutus .description {
   width: 100%;
 }
-body .content footer .container .footer-column .aboutus .description p {
+footer .container .footer-column .aboutus .description p {
   font-size: 16px;
   color: var(--text);
 }
-body .content footer .container .footer-column .aboutus .social-icons {
+footer .container .footer-column .aboutus .social-icons {
   display: flex;
   -moz-column-gap: 20px;
        column-gap: 20px;
   justify-content: center;
 }
-body .content footer .container .footer-column .aboutus .social-icons .facebook-icon {
+footer .container .footer-column .aboutus .social-icons .facebook-icon {
   font-size: 18px;
   color: #3B5999;
 }
-body .content footer .container .footer-column .aboutus .social-icons .twitter-icon {
+footer .container .footer-column .aboutus .social-icons .twitter-icon {
   font-size: 18px;
   color: #55ACEE;
 }
-body .content footer .container .footer-column .aboutus .social-icons .linkedin-icon {
+footer .container .footer-column .aboutus .social-icons .linkedin-icon {
   font-size: 18px;
   color: #3B5999;
 }
-body .content footer .container .footer-column .aboutus .social-icons .google-icon {
+footer .container .footer-column .aboutus .social-icons .google-icon {
   font-size: 18px;
   color: #DD4B39;
 }
-body .content footer .container .footer-column .aboutus .social-icons .rss-icon {
+footer .container .footer-column .aboutus .social-icons .rss-icon {
   font-size: 18px;
   color: #FF6600;
 }
-body .content footer .container .footer-column .getintouch {
+footer .container .footer-column .getintouch {
   text-align: left;
   padding: 30px 0;
   color: var(--text);
 }
-body .content footer .container .footer-column .getintouch .head {
+footer .container .footer-column .getintouch .head {
   padding: 0 0 20px 0;
 }
-body .content footer .container .footer-column .getintouch a {
+footer .container .footer-column .getintouch a {
   text-decoration: none;
   color: var(--text);
   display: flex;
@@ -287,57 +291,57 @@ body .content footer .container .footer-column .getintouch a {
   -moz-column-gap: 20px;
        column-gap: 20px;
 }
-body .content footer .container .footer-column .getintouch a .item {
+footer .container .footer-column .getintouch a .item {
   text-align: left;
 }
-body .content footer .container .footer-column .getintouch ul {
+footer .container .footer-column .getintouch ul {
   display: flex;
   flex-direction: column;
   row-gap: 10px;
   list-style: none;
   padding: 0;
 }
-body .content footer .container .footer-column .getintouch ul li {
+footer .container .footer-column .getintouch ul li {
   list-style: none;
   color: var(--text);
   font-size: 16px;
   line-height: 14px;
 }
-body .content footer .container .footer-column .getintouch ul li i {
+footer .container .footer-column .getintouch ul li i {
   width: 20px;
 }
-body .content footer .container .footer-column .getintouch ul .address {
+footer .container .footer-column .getintouch ul .address {
   display: flex;
   align-items: center;
   -moz-column-gap: 20px;
        column-gap: 20px;
 }
-body .content footer .container .footer-column .resource {
+footer .container .footer-column .resource {
   align-items: left;
   padding: 30px 0;
   color: var(--text);
 }
-body .content footer .container .footer-column .resource .head {
+footer .container .footer-column .resource .head {
   padding: 0 0 20px 0;
 }
-body .content footer .container .footer-column .resource .item {
+footer .container .footer-column .resource .item {
   padding: 0px 0px 0px 20px;
 }
-body .content footer .container .footer-column .resource .item ul {
+footer .container .footer-column .resource .item ul {
   display: flex;
   flex-direction: column;
   row-gap: 10px;
   padding: 0;
 }
-body .content footer .container .footer-column .resource .item ul li {
+footer .container .footer-column .resource .item ul li {
   font-size: 16px;
   line-height: 14px;
   color: var(--text);
 }
-body .content footer .container .footer-column .resource .item ul li a {
+footer .container .footer-column .resource .item ul li a {
   color: var(--text);
 }
-body .content footer .container .copyright {
+footer .container .copyright {
   border-top: 1px solid #ddd;
   padding: 16px 0;
   width: 100%;

@@ -5,7 +5,7 @@
         </h1>
         <div class="row m-0">
             <div class="col-md-12 mb-5">
-                <div class="main-contact" style="font-size:13px; color: var(--text)" >
+                <div class="main-contact" style="font-size:16px; color: var(--text)" >
                     {{$contact->name}} , {{$contact->address}}
                     <br>
                     P.O.Box {{$contact->po_box}}

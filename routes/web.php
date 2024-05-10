@@ -28,6 +28,7 @@ Route::get('layout',[FrontController::class,'layout'])->name('layout');
 Route::get('frontlogin',[FrontController::class,'login'])->name('frontlogin');
 Route::get('about',[FrontController::class,'about'])->name('about');
 Route::get('policy',[FrontController::class,'policy'])->name('policy');
+Route::get('contact',[FrontController::class,'contact'])->name('contact');
 Route::get('articleSingle/{article}',[FrontController::class,'articleSingle'])->name('articleSingle');
 
 Route::match(['GET', 'POST'], 'login', [LoginController::class, 'login'])->name('login');

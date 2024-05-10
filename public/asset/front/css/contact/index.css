@@ -1,0 +1,23 @@
+.contact .container h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+.contact .container .row .col-md-12 {
+  padding: 0px;
+}
+.contact .container .row .col-md-6 {
+  padding: 0;
+  margin-bottom: 10px;
+}
+.contact .container .row .col-md-6 .item h3 {
+  font-size: 18px;
+  font-weight: 700;
+}
+.contact .container .row .col-md-6 .item .name {
+  color: var(--text);
+  font-size: 16px;
+}
+.contact .container .row .col-md-6 .item .post {
+  font-size: 16px;
+  color: var(--text);
+}/*# sourceMappingURL=index.css.map */

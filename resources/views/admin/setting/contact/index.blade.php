@@ -166,12 +166,12 @@
             //     });
             // });
             const data = {
-                individualContactsDatas: individualContactsDatas,
                 cname: cname,
                 address: address,
                 phone: phone,
                 email:email,
                 po_box: po_box,
+                individualContactsDatas: individualContactsDatas,
             };
 
             axios.post('{{ route('admin.setting.contact.index') }}', data)

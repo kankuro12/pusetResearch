@@ -8,6 +8,7 @@ use App\Models\BookArtical;
 use App\Models\BookArticalAuthor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use PhpParser\Node\Expr\FuncCall;
 
 class FrontController extends Controller
 {
@@ -33,5 +34,9 @@ class FrontController extends Controller
     }
     public function policy(){
         return view('front.policy.index');
+    }
+    public function contact()
+    {
+        return view('front.contact.index');
     }
 }

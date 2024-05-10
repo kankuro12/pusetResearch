@@ -360,7 +360,7 @@ footer .container .copyright {
 }
 
 .inner-banner {
-  padding: 0 40px;
+  background-color: #636C77;
 }
 .inner-banner .container .row .col-md-12 {
   display: flex;
@@ -371,4 +371,19 @@ footer .container .copyright {
 .inner-banner .container .row .col-md-12 h1 {
   font-size: 16px;
   margin: 0px;
+}
+.inner-banner .container .row .col-md-12 .header-link {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+}
+.inner-banner .container .row .col-md-12 .header-link a {
+  text-decoration: none;
+  font-size: 16px;
+  color: white;
+}
+.inner-banner .container .row .col-md-12 .header-link i {
+  font-size: 8px;
+  color: white;
 }/*# sourceMappingURL=index.css.map */

@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{ asset('asset/front/css/login/index.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/front/css/aboutus/index.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/front/css/articlesingle/index.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/front/css/contact/index.css') }}">
     <title>Document</title>
     <style>
 
@@ -83,6 +84,10 @@
                                                             <a class="nav-link" href="{{ route('policy') }}"
                                                                 id="aboutus_a"> Policy</a>
                                                         </li>
+                                                        <li class="nav-item" id="aboutus">
+                                                            <a class="nav-link" href="{{ route('contact') }}"
+                                                                id="aboutus_a">Contact</a>
+                                                        </li>
                                                         <li class="nav-item dropdown" id="dropdown">
                                                             <a class="nav-link dropdown-toggle" href="#"
                                                                 id="navbarDropdown" role="button"
@@ -100,8 +105,7 @@
                                                                 data-bs-toggle="dropdown" aria-expanded="false">
                                                                 Page
                                                             </a>
-                                                            <ul class="dropdown-menu"
-                                                                aria-labelledby="navbarDropdown">
+                                                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                                                 <li><a class="dropdown-item" href="#">Action</a>
                                                                 </li>
                                                                 <li><a class="dropdown-item" href="#"
@@ -132,21 +136,30 @@
                 </div>
             </div>
         </header>
+        @if (View::hasSection('hideInnerBanner'))
+            @yield('hideInnerBanner')
+        @else
+            <div class="inner-banner">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-12 col-lg-12 ">
+                            <h1>
+                                @yield('top_name')
+                            </h1>
+                            <div class="header-link">
+                                <a href="{{ route('index') }}">Home</a>
+                                <i class="fa-solid fa-circle"></i>
+                                @yield('header_link')
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
         <div class="main-container" style="border-top:1px solid #DDDDDD ;border-bottom:1px solid #DDDDDD;">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-10" style="padding: 0px 20px">
-                        <div class="inner-banner">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-12 col-12 col-lg-12 ">
-                                        <h1>
-                                            @yield('top_name')
-                                        </h1>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="col-md-10" style="padding: 30px 20px">
                         @yield('content')
                     </div>
                     <div class="col-md-2 p-0" style="border-left:1px solid #DDDDDD ;">

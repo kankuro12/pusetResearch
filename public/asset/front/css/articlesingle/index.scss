@@ -56,6 +56,40 @@
                         .pdf{
                             padding: 20px;
                             border-bottom: 1px solid #DDDDDD;
+                            a{
+                                font-size: 14px;
+                                font-weight: 500;
+                                text-decoration: none;
+                            }
+                        }
+                        .published{
+                            padding: 20px;
+                            border-bottom: 1px solid #DDDDDD;
+                            .heading{
+                                font-size: 13px;
+                                font-weight: 500;
+                                color: var(--text);
+
+                            }
+                        }
+                        .issue{
+                            padding: 20px;
+                            border-bottom: 1px solid #DDDDDD;
+                            display: flex;
+                            flex-direction: column;
+                            row-gap: 20px;
+                            .item{
+                                .heading{
+                                    font-size: 13px;
+                                    font-weight: 500;
+                                    color: var(--text);
+                                }
+                                .value{
+                                    .a{
+
+                                    }
+                                }
+                            }
                         }
                     }
                 }

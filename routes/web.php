@@ -24,8 +24,10 @@ use Illuminate\Support\Facades\Route;
 //      'role' => '0',
 // ]);
 Route::get('/',[FrontController::class,'index'])->name('index');
+Route::get('layout',[FrontController::class,'layout'])->name('layout');
 Route::get('frontlogin',[FrontController::class,'login'])->name('frontlogin');
 Route::get('about',[FrontController::class,'about'])->name('about');
+Route::get('policy',[FrontController::class,'policy'])->name('policy');
 Route::get('articleSingle/{article}',[FrontController::class,'articleSingle'])->name('articleSingle');
 
 Route::match(['GET', 'POST'], 'login', [LoginController::class, 'login'])->name('login');
@@ -57,6 +59,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
                 Route::get('indexAuthor/{book_id}/{article_id}', [BookController::class, 'indexAuthor'])->name('indexAuthor');
                 Route::match(['POST'], 'addAuthor', [BookController::class, 'addAuthor'])->name('addAuthor');
                 Route::get('delAuthor/{articleAuthor_id}', [BookController::class, 'delAuthor'])->name('delAuthor');
+                Route::post('saveAuthor/{book_id}/{article_id}',[BookController::class,'saveAuthor'])->name('saveAuthor');
             });
         });
     });
@@ -96,6 +99,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
     });
     Route::prefix('setting')->name('setting.')->group(function () {
         Route::get('index', [SettingController::class, 'index'])->name('index');
+
+        Route::prefix('generalLayout')->name('generalLayout.')->group(function(){
+            Route::match(['GET','POST'],'general_index',[SettingController::class,'general_index'])->name('general_index');
+        });
         Route::prefix('policy')->name('policy.')->group(function () {
             Route::get('policy_index', [SettingController::class, 'policy_index'])->name('policy_index');
             Route::match(['POST'], 'policy_add', [SettingController::class, 'policy_add'])->name('policy_add');

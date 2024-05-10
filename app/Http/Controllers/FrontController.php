@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ArticalType;
+use App\Models\Book;
 use App\Models\BookArtical;
+use App\Models\BookArticalAuthor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -23,6 +26,12 @@ class FrontController extends Controller
     }
     public function articleSingle($article_id){
         $article = BookArtical::where('id',$article_id)->first();
-        return view('front.article.single.index',compact('article'));
+        $book = Book::where('id',$article->book_id)->first();
+        $articleType = ArticalType::where('id',$article->artical_type_id)->first();
+        $authors = BookArticalAuthor::where('book_artical_id',$article->id)->get(['author_name','author_id']);
+        return view('front.article.single.index',compact('article','book','articleType','authors'));
+    }
+    public function policy(){
+        return view('front.policy.index');
     }
 }

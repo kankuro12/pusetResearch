@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Author;
 use App\Models\Book;
 use App\Models\BookArtical;
 use App\Models\BookArticalAuthor;
@@ -169,7 +170,9 @@ class BookController extends Controller
             $author_ids = $request->input('author_ids');
             $article_id = $request->input('article_id');
             foreach ($author_ids as $authorId) {
+                $author = Author::where('id',$authorId)->first();
                 $authorArticle = new BookArticalAuthor();
+                $authorArticle->author_name = $author->name;
                 $authorArticle->book_artical_id = $article_id;
                 $authorArticle->author_id = $authorId;
                 $authorArticle->save();
@@ -180,5 +183,19 @@ class BookController extends Controller
     public function delAuthor($articleAuthor_id){
         BookArticalAuthor::where('id',$articleAuthor_id)->delete();
         return redirect()->back()->with('success','successfully deleted');
+    }
+
+    public function saveAuthor($book_id, $article_id,Request $request){
+        $author = new Author();
+        $author->name = $request->name;
+        $author->link = $request->link;
+        $author->designation = $request->designation;
+        $author->organization = $request->organization;
+        $author->save();
+        $authorArticle = new BookArticalAuthor();
+        $authorArticle->author_name = $author->name;
+        $authorArticle->book_artical_id = $article_id;
+        $authorArticle->author_id = $author->id;
+        $authorArticle->save();
     }
 }

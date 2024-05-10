@@ -16,43 +16,25 @@ body .content {
   background-color: #FCFCFC;
 }
 
-header .container .topbar {
-  margin-top: 25px;
-  margin-bottom: 25px;
+.topbar {
+  background-color: #636C77;
+  padding: 8px;
+}
+.topbar .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-header .container .topbar .social-icons {
+.topbar .container .logins .login-area {
   display: flex;
   -moz-column-gap: 15px;
        column-gap: 15px;
 }
-header .container .topbar .social-icons .facebook-icon {
-  font-size: 18px;
-  color: #3B5999;
-}
-header .container .topbar .social-icons .twitter-icon {
-  font-size: 18px;
-  color: #55ACEE;
-}
-header .container .topbar .social-icons .linkedin-icon {
-  font-size: 18px;
-  color: #3B5999;
-}
-header .container .topbar .social-icons .google-icon {
-  font-size: 18px;
-  color: #DD4B39;
-}
-header .container .topbar .logins .login-area {
-  display: flex;
-  -moz-column-gap: 15px;
-       column-gap: 15px;
-}
-header .container .topbar .logins .login-area a {
+.topbar .container .logins .login-area a {
   text-decoration: none;
-  color: #7A6696;
+  color: white;
 }
+
 header .container .navigation {
   padding: 0px 0px 10px 0px;
   position: relative;
@@ -64,8 +46,9 @@ header .container .navigation .row .logo a {
   text-decoration: none;
 }
 header .container .navigation .row .logo a img {
-  width: 100;
-  height: auto;
+  max-width: 100%;
+  width: auto;
+  height: 100px;
 }
 header .container .navigation .row .headers .navbar ul.navbar-nav #aboutus a {
   font-size: 16px;
@@ -187,6 +170,9 @@ header .container .navigation .row .headers .navbar #dropdown:hover #navbarDropd
   color: var(--text);
   text-align: left;
   font-weight: 400;
+}
+.article .container .data {
+  padding: 0px 12px 10px 0px;
 }
 .article .container .data a {
   text-decoration: none;
@@ -352,7 +338,7 @@ footer .container .copyright {
 }
 
 .sidebar {
-  padding: 50px 0px;
+  padding: 50px 0px 50px 20px;
 }
 .sidebar .heading {
   border-radius: 4px;
@@ -373,8 +359,6 @@ footer .container .copyright {
 }
 
 .inner-banner {
-  background-color: #636C77;
-  color: white;
   padding: 0 40px;
 }
 .inner-banner .container .row .col-md-12 {
@@ -398,7 +382,4 @@ footer .container .copyright {
   color: white;
   font-size: 14px;
   font-weight: 400;
-}
-.inner-banner .container .row .col-md-12 .login i {
-  font-size: 6px;
 }/*# sourceMappingURL=index.css.map */

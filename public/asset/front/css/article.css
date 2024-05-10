@@ -18,6 +18,9 @@
   text-align: left;
   font-weight: 400;
 }
+.article .container .data {
+  padding: 0px 12px 10px 0px;
+}
 .article .container .data a {
   text-decoration: none;
   color: var(--text);

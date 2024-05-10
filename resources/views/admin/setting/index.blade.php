@@ -20,6 +20,7 @@
                     <a class="link" href="{{ route('admin.setting.policy.policy_index') }}">Policy</a>
                     <a class="link" href="{{ route('admin.setting.about.about_index') }}">About</a>
                     <a class="link" href="{{route('admin.setting.associate.indexAsso')}}">Side Bar</a>
+                    <a class="link" href="{{route('admin.setting.generalLayout.general_index')}}">Genral Layout</a>
                 </div>
             </div>
         </div>

@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{ asset('asset/front/css/index.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/front/css/login/index.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/front/css/aboutus/index.css') }}">
-    <link rel="stylesheet" href="{{asset('asset/front/css/articlesingle/index.css')}}">
+    <link rel="stylesheet" href="{{ asset('asset/front/css/articlesingle/index.css') }}">
     <title>Document</title>
     <style>
 
@@ -20,49 +20,41 @@
 </head>
 
 <body>
+    @php
+        $general = DB::table('generallayouts')->first();
+    @endphp
     <div class="content">
+        <div class="topbar">
+            <div class="container">
+                <div class="left">
+
+                </div>
+
+                <div class="logins">
+                    <div class="login-area">
+                        <div class="login">
+                            <a href="#">Login</a>
+                        </div>
+                        <div class="register">
+                            <a href="#">Register</a>
+                        </div>
+                    </div>
+                    <div class="language">
+
+                    </div>
+                </div>
+            </div>
+        </div>
         <header>
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-md-12">
-                        <div class="topbar">
-                            <div class="social-icons">
-                                <div class="facebook-icon">
-                                    <i class="fab fa-facebook-f"></i>
-                                </div>
-                                <div class="twitter-icon">
-                                    <i class="fab fa-twitter"></i>
-                                </div>
-                                <div class="linkedin-icon">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </div>
-                                <div class="google-icon">
-                                    <i class="fab fa-google-plus-g"></i>
-                                </div>
-                            </div>
-
-                            <div class="logins">
-                                <div class="login-area">
-                                    <div class="login">
-                                        <a href="#">Login</a>
-                                    </div>
-                                    <div class="register">
-                                        <a href="#">Register</a>
-                                    </div>
-                                </div>
-                                <div class="language">
-
-                                </div>
-                            </div>
-                        </div>
-                        <hr style="margin-bottom: 15px">
                         <div class="navigation">
                             <div class="row">
                                 <div class="col-md-4 col-4">
                                     <div class="logo">
-                                        <a href="{{route('index')}}">
-                                            Logo
-                                            <img src="#" alt="">
+                                        <a href="{{ route('index') }}">
+                                            <img src="{{ vasset($general->logo) }}" alt="">
                                         </a>
                                     </div>
                                 </div>
@@ -79,8 +71,17 @@
                                                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                                         <li class="nav-item" id="aboutus">
-                                                            <a class="nav-link" href="{{route('about')}}" id="aboutus_a">About
+                                                            <a class="nav-link" href="{{ route('index') }}"
+                                                                id="aboutus_a">Home</a>
+                                                        </li>
+                                                        <li class="nav-item" id="aboutus">
+                                                            <a class="nav-link" href="{{ route('about') }}"
+                                                                id="aboutus_a">About
                                                                 Us</a>
+                                                        </li>
+                                                        <li class="nav-item" id="aboutus">
+                                                            <a class="nav-link" href="{{ route('policy') }}"
+                                                                id="aboutus_a"> Policy</a>
                                                         </li>
                                                         <li class="nav-item dropdown" id="dropdown">
                                                             <a class="nav-link dropdown-toggle" href="#"
@@ -148,42 +149,34 @@
                 </div>
             </div>
         </header>
-        @if (View::hasSection('hideInnerBanner'))
-            @yield('hideInnerBanner')
-        @else
-            <div class="inner-banner">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12 col-12 col-lg-12 ">
-                            <h1>
-                                @yield('top_name')
-                            </h1>
-                            <div class="login">
-                                <a href="#"> login Register</a><i class="fa-solid fa-circle"></i><a
-                                    href="#"> Home</a>
+        <div class="main-container" style="border-top:1px solid #DDDDDD ;border-bottom:1px solid #DDDDDD;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10" style="padding: 0px 20px">
+                        <div class="inner-banner">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12 col-12 col-lg-12 ">
+                                        <h1>
+                                            @yield('top_name')
+                                        </h1>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        @yield('content')
                     </div>
-                </div>
-            </div>
-        @endif
-        <div class="container">
-            <div class="row">
-                <div class="col-md-10">
-                    @yield('content')
-                </div>
-
-                <div class="col-md-2">
-                    <div class="sidebar">
-                        <div class="heading">
-                            <a href="#">Make a Submission</a>
+                    <div class="col-md-2" style="border-left:1px solid #DDDDDD ;">
+                        <div class="sidebar">
+                            <div class="heading">
+                                <a href="#">Make a Submission</a>
+                            </div>
+                            @include('front.cache.sidebar')
                         </div>
-                        @include('front.cache.sidebar')
                     </div>
                 </div>
             </div>
         </div>
-        <hr>
         <footer>
             <div class="container">
                 <div class="footer-column">
@@ -192,14 +185,13 @@
                             <div class="aboutus">
                                 <div class="logo">
                                     <a href="#">
-                                        <img src="{{ asset('asset/front/css/img/pngtree-creative-company-logo-png-image_1197025-removebg-preview.png') }}"
-                                            alt="">
+                                        <img src="{{ vasset($general->logo) }}" alt="">
                                     </a>
                                 </div>
                                 <div class="description mt-1">
                                     <p>
-                                        Lorem ipsum dolor adipisofficifsdfa minus! Sed.... <a href="#">Read
-                                            More</a>
+                                        {{ $general->short_desc }}
+                                        <a href="#">ReadMore</a>
                                     </p>
                                 </div>
                                 <div class="social-icons">
@@ -226,44 +218,7 @@
                                 <div class="head">
                                     <h5>Get In Touch</h5>
                                 </div>
-                                <div class="item">
-                                    <ul>
-                                        <li class="address">
-                                            <i class="fa-solid fa-house"></i>
-                                            <div class="item">
-                                                sdasdfdfa
-                                            </div>
-                                        </li>
-                                        <li><a href="tel:(+977)98000898">
-                                                <i class="fa-solid fa-phone"></i>
-                                                <div class="item">
-                                                    (+977)98000898
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="tel:(+977)98080978">
-                                                <i class="fa-solid fa-tablet-screen-button"></i>
-                                                <div class="item">
-                                                    (+977)98080978
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="mailto:test@gamil.com">
-                                                <i class="fa-solid fa-envelope"></i>
-                                                <div class="item">
-                                                    test@gamil.com
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="">
-                                                More
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                @include('front.cache.contact')
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -300,7 +255,8 @@
                     </div>
                 </div>
                 <div class="copyright">
-                    <p class="sj-copyrights">© 2015 <a href=""> Amentojourny</a>. All Rights Reserved</p>
+                    <p class="sj-copyrights">© {{ $general->copy_right_date }} <a href="">
+                            {{ $general->copy_right_name }}</a>. All Rights Reserved</p>
                 </div>
 
             </div>

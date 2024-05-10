@@ -31,7 +31,10 @@
     </div>
     <div class="article">
         @foreach ($articles as $item)
-            <div class="container">
+        @php
+            $authors = DB::table('book_artical_authors')->where('book_artical_id',$item->id)->get();
+        @endphp
+            <div class="container p-0">
                 <div class="editorial">
                     <h5>
                         Editorial
@@ -43,7 +46,10 @@
                         <div class="col-md-12">
                             <div class="head">
                                 <div class="authorname">
-                                    <i class="fa-regular fa-user"></i> <a href="">Author name</a>
+                                    <i class="fa-regular fa-user"></i>
+                                    @foreach ($authors as $author)
+                                    <a href="">{{$author->author_name}} </a>
+                                    @endforeach
                                 </div>
                                 <h3>
                                     <a href="{{route('articleSingle',['article'=>$item->id])}}">{{$item->title}}</a>

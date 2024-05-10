@@ -20,13 +20,14 @@
                 <select name="author[]" id="author" multiple="multiple" class="author form-control">
                 </select>
             </div>
+
             <div class="col-md-12">
                 <button class="btn btn-primary btn-sm" onclick="saveAll()">
                     Add Author
                 </button>
             </div>
         </div>
-        <div class="row my-2">
+        <div class="row my-2 p-2">
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -43,7 +44,7 @@
                                 ->where('id', $author->author_id)
                                 ->value('name');
                             ?>
-                            <td>{{ $key+1 }}</td>
+                            <td>{{ $key + 1 }}</td>
                             <td>{{ $authorName }}</td>
                             <td><a href="{{ route('admin.book.article.articleAuthor.delAuthor', ['articleAuthor_id' => $author->id]) }}"
                                     class="btn btn-danger">Delete</a></td>
@@ -51,6 +52,16 @@
                     @endforeach
                 </tbody>
             </table>
+        </div>
+        <div class="mt-2 p-2 shadow">
+            <div class="heading text-start mb-2">
+                <button class="btn btn-primary btn-sm" onclick="render()">
+                    Add New Author
+                </button>
+            </div>
+            <div id="authorAdd" class="row ">
+
+            </div>
         </div>
     </div>
 @endsection
@@ -98,6 +109,45 @@
                 .catch(function(error) {
                     console.error('Error saving authors:', error);
                 });
+        }
+
+        function render() {
+            $('#authorAdd').append(`
+                <div class="col-md-4 mb-2">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" class="form-control">
+                </div>
+                <div class="col-md-4 mb-2">
+                    <label for="link">Link</label>
+                    <input type="text" name="link" id="link" class="form-control">
+                </div>
+                <div class="col-md-4 mb-2">
+                    <label for="designation">Designation</label>
+                    <input type="text" name="designation" id="designation" class="form-control">
+                </div>
+                <div class="col-md-4 mb-2">
+                    <label for="organization">Organization</label>
+                    <input type="text" name="organization" id="organization" class="form-control">
+                </div>
+                <div class="col-md-12 mb-2 text-start">
+                    <button class="btn btn-primary btn-sm" onclick ="saveAuthor()">
+                        Add
+                    </button>
+                </div>`)
+        }
+
+        function saveAuthor(){
+            var name = $('name').val();
+            var link = $('link').val();
+            var designation = $('designation').val();
+            var organization = $('organization').val();
+            axios.post("route('admin.book.article.articleAuthor.saveAuthor')",params)
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => {
+                console.error(err);
+            })
         }
     </script>
 @endsection

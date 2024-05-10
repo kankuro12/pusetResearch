@@ -22,6 +22,7 @@ class ContactController extends Controller
                 $contact->address = $request->input('address');
                 $contact->phone = $request->input('phone');
                 $contact->po_box = $request->input('po_box');
+                $contact->email = $request->input('email');
                 $contact->save();
             }
             $individualContact = $request->input('individualContactsDatas');
@@ -37,6 +38,7 @@ class ContactController extends Controller
                 $individualcontact->save();
             }
         }
+        file_put_contents(resource_path('views/front/cache/contact.blade.php'),view('admin.templete.contact',compact('contact'))->render());
     }
 
     public function del($contact_id){

@@ -8,44 +8,47 @@
     <div class="shadow mt-2 p-3 bg-white rounded">
         <div class="row mb-2">
             <div class="col-md-4 mb-2">
+                <label for="cname">Name</label>
                 @if ($contact == null)
-                    <label for="cname">Name</label>
                     <input type="text" name="cname" id="cname" class="form-control">
                 @else
-                    <label for="cname">Name</label>
                     <input type="text" name="cname" id="cname" class="form-control" value="{{ $contact->name }}">
                 @endif
             </div>
             <div class="col-md-4 mb-2">
+                <label for="address">address</label>
                 @if ($contact == null)
-                    <label for="address">address</label>
                     <input type="text" name="address" id="address" class="form-control">
                 @else
-                    <label for="address">address</label>
                     <input type="text" name="address" id="address" class="form-control"
                         value="{{ $contact->address }}">
                 @endif
 
             </div>
             <div class="col-md-4 mb-2">
+                <label for="phone">Phone No</label>
                 @if ($contact == null)
-                    <label for="phone">Phone No</label>
                     <input type="number" name="phone" id="phone" class="form-control">
                 @else
-                    <label for="phone">Phone No</label>
                     <input type="number" name="phone" id="phone" class="form-control" value="{{ $contact->phone }}">
                 @endif
 
             </div>
             <div class="col-md-4 mb-2">
+                <label for="po_box">P.O.Box</label>
                 @if ($contact == null)
-                    <label for="po_box">P.O.Box</label>
                     <input type="number" name="po_box" id="po_box" class="form-control">
                 @else
-                    <label for="po_box">P.O.Box</label>
                     <input type="number" name="po_box" id="po_box" class="form-control" value="{{ $contact->po_box }}">
                 @endif
-
+            </div>
+            <div class="col-md-4 mb-2">
+                <label for="email">Email</label>
+                @if ($contact == null)
+                    <input type="email" name="email" id="email" class="form-control">
+                @else
+                    <input type="email" name="email" id="email" class="form-control" value="{{ $contact->email }}">
+                @endif
             </div>
         </div>
         <div class="row">
@@ -135,6 +138,7 @@
             var cname = $('#cname').val();
             var address = $('#address').val();
             var phone = $('#phone').val();
+            var email = $('#email').val();
             var po_box = $('#po_box').val();
 
             for (let i = 0; i < contact_id; i++) {
@@ -166,6 +170,7 @@
                 cname: cname,
                 address: address,
                 phone: phone,
+                email:email,
                 po_box: po_box,
             };
 

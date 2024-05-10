@@ -7,6 +7,7 @@ use App\Models\About;
 use App\Models\ArticalType;
 use App\Models\Associate;
 use App\Models\Associatetitle;
+use App\Models\Generallayout;
 use App\Models\Policies;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -17,6 +18,29 @@ class SettingController extends Controller
     public function index()
     {
         return view('admin.setting.index');
+    }
+
+    public function general_index(Request $request)
+    {
+        $generalLayout = Generallayout::first();
+        if ($request->getMethod() == "GET") {
+            return view('admin.setting.general.index', compact('generalLayout'));
+        } else {
+            if ($generalLayout == null) {
+                $generalLayout = new Generallayout();
+                $generalLayout->logo = "";
+            } {
+                $generalLayout->copy_right_name = $request->copy_right_name;
+                $generalLayout->copy_right_date = $request->copy_right_date;
+                $generalLayout->long_desc = $request->long_desc;
+                $generalLayout->short_desc = $request->short_desc;
+                if ($request->hasFile('logo')) {
+                    $generalLayout->logo = $request->file('logo')->store('uploads/setting');
+                }
+                $generalLayout->save();
+            }
+        }
+        return redirect()->back()->with('success', 'successfully added');
     }
 
     public function policy_index()
@@ -31,22 +55,27 @@ class SettingController extends Controller
         $policy->title = $request->title;
         $policy->description = $request->description;
         $policy->save();
-        // return redirect()->back()->with('success','successfully added');
 
+        $policies = Policies::get();
+        file_put_contents(resource_path('views/front/cache/policy.blade.php'),view('admin.templete.poilcy',compact('policies'))->render());
     }
     public function policy_edit(Request $request, $policy_id)
     {
-
         $policy = Policies::where('id', $policy_id)->first();
         $policy->title = $request->title;
         $policy->description = $request->description;
         $policy->save();
-        // return redirect()->back()->with('success','successfully update');
+
+        $policies = Policies::get();
+        file_put_contents(resource_path('views/front/cache/policy.blade.php'),view('admin.templete.poilcy',compact('policies'))->render());
+
     }
     public function policy_del($policy_id)
     {
         Policies::where('id', $policy_id)->delete();
         return redirect()->back()->with('success', 'successfully deleted');
+        $policies = Policies::get();
+        file_put_contents(resource_path('views/front/cache/policy.blade.php'),view('admin.templete.poilcy',compact('policies'))->render());
     }
 
 
@@ -114,7 +143,7 @@ class SettingController extends Controller
         $title = Associatetitle::first();
         $associates = Associate::get();
         if ($request->getMethod() == "GET") {
-            return view('admin.setting.associate.index',compact('title','associates'));
+            return view('admin.setting.associate.index', compact('title', 'associates'));
         } else {
             $associatetitle = new Associatetitle();
             $associatetitle->title = $request->title;
@@ -129,12 +158,11 @@ class SettingController extends Controller
                     $associate->save();
                 }
             };
-            file_put_contents(resource_path('views/front/cache/sidebar.blade.php'),view('admin.templete.sidebar',compact('title','associates')));
+            file_put_contents(resource_path('views/front/cache/sidebar.blade.php'), view('admin.templete.sidebar', compact('title', 'associates')));
         };
-
-
     }
-    public function delAsso($asso_id){
-        Associate::where('id',$asso_id)->delete();
+    public function delAsso($asso_id)
+    {
+        Associate::where('id', $asso_id)->delete();
     }
 }

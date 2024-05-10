@@ -24,7 +24,7 @@
         $general = DB::table('generallayouts')->first();
     @endphp
     <div class="content">
-        <div class="topbar">
+        {{-- <div class="topbar">
             <div class="container">
                 <div class="left">
 
@@ -44,11 +44,11 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <header>
             <div class="container">
                 <div class="row">
-                    <div class="col-12 col-md-12">
+                    <div class="col-12 p-2 col-md-12">
                         <div class="navigation">
                             <div class="row">
                                 <div class="col-md-4 col-4">
@@ -59,7 +59,7 @@
                                     </div>
                                 </div>
                                 <div class="col-8">
-                                    <div class="headers">
+                                    <div class="headers  d-flex justify-content-end">
                                         <nav class="navbar navbar-expand-lg ">
                                             <div class="container-fluid">
                                                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -92,23 +92,6 @@
                                                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                                                 <li><a class="dropdown-item" href="#">Action</a>
                                                                 </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="nav-item dropdown" id="dropdown">
-                                                            <a class="nav-link dropdown-toggle" href="#"
-                                                                id="navbarDropdown" role="button"
-                                                                data-bs-toggle="dropdown" aria-expanded="false">
-                                                                Issue
-                                                            </a>
-                                                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                                <li><a class="dropdown-item" href="#">Action</a>
-                                                                </li>
-                                                                <li>
-                                                                    <hr class="dropdown-divider">
-                                                                </li>
-                                                                <li><a class="dropdown-item" href="#">Something
-                                                                        else
-                                                                        here</a></li>
                                                             </ul>
                                                         </li>
                                                         <li class="nav-item dropdown" id="dropdown">
@@ -166,7 +149,7 @@
                         </div>
                         @yield('content')
                     </div>
-                    <div class="col-md-2" style="border-left:1px solid #DDDDDD ;">
+                    <div class="col-md-2 p-0" style="border-left:1px solid #DDDDDD ;">
                         <div class="sidebar">
                             <div class="heading">
                                 <a href="#">Make a Submission</a>

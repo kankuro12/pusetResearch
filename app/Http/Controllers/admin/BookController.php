@@ -78,10 +78,10 @@ class BookController extends Controller
 
     public function del($book_id)
     {
-        $article = BookArtical::where('book_id',$book_id)->first();
+        $article = BookArtical::where('book_id', $book_id)->first();
 
-        BookArticalAuthor::where('book_artical_id',$article->id)->delete();
-        BookArtical::where('book_id',$book_id)->delete();
+        BookArticalAuthor::where('book_artical_id', $article->id)->delete();
+        BookArtical::where('book_id', $book_id)->delete();
         Book::where('id', $book_id)->delete();
         return redirect()->back()->with('success', 'succesfully deleted');
     }
@@ -145,7 +145,7 @@ class BookController extends Controller
 
     public function delArticle($artical_id)
     {
-        BookArticalAuthor::where('book_artical_id',$artical_id)->delete();
+        BookArticalAuthor::where('book_artical_id', $artical_id)->delete();
         BookArtical::where('id', $artical_id)->delete();
         return redirect()->back()->with('success', 'succesfully deleted');
     }
@@ -160,42 +160,46 @@ class BookController extends Controller
     {
         $book = Book::where('id', $book_id)->first();
         $article = BookArtical::where('id', $article_id)->first();
-        $authors = BookArticalAuthor::where('book_artical_id', $article_id)->get(['id','author_id']);
-        return view('admin.book.artical.author.index', compact('article', 'book','authors'));
+        $authors = BookArticalAuthor::where('book_artical_id', $article_id)->get(['id', 'author_id']);
+        return view('admin.book.artical.author.index', compact('article', 'book', 'authors'));
     }
 
-    public function addAuthor(Request $request){
-        if($request->getMethod()=="POST"){
+    public function addAuthor(Request $request)
+    {
+        if ($request->getMethod() == "POST") {
             $authorArticle = new BookArticalAuthor();
             $author_ids = $request->input('author_ids');
             $article_id = $request->input('article_id');
+            $book_id = $request->input('book_id');
             foreach ($author_ids as $authorId) {
-                $author = Author::where('id',$authorId)->first();
+                $author = Author::where('id', $authorId)->first();
                 $authorArticle = new BookArticalAuthor();
                 $authorArticle->author_name = $author->name;
                 $authorArticle->book_artical_id = $article_id;
+                $authorArticle->book_id = $book_id;
                 $authorArticle->author_id = $authorId;
                 $authorArticle->save();
             }
         }
-
     }
-    public function delAuthor($articleAuthor_id){
-        BookArticalAuthor::where('id',$articleAuthor_id)->delete();
-        return redirect()->back()->with('success','successfully deleted');
+    public function delAuthor($articleAuthor_id)
+    {
+        BookArticalAuthor::where('id', $articleAuthor_id)->delete();
+        return redirect()->back()->with('success', 'successfully deleted');
     }
 
-    public function saveAuthor($book_id, $article_id,Request $request){
+    public function saveAuthor($article_id, Request $request)
+    {
         $author = new Author();
-        $author->name = $request->name;
-        $author->link = $request->link;
-        $author->designation = $request->designation;
-        $author->organization = $request->organization;
+        $author->name = $request->input('name');
+        $author->link = $request->input('link');
+        $author->designation = $request->input('designation');
+        $author->organization = $request->input('organization');
         $author->save();
-        $authorArticle = new BookArticalAuthor();
-        $authorArticle->author_name = $author->name;
-        $authorArticle->book_artical_id = $article_id;
-        $authorArticle->author_id = $author->id;
-        $authorArticle->save();
+        // $authorArticle = new BookArticalAuthor();
+        // $authorArticle->author_name = $author->name;
+        // $authorArticle->book_artical_id = $article_id;
+        // $authorArticle->author_id = $author->id;
+        // $authorArticle->save();
     }
 }

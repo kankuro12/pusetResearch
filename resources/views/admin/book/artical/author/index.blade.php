@@ -94,12 +94,13 @@
         });
 
         function saveAll() {
-
             var selectedAuthors = $('#author').val();
             var articleId = '{{ $article->id }}';
+            var bookId = '{{ $book->id }}';
             axios.post("{{ route('admin.book.article.articleAuthor.addAuthor') }}", {
                     article_id: articleId,
                     author_ids: selectedAuthors,
+                    book_id: bookId,
                     "_token": "{{ csrf_token() }}",
                 })
                 .then(function(response) {
@@ -130,24 +131,38 @@
                     <input type="text" name="organization" id="organization" class="form-control">
                 </div>
                 <div class="col-md-12 mb-2 text-start">
-                    <button class="btn btn-primary btn-sm" onclick ="saveAuthor()">
+                    <button class="btn btn-primary btn-sm" onclick ="saveAuthor('{{ $article->id }}','{{ $book->id }}')">
                         Add
                     </button>
                 </div>`)
         }
 
-        function saveAuthor(){
-            var name = $('name').val();
-            var link = $('link').val();
-            var designation = $('designation').val();
-            var organization = $('organization').val();
-            axios.post("route('admin.book.article.articleAuthor.saveAuthor')",params)
-            .then(res => {
-                console.log(res)
-            })
-            .catch(err => {
-                console.error(err);
-            })
+        function saveAuthor(article_id, book_id) {
+            var name = $('#name').val();
+            var link = $('#link').val();
+            var designation = $('#designation').val();
+            var organization = $('#organization').val();
+
+            const data = {
+                name: name,
+                link: link,
+                designation: designation,
+                organization: organization,
+            }
+
+            console.log(data);
+            const url =
+                `{{ route('admin.book.article.articleAuthor.saveAuthor', ['book_id' => ':book', 'article_id' => ':article']) }}`
+                .replace(':book', book_id)
+                .replace(':article', article_id);
+            axios.post(url, data)
+                .then(res => {
+                    success('successfully added');
+                    location.reload();
+                })
+                .catch(err => {
+                    console.error(err);
+                })
         }
     </script>
 @endsection

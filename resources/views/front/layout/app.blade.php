@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{ asset('asset/front/css/aboutus/index.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/front/css/articlesingle/index.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/front/css/contact/index.css') }}">
+    <link rel="stylesheet" href="{{asset('asset/front/css/register/index.css') }}">
     <title>Document</title>
     <style>
 
@@ -25,19 +26,32 @@
         $general = DB::table('generallayouts')->first();
     @endphp
     <div class="content">
-        {{-- <div class="topbar">
-            <div class="container">
+        <div class="topbar">
+            <div class="container" style="border-bottom: 1px solid #dddddd; padding :10px">
                 <div class="left">
-
+                    <div class="social-icons">
+                        <div class="facebook-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </div>
+                        <div class="twitter-icon">
+                            <i class="fab fa-twitter"></i>
+                        </div>
+                        <div class="linkedin-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </div>
+                        <div class="google-icon">
+                            <i class="fab fa-google-plus-g"></i>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="logins">
                     <div class="login-area">
                         <div class="login">
-                            <a href="#">Login</a>
+                            <a href="{{route('frontlogin')}}">Login</a>
                         </div>
                         <div class="register">
-                            <a href="#">Register</a>
+                            <a href="{{route('register')}}">Register</a>
                         </div>
                     </div>
                     <div class="language">
@@ -45,7 +59,7 @@
                     </div>
                 </div>
             </div>
-        </div> --}}
+        </div>
         <header>
             <div class="container">
                 <div class="row">

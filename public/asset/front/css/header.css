@@ -1,11 +1,28 @@
 .topbar {
-  background-color: #636C77;
-  padding: 8px;
+  padding: 10px 0px;
 }
 .topbar .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.topbar .container .left .social-icons {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 8px;
+       column-gap: 8px;
+}
+.topbar .container .left .social-icons .facebook-icon {
+  color: #3b5999;
+}
+.topbar .container .left .social-icons .twitter-icon {
+  color: #55acee;
+}
+.topbar .container .left .social-icons .linkedin-icon {
+  color: #0077b5;
+}
+.topbar .container .left .social-icons .google-icon {
+  color: #de645e;
 }
 .topbar .container .logins .login-area {
   display: flex;
@@ -14,11 +31,11 @@
 }
 .topbar .container .logins .login-area a {
   text-decoration: none;
-  color: white;
+  color: var(--text);
 }
 
 header .container .navigation {
-  padding: 0px 0px 10px 0px;
+  padding: 0px 0px 2px 0px;
   position: relative;
 }
 header .container .navigation .row {
@@ -30,7 +47,7 @@ header .container .navigation .row .logo a {
 header .container .navigation .row .logo a img {
   max-width: 100%;
   width: auto;
-  height: 100px;
+  height: 50px;
 }
 header .container .navigation .row .headers .navbar ul.navbar-nav #aboutus a {
   font-size: 16px;

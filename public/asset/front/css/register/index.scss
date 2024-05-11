@@ -1,17 +1,24 @@
-.login {
+.register {
     .container {
         .row {
-            .col-md-5 {
+            .col-md-12 {
                 .heading {
                     padding: 10px 0px 10px 13px;
                     h3 {
                         margin: 0;
-                        font-size: 16px;
                         font-weight: 500;
                         line-height: 40px;
                         color: var(--text);
                     }
-
+                }
+                form{
+                    .row{
+                        .col-md-6{
+                            .heading{
+                                font-size: 18px;
+                            }
+                        }
+                    }
                 }
                 .inputs{
                     .form-group{
@@ -32,10 +39,7 @@
                         font-size: 15px;
                         color: var(--text);
                     }
-                    .right{
-                        font-size: 15px;
 
-                    }
                 }
                button{
                 border: none;

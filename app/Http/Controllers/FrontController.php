@@ -19,7 +19,7 @@ class FrontController extends Controller
         return view('front.index', compact('book','articles'));
     }
     public function login(){
-        return view('front.login');
+        return view('front.login.index');
     }
 
     public function about(){
@@ -38,5 +38,9 @@ class FrontController extends Controller
     public function contact()
     {
         return view('front.contact.index');
+    }
+    public function register()
+    {
+        return view('front.register.index');
     }
 }

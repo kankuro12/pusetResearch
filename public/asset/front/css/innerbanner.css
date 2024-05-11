@@ -10,6 +10,7 @@
 .inner-banner .container .row .col-md-12 h1 {
   font-size: 16px;
   margin: 0px;
+  color: white;
 }
 .inner-banner .container .row .col-md-12 .header-link {
   display: flex;

@@ -1,12 +1,30 @@
 .topbar {
-    background-color: #636C77;
-    padding: 8px;
+    padding: 10px 0px  ;
     .container {
         display: flex;
         justify-content: space-between;
         align-items: center;
 
-        .left {}
+        .left {
+            .social-icons{
+                display: flex;
+                align-items: center;
+                column-gap: 8px;
+                .facebook-icon{
+                    color: #3b5999;
+                }
+                .twitter-icon{
+                    color:#55acee ;
+                }
+                .linkedin-icon{
+                    color: #0077b5;
+                }
+                .google-icon{
+                    color:#de645e ;
+                }
+
+            }
+        }
 
         .logins {
             .login-area {
@@ -15,7 +33,7 @@
 
                 a {
                     text-decoration: none;
-                    color: white;
+                    color: var(--text);
                 }
             }
         }
@@ -29,7 +47,7 @@ header {
     .container {
 
         .navigation {
-            padding: 0px 0px 10px 0px;
+            padding: 0px 0px 2px 0px;
             position: relative;
 
             .row {
@@ -42,7 +60,7 @@ header {
                         img {
                             max-width: 100%;
                             width: auto;
-                            height: 100px;
+                            height: 50px;
                         }
                     }
                 }

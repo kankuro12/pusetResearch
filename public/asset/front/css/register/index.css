@@ -1,23 +1,25 @@
-.login .container .row .col-md-5 .heading {
+.register .container .row .col-md-12 .heading {
   padding: 10px 0px 10px 13px;
 }
-.login .container .row .col-md-5 .heading h3 {
+.register .container .row .col-md-12 .heading h3 {
   margin: 0;
-  font-size: 16px;
   font-weight: 500;
   line-height: 40px;
   color: var(--text);
 }
-.login .container .row .col-md-5 .inputs .form-group input {
+.register .container .row .col-md-12 form .row .col-md-6 .heading {
+  font-size: 18px;
+}
+.register .container .row .col-md-12 .inputs .form-group input {
   padding: 10px 13px;
 }
-.login .container .row .col-md-5 .savepassword {
+.register .container .row .col-md-12 .savepassword {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0px 0px 20px;
 }
-.login .container .row .col-md-5 .savepassword .left {
+.register .container .row .col-md-12 .savepassword .left {
   display: flex;
   align-items: center;
   -moz-column-gap: 10px;
@@ -25,10 +27,7 @@
   font-size: 15px;
   color: var(--text);
 }
-.login .container .row .col-md-5 .savepassword .right {
-  font-size: 15px;
-}
-.login .container .row .col-md-5 button {
+.register .container .row .col-md-12 button {
   border: none;
   border-radius: 4px;
   background-color: #5e9cea;

@@ -10,6 +10,8 @@ use App\Http\Controllers\admin\SettingController;
 use App\Http\Controllers\admin\SubmissionController;
 use App\Http\Controllers\admin\TeamController;
 use App\Http\Controllers\admin\TeamMemberController;
+use App\Http\Controllers\client\ClientController;
+use App\Http\Controllers\client\DashbordController as ClientDashbordController;
 use App\Http\Controllers\DashbordController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\LoginController;
@@ -135,4 +137,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::match(["GET"],'delAsso/{asso_id}',[SettingController::class,'delAsso'])->name('delAsso');
         });
     });
+});
+
+Route::prefix('client')->name('client.')->group(function(){
+    Route::get('index',[ClientController::class,'index'])->name('index');
 });

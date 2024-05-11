@@ -63,7 +63,7 @@
         <header>
             <div class="container">
                 <div class="row">
-                    <div class="col-12 p-2 col-md-12">
+                    <div class="col-12 p-2 col-md-12 p-0">
                         <div class="navigation">
                             <div class="row">
                                 <div class="col-md-4 col-4">
@@ -73,7 +73,7 @@
                                         </a>
                                     </div>
                                 </div>
-                                <div class="col-8">
+                                <div class="col-md-8 p-0">
                                     <div class="headers  d-flex justify-content-end">
                                         <nav class="navbar navbar-expand-lg ">
                                             <div class="container-fluid">
@@ -85,57 +85,36 @@
                                                 </button>
                                                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                                        <li class="nav-item" id="aboutus">
+                                                        <li class="nav-item" id="item">
                                                             <a class="nav-link" href="{{ route('index') }}"
-                                                                id="aboutus_a">Home</a>
+                                                                id="item_a">HOME</a>
                                                         </li>
-                                                        <li class="nav-item" id="aboutus">
+                                                        <li class="nav-item" id="item">
                                                             <a class="nav-link" href="{{ route('about') }}"
-                                                                id="aboutus_a">About
-                                                                Us</a>
+                                                                id="item_a">ABOUT
+                                                                US</a>
                                                         </li>
-                                                        <li class="nav-item" id="aboutus">
+                                                        <li class="nav-item" id="item">
                                                             <a class="nav-link" href="{{ route('policy') }}"
-                                                                id="aboutus_a"> Policy</a>
+                                                                id="item_a"> POLICY</a>
                                                         </li>
-                                                        <li class="nav-item" id="aboutus">
+                                                        <li class="nav-item" id="item">
                                                             <a class="nav-link" href="{{ route('contact') }}"
-                                                                id="aboutus_a">Contact</a>
+                                                                id="item_a">CONTACT</a>
+                                                        </li>
+                                                        <li class="nav-item" id="item">
+                                                            <a class="nav-link" href="{{ route('submission') }}"
+                                                                id="item_a">INSTRUCTION & GUIDELINES</a>
                                                         </li>
                                                         <li class="nav-item dropdown" id="dropdown">
                                                             <a class="nav-link dropdown-toggle" href="#"
                                                                 id="navbarDropdown" role="button"
                                                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                                                Article
+                                                                ARTICLES
                                                             </a>
                                                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                                                 <li><a class="dropdown-item" href="#">Action</a>
                                                                 </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="nav-item dropdown" id="dropdown">
-                                                            <a class="nav-link dropdown-toggle" href="#"
-                                                                id="navbarDropdown" role="button"
-                                                                data-bs-toggle="dropdown" aria-expanded="false">
-                                                                Page
-                                                            </a>
-                                                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                                <li><a class="dropdown-item" href="#">Action</a>
-                                                                </li>
-                                                                <li><a class="dropdown-item" href="#"
-                                                                        id="login">Login</a></li>
-                                                                <div class="side_menu">
-                                                                    <ul>
-                                                                        <li><a href="#">login</a></li>
-                                                                        <li><a href="#">Register</a></li>
-                                                                    </ul>
-                                                                </div>
-                                                                <li>
-                                                                    <hr class="dropdown-divider">
-                                                                </li>
-                                                                <li><a class="dropdown-item" href="#">Something
-                                                                        else
-                                                                        here</a></li>
                                                             </ul>
                                                         </li>
                                                     </ul>

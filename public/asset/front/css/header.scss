@@ -68,7 +68,7 @@ header {
                 .headers {
                     .navbar {
                         ul.navbar-nav {
-                            #aboutus {
+                            #item {
 
                                 a {
                                     font-size: 16px;
@@ -149,12 +149,12 @@ header {
                             }
                         }
 
-                        #aboutus:hover {
+                        #item:hover {
                             border: 0.5px solid #D4D4D4;
                             border-radius: 6px;
                             background-color: #fff;
 
-                            #aboutus_a {
+                            #item_a {
                                 color: #5E9CEA;
                             }
                         }

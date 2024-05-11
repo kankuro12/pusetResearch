@@ -1,0 +1,123 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap");
+:root {
+  --top: #CCD5D9;
+  --content: #242424;
+}
+
+body {
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+}
+body a {
+  text-decoration: none;
+}
+body .navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #002C40;
+}
+body .navigation a {
+  text-decoration: none;
+  color: var(--top);
+  font-size: 14px;
+}
+body .navigation .left {
+  display: flex;
+  align-items: center;
+}
+body .navigation .left .name {
+  padding: 4px 32px 4px 16px;
+  line-height: 32px;
+  color: var(--top);
+  font-size: 14px;
+}
+body .navigation .left .name:hover {
+  background-color: #004F73;
+}
+body .navigation .right {
+  display: flex;
+  align-items: center;
+}
+body .navigation .right .homepage {
+  padding: 4px 16px 4px 16px;
+  color: var(--top);
+  font-size: 14px;
+  line-height: 32px;
+}
+body .navigation .right .profile {
+  padding: 4px 16px 4px 16px;
+  color: var(--top);
+  font-size: 14px;
+  line-height: 32px;
+}
+body .navigation .right .language:hover,
+body .navigation .right .homepage:hover,
+body .navigation .right .profile:hover {
+  background-color: #004F73;
+}
+body .col-md-2 #sidebar {
+  background: #002C40;
+  min-height: 100vh;
+  height: 100%;
+}
+body .col-md-2 #sidebar #heading {
+  color: var(--top);
+}
+body .col-md-2 #sidebar a {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--top);
+}
+body .col-md-10 .top {
+  background: #ddd;
+  padding: 16px 32px;
+}
+body .col-md-10 .top h1 {
+  color: var(--content);
+  font-size: 16px;
+}
+body .col-md-10 .middle .tablist {
+  padding: 0 96px 0 32px;
+  background: #ddd;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+body .col-md-10 .middle .tablist .left {
+  display: flex;
+  align-items: center;
+}
+body .col-md-10 .middle .tablist .left .queue {
+  background-color: white;
+  padding: 15px;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 2px;
+  border-top: 3px solid #007AB2;
+}
+body .col-md-10 .middle .tablist .left .queue a {
+  color: rgba(0, 0, 0, 0.54);
+}
+body .col-md-10 .middle .tablist .left .issue {
+  padding: 16px;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 2px;
+}
+body .col-md-10 .middle .tablist .left .issue a {
+  color: #007AB2;
+}
+body .col-md-10 .middle .tablist .right .help {
+  padding: 8px 8px 16px 8px;
+  background-color: white;
+}
+body .col-md-10 .middle .tablist .right .help a i {
+  color: #00B24E;
+}
+body .col-md-10 .middle .panel .content {
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+}/*# sourceMappingURL=index.css.map */

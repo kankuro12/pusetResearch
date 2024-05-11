@@ -49,7 +49,7 @@ header .container .navigation .row .logo a img {
   width: auto;
   height: 50px;
 }
-header .container .navigation .row .headers .navbar ul.navbar-nav #aboutus a {
+header .container .navigation .row .headers .navbar ul.navbar-nav #item a {
   font-size: 16px;
   font-weight: 500;
 }
@@ -108,12 +108,12 @@ header .container .navigation .row .headers .navbar ul.navbar-nav #dropdown ul #
   text-decoration: none;
   color: var(--text);
 }
-header .container .navigation .row .headers .navbar #aboutus:hover {
+header .container .navigation .row .headers .navbar #item:hover {
   border: 0.5px solid #D4D4D4;
   border-radius: 6px;
   background-color: #fff;
 }
-header .container .navigation .row .headers .navbar #aboutus:hover #aboutus_a {
+header .container .navigation .row .headers .navbar #item:hover #item_a {
   color: #5E9CEA;
 }
 header .container .navigation .row .headers .navbar #dropdown:hover {

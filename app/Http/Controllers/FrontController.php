@@ -6,6 +6,7 @@ use App\Models\ArticalType;
 use App\Models\Book;
 use App\Models\BookArtical;
 use App\Models\BookArticalAuthor;
+use App\Models\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use PhpParser\Node\Expr\FuncCall;
@@ -39,8 +40,23 @@ class FrontController extends Controller
     {
         return view('front.contact.index');
     }
-    public function register()
+    public function register(Request $request)
     {
-        return view('front.register.index');
+        if($request->getMethod() == 'GET'){
+            return view('front.register.index');
+        }else{
+            $client = new Client();
+            $client->name = $request->name;
+            $client->email = $request->email;
+            $client->password = $request->password;
+            $client->country =$request->country;
+            $client->affiliation =$request->affiliation;
+            $client->save();
+        }
+        return redirect()->back()->with('success','Successfully registered');
+    }
+
+    public function submission(){
+        return view('front.guidelines.index');
     }
 }

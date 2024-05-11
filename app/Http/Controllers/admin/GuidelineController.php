@@ -25,6 +25,8 @@ class GuidelineController extends Controller
             $guideline->description = $request->description;
             $guideline->save();
         }
+        $guidelines = Guideline::get();
+        file_put_contents(resource_path('views/front/cache/guidelines.blade.php'),view('admin.templete.guidelines',compact('guidelines'))->render());
         return redirect()->back()->with('success','successfully added');
     }
 
@@ -37,11 +39,15 @@ class GuidelineController extends Controller
             $guideline->description = $request->description;
             $guideline->save();
         }
+        $guidelines = Guideline::get();
+        file_put_contents(resource_path('views/front/cache/guidelines.blade.php'),view('admin.templete.guidelines',compact('guidelines'))->render());
         return redirect()->back()->with('success','successfully updated');
     }
 
     public function del($guideline_id){
         Guideline::where('id',$guideline_id)->delete();
+        $guidelines = Guideline::get();
+        file_put_contents(resource_path('views/front/cache/guidelines.blade.php'),view('admin.templete.guidelines',compact('guidelines'))->render());
         return redirect()->back()->with('success','successfully updated');
     }
 }

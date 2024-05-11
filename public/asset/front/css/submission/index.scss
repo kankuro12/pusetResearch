@@ -1,0 +1,27 @@
+.submission{
+    .container{
+        .row{
+            h1{
+                font-size: 24px;
+                font-weight: 700;
+                padding: 15px 0px;
+            }
+            .submission-view{
+                padding: 20px;
+                border-left: 5px solid #00528B;
+                background-color:#dddddd ;
+                font-size: 16px;
+                line-height: 20px;
+            }
+            .heading{
+                h2{
+                    font-size: 20px;
+                    font-weight: 700;
+                }
+            }
+            .guidelines{
+                font-size: 18px;
+            }
+        }
+    }
+}

@@ -41,7 +41,11 @@
                     <label for="ending_page">Ending Page No</label>
                     <input type="number" name="ending_page" id="ending_page" class="form-control">
                 </div>
-                <div class="col-md-9 mb-2">
+                <div class="col-md-6 mb-2">
+                    <label for="short_desc">Short Description</label>
+                    <textarea type="text" name="short_desc" id="short_desc" class="form-control"></textarea>
+                </div>
+                <div class="col-md-6 mb-2">
                     <label for="abstract">Abstract</label>
                     <textarea type="text" name="abstract" id="abstract" class="form-control"></textarea>
                 </div>

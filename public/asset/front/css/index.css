@@ -16,6 +16,11 @@ body .content {
   background-color: #FCFCFC;
 }
 
+@media only screen and (max-width: 768px) {
+  body {
+    padding: 0;
+  }
+}
 .topbar {
   padding: 10px 0px;
 }

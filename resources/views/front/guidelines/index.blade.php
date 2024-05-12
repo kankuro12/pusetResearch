@@ -1,16 +1,16 @@
 @extends('front.layout.app')
 
 @section('top_name')
-    Make a Submissions
+    Guidelines
 @endsection
 @section('header_link')
-    <a href="{{ route('submission') }}">Submissions</a>
+    <a href="{{ route('submission') }}">GuideLines</a>
 @endsection
 @section('content')
     <div class="submission">
         <div class="container">
             <div class="row">
-                <div class="col-md-12 mb-4">
+                {{-- <div class="col-md-12 mb-4">
                     <h1>
                         Submisson
                     </h1>
@@ -23,7 +23,7 @@
                             view pending submission
                         </a>
                     </div>
-                </div>
+                </div> --}}
                 @include('front.cache.guidelines')
             </div>
         </div>

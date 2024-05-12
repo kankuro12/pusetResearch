@@ -7,28 +7,8 @@
         align-items: center;
 
         .left {
-            .social-icons {
-                display: flex;
-                align-items: center;
-                column-gap: 8px;
-
-                .facebook-icon {
-                    color: #3b5999;
-                }
-
-                .twitter-icon {
-                    color: #55acee;
-                }
-
-                .linkedin-icon {
-                    color: #0077b5;
-                }
-
-                .google-icon {
-                    color: #de645e;
-                }
-
-            }
+            font-size: 16px;
+            font-weight: 600;
         }
 
         .logins {

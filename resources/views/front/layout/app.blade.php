@@ -29,22 +29,8 @@
         <div class="topbar">
             <div class="container" style="border-bottom: 1px solid #dddddd; padding :10px">
                 <div class="left">
-                    <div class="social-icons">
-                        <div class="facebook-icon">
-                            <i class="fab fa-facebook-f"></i>
-                        </div>
-                        <div class="twitter-icon">
-                            <i class="fab fa-twitter"></i>
-                        </div>
-                        <div class="linkedin-icon">
-                            <i class="fab fa-linkedin-in"></i>
-                        </div>
-                        <div class="google-icon">
-                            <i class="fab fa-google-plus-g"></i>
-                        </div>
-                    </div>
+                {{$general->content}}
                 </div>
-
                 <div class="logins">
                     <div class="login-area">
                         <div class="login">

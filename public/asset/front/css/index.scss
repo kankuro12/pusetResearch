@@ -18,6 +18,11 @@ body {
 
     }
 }
+@media only screen and (max-width: 768px) {
+    body {
+        padding: 0;
+    }
+}
 @import 'header.scss';
 @import 'banner.scss';
 @import 'article.scss';

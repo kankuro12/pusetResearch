@@ -18,9 +18,9 @@
         <li class="nav-item">
             <a class="nav-link" id="guideline" href="{{ route('admin.guideline.index')}}">Guideline</a>
         </li>
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a class="nav-link" id="submission" href="{{ route('admin.submission.index')}}">Submission</a>
-        </li>
+        </li> --}}
         <li class="nav-item">
             <a class="nav-link" id="setting" href="{{ route('admin.setting.index')}}">Setting</a>
         </li>

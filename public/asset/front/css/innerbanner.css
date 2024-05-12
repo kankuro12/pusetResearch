@@ -5,7 +5,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 0px;
+  padding: 10px 10px;
 }
 .inner-banner .container .row .col-md-12 h1 {
   font-size: 16px;
@@ -24,6 +24,6 @@
   color: white;
 }
 .inner-banner .container .row .col-md-12 .header-link i {
-  font-size: 8px;
+  font-size: 6px;
   color: white;
 }/*# sourceMappingURL=innerbanner.css.map */

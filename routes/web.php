@@ -37,6 +37,9 @@ Route::match(['GET','POST'],'register',[FrontController::class,'register'])->nam
 Route::get('articleSingle/{article}',[FrontController::class,'articleSingle'])->name('articleSingle');
 
 Route::match(['GET', 'POST'], 'login', [LoginController::class, 'login'])->name('login');
+Route::match(['POST'],'clientlogin',[LoginController::class,'clientLogin'])->name('clientLogin');
+Route::get('logout',[LoginController::class,'logout'])->name('logout');
+
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [DashbordController::class, 'index'])->name('index');
     Route::get('/file', [FileController::class, 'index'])->name('file');
@@ -147,5 +150,6 @@ Route::prefix('client')->name('client.')->group(function(){
         Route::match(['GET','POST'],'add',[ClientSubmissionController::class,'add'])->name('add');
         Route::match(['GET','POST'],'edit/{sub_id}',[ClientSubmissionController::class,'edit'])->name('edit');
         Route::match(['GET'],'del/{sub_id}',[ClientSubmissionController::class,'del'])->name('del');
+        Route::get('list',[ClientSubmissionController::class,'list'])->name('list');
     });
 });

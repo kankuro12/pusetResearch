@@ -1,26 +1,31 @@
 .topbar {
-    padding: 10px 0px  ;
+    padding: 10px 0px;
+
     .container {
         display: flex;
         justify-content: space-between;
         align-items: center;
 
         .left {
-            .social-icons{
+            .social-icons {
                 display: flex;
                 align-items: center;
                 column-gap: 8px;
-                .facebook-icon{
+
+                .facebook-icon {
                     color: #3b5999;
                 }
-                .twitter-icon{
-                    color:#55acee ;
+
+                .twitter-icon {
+                    color: #55acee;
                 }
-                .linkedin-icon{
+
+                .linkedin-icon {
                     color: #0077b5;
                 }
-                .google-icon{
-                    color:#de645e ;
+
+                .google-icon {
+                    color: #de645e;
                 }
 
             }
@@ -48,11 +53,10 @@ header {
 
         .navigation {
             padding: 0px 0px 2px 0px;
-            position: relative;
-
-            .row {
-                align-items: center;
-
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .left {
                 .logo {
                     a {
                         text-decoration: none;
@@ -64,7 +68,9 @@ header {
                         }
                     }
                 }
+            }
 
+            .right {
                 .headers {
                     .navbar {
                         ul.navbar-nav {
@@ -91,34 +97,6 @@ header {
                                 ul {
                                     .side_menu {
                                         display: none;
-                                        position: absolute;
-                                        top: 42px;
-                                        left: 195px;
-                                        margin-top: 0;
-                                        background-color: white;
-                                        z-index: 1;
-                                        border: 1px solid #D0D0D0;
-                                        border-radius: 2px;
-                                        text-align: left;
-
-                                        ul {
-                                            list-style: none;
-                                            margin: 0;
-                                            padding: 10px;
-
-                                            li {
-                                                list-style: none;
-
-                                                a {
-                                                    text-decoration: none;
-                                                    color: var(--text);
-                                                }
-                                            }
-                                        }
-                                    }
-
-                                    #login:hover+.side_menu {
-                                        display: block;
                                         position: absolute;
                                         top: 42px;
                                         left: 195px;
@@ -172,6 +150,14 @@ header {
                         }
                     }
                 }
+            }
+
+            .row {
+                align-items: center;
+
+
+
+
             }
         }
 

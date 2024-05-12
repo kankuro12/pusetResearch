@@ -16,6 +16,25 @@
     <link rel="stylesheet" href="{{ asset('asset/back/plugins/drophify/css/dropify.min.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/client/index.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+    <style>
+        .nav .nav-item .nav-link {
+            color: rgb(192, 192, 192);
+            transition: all 1s;
+            font-size: 15px;
+            padding: 10px 10px 10px 10px;
+        }
+
+        .nav .nav-item .nav-link:hover,
+        .nav .nav-item .nav-link.active {
+            color: white;
+            background: #3A4F6A;
+        }
+
+        .nav .nav-item .nav-link.active {
+            transform: scale(1.05)
+        }
+    </style>
 </head>
 
 <body>

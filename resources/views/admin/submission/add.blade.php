@@ -1,4 +1,4 @@
-@extends('admin.layout.app')
+{{-- @extends('admin.layout.app')
 
 @section('header-Links')
     <a href="{{ route('admin.submission.index') }}">Submissions</a>
@@ -42,4 +42,4 @@
         </form>
     </div>
 @endsection
-
+ --}}

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,4 +21,13 @@ class LoginController extends Controller
             }
         }
     }
+    public function logout() {
+        Auth::logout();
+        return redirect()->route('login');
+    }
+
+    // public function client_login()
+    // {
+    //     $client = Client::
+    // }
 }

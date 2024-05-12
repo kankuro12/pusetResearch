@@ -1,33 +1,38 @@
-.inner-banner{
+.inner-banner {
     background-color: #636C77;
-    .container{
-       .row{
-        .col-md-12{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 0px;
-            h1{
-                font-size: 16px;
-                margin: 0px;
-                color: white;
-            }
-            .header-link{
+
+    .container {
+        .row {
+            .col-md-12 {
                 display: flex;
+                justify-content: space-between;
                 align-items: center;
-              column-gap: 10px;
-                a{
-                    text-decoration: none;
+                padding: 10px 10px;
+
+                h1 {
                     font-size: 16px;
+                    margin: 0px;
                     color: white;
                 }
-                i{
-                    font-size: 8px;
-                    color: white;
+
+                .header-link {
+                    display: flex;
+                    align-items: center;
+                    column-gap: 10px;
+
+                    a {
+                        text-decoration: none;
+                        font-size: 16px;
+                        color: white;
+                    }
+
+                    i {
+                        font-size: 6px;
+                        color: white;
+                    }
                 }
             }
         }
-       }
     }
 
 }

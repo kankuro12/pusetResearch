@@ -3,12 +3,13 @@
     <a href="{{route('client.submission.index')}}">Submissions</a>
     <a href="{{route('client.submission.add')}}">Add</a>
 @endsection
+@section('active','submission')
 @section('content')
     <div class="shadow mt-3 p-3 bg-white">
         <form action="{{route('client.submission.add')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row mb-2">
-                <div class="col-md-3 mb-2">
+                <div class="col-md-4 mb-2">
                     <label for="title">Title</label>
                     <input type="text" name="title" id="title" class="form-control">
                 </div>

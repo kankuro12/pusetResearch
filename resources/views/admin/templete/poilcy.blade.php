@@ -6,7 +6,7 @@
                     {{ $policy->title }}
                 </strong>
             </div>
-            <div class="description" style="font-size: 18px">
+            <div class="description" style="font-size: 18px;text-align: justify;">
                 {{ $policy->description }}
             </div>
         </div>

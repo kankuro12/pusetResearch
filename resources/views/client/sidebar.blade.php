@@ -4,7 +4,7 @@
     </div>
     <ul class="nav flex-column">
         <li class="nav-item">
-            <a class="nav-link" id="authors" href="#">Author</a>
+            <a class="nav-link" id="submissions" href="{{route('client.submission.index')}}">Submission</a>
         </li>
     </ul>
 </div>

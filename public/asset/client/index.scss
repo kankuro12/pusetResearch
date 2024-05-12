@@ -92,72 +92,91 @@ body {
         .top {
             background: #ddd;
             padding: 16px 32px;
-
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             h1 {
                 color: var(--content);
                 font-size: 16px;
+                a{
+                    color: black;
+                    font-weight: 600;
+                }
+            }
+
+            .link a:not(:last-child)::after {
+                content: '/';
+                margin: 0px 3px;
             }
         }
 
-        .middle {
-            .tablist {
-                padding: 0 96px 0 32px;
-                background: #ddd;
-                font-size: 14px;
-                display: flex;
-                justify-content: space-between;
-                align-items: baseline;
-                .left {
-                    display: flex;
-                    align-items: center;
-                    .queue {
-                        background-color: white;
-                        padding: 15px;
-                        font-size: 15px;
-                        font-weight: 700;
-                        border-radius: 2px;
-                        border-top: 3px solid #007AB2;
+        // .middle {
+        //     .tablist {
+        //         padding: 0 96px 0 32px;
+        //         background: #ddd;
+        //         font-size: 14px;
+        //         display: flex;
+        //         justify-content: space-between;
+        //         align-items: baseline;
+        //         .left {
+        //             display: flex;
+        //             align-items: center;
+        //             .queue {
+        //                 background-color: white;
+        //                 padding: 15px;
+        //                 font-size: 15px;
+        //                 font-weight: 700;
+        //                 border-radius: 2px;
+        //                 border-top: 3px solid #007AB2;
 
-                        a {
-                            color: rgba(0, 0, 0, 0.54);
+        //                 a {
+        //                     color: rgba(0, 0, 0, 0.54);
 
-                        }
-                    }
+        //                 }
+        //             }
 
-                    .issue {
-                        padding: 16px;
-                        font-size: 15px;
-                        font-weight: 700;
-                        border-radius: 2px;
+        //             .issue {
+        //                 padding: 16px;
+        //                 font-size: 15px;
+        //                 font-weight: 700;
+        //                 border-radius: 2px;
 
-                        // border-top: 3px solid #007AB2;
-                        a {
-                            color: #007AB2;
-                        }
-                    }
-                }
-                .right{
-                    .help{
-                        padding: 8px 8px 16px 8px ;
-                        background-color: white;
-                        a{
-                            i{
-                            color: #00B24E;
-                        }
-                        }
+        //                 // border-top: 3px solid #007AB2;
+        //                 a {
+        //                     color: #007AB2;
+        //                 }
+        //             }
+        //         }
+        //         .right{
+        //             .help{
+        //                 padding: 8px 8px 16px 8px ;
+        //                 background-color: white;
+        //                 a{
+        //                     i{
+        //                     color: #00B24E;
+        //                 }
+        //                 }
 
-                        // color: ;
-                    }
-                }
-            }
-            .panel{
-                .content{
-                    padding: 15px;
-                    display: flex;
-                    justify-content: space-between;
-                }
-            }
-        }
+        //                 // color: ;
+        //             }
+        //         }
+        //     }
+        //     .panel{
+        //         .content{
+        //             padding: 15px;
+        //             display: flex;
+        //             justify-content: space-between;
+        //             .title{
+        //                 font-size: 16px;
+        //                 font-weight: 700;
+        //                 color: #262626;
+        //             }
+        //             .search{
+
+        //             }
+        //         }
+        //     }
+        // }
     }
 
 }

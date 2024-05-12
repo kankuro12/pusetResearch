@@ -12,6 +12,7 @@ use App\Http\Controllers\admin\TeamController;
 use App\Http\Controllers\admin\TeamMemberController;
 use App\Http\Controllers\client\ClientController;
 use App\Http\Controllers\client\DashbordController as ClientDashbordController;
+use App\Http\Controllers\client\SubmissionController as ClientSubmissionController;
 use App\Http\Controllers\DashbordController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\LoginController;
@@ -141,4 +142,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 Route::prefix('client')->name('client.')->group(function(){
     Route::get('index',[ClientController::class,'index'])->name('index');
+    Route::prefix('submission')->name('submission.')->group(function(){
+        Route::get('index',[ClientSubmissionController::class,'index'])->name('index');
+        Route::match(['GET','POST'],'add',[ClientSubmissionController::class,'add'])->name('add');
+        Route::match(['GET','POST'],'edit/{sub_id}',[ClientSubmissionController::class,'edit'])->name('edit');
+        Route::match(['GET'],'del/{sub_id}',[ClientSubmissionController::class,'del'])->name('del');
+    });
 });

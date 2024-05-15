@@ -37,7 +37,7 @@ Route::match(['GET','POST'],'register',[FrontController::class,'register'])->nam
 Route::get('articleSingle/{article}',[FrontController::class,'articleSingle'])->name('articleSingle');
 
 Route::match(['GET', 'POST'], 'login', [LoginController::class, 'login'])->name('login');
-Route::match(['POST'],'clientlogin',[LoginController::class,'clientLogin'])->name('clientLogin');
+Route::match(['POST'],'clientlogin',[LoginController::class,'clientlogin'])->name('clientlogin');
 Route::get('logout',[LoginController::class,'logout'])->name('logout');
 
 Route::prefix('admin')->name('admin.')->group(function () {
@@ -89,7 +89,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::prefix('submission')->name('submission.')->group(function () {
         Route::get('index', [SubmissionController::class, 'index'])->name('index');
         Route::match(['GET', 'POST'], 'add', [SubmissionController::class, 'add'])->name('add');
-        Route::match(['GET', 'POST'], 'edit/{sub_id}', [SubmissionController::class, 'edit'])->name('edit');
+        Route::match(['get'], 'edit/{sub_id}', [SubmissionController::class, 'edit'])->name('edit');
         Route::get('del/{sub_id}', [SubmissionController::class, 'del'])->name('del');
         Route::get('list', [SubmissionController::class, 'list'])->name('list');
     });

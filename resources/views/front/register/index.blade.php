@@ -11,6 +11,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <form action="{{route('register')}}" method="POST">
+                        @csrf
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="heading">

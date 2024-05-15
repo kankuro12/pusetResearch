@@ -53,7 +53,7 @@ class FrontController extends Controller
             $client->affiliation =$request->affiliation;
             $client->save();
         }
-        return redirect()->back()->with('success','Successfully registered');
+        return redirect()->view('client.index');
     }
 
     public function submission(){

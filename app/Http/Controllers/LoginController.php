@@ -26,8 +26,16 @@ class LoginController extends Controller
         return redirect()->route('login');
     }
 
-    // public function client_login()
-    // {
-    //     $client = Client::
-    // }
+    public function clientlogin(Request $request)
+    {
+        if ($request->getMethod() == "GET") {
+            return view('front.login.index');
+        } else {
+            if (Auth::guard('client')->attempt(['email' => $request->email, 'password' => $request->password])) {
+                return redirect()->route('client.index')->with('success', 'Login Success');
+            } else {
+                return redirect()->back()->with('error', 'Credential Mismatch');
+            }
+        }
+    }
 }

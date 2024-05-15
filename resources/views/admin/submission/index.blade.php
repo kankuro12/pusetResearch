@@ -1,13 +1,13 @@
 @extends('admin.layout.app')
 @section('header-Links')
-    <a href="{{route('admin.submission.index')}}">Submission</a>
+    <a href="{{ route('admin.submission.index') }}">Submission</a>
 @endsection
 @section('toolbar')
-    <a href="{{route('admin.submission.add')}}" class="btn btn-primary btn-sm">Add</a>
+    <a href="{{ route('admin.submission.add') }}" class="btn btn-primary btn-sm">Add</a>
 @endsection
-@section('active','submission')
+@section('active', 'submission')
 @section('content')
-    <div class="shadow p-3 mt-3  br-3 bg-white">
+    <div class="shadow p-3 mt-3 br-3 bg-white">
         <div class="table-responsive">
             <table class="table table-bordered" id="submissions">
                 <thead>
@@ -15,7 +15,7 @@
                         <th>Title</th>
                         <th>Description</th>
                         <th>Status</th>
-                        <th>manage</th>
+                        <th>Manage</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,7 +36,7 @@
                         searchable: true
                     },
                     {
-                        targets: [2,],
+                        targets: [2],
                         searchable: true
                     },
                     {
@@ -56,7 +56,20 @@
                     },
                     {
                         data: 'status',
-                        className: 'text-end'
+                        render: function(data, type, row) {
+                            var statusOptions = ['Pending', 'View', 'Acceptance', 'Rejected'];
+                            var select =
+                                '<select name="status" id="status" class="form-control">';
+                            for (var i = 0; i < statusOptions.length; i++) {
+                                select += '<option value="' + i + '"';
+                                if (i === data) {
+                                    select += ' selected';
+                                }
+                                select += '>' + statusOptions[i] + '</option>';
+                            }
+                            select += '</select>';
+                            return select;
+                        }
                     },
                     {
                         data: null,
@@ -67,13 +80,25 @@
                 ],
             })
         });
+        function updateStatus(id, status) {
+            const data = {
+                status: status
+            };
+
+            axios.get(`/admin/submission/edit/${id}`, data)
+                .then(response => {
+                    console.log(response.data);
+                    table.ajax.reload();
+                })
+                .catch(error => {
+                    console.error('Error updating status:', error);
+                });
+        }
 
         function getUrls(id) {
-            const editURL = "{{ route('admin.submission.edit', ['sub_id' => 'xxx_id']) }}";
             const delURL = "{{ route('admin.submission.del', ['sub_id' => 'xxx_id']) }}";
-            return '<a href="' + editURL.replace('xxx_id', id) + '" class="btn btn-sm btn-primary">Edit</a> ' +
-                '<a onclick="return yes()" href="' + delURL.replace('xxx_id', id) +
-                '" class="btn btn-sm btn-danger">Delete</a>';
+            return `<a href="#" class="btn btn-sm btn-primary" onclick="updateStatus(${id}, ${''}.val())">Update</a>
+                    <a onclick="return yes()" href="${delURL.replace('xxx_id', id)}" class="btn btn-sm btn-danger">Delete</a>`;
         }
     </script>
 @endsection

@@ -15,7 +15,8 @@
                         Login Now
                     </h3>
                 </div>
-                <form action="" method="POST" >
+                <form action="{{route('clientlogin')}}" method="POST" >
+                    @csrf
                     <div class="inputs">
                         <div class="form-group mb-4">
                             <input type="text" name="username" id="username" placeholder="Username" class="form-control">

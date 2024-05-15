@@ -13,15 +13,6 @@
                     <label for="title">Title</label>
                     <input type="text" name="title" id="title" class="form-control">
                 </div>
-                <div class="col-md-6 mb-2">
-                    <label for="status">Status</label>
-                    <select name="status" id="status"  class="form-control">
-                        <option value="0">Pending</option>
-                        <option value="1">View</option>
-                        <option value="2">Acceptance</option>
-                        <option value="3">Rejected</option>
-                    </select>
-                </div>
                 <div class="col-md-12 mb-2">
                     <label for="description">Description</label>
                     <textarea name="description" id="description" class="form-control"></textarea>

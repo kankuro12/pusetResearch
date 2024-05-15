@@ -16,15 +16,6 @@
                     <input type="text" name="title" id="title" class="form-control"
                         value="{{ $submission->title }}">
                 </div>
-                <div class="col-md-6 mb-2">
-                    <label for="status">Status</label>
-                    <select name="status" id="status" class="form-control">
-                        <option value="0" {{ $submission->status == 0 ? 'selected' : '' }}>Pending</option>
-                        <option value="1" {{ $submission->status == 1 ? 'selected' : '' }}>View</option>
-                        <option value="2" {{ $submission->status == 2 ? 'selected' : '' }}>Acceptance</option>
-                        <option value="3" {{ $submission->status == 3 ? 'selected' : '' }}>Rejected</option>
-                    </select>
-                </div>
                 <div class="col-md-12 mb-2">
                     <label for="description">Description</label>
                     <textarea name="description" id="description" class="form-control"> {{ $submission->description }} </textarea>

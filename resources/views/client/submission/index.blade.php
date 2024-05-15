@@ -13,7 +13,6 @@
                 <thead>
                     <tr>
                         <th>Title</th>
-                        <th>Status</th>
                         <th>Manage</th>
                     </tr>
                 </thead>
@@ -29,13 +28,16 @@
     <script>
         var table;
         $(document).ready(function() {
+            if ($.fn.DataTable.isDataTable('#sub')) {
+                $('#sub').DataTable().clear().destroy();
+            }
             table = $('#sub').DataTable({
                 columnDefs: [{
-                        targets: [0, 1],
+                        targets: [0],
                         searchable: true
                     },
                     {
-                        targets: [2],
+                        targets: [1],
                         orderable: false
                     }
                 ],
@@ -45,9 +47,6 @@
                 },
                 columns: [{
                         data: 'title',
-                    },
-                    {
-                        data: 'status',
                     },
                     {
                         data: null,
@@ -63,7 +62,8 @@
             const editURL = `{{ route('client.submission.edit', ['sub_id' => 'xxx_id']) }}`;
             const delURL = `{{ route('client.submission.del', ['sub_id' => 'xxx_id']) }}`;
             const editLink = `<a href="${editURL.replace('xxx_id', id)}" class="btn btn-sm btn-primary">Edit</a>`;
-            const deleteLink =`<a onclick="return yes()" href="${delURL.replace('xxx_id', id)}" class="btn btn-sm btn-danger">Delete</a>`;
+            const deleteLink =
+                `<a onclick="return yes()" href="${delURL.replace('xxx_id', id)}" class="btn btn-sm btn-danger">Delete</a>`;
             return `${editLink} ${deleteLink}`;
         }
     </script>

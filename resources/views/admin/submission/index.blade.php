@@ -97,7 +97,7 @@
 
         function getUrls(id) {
             const delURL = "{{ route('admin.submission.del', ['sub_id' => 'xxx_id']) }}";
-            return `<a href="#" class="btn btn-sm btn-primary" onclick="updateStatus(${id}, ${''}.val())">Update</a>
+            return `<a href="#" class="btn btn-sm btn-primary" onclick="updateStatus(${id}, $('#status').val())">Update</a>
                     <a onclick="return yes()" href="${delURL.replace('xxx_id', id)}" class="btn btn-sm btn-danger">Delete</a>`;
         }
     </script>

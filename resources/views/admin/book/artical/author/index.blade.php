@@ -3,11 +3,12 @@
 @section('header-Links')
     <a href="{{ route('admin.book.index') }}">Issues</a>
     <a href="{{ route('admin.book.article.indexArticle', ['book_id' => $book->id]) }}">Articles</a>
-    <a href="{{ route('admin.book.article.articleAuthor.indexAuthor', ['book_id' => $book->id, 'article_id' => $article->id]) }}">Authors</a>
+    <a
+        href="{{ route('admin.book.article.articleAuthor.indexAuthor', ['book_id' => $book->id, 'article_id' => $article->id]) }}">Authors</a>
 @endsection
 
 @section('toolbar')
-    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addModal">
         Add New Author
     </button>
 @endsection
@@ -39,49 +40,48 @@
                     @foreach ($authors as $key => $author)
                         <tr>
                             <?php
-                            $authorName = DB::table('authors')->where('id', $author->author_id)->value('name');
+                            $authorName = DB::table('authors')
+                                ->where('id', $author->author_id)
+                                ->value('name');
                             ?>
                             <td>{{ $key + 1 }}</td>
                             <td>{{ $authorName }}</td>
-                            <td><a href="{{ route('admin.book.article.articleAuthor.delAuthor', ['articleAuthor_id' => $author->id]) }}" class="btn btn-danger">Delete</a></td>
+                            <td><a href="{{ route('admin.book.article.articleAuthor.delAuthor', ['articleAuthor_id' => $author->id]) }}"
+                                    class="btn btn-danger">Delete</a></td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
 
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+            data-whatever="@mdo">Open modal for @mdo</button>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Add New Author</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form id="new-author-form">
+                        <form>
                             <div class="form-group">
-                                <label for="author-name" class="col-form-label">Name:</label>
-                                <input type="text" class="form-control" id="author-name">
+                                <label for="recipient-name" class="col-form-label">Recipient:</label>
+                                <input type="text" class="form-control" id="recipient-name">
                             </div>
                             <div class="form-group">
-                                <label for="author-link" class="col-form-label">Link:</label>
-                                <input type="text" class="form-control" id="author-link">
-                            </div>
-                            <div class="form-group">
-                                <label for="author-designation" class="col-form-label">Designation:</label>
-                                <input type="text" class="form-control" id="author-designation">
-                            </div>
-                            <div class="form-group">
-                                <label for="author-organization" class="col-form-label">Organization:</label>
-                                <input type="text" class="form-control" id="author-organization">
+                                <label for="message-text" class="col-form-label">Message:</label>
+                                <textarea class="form-control" id="message-text"></textarea>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" onclick="saveNewAuthor()">Save</button>
+                        <button type="button" class="btn btn-primary">Send message</button>
                     </div>
                 </div>
             </div>
@@ -120,9 +120,13 @@
 
         function saveAll() {
             var selectedAuthors = $('#author').val();
+            if (!selectedAuthors || selectedAuthors.length === 0) {
+                error('Please select at least one Author');
+                return;
+            }
+
             var articleId = '{{ $article->id }}';
             var bookId = '{{ $book->id }}';
-
             axios.post("{{ route('admin.book.article.articleAuthor.addAuthor') }}", {
                     article_id: articleId,
                     author_ids: selectedAuthors,
@@ -130,13 +134,14 @@
                     "_token": "{{ csrf_token() }}",
                 })
                 .then(function(response) {
-                    alert('Authors successfully added');
+                    success('successfully added')
                     location.reload();
                 })
                 .catch(function(error) {
                     console.error('Error saving authors:', error);
                 });
         }
+
 
         function saveNewAuthor() {
             var name = $('#author-name').val();
@@ -155,7 +160,8 @@
             var articleId = '{{ $article->id }}';
             var bookId = '{{ $book->id }}';
 
-            const url = `{{ route('admin.book.article.articleAuthor.saveAuthor', ['book_id' => ':book', 'article_id' => ':article']) }}`
+            const url =
+                `{{ route('admin.book.article.articleAuthor.saveAuthor', ['book_id' => ':book', 'article_id' => ':article']) }}`
                 .replace(':book', bookId)
                 .replace(':article', articleId);
 

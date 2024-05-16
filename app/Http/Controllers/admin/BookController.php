@@ -31,7 +31,8 @@ class BookController extends Controller
             $book->eng_title = $request->eng_title;
             $book->issn = $request->issn;
             $book->doi = $request->doi;
-            $book->website = $request->website;
+            $book->volume = $request->volume;
+            $book->issue_name = $request->issue_name;
             $book->language_of_publication = $request->language_of_publication;
             $book->issue = $request->issue;
             $book->published_date = $request->published_date;
@@ -56,7 +57,8 @@ class BookController extends Controller
             $book->issn = $request->issn;
             $book->doi = $request->doi;
             $book->doi = $request->doi;
-            $book->website = $request->website;
+            $book->volume = $request->volume;
+            $book->issue_name = $request->issue_name;
             $book->language_of_publication = $request->language_of_publication;
             $book->issue = $request->issue;
             $book->published_date = $request->published_date;

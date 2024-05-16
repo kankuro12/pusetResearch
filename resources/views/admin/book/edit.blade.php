@@ -27,8 +27,13 @@
                     <input type="text" name="doi" id="doi" value="{{ $book->doi }}" class="form-control">
                 </div>
                 <div class="col-md-3 mb-2">
-                    <label for="website">Website</label>
-                    <input type="text" name="website" id="website" value="{{ $book->website }}" class="form-control">
+                    <label for="issue_name">Issue name</label>
+                    <input type="text" name="issue_name" id="issue_name" value="{{ $book->issue_name }}"
+                        class="form-control">
+                </div>
+                <div class="col-md-3 mb-2">
+                    <label for="volume">Volume</label>
+                    <input type="text" name="volume" id="volume" value="{{ $book->volume }}" class="form-control">
                 </div>
                 <div class="col-md-3 mb-2">
                     <label for="language_of_publication">Language Of Publication</label>

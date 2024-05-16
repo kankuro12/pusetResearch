@@ -1,8 +1,8 @@
 @extends('admin.layout.app')
 
 @section('header-Links')
-    <a href="{{ route('admin.team.index') }}">Team</a>
-    <a href="{{ route('admin.team.team_member.index', ['team_id' => $team->id]) }}">Team Member</a>
+    <a href="{{ route('admin.team.index') }}">Teams</a>
+    <a href="{{ route('admin.team.team_member.index', ['team_id' => $team->id]) }}">Members</a>
     <a href="{{ route('admin.team.team_member.add', ['team_id' => $team->id]) }}">Add</a>
 @endsection
 @section('active', 'team_member')

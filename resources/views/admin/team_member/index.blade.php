@@ -1,7 +1,7 @@
 @extends('admin.layout.app')
 @section('header-Links')
-    <a href="{{ route('admin.team.index') }}">Team</a>
-    <a href="{{ route('admin.team.team_member.index', ['team_id' => $team->id]) }}">Team Member</a>
+    <a href="{{ route('admin.team.index') }}">Teams</a>
+    <a href="{{ route('admin.team.team_member.index', ['team_id' => $team->id]) }}">Members</a>
 @endsection
 @section('active', 'team')
 @section('toolbar')
@@ -78,7 +78,7 @@
             const delURL = "{{ route('admin.team.team_member.del', ['team_member_id' => 'xxx_id']) }}";
             return '<a href="' + editURL.replace('xxx_id', id).replace('abc_id', team_id) + '" class="btn btn-sm btn-primary">Edit</a> ' +
                 '<a onclick="return yes()" href="' + delURL.replace('xxx_id', id) +
-                '" class="btn btn-sm btn-danger">Delete</a>';
+                '" class="btn btn-sm btn-danger">Delete</a> ';
         }
     </script>
 @endsection

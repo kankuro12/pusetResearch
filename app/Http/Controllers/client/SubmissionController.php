@@ -15,19 +15,7 @@ class SubmissionController extends Controller
     }
     public function list()
     {
-        $submissions = DB::table('submissions')
-            ->select(
-                'id',
-                'title',
-                DB::raw("CASE
-                WHEN status = 0 THEN 'Pending'
-                WHEN status = 1 THEN 'View'
-                WHEN status = 2 THEN 'Acceptance'
-                WHEN status = 3 THEN 'Rejected'
-                ELSE ''
-            END AS status",)
-            )
-            ->get();
+        $submissions = DB::table('submissions')->get(['id','title']);
         return response()->json($submissions);
     }
     public function add(Request $request)
@@ -39,7 +27,7 @@ class SubmissionController extends Controller
             $submission->title = $request->title;
             $submission->description = $request->description;
             $submission->file = $request->file('file')->store('uploads/submission');
-            $submission->status = $request->status;
+            $submission->status = 0 ;
             $submission->save();
         }
         return redirect()->back()->with('success', 'successfully added');
@@ -55,7 +43,7 @@ class SubmissionController extends Controller
             if ($request->hasFile('file')) {
                 $submission->file = $request->file('file')->store('uploads/submission');
             }
-            $submission->status = $request->status;
+            $submission->status = 0;
             $submission->save();
         }
         return redirect()->back()->with('success', 'successfully updated');

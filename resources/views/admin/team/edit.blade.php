@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 @section('header-Links')
-    <a href="{{route('admin.team.index')}}">Team</a>
+    <a href="{{route('admin.team.index')}}">Teams</a>
     <a href="{{route('admin.team.edit',['team_id'=>$team->id])}}">Edit</a>
 @endsection
 @section('active','team')

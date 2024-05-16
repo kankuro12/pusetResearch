@@ -1,11 +1,11 @@
 @extends('admin.layout.app')
 @section('header-Links')
-    <a href="{{route('admin.book.index')}}">Book</a>
+    <a href="{{ route('admin.book.index') }}">Issues</a>
 @endsection
 @section('toolbar')
-    <a href="{{route('admin.book.add')}}" class="btn btn-primary btn-sm">Add</a>
+    <a href="{{ route('admin.book.add') }}" class="btn btn-primary btn-sm">Add</a>
 @endsection
-@section('active','book')
+@section('active', 'book')
 @section('content')
     <div class="shadow p-3 mt-3  br-3 bg-white rounded">
         <div class="table-responsive">
@@ -79,10 +79,11 @@
         function getUrls(id) {
             const editURL = "{{ route('admin.book.edit', ['book_id' => 'xxx_id']) }}";
             const delURL = "{{ route('admin.book.del', ['book_id' => 'xxx_id']) }}";
-            const ArticalURL = "{{route('admin.book.article.indexArticle',['book_id'=>'abc_id'])}}"
+            const ArticalURL = "{{ route('admin.book.article.indexArticle', ['book_id' => 'abc_id']) }}";
             return '<a href="' + editURL.replace('xxx_id', id) + '" class="btn btn-sm btn-primary">Edit</a> ' +
                 '<a onclick="return yes()" href="' + delURL.replace('xxx_id', id) +
-                '" class="btn btn-sm btn-danger">Delete</a>'+ '<a href="' + ArticalURL.replace('abc_id', id) + '" class="btn btn-sm btn-success">View Book Artical</a> ';
+                '" class="btn btn-sm btn-danger">Delete</a> ' +
+                '<a href="' + ArticalURL.replace('abc_id', id) + '" class="btn btn-sm btn-success">Manage Article</a>';
         }
     </script>
 @endsection

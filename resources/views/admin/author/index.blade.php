@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 @section('header-Links')
-    <a href="{{route('admin.author.index')}}">author</a>
+    <a href="{{route('admin.author.index')}}">Authors</a>
 @endsection
 @section('toolbar')
     <a href="{{route('admin.author.add')}}" class="btn btn-primary btn-sm">Add</a>
@@ -76,7 +76,7 @@
             const delURL = "{{ route('admin.author.del', ['author_id' => 'xxx_id']) }}";
             return '<a href="' + editURL.replace('xxx_id', id) + '" class="btn btn-sm btn-primary">Edit</a> ' +
                 '<a onclick="return yes()" href="' + delURL.replace('xxx_id', id) +
-                '" class="btn btn-sm btn-danger">Delete</a>';
+                '" class="btn btn-sm btn-danger">Delete</a> ';
         }
     </script>
 @endsection

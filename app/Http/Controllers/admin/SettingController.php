@@ -52,21 +52,27 @@ class SettingController extends Controller
 
     public function policy_add(Request $request)
     {
-        $policy = new Policies();
-        $policy->title = $request->title;
-        $policy->description = $request->description;
-        $policy->save();
-
+        if($request->getMethod()=="GET"){
+            return view('admin.setting.policy.add');
+        }else{
+            $policy = new Policies();
+            $policy->title = $request->title;
+            $policy->description = $request->description;
+            $policy->save();
+        }
         $policies = Policies::get();
         file_put_contents(resource_path('views/front/cache/policy.blade.php'),view('admin.templete.poilcy',compact('policies'))->render());
     }
     public function policy_edit(Request $request, $policy_id)
     {
         $policy = Policies::where('id', $policy_id)->first();
-        $policy->title = $request->title;
-        $policy->description = $request->description;
-        $policy->save();
-
+        if($request->getMethod()=="GET"){
+            return view('admin.setting.policy.edit',compact('policy'));
+        }else{
+            $policy->title = $request->title;
+            $policy->description = $request->description;
+            $policy->save();
+        }
         $policies = Policies::get();
         file_put_contents(resource_path('views/front/cache/policy.blade.php'),view('admin.templete.poilcy',compact('policies'))->render());
 

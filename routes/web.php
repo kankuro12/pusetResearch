@@ -114,8 +114,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         });
         Route::prefix('policy')->name('policy.')->group(function () {
             Route::get('policy_index', [SettingController::class, 'policy_index'])->name('policy_index');
-            Route::match(['POST'], 'policy_add', [SettingController::class, 'policy_add'])->name('policy_add');
-            Route::match(['POST'], 'policy_edit/{policy_id}', [SettingController::class, 'policy_edit'])->name('policy_edit');
+            Route::match(['GET','POST'], 'policy_add', [SettingController::class, 'policy_add'])->name('policy_add');
+            Route::match(['GET','POST'], 'policy_edit/{policy_id}', [SettingController::class, 'policy_edit'])->name('policy_edit');
             Route::get('policy_del/{policy_id}', [SettingController::class, 'policy_del'])->name('policy_del');
         });
         Route::prefix('about')->name('about.')->group(function () {

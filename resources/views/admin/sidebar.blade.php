@@ -10,7 +10,7 @@
             <a class="nav-link" id="authors" href="{{ route('admin.author.index')}}">Author</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="book" href="{{ route('admin.book.index')}}">Book</a>
+            <a class="nav-link" id="book" href="{{ route('admin.book.index')}}">Issues</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" id="team" href="{{ route('admin.team.index')}}">Team</a>

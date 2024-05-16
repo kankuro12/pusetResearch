@@ -1,32 +1,31 @@
 @extends('admin.layout.app')
+
 @section('header-Links')
-    <a href="{{ route('admin.book.index') }}">Book</a>
-    <a href="{{ route('admin.book.article.indexArticle', ['book_id' => $book->id]) }}">Book Article</a>
-    <a
-        href="{{ route('admin.book.article.articleAuthor.indexAuthor', ['book_id' => $book->id, 'article_id' => $article->id]) }}">Article
-        Author</a>
+    <a href="{{ route('admin.book.index') }}">Issues</a>
+    <a href="{{ route('admin.book.article.indexArticle', ['book_id' => $book->id]) }}">Articles</a>
+    <a href="{{ route('admin.book.article.articleAuthor.indexAuthor', ['book_id' => $book->id, 'article_id' => $article->id]) }}">Authors</a>
 @endsection
-<style>
-    .select2-container .select2-selection--multiple {
-        height: auto !important;
-    }
-</style>
+
+@section('toolbar')
+    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+        Add New Author
+    </button>
+@endsection
+
 @section('active', 'book')
+
 @section('content')
     <div class="shadow p-3 bg-white mt-2 rounded">
-        <div class="row">
+        <div class="row align-items-end">
             <div class="col-md-8 mb-2">
                 <label for="author" class="mb-2">Select Authors</label>
-                <select name="author[]" id="author" multiple="multiple" class="author form-control">
-                </select>
+                <select name="author[]" id="author" multiple="multiple" class="author form-control"></select>
             </div>
-
-            <div class="col-md-12">
-                <button class="btn btn-primary btn-sm" onclick="saveAll()">
-                    Add Author
-                </button>
+            <div class="col-md-4 mb-2 d-flex align-items-end">
+                <button class="btn btn-primary btn-sm" onclick="saveAll()">Add Author</button>
             </div>
         </div>
+
         <div class="row my-2 p-2">
             <table class="table table-bordered">
                 <thead>
@@ -40,37 +39,63 @@
                     @foreach ($authors as $key => $author)
                         <tr>
                             <?php
-                            $authorName = DB::table('authors')
-                                ->where('id', $author->author_id)
-                                ->value('name');
+                            $authorName = DB::table('authors')->where('id', $author->author_id)->value('name');
                             ?>
                             <td>{{ $key + 1 }}</td>
                             <td>{{ $authorName }}</td>
-                            <td><a href="{{ route('admin.book.article.articleAuthor.delAuthor', ['articleAuthor_id' => $author->id]) }}"
-                                    class="btn btn-danger">Delete</a></td>
+                            <td><a href="{{ route('admin.book.article.articleAuthor.delAuthor', ['articleAuthor_id' => $author->id]) }}" class="btn btn-danger">Delete</a></td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
-        <div class="mt-2 p-2 shadow">
-            <div class="heading text-start mb-2">
-                <button class="btn btn-primary btn-sm" onclick="render()">
-                    Add New Author
-                </button>
-            </div>
-            <div id="authorAdd" class="row ">
 
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add New Author</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="new-author-form">
+                            <div class="form-group">
+                                <label for="author-name" class="col-form-label">Name:</label>
+                                <input type="text" class="form-control" id="author-name">
+                            </div>
+                            <div class="form-group">
+                                <label for="author-link" class="col-form-label">Link:</label>
+                                <input type="text" class="form-control" id="author-link">
+                            </div>
+                            <div class="form-group">
+                                <label for="author-designation" class="col-form-label">Designation:</label>
+                                <input type="text" class="form-control" id="author-designation">
+                            </div>
+                            <div class="form-group">
+                                <label for="author-organization" class="col-form-label">Organization:</label>
+                                <input type="text" class="form-control" id="author-organization">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="saveNewAuthor()">Save</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 @endsection
+
 @section('js')
     <script>
         $(document).ready(function() {
             $('.author').select2({
                 height: 300,
             });
+
             axios.post("{{ route('admin.book.article.articleAuthor.listAuthor') }}", {
                     name: '',
                     "_token": "{{ csrf_token() }}",
@@ -97,6 +122,7 @@
             var selectedAuthors = $('#author').val();
             var articleId = '{{ $article->id }}';
             var bookId = '{{ $book->id }}';
+
             axios.post("{{ route('admin.book.article.articleAuthor.addAuthor') }}", {
                     article_id: articleId,
                     author_ids: selectedAuthors,
@@ -104,7 +130,7 @@
                     "_token": "{{ csrf_token() }}",
                 })
                 .then(function(response) {
-                    success('successfully added')
+                    alert('Authors successfully added');
                     location.reload();
                 })
                 .catch(function(error) {
@@ -112,57 +138,35 @@
                 });
         }
 
-        function render() {
-            $('#authorAdd').append(`
-                <div class="col-md-4 mb-2">
-                    <label for="name">Name</label>
-                    <input type="text" name="name" id="name" class="form-control">
-                </div>
-                <div class="col-md-4 mb-2">
-                    <label for="link">Link</label>
-                    <input type="text" name="link" id="link" class="form-control">
-                </div>
-                <div class="col-md-4 mb-2">
-                    <label for="designation">Designation</label>
-                    <input type="text" name="designation" id="designation" class="form-control">
-                </div>
-                <div class="col-md-4 mb-2">
-                    <label for="organization">Organization</label>
-                    <input type="text" name="organization" id="organization" class="form-control">
-                </div>
-                <div class="col-md-12 mb-2 text-start">
-                    <button class="btn btn-primary btn-sm" onclick ="saveAuthor('{{ $article->id }}','{{ $book->id }}')">
-                        Add
-                    </button>
-                </div>`)
-        }
-
-        function saveAuthor(article_id, book_id) {
-            var name = $('#name').val();
-            var link = $('#link').val();
-            var designation = $('#designation').val();
-            var organization = $('#organization').val();
+        function saveNewAuthor() {
+            var name = $('#author-name').val();
+            var link = $('#author-link').val();
+            var designation = $('#author-designation').val();
+            var organization = $('#author-organization').val();
 
             const data = {
                 name: name,
                 link: link,
                 designation: designation,
                 organization: organization,
-            }
+                "_token": "{{ csrf_token() }}"
+            };
 
-            console.log(data);
-            const url =
-                `{{ route('admin.book.article.articleAuthor.saveAuthor', ['book_id' => ':book', 'article_id' => ':article']) }}`
-                .replace(':book', book_id)
-                .replace(':article', article_id);
+            var articleId = '{{ $article->id }}';
+            var bookId = '{{ $book->id }}';
+
+            const url = `{{ route('admin.book.article.articleAuthor.saveAuthor', ['book_id' => ':book', 'article_id' => ':article']) }}`
+                .replace(':book', bookId)
+                .replace(':article', articleId);
+
             axios.post(url, data)
                 .then(res => {
-                    success('successfully added');
+                    alert('Author successfully added');
                     location.reload();
                 })
                 .catch(err => {
-                    console.error(err);
-                })
+                    console.error('Error adding author:', err);
+                });
         }
     </script>
 @endsection

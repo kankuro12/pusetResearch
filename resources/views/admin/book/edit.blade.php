@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
+<a href="{{route('admin.book.index')}}">Issues</a>
 @section('header-Links')
-    <a href="{{route('admin.book.index')}}">Book</a>
     <a href="{{route('admin.book.add')}}">Add</a>
 @endsection
 @section('active','book')

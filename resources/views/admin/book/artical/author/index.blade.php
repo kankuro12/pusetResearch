@@ -8,7 +8,7 @@
 @endsection
 
 @section('toolbar')
-    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addModal">
+    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
         Add New Author
     </button>
 @endsection
@@ -53,35 +53,36 @@
                 </tbody>
             </table>
         </div>
-
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
-            data-whatever="@mdo">Open modal for @mdo</button>
-
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content" style="width: 700px">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">New message</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">Recipient:</label>
-                                <input type="text" class="form-control" id="recipient-name">
+                        <div class="row">
+                            <div class="col-md-6 mb-2">
+                                <label for="name">Name</label>
+                                <input type="text" name="author-name" id="author-name" class="form-control">
                             </div>
-                            <div class="form-group">
-                                <label for="message-text" class="col-form-label">Message:</label>
-                                <textarea class="form-control" id="message-text"></textarea>
+                            <div class="col-md-6 mb-2">
+                                <label for="link">Link</label>
+                                <input type="text" name="author-link" id="author-link" class="form-control">
                             </div>
-                        </form>
+                            <div class="col-md-6 mb-2">
+                                <label for="designation">Designation</label>
+                                <input type="text" name="author-designation" id="author-designation" class="form-control">
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <label for="organization">Organization</label>
+                                <input type="text" name="author-organization" id="author-organization" class="form-control">
+                            </div>
+                        </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Send message</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="saveNewAuthor()">Save</button>
                     </div>
                 </div>
             </div>
@@ -167,7 +168,7 @@
 
             axios.post(url, data)
                 .then(res => {
-                    alert('Author successfully added');
+                    success('Author successfully added');
                     location.reload();
                 })
                 .catch(err => {

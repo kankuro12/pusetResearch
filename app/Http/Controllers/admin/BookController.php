@@ -79,10 +79,13 @@ class BookController extends Controller
     public function del($book_id)
     {
         $article = BookArtical::where('book_id', $book_id)->first();
-
-        BookArticalAuthor::where('book_artical_id', $article->id)->delete();
-        BookArtical::where('book_id', $book_id)->delete();
-        Book::where('id', $book_id)->delete();
+        if ($article == null) {
+            Book::where('id', $book_id)->delete();
+        } else {
+            BookArticalAuthor::where('book_artical_id', $article->id)->delete();
+            BookArtical::where('book_id', $book_id)->delete();
+            Book::where('id', $book_id)->delete();
+        }
         return redirect()->back()->with('success', 'succesfully deleted');
     }
 
@@ -198,10 +201,5 @@ class BookController extends Controller
         $author->designation = $request->input('designation');
         $author->organization = $request->input('organization');
         $author->save();
-        // $authorArticle = new BookArticalAuthor();
-        // $authorArticle->author_name = $author->name;
-        // $authorArticle->book_artical_id = $article_id;
-        // $authorArticle->author_id = $author->id;
-        // $authorArticle->save();
     }
 }

@@ -26,21 +26,21 @@ use Illuminate\Support\Facades\Route;
 //     'password' => bcrypt('password'),
 //      'role' => '0',
 // ]);
-Route::get('/',[FrontController::class,'index'])->name('index');
-Route::get('layout',[FrontController::class,'layout'])->name('layout');
-Route::get('frontlogin',[FrontController::class,'login'])->name('frontlogin');
-Route::get('about',[FrontController::class,'about'])->name('about');
-Route::get('policy',[FrontController::class,'policy'])->name('policy');
-Route::get('contact',[FrontController::class,'contact'])->name('contact');
-Route::get('submission',[FrontController::class,'submission'])->name('submission');
-Route::match(['GET','POST'],'register',[FrontController::class,'register'])->name('register');
-Route::get('articleSingle/{article}',[FrontController::class,'articleSingle'])->name('articleSingle');
+Route::get('/', [FrontController::class, 'index'])->name('index');
+Route::get('layout', [FrontController::class, 'layout'])->name('layout');
+Route::get('frontlogin', [FrontController::class, 'login'])->name('frontlogin');
+Route::get('about', [FrontController::class, 'about'])->name('about');
+Route::get('policy', [FrontController::class, 'policy'])->name('policy');
+Route::get('contact', [FrontController::class, 'contact'])->name('contact');
+Route::get('submission', [FrontController::class, 'submission'])->name('submission');
+Route::match(['GET', 'POST'], 'register', [FrontController::class, 'register'])->name('register');
+Route::get('articleSingle/{article}', [FrontController::class, 'articleSingle'])->name('articleSingle');
 
 Route::match(['GET', 'POST'], 'login', [LoginController::class, 'login'])->name('login');
-Route::match(['POST'],'clientlogin',[LoginController::class,'clientlogin'])->name('clientlogin');
-Route::get('logout',[LoginController::class,'logout'])->name('logout');
+Route::match(['POST'], 'clientlogin', [LoginController::class, 'clientlogin'])->name('clientlogin');
+Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     Route::get('/', [DashbordController::class, 'index'])->name('index');
     Route::get('/file', [FileController::class, 'index'])->name('file');
 
@@ -68,7 +68,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
                 Route::get('indexAuthor/{book_id}/{article_id}', [BookController::class, 'indexAuthor'])->name('indexAuthor');
                 Route::match(['POST'], 'addAuthor', [BookController::class, 'addAuthor'])->name('addAuthor');
                 Route::get('delAuthor/{articleAuthor_id}', [BookController::class, 'delAuthor'])->name('delAuthor');
-                Route::post('saveAuthor/{book_id}/{article_id}',[BookController::class,'saveAuthor'])->name('saveAuthor');
+                Route::post('saveAuthor/{book_id}/{article_id}', [BookController::class, 'saveAuthor'])->name('saveAuthor');
             });
         });
     });
@@ -109,19 +109,19 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::prefix('setting')->name('setting.')->group(function () {
         Route::get('index', [SettingController::class, 'index'])->name('index');
 
-        Route::prefix('generalLayout')->name('generalLayout.')->group(function(){
-            Route::match(['GET','POST'],'general_index',[SettingController::class,'general_index'])->name('general_index');
+        Route::prefix('generalLayout')->name('generalLayout.')->group(function () {
+            Route::match(['GET', 'POST'], 'general_index', [SettingController::class, 'general_index'])->name('general_index');
         });
         Route::prefix('policy')->name('policy.')->group(function () {
             Route::get('policy_index', [SettingController::class, 'policy_index'])->name('policy_index');
-            Route::match(['GET','POST'], 'policy_add', [SettingController::class, 'policy_add'])->name('policy_add');
-            Route::match(['GET','POST'], 'policy_edit/{policy_id}', [SettingController::class, 'policy_edit'])->name('policy_edit');
+            Route::match(['GET', 'POST'], 'policy_add', [SettingController::class, 'policy_add'])->name('policy_add');
+            Route::match(['GET', 'POST'], 'policy_edit/{policy_id}', [SettingController::class, 'policy_edit'])->name('policy_edit');
             Route::get('policy_del/{policy_id}', [SettingController::class, 'policy_del'])->name('policy_del');
         });
         Route::prefix('about')->name('about.')->group(function () {
             Route::get('about_index', [SettingController::class, 'about_index'])->name('about_index');
             Route::match(['POST'], 'about_add', [SettingController::class, 'about_add'])->name('about_add');
-            Route::match(['GET','POST'], 'about_edit/{about_id}', [SettingController::class, 'about_edit'])->name('about_edit');
+            Route::match(['GET', 'POST'], 'about_edit/{about_id}', [SettingController::class, 'about_edit'])->name('about_edit');
             Route::get('about_del/{about_id}', [SettingController::class, 'about_del'])->name('about_del');
         });
         Route::prefix('contact')->name('contact.')->group(function () {
@@ -134,22 +134,22 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::match(['post'], 'editArtical/{artical_id}', [SettingController::class, 'editArtical'])->name('editArtical');
             Route::get('delArtical/{artical_id}', [SettingController::class, 'delArtical'])->name('delArtical');
         });
-        Route::prefix('associate')->name('associate.')->group(function(){
-            Route::match(['GET','POST'],'indexAsso',[SettingController::class,'indexAsso'])->name('indexAsso');
-            Route::match(["POST"],'addAsso',[SettingController::class,'addAsso'])->name('addAsso');
-            Route::match(["POST"],'editAsso',[SettingController::class,'editAsso'])->name('editAsso');
-            Route::match(["GET"],'delAsso/{asso_id}',[SettingController::class,'delAsso'])->name('delAsso');
+        Route::prefix('associate')->name('associate.')->group(function () {
+            Route::match(['GET', 'POST'], 'indexAsso', [SettingController::class, 'indexAsso'])->name('indexAsso');
+            Route::match(["POST"], 'addAsso', [SettingController::class, 'addAsso'])->name('addAsso');
+            Route::match(["POST"], 'editAsso', [SettingController::class, 'editAsso'])->name('editAsso');
+            Route::match(["GET"], 'delAsso/{asso_id}', [SettingController::class, 'delAsso'])->name('delAsso');
         });
     });
 });
 
-Route::prefix('client')->name('client.')->group(function(){
-    Route::get('index',[ClientController::class,'index'])->name('index');
-    Route::prefix('submission')->name('submission.')->group(function(){
-        Route::get('index',[ClientSubmissionController::class,'index'])->name('index');
-        Route::match(['GET','POST'],'add',[ClientSubmissionController::class,'add'])->name('add');
-        Route::match(['GET','POST'],'edit/{sub_id}',[ClientSubmissionController::class,'edit'])->name('edit');
-        Route::match(['GET'],'del/{sub_id}',[ClientSubmissionController::class,'del'])->name('del');
-        Route::get('list',[ClientSubmissionController::class,'list'])->name('list');
+Route::prefix('client')->name('client.')->group(function () {
+    Route::get('index', [ClientController::class, 'index'])->name('index');
+    Route::prefix('submission')->name('submission.')->group(function () {
+        Route::get('index', [ClientSubmissionController::class, 'index'])->name('index');
+        Route::match(['GET', 'POST'], 'add', [ClientSubmissionController::class, 'add'])->name('add');
+        Route::match(['GET', 'POST'], 'edit/{sub_id}', [ClientSubmissionController::class, 'edit'])->name('edit');
+        Route::match(['GET'], 'del/{sub_id}', [ClientSubmissionController::class, 'del'])->name('del');
+        Route::get('list', [ClientSubmissionController::class, 'list'])->name('list');
     });
 });

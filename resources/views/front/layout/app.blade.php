@@ -30,7 +30,7 @@
     @endphp
     <div class="content">
         <div class="topbar">
-            <div class="container" style="border-bottom: 1px solid #dddddd; padding :10px">
+            <div class="container" style="padding :10px">
                 <div class="left">
                 {{$general->content}}
                 </div>
@@ -47,6 +47,9 @@
 
                     </div>
                 </div>
+            </div>
+            <div class="line px-4" >
+                <hr class="m-0">
             </div>
         </div>
         <header>

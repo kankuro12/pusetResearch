@@ -5,6 +5,11 @@
     <a href="{{ route('admin.book.article.indexArticle', ['book_id' => $book->id]) }}"> Articles</a>
     <a href="#">Add</a>
 @endsection
+@section('toolbar')
+<button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Add New Author
+</button>
+@endsection
 @section('active', 'book')
 @section('content')
     <div class="shadow mt-3 p-3 bg-white rounded">
@@ -75,6 +80,40 @@
                 </div>
             </div>
         </form>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content" style="width: 700px">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">New message</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6 mb-2">
+                                <label for="name">Name</label>
+                                <input type="text" name="author-name" id="author-name" class="form-control">
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <label for="link">Link</label>
+                                <input type="text" name="author-link" id="author-link" class="form-control">
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <label for="designation">Designation</label>
+                                <input type="text" name="author-designation" id="author-designation" class="form-control">
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <label for="organization">Organization</label>
+                                <input type="text" name="author-organization" id="author-organization" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="saveNewAuthor()">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
 @section('js')
@@ -92,5 +131,29 @@
         $(document).ready(function() {
             $('#artical_type_id').select2();
         });
+
+        function saveNewAuthor() {
+            var name = $('#author-name').val();
+            var link = $('#author-link').val();
+            var designation = $('#author-designation').val();
+            var organization = $('#author-organization').val();
+
+            const data = {
+                name: name,
+                link: link,
+                designation: designation,
+                organization: organization,
+                "_token": "{{ csrf_token() }}"
+            };
+            const url = `{{ route('admin.author.add')}}` ;
+            axios.post(url, data)
+                .then(res => {
+                    success('Author successfully added');
+                    location.reload();
+                })
+                .catch(err => {
+                    error('Error adding author:', err);
+                });
+        }
     </script>
 @endsection

@@ -67,7 +67,7 @@
                     <div class="col-md-4">
                         <div class="detail">
                             <div class="pdf">
-                                <a href="{{asset($article->file)}}">
+                                <a href="{{asset($article->file)}}" target="_blank">
                                     <i class="fa-regular fa-file-pdf"></i> PDF
                                 </a>
                             </div>

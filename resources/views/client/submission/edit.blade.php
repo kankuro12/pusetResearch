@@ -1,7 +1,7 @@
 @extends('client.layout.app')
 @section('header-link')
     <a href="{{ route('client.submission.index') }}">Submissions</a>
-    <a href="{{ route('client.submission.edit', ['sub_id' => $submission->id]) }}">Add</a>
+    <a href="{{ route('client.submission.edit', ['sub_id' => $submission->id]) }}">Edit</a>
 @endsection
 @section('active', 'submission')
 

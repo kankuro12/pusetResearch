@@ -2,7 +2,7 @@
 
 @section('header-Links')
     <a href="{{ route('admin.book.index') }}">Issues</a>
-    <a href="#">{{$book->title}}</a>
+    <a href="#">{{ucwords($book->title)}}</a>
     <a href="{{ route('admin.book.article.indexArticle', ['book_id' => $book->id]) }}">Articles</a>
     <a href="{{ route('admin.book.article.articleAuthor.indexAuthor', ['book_id' => $book->id, 'article_id' => $article->id]) }}">Authors</a>
 @endsection

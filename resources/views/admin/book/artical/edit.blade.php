@@ -1,7 +1,7 @@
 @extends('admin.layout.app')
 @section('header-Links')
     <a href="{{ route('admin.book.index') }}">Issues</a>
-    <a href="#">{{$book->title}}</a>
+    <a href="#">{{ucwords($book->title)}}</a>
     <a href="{{ route('admin.book.article.indexArticle', ['book_id' => $book->id]) }}">Articles</a>
     <a href="#">Edit</a>
 @endsection

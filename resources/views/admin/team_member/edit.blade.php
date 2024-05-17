@@ -1,10 +1,10 @@
 @extends('admin.layout.app')
 
 @section('header-Links')
-<a href="{{route('admin.team.index')}}">Teams</a>
-    <a href="{{ route('admin.team.team_member.index', ['team_id' => $team->id]) }}">Members</a>
-    <a
-        href="{{ route('admin.team.team_member.edit', ['team_member_id' => $team_member->id, 'team_id' => $team->id]) }}">Edit</a>
+<a href="{{ route('admin.team.index') }}">Teams</a>
+<a href="#">{{ ucwords($team->title)}}</a>
+<a href="{{ route('admin.team.team_member.index', ['team_id' => $team->id]) }}">Members</a>
+<a href="#">Edit</a>
 @endsection
 
 @section('active', 'team_member')
@@ -15,47 +15,47 @@
             action="{{ route('admin.team.team_member.edit', ['team_member_id' => $team_member->id, 'team_id' => $team->id]) }}"
             method="POST">
             @csrf
-            <div class="row">
+            <div class="row" style="align-items: flex-end">
                 <div class="col-md-3 mb-2">
                     <label for="name">Name</label>
-                    <input type="text" name="name" id="name" value="{{ $team_member->name }}" class="form-control">
+                    <input type="text" name="name" id="name" value="{{ $team_member->name }}" class="form-control" required>
                 </div>
                 <div class="col-md-3 mb-2">
                     <label for="designation">Designation</label>
                     <input type="text" name="designation" id="designation" value="{{ $team_member->designation }}"
-                        class="form-control">
+                        class="form-control" required>
                 </div>
                 <div class="col-md-6 mb-2">
                     <label for="team_designation">Team Designation</label>
                     <input type="text" name="team_designation" id="team_designation"
-                        value="{{ $team_member->team_designation }}" class="form-control">
+                        value="{{ $team_member->team_designation }}" class="form-control" >
                 </div>
                 <div class="col-md-3 mb-2">
                     <label for="organization">Organization</label>
                     <input type="text" name="organization" id="organization" value="{{ $team_member->organization }}"
-                        class="form-control">
+                        class="form-control" required>
                 </div>
                 <div class="col-md-3 mb-2">
                     <label for="address">Address</label>
                     <input type="text" name="address" id="address" value="{{ $team_member->address }}"
-                        class="form-control">
+                        class="form-control" required>
                 </div>
                 <div class="col-md-3 mb-2">
                     <label for="email">Email</label>
                     <input type="email" name="email" id="email" value="{{ $team_member->email }}"
-                        class="form-control" required>
+                        class="form-control" required >
                 </div>
                 <div class="col-md-3 mb-2">
                     <label for="phone">Phone</label>
-                    <input type="text" name="phone" id="phone" value="{{ $team_member->phone }}"
-                        class="form-control">
+                    <input type="number" name="phone" id="phone" value="{{ $team_member->phone }}"
+                        class="form-control" required>
                 </div>
-                <div class="col-md-6 mb-2">
+                <div class="col-md-8 mb-2">
                     <label for="detail">Detail</label>
                     <input type="text" name="detail" id="detail" value="{{ $team_member->detail }}"
-                        class="form-control">
+                        class="form-control" >
                 </div>
-                <div class="col-md-12 mb-2 text-start">
+                <div class="col-md-4 mb-2 text-start d-flex align-items-end p-1">
                     <button class="btn btn-primary btn-sm">
                         Update
                     </button>

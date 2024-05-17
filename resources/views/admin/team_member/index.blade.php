@@ -1,6 +1,7 @@
 @extends('admin.layout.app')
 @section('header-Links')
     <a href="{{ route('admin.team.index') }}">Teams</a>
+    <a href="#">{{ ucwords($team->title)}}</a>
     <a href="{{ route('admin.team.team_member.index', ['team_id' => $team->id]) }}">Members</a>
 @endsection
 @section('active', 'team')

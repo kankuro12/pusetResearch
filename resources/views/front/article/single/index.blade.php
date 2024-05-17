@@ -1,11 +1,30 @@
 @extends('front.layout.app')
+@section('header_link')
+    <a href="#">{{$book->issue_name}}</a>
+    <i class="fa-solid fa-circle"></i>
+    <a href="#">{{$article->title}}</a>
+@endsection
+@section('top_name')
+    {{$article->title}}
+@endsection
+@section('title')
+{{$article->title}}
+@endsection
+@section('meta')
+<meta property="og:title" content="{{$article->title}}">
+<meta property="og:description" content="{{$article->abstract}}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{route('articleSingle',['article'=>$article->id])}}">
+<meta property="og:image" content="{{asset($book->image)}}">
+<meta property="og:site_name" content="{{config('app.name')}}">
+@endsection
 @section('content')
 <div class="article-single">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <h1>
-                {{$article->title}}
+                    {{$article->title}}
                 </h1>
                 <div class="row">
                     <div class="col-md-8">

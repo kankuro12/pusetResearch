@@ -15,10 +15,13 @@
     <link rel="stylesheet" href="{{ asset('asset/front/css/articlesingle/index.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/front/css/contact/index.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/front/css/register/index.css') }}">
-    <title>Document</title>
+    <title>{{config('app.name')}} @yield('title')</title>
     <style>
 
     </style>
+
+    @yield('meta')
+
 </head>
 
 <body>

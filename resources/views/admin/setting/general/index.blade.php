@@ -70,7 +70,7 @@
                         <input type="file" name="logo" id="logo" accept="image/*" class="form-control photo">
                     @else
                         <input type="file" name="logo" id="logo" accept="image/*" class="form-control photo"
-                            data-default-file="{{ vasset($generalLayout->logo) }}">
+                            data-default-file="{{ asset($generalLayout->logo) }}">
                     @endif
                 </div>
                 <div class="col-md-12 text-start">

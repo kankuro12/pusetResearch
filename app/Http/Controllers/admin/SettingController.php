@@ -62,6 +62,7 @@ class SettingController extends Controller
         }
         $policies = Policies::get();
         file_put_contents(resource_path('views/front/cache/policy.blade.php'),view('admin.templete.poilcy',compact('policies'))->render());
+        return redirect()->back()->with('success','Successfully Added');
     }
     public function policy_edit(Request $request, $policy_id)
     {
@@ -99,7 +100,6 @@ class SettingController extends Controller
         $about->sub_title = $request->sub_title;
         $about->description = $request->description;
         $about->save();
-
         $abouts = DB::table('abouts')->get();
         file_put_contents(resource_path('views/front/cache/about.blade.php'), view('admin.templete.about', compact('abouts'))->render());
     }
@@ -114,6 +114,7 @@ class SettingController extends Controller
         } else {
             return view('admin.setting.about.edit', compact('about'));
         }
+        return redirect()->back()->with('success','successfully updated');
     }
     public function about_del($about_id)
     {
@@ -167,6 +168,7 @@ class SettingController extends Controller
             };
             file_put_contents(resource_path('views/front/cache/sidebar.blade.php'), view('admin.templete.sidebar', compact('title', 'associates')));
         };
+        return redirect()->back()->with('success','successfully Added');
     }
     public function delAsso($asso_id)
     {

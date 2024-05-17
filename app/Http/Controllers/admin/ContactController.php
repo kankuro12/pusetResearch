@@ -27,11 +27,7 @@ class ContactController extends Controller
             $contact->save();
             $individualContact = $request->input('individualContactsDatas');
             foreach ($individualContact as $key => $contact) {
-                if (isset($contact['id'])) {
-                    $individualcontact = IndividualContact::where('id', $contact['id'])->first();
-                } else {
-                    $individualcontact = new IndividualContact();
-                }
+                $individualcontact = new IndividualContact();
                 $individualcontact->name = $contact['name'];
                 $individualcontact->title = $contact['title'];
                 $individualcontact->post = $contact['post'];

@@ -13,8 +13,8 @@
                 <thead>
                     <tr>
                         <th>Title</th>
-                        <th>Issn</th>
-                        <th>DOI</th>
+                        <th>Issue</th>
+                        <th>Volume</th>
                         <th>Issue Date</th>
                         <th>Published Date</th>
                         <th>manage</th>
@@ -50,14 +50,15 @@
                     url: "{{ route('admin.book.list') }}",
                     dataSrc: ''
                 },
-                columns: [{
+                columns: [
+                    {
                         data: 'title'
                     },
                     {
-                        data: 'issn'
+                        data: 'issue_name'
                     },
                     {
-                        data: 'doi'
+                        data: 'volume'
                     },
                     {
                         data: 'issue'

@@ -18,7 +18,7 @@ class BookController extends Controller
     }
     public function list()
     {
-        $books = DB::table('books')->get(['id', 'title', 'issn', 'doi', 'published_date', 'issue', 'iscurrent']);
+        $books = DB::table('books')->get(['id', 'title', 'volume', 'issue','issue_name', 'published_date', 'iscurrent']);
         return response()->json($books);
     }
     public function add(Request $request)

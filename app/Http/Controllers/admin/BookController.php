@@ -10,6 +10,8 @@ use App\Models\BookArticalAuthor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use function Laravel\Prompts\error;
+
 class BookController extends Controller
 {
     public function index()
@@ -18,7 +20,7 @@ class BookController extends Controller
     }
     public function list()
     {
-        $books = DB::table(t_books)->get(['id', 'title', 'volume', 'issue','issue_name', 'published_date', 'iscurrent']);
+        $books = DB::table(t_books)->get(['id', 'title', 'volume', 'issue', 'issue_name', 'published_date', 'iscurrent']);
         return response()->json($books);
     }
     public function add(Request $request)
@@ -31,7 +33,7 @@ class BookController extends Controller
             $book->eng_title = $request->eng_title;
             $book->issn = $request->issn;
             $book->doi = $request->doi;
-            $book->website = $request->website??"";
+            $book->website = $request->website ?? "";
             $book->volume = $request->volume;
             $book->issue_name = $request->issue_name;
             $book->language_of_publication = $request->language_of_publication;
@@ -44,8 +46,8 @@ class BookController extends Controller
             $book->file = $request->file('file')->store('uploads/file');
             $book->iscurrent =  $request->filled('iscurrent') ? true : false;
             $book->save();
-            if($book->iscurrent){
-                Book::where('id','<>',$book->id)->update(['iscurrent'=>0]);
+            if ($book->iscurrent) {
+                Book::where('id', '<>', $book->id)->update(['iscurrent' => 0]);
             }
         };
         return redirect()->back()->with('success', 'succesfully added');
@@ -60,7 +62,7 @@ class BookController extends Controller
             $book->eng_title = $request->eng_title;
             $book->issn = $request->issn;
             $book->doi = $request->doi;
-            $book->website = $request->website??"";
+            $book->website = $request->website ?? "";
             $book->volume = $request->volume;
             $book->issue_name = $request->issue_name;
             $book->language_of_publication = $request->language_of_publication;
@@ -97,23 +99,25 @@ class BookController extends Controller
 
     public function indexArticle($book_id)
     {
-        $book = DB::table(t_books)->where('id', $book_id)->first(['id','title']);
+        $book = DB::table(t_books)->where('id', $book_id)->first(['id', 'title']);
         return view('admin.book.artical.index', compact('book'));
     }
     public function listArticle(Request $request)
     {
         $articles = BookArtical::select('book_articals.*', 'artical_types.name as artical_type_name')
             ->join('artical_types', 'book_articals.artical_type_id', '=', 'artical_types.id')
-            ->where('book_id',$request->book_id)
+            ->where('book_id', $request->book_id)
             ->get();
         return response()->json($articles);
     }
     public function addArticle(Request $request, $book_id)
     {
+
         if ($request->getMethod() == "GET") {
-            $book = DB::table(t_books)->where('id', $book_id)->first(['id','title']);
+            $authors = DB::table('authors')->get();
+            $book = DB::table(t_books)->where('id', $book_id)->first(['id', 'title']);
             $articalTypes = DB::table('artical_types')->get();
-            return view('admin.book.artical.add', compact('book', 'articalTypes'));
+            return view('admin.book.artical.add', compact('book', 'articalTypes', 'authors'));
         } else {
             $artical = new BookArtical();
             $artical->title = $request->title;
@@ -126,6 +130,19 @@ class BookController extends Controller
             $artical->artical_type_id = $request->artical_type_id;
             $artical->file = $request->file('file')->store('uploads/artical');
             $artical->save();
+
+            $authorArticle = new BookArticalAuthor();
+            $article_id = $artical->id;
+            $book_id = $request->input('book_id');
+            foreach ($request->author_ids as $author_id) {
+                $author = Author::where('id', $author_id)->first();
+                $authorArticle = new BookArticalAuthor();
+                $authorArticle->author_name = $author->name;
+                $authorArticle->book_artical_id = $article_id;
+                $authorArticle->book_id = $book_id;
+                $authorArticle->author_id = $author_id;
+                $authorArticle->save();
+            }
             return redirect()->back()->with('success', 'Successfully added');
         }
     }
@@ -133,9 +150,10 @@ class BookController extends Controller
     {
         $artical = BookArtical::where('id', $artical_id)->first();
         if ($request->getMethod() == "GET") {
+            $articalAuthors = DB::table('book_artical_authors')->where('book_artical_id', $artical_id)->get();
             $book = Book::where('id', $book_id)->first();
             $articalTypes = DB::table('artical_types')->get();
-            return view('admin.book.artical.edit', compact('book', 'artical', 'articalTypes'));
+            return view('admin.book.artical.edit', compact('book', 'artical', 'articalTypes', 'articalAuthors'));
         } else {
             $artical->title = $request->title;
             $artical->doi = $request->doi;
@@ -148,6 +166,25 @@ class BookController extends Controller
                 $artical->file = $request->file('file')->store('uploads/artical');
             }
             $artical->save();
+            if ($request->author_ids) {
+                $existingAuthors = DB::table('book_artical_authors')->where('book_artical_id', $artical_id)->pluck('author_id')->toArray();
+                $newAuthors = $request->author_ids;
+                $duplicateAuthors = array_intersect($existingAuthors, $newAuthors);
+                if (!empty($duplicateAuthors)) {
+                } else {
+                    $article_id = $artical->id;
+                    $book_id = $request->input('book_id');
+                    foreach ($request->author_ids as $author_id) {
+                        $author = Author::where('id', $author_id)->first();
+                        $authorArticle = new BookArticalAuthor();
+                        $authorArticle->author_name = $author->name;
+                        $authorArticle->book_artical_id = $article_id;
+                        $authorArticle->book_id = $book_id;
+                        $authorArticle->author_id = $author_id;
+                        $authorArticle->save();
+                    }
+                }
+            }
             return redirect()->back()->with('success', 'Successfully updated');
         }
     }

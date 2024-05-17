@@ -1,14 +1,14 @@
 @extends('admin.layout.app')
 @section('header-Links')
     <a href="{{ route('admin.book.index') }}">Issues</a>
-    <a href="#">{{ucwords($book->title)}}</a>
+    <a href="#">{{ ucwords($book->title) }}</a>
     <a href="{{ route('admin.book.article.indexArticle', ['book_id' => $book->id]) }}"> Articles</a>
     <a href="#">Add</a>
 @endsection
 @section('toolbar')
-<button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Add New Author
-</button>
+    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Add New Author
+    </button>
 @endsection
 @section('active', 'book')
 @section('content')
@@ -16,7 +16,6 @@
         <form action="{{ route('admin.book.article.addArticle', ['book_id' => $book->id]) }}" method="POST"
             enctype="multipart/form-data">
             @csrf
-
             <input type="hidden" name="book_id" value="{{ $book->id }}">
             <div class="row">
                 <div class="col-md-3">
@@ -28,7 +27,6 @@
                 </div>
                 <div class="col-md-9">
                     <div class="row">
-
                         <div class="col-md-4 mb-3">
                             <label for="artical_type_id" class="mb-1">Article Type</label>
                             <select name="artical_type_id" id="artical_type_id" class="form-control" required>
@@ -66,7 +64,10 @@
                             <label for="abstract">Abstract</label>
                             <textarea type="text" name="abstract" id="abstract" class="form-control"></textarea>
                         </div>
-
+                        <div class="col-md-12 mb-2">
+                            <label for="author" class="mb-2">Select Authors</label>
+                            <select name="author_ids[]" id="author" multiple="multiple" class="author form-control"></select>
+                        </div>
                         <div class="col-md-12 mb-2 text-end">
                             <a href="{{ route('admin.book.article.indexArticle', ['book_id' => $book->id]) }}"
                                 class="btn btn-danger btn-sm" onClick="return yes();">
@@ -80,6 +81,7 @@
                 </div>
             </div>
         </form>
+
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content" style="width: 700px">
@@ -99,11 +101,13 @@
                             </div>
                             <div class="col-md-6 mb-2">
                                 <label for="designation">Designation</label>
-                                <input type="text" name="author-designation" id="author-designation" class="form-control">
+                                <input type="text" name="author-designation" id="author-designation"
+                                    class="form-control">
                             </div>
                             <div class="col-md-6 mb-2">
                                 <label for="organization">Organization</label>
-                                <input type="text" name="author-organization" id="author-organization" class="form-control">
+                                <input type="text" name="author-organization" id="author-organization"
+                                    class="form-control">
                             </div>
                         </div>
                     </div>
@@ -130,7 +134,31 @@
         }
         $(document).ready(function() {
             $('#artical_type_id').select2();
-        });
+            $('.author').select2({
+                height: 300,
+            });
+
+            axios.post("{{ route('admin.book.article.articleAuthor.listAuthor') }}", {
+                    name: '',
+                    "_token": "{{ csrf_token() }}",
+                })
+                .then(function(response) {
+                    var data = response.data;
+                    var results = data.map(function(item) {
+                        return {
+                            id: item.id,
+                            text: item.name
+                        };
+                    });
+
+                    $('#author').select2({
+                        data: results
+                    });
+                })
+                .catch(function(error) {
+                    console.error('Error fetching authors:', error);
+                });
+        })
 
         function saveNewAuthor() {
             var name = $('#author-name').val();
@@ -145,7 +173,7 @@
                 organization: organization,
                 "_token": "{{ csrf_token() }}"
             };
-            const url = `{{ route('admin.author.add')}}` ;
+            const url = `{{ route('admin.author.add') }}`;
             axios.post(url, data)
                 .then(res => {
                     success('Author successfully added');

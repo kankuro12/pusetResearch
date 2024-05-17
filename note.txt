@@ -50,3 +50,5 @@ new project 2 user role
   title
   image
   link
+
+ short degination remove from article

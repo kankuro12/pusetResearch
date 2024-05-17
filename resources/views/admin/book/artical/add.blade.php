@@ -1,7 +1,7 @@
 @extends('admin.layout.app')
 @section('header-Links')
     <a href="{{ route('admin.book.index') }}">Issues</a>
-    <a href="#">{{$book->title}}</a>
+    <a href="#">{{ $book->title }}</a>
     <a href="{{ route('admin.book.article.indexArticle', ['book_id' => $book->id]) }}"> Articles</a>
     <a href="#">Add</a>
 @endsection
@@ -12,12 +12,13 @@
             enctype="multipart/form-data">
             @csrf
 
-            <input type="hidden" name="book_id" value="{{$book->id}}">
+            <input type="hidden" name="book_id" value="{{ $book->id }}">
             <div class="row">
                 <div class="col-md-3">
                     <div class="mb-3">
                         <label for="file">PDF File</label>
-                        <input type="file" name="file" id="file" class="form-control photo" accept=".pdf" required>
+                        <input type="file" name="file" id="file" class="form-control photo" accept=".pdf"
+                            required>
                     </div>
                 </div>
                 <div class="col-md-9">
@@ -48,17 +49,15 @@
                         </div>
                         <div class="col-md-4 mb-2">
                             <label for="starting_page">Starting Page No</label>
-                            <input type="number" name="starting_page" id="starting_page" class="form-control" required>
+                            <input type="number" name="starting_page" id="starting_page" class="form-control" required
+                                oninput="valueCheck()">
                         </div>
                         <div class="col-md-4 mb-2">
                             <label for="ending_page">Ending Page No</label>
-                            <input type="number" name="ending_page" id="ending_page" class="form-control" required>
+                            <input type="number" name="ending_page" id="ending_page" class="form-control"
+                                oninput="valueCheck()" required>
                         </div>
-                        <div class="col-md-6 mb-2">
-                            <label for="short_desc">Short Description</label>
-                            <textarea type="text" name="short_desc" id="short_desc" class="form-control"></textarea>
-                        </div>
-                        <div class="col-md-6 mb-2">
+                        <div class="col-md-12 mb-2">
                             <label for="abstract">Abstract</label>
                             <textarea type="text" name="abstract" id="abstract" class="form-control"></textarea>
                         </div>
@@ -80,6 +79,16 @@
 @endsection
 @section('js')
     <script>
+        function valueCheck() {
+            var st_page = $('#starting_page').val();
+            var end_page = $('#ending_page').val();
+            if (st_page && end_page > 0) {
+                if (st_page > end_page) {
+                    error('The starting page should be smaller than ending page');
+                }
+            }
+
+        }
         $(document).ready(function() {
             $('#artical_type_id').select2();
         });

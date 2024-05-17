@@ -122,7 +122,6 @@ class BookController extends Controller
             $artical->st_page_no = $request->starting_page;
             $artical->en_page_no = $request->ending_page;
             $artical->abstract = $request->abstract;
-            $artical->short_desc = $request->short_desc;
             $artical->book_id = $request->book_id;
             $artical->artical_type_id = $request->artical_type_id;
             $artical->file = $request->file('file')->store('uploads/artical');
@@ -144,7 +143,6 @@ class BookController extends Controller
             $artical->st_page_no = $request->starting_page;
             $artical->en_page_no = $request->ending_page;
             $artical->abstract = $request->abstract;
-            $artical->short_desc = $request->short_desc;
             $artical->artical_type_id = $request->artical_type_id;
             if ($request->hasFile('file')) {
                 $artical->file = $request->file('file')->store('uploads/artical');

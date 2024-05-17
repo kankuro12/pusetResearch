@@ -9,14 +9,14 @@
             <div class="container">
                 <div class="books">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="bookimage" style="padding: 50px 0px ">
                                 <a href="#">
                                     <img src="{{ asset($book->image) }}" alt="book-cover">
                                 </a>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-8">
                             <div class="banner">
                                 <h1 style="color: var(--text)">
                                     {{ $book->title }}

@@ -16,11 +16,13 @@
                                     {{$author->author_name}}
                                 </span>
                                 @php
-                                    $auth = DB::table('authors')->where('id',$author->author_id)->first();
+                                    $author = DB::table('authors')->where('id',$author->author_id)->first();
                                 @endphp
                                 <span class="affiliation">
-                                    {{$auth->designation}}
+                                    {{$author->designation}} <br>
+                                    {{$author->organization}}
                                 </span>
+
                             </div>
                             @endforeach
                             <div class="doi">

@@ -18,7 +18,7 @@ class BookController extends Controller
     }
     public function list()
     {
-        $books = DB::table('books')->get(['id', 'title', 'volume', 'issue','issue_name', 'published_date', 'iscurrent']);
+        $books = DB::table(t_books)->get(['id', 'title', 'volume', 'issue','issue_name', 'published_date', 'iscurrent']);
         return response()->json($books);
     }
     public function add(Request $request)
@@ -73,7 +73,7 @@ class BookController extends Controller
                 $book->image = $request->file('image')->store('uploads/image');
             }
             if ($request->hasFile('file')) {
-                $book->image = $request->file('file')->store('uploads/file');
+                $book->file = $request->file('file')->store('uploads/file');
             }
             $book->iscurrent =  $request->iscurrent ? true : false;
 
@@ -97,21 +97,22 @@ class BookController extends Controller
 
     public function indexArticle($book_id)
     {
-        $book = Book::where('id', $book_id)->first();
+        $book = DB::table(t_books)->where('id', $book_id)->first(['id','title']);
         return view('admin.book.artical.index', compact('book'));
     }
-    public function listArticle()
+    public function listArticle(Request $request)
     {
         $articles = BookArtical::select('book_articals.*', 'artical_types.name as artical_type_name')
             ->join('artical_types', 'book_articals.artical_type_id', '=', 'artical_types.id')
+            ->where('book_id',$request->book_id)
             ->get();
         return response()->json($articles);
     }
     public function addArticle(Request $request, $book_id)
     {
-        $book = Book::where('id', $book_id)->first();
-        $articalTypes = DB::table('artical_types')->get();
         if ($request->getMethod() == "GET") {
+            $book = DB::table(t_books)->where('id', $book_id)->first(['id','title']);
+            $articalTypes = DB::table('artical_types')->get();
             return view('admin.book.artical.add', compact('book', 'articalTypes'));
         } else {
             $artical = new BookArtical();
@@ -122,19 +123,19 @@ class BookController extends Controller
             $artical->en_page_no = $request->ending_page;
             $artical->abstract = $request->abstract;
             $artical->short_desc = $request->short_desc;
-            $artical->book_id = $book->id;
+            $artical->book_id = $request->book_id;
             $artical->artical_type_id = $request->artical_type_id;
             $artical->file = $request->file('file')->store('uploads/artical');
             $artical->save();
+            return redirect()->back()->with('success', 'Successfully added');
         }
-        return redirect()->back()->with('success', 'succesfully added');
     }
     public function editArticle(Request $request, $book_id, $artical_id)
     {
-        $book = Book::where('id', $book_id)->first();
         $artical = BookArtical::where('id', $artical_id)->first();
-        $articalTypes = DB::table('artical_types')->get();
         if ($request->getMethod() == "GET") {
+            $book = Book::where('id', $book_id)->first();
+            $articalTypes = DB::table('artical_types')->get();
             return view('admin.book.artical.edit', compact('book', 'artical', 'articalTypes'));
         } else {
             $artical->title = $request->title;
@@ -144,14 +145,13 @@ class BookController extends Controller
             $artical->en_page_no = $request->ending_page;
             $artical->abstract = $request->abstract;
             $artical->short_desc = $request->short_desc;
-            $artical->book_id = $book->id;
             $artical->artical_type_id = $request->artical_type_id;
             if ($request->hasFile('file')) {
                 $artical->file = $request->file('file')->store('uploads/artical');
             }
             $artical->save();
+            return redirect()->back()->with('success', 'Successfully updated');
         }
-        return redirect()->back()->with('success', 'succesfully updated');
     }
 
     public function delArticle($artical_id)

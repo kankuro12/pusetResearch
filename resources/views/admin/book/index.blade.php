@@ -84,7 +84,7 @@
             return '<a href="' + editURL.replace('xxx_id', id) + '" class="btn btn-sm btn-primary">Edit</a> ' +
                 '<a onclick="return yes()" href="' + delURL.replace('xxx_id', id) +
                 '" class="btn btn-sm btn-danger">Delete</a> ' +
-                '<a href="' + ArticalURL.replace('abc_id', id) + '" class="btn btn-sm btn-success">Manage Article</a>';
+                '<a href="' + ArticalURL.replace('abc_id', id) + '" class="btn btn-sm btn-success">Articles</a>';
         }
     </script>
 @endsection

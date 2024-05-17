@@ -1,6 +1,7 @@
 @extends('admin.layout.app')
 @section('header-Links')
     <a href="{{ route('admin.book.index') }}">Issues</a>
+    <a href="#">{{$book->title}}</a>
     <a href="{{ route('admin.book.article.indexArticle', ['book_id' => $book->id]) }}">Articles</a>
 @endsection
 @section('toolbar')
@@ -48,7 +49,7 @@
                     }
                 ],
                 ajax: {
-                    url: "{{ route('admin.book.article.listArticle') }}",
+                    url: "{{ route('admin.book.article.listArticle') }}?book_id={{$book->id}}",
                     dataSrc: ''
                 },
                 columns: [{

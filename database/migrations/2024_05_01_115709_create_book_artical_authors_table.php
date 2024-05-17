@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('book_artical_authors', function (Blueprint $table) {
             $table->id();
             $table->foreignId('book_artical_id')->nullable()->constrained();
-            $table->foreignId('author_id')->nullable()->unique()->constrained();
+            $table->foreignId('author_id')->nullable()->constrained();
             $table->timestamps();
         });
     }

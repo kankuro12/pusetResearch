@@ -31,6 +31,7 @@ class BookController extends Controller
             $book->eng_title = $request->eng_title;
             $book->issn = $request->issn;
             $book->doi = $request->doi;
+            $book->website = $request->website??"";
             $book->volume = $request->volume;
             $book->issue_name = $request->issue_name;
             $book->language_of_publication = $request->language_of_publication;
@@ -39,10 +40,13 @@ class BookController extends Controller
             $book->description = $request->description;
             $book->s_description = $request->s_description;
             $book->title = $request->title;
-            $book->image = $request->file('image')->store('upoads/image');
-            $book->file = $request->file('file')->store('upoads/file');
-            $book->iscurrent =  $request->iscurrent ? true : false;
+            $book->image = $request->file('image')->store('uploads/image');
+            $book->file = $request->file('file')->store('uploads/file');
+            $book->iscurrent =  $request->filled('iscurrent') ? true : false;
             $book->save();
+            if($book->iscurrent){
+                Book::where('id','<>',$book->id)->update(['iscurrent'=>0]);
+            }
         };
         return redirect()->back()->with('success', 'succesfully added');
     }
@@ -56,7 +60,7 @@ class BookController extends Controller
             $book->eng_title = $request->eng_title;
             $book->issn = $request->issn;
             $book->doi = $request->doi;
-            $book->doi = $request->doi;
+            $book->website = $request->website??"";
             $book->volume = $request->volume;
             $book->issue_name = $request->issue_name;
             $book->language_of_publication = $request->language_of_publication;
@@ -66,10 +70,10 @@ class BookController extends Controller
             $book->s_description = $request->s_description;
             $book->title = $request->title;
             if ($request->hasFile('image')) {
-                $book->image = $request->file('image')->store('upoads/image');
+                $book->image = $request->file('image')->store('uploads/image');
             }
             if ($request->hasFile('file')) {
-                $book->image = $request->file('file')->store('upoads/file');
+                $book->image = $request->file('file')->store('uploads/file');
             }
             $book->iscurrent =  $request->iscurrent ? true : false;
 
@@ -120,7 +124,7 @@ class BookController extends Controller
             $artical->short_desc = $request->short_desc;
             $artical->book_id = $book->id;
             $artical->artical_type_id = $request->artical_type_id;
-            $artical->file = $request->file('file')->store('uploads/books/artical');
+            $artical->file = $request->file('file')->store('uploads/artical');
             $artical->save();
         }
         return redirect()->back()->with('success', 'succesfully added');
@@ -143,7 +147,7 @@ class BookController extends Controller
             $artical->book_id = $book->id;
             $artical->artical_type_id = $request->artical_type_id;
             if ($request->hasFile('file')) {
-                $artical->file = $request->file('file')->store('uploads/books/artical');
+                $artical->file = $request->file('file')->store('uploads/artical');
             }
             $artical->save();
         }

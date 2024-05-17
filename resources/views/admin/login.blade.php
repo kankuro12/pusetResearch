@@ -91,29 +91,35 @@
                 <div class="login-form">
                     <h2 class="text-center mb-4" style="color: #3F3F3F;">Welcome to login page</h2>
                     <p class="text-center mb-4" style="color: #3F3F3F;">Log in to continue.</p>
-                    <form action="{{ Route('login') }}" method="POST">
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    @if(session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+
+                    <form action="{{ Route('admin.login') }}" method="POST">
                         @csrf
                         <div class="form-group mb-3">
-                            <input type="email" class="form-control" id="email" name="email"
-                                placeholder="Email">
+                            <input type="email" class="form-control" id="email" name="{{ $loginInfo['u'] }}"
+                                placeholder="Email" required>
                         </div>
                         <div class="form-group mb-3">
-                            <input type="password" class="form-control" id="password" name="password"
-                                placeholder="Password">
+                            <input type="password" class="form-control" id="password" name="{{ $loginInfo['p'] }}"
+                                placeholder="Password" required>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-block btn-submit"
                                 style="border: none; height: auto;">Login</button>
-                        </div>
-
-                        <div class="auth-options mt-2"
-                            style="display: flex; justify-content: space-between; align-items: center;">
-                            <div class="custom-control custom-checkbox form-group d-flex" style="align-items: center;">
-                                <input name="me" type="checkbox" class="custom-control-input"
-                                    style="margin-right: 5px;">
-                                <label class="custom-control-label" for="exampleCheck1">Remember me</label>
-                            </div>
-                            <a href="#" class="forgot-link">Forgot Password?</a>
                         </div>
                     </form>
                 </div>

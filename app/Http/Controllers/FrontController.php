@@ -16,7 +16,10 @@ class FrontController extends Controller
     public function index()
     {
         $book = DB::table('books')->where('iscurrent', 1)->first();
-        $articles = BookArtical::where('book_id',$book->id)->get();
+        $articles=[];
+        if($book){
+            $articles = BookArtical::where('book_id',$book->id)->get();
+        }
         return view('front.index', compact('book','articles'));
     }
 

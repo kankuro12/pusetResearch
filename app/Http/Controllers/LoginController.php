@@ -13,9 +13,8 @@ class LoginController extends Controller
         if($request->getMethod()=="GET"){
             return view('admin.login');
         }else{
-            if(Auth::attempt(['email'=>$request->email,'password'=>$request->password])){
+            if(Auth::attempt(['email'=>$request->email,'password'=>$request->password,'role'=>1])){
                 return redirect()->route('admin.index')->with('success','Login Success');
-
             }else{
                 return redirect()->back()->with('error','Credential Mismatch');
             }
@@ -24,6 +23,19 @@ class LoginController extends Controller
     public function logout() {
         Auth::logout();
         return redirect()->route('login');
+    }
+
+    public function AdminLogin(Request $request)
+    {
+        if($request->getMethod()=="GET"){
+            return view('admin.login');
+        }else{
+            if(Auth::attempt(['email'=>$request->email,'password'=>$request->password,'role'=>0])){
+                return redirect()->route('admin.index')->with('success','Login Success');
+            }else{
+                return redirect()->back()->with('error','Credential Mismatch');
+            }
+        }
     }
 
 }

@@ -19,6 +19,7 @@ class FrontController extends Controller
         $articles = BookArtical::where('book_id',$book->id)->get();
         return view('front.index', compact('book','articles'));
     }
+
     public function login(){
         return view('front.login.index');
     }

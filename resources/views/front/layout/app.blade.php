@@ -34,7 +34,7 @@
                 <div class="logins">
                     <div class="login-area">
                         <div class="login">
-                            <a href="{{ route('frontlogin') }}">Login</a>
+                            <a href="{{ route('front.login') }}">Login</a>
                         </div>
                         <div class="register">
                             <a href="{{ route('register') }}">Register</a>
@@ -146,7 +146,7 @@
                             {{-- <div class="heading">
                                 <a href="#">Make a Submission</a>
                             </div> --}}
-                            @include('front.cache.sidebar')
+                            @includeif('front.cache.sidebar')
                         </div>
                     </div>
                 </div>
@@ -193,7 +193,7 @@
                                 <div class="head">
                                     <h5>Get In Touch</h5>
                                 </div>
-                                @include('front.cache.contact')
+                                @includeif('front.cache.contact')
                             </div>
                         </div>
                         <div class="col-md-3">

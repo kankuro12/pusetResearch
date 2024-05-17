@@ -1,9 +1,11 @@
 @extends('front.layout.app')
 @section('top_name')
-    Become a member
+Login
 @endsection
 @section('header_link')
-    <a href="{{route('login')}}">Login</a>
+<a href="">
+    Login
+</a>
 @endsection
 @section('content')
 <div class="login">
@@ -15,7 +17,7 @@
                         Login Now
                     </h3>
                 </div>
-                <form action="{{route('clientlogin')}}" method="POST" >
+                <form action="{{route('client.login')}}" method="POST" >
                     @csrf
                     <div class="inputs">
                         <div class="form-group mb-4">

@@ -21,13 +21,6 @@ class SubmissionController extends Controller
             ->select(
                 'id',
                 'title',
-                //     DB::raw("CASE
-                //     WHEN status = 0 THEN 'Pending'
-                //     WHEN status = 1 THEN 'View'
-                //     WHEN status = 2 THEN 'Acceptance'
-                //     WHEN status = 3 THEN 'Rejected'
-                //     ELSE ''
-                // END AS status"),
                 'status',
                 'description'
             )
@@ -52,11 +45,9 @@ class SubmissionController extends Controller
 
     public function edit(Request $request, $sub_id)
     {
-        dd($request->all());
         $submission = Submission::where('id', $sub_id)->first();
         $submission->status = $request->input('status');
         $submission->save();
-        return redirect()->back()->with('success', 'successfully updated');
     }
 
     public function del($sub_id)

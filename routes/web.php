@@ -84,7 +84,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::prefix('submission')->name('submission.')->group(function () {
             Route::get('index', [SubmissionController::class, 'index'])->name('index');
             Route::match(['GET', 'POST'], 'add', [SubmissionController::class, 'add'])->name('add');
-            Route::match(['get'], 'edit/{sub_id}', [SubmissionController::class, 'edit'])->name('edit');
+            Route::match(['post'], 'edit/{sub_id}', [SubmissionController::class, 'edit'])->name('edit');
             Route::get('del/{sub_id}', [SubmissionController::class, 'del'])->name('del');
             Route::get('list', [SubmissionController::class, 'list'])->name('list');
         });

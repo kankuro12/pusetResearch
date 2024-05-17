@@ -58,17 +58,10 @@
                         data: 'status',
                         render: function(data, type, row) {
                             var statusOptions = ['Pending', 'View', 'Acceptance', 'Rejected'];
-                            var select =
-                                '<select name="status" id="status" class="form-control">';
-                            for (var i = 0; i < statusOptions.length; i++) {
-                                select += '<option value="' + i + '"';
-                                if (i === data) {
-                                    select += ' selected';
-                                }
-                                select += '>' + statusOptions[i] + '</option>';
-                            }
-                            select += '</select>';
-                            return select;
+                            var options = statusOptions.map((status, index) => {
+                                return `<option value="${index}"${index === data ? ' selected' : ''}>${status}</option>`;
+                            }).join('');
+                            return `<select name="status" id="status_${row.id}" class="form-control">${options}</select>`;
                         }
                     },
                     {
@@ -80,15 +73,18 @@
                 ],
             })
         });
-        function updateStatus(id, status) {
+
+        function updateStatus(id) {
+            const status = $('#status_' + id).val();
             const data = {
                 status: status
             };
 
-            axios.get(`/admin/submission/edit/${id}`, data)
+            axios.post(`/admin/submission/edit/${id}`, data)
                 .then(response => {
-                    console.log(response.data);
-                    table.ajax.reload();
+                    success('successfully updated')
+                    // table.ajax.reload();
+                    location.reload()
                 })
                 .catch(error => {
                     console.error('Error updating status:', error);
@@ -97,7 +93,7 @@
 
         function getUrls(id) {
             const delURL = "{{ route('admin.submission.del', ['sub_id' => 'xxx_id']) }}";
-            return `<a href="#" class="btn btn-sm btn-primary" onclick="updateStatus(${id}, $('#status').val())">Update</a>
+            return `<a href="#" class="btn btn-sm btn-primary" onclick="updateStatus(${id})">Update</a>
                     <a onclick="return yes()" href="${delURL.replace('xxx_id', id)}" class="btn btn-sm btn-danger">Delete</a>`;
         }
     </script>

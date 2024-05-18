@@ -13,29 +13,44 @@ class ContactController extends Controller
     {
         $contact = Contact::first();
         $individualcontacts = IndividualContact::get();
-        if ($request->getMethod() == "GET") {
+
+        if ($request->isMethod('get')) {
             return view('admin.setting.contact.index', compact('contact', 'individualcontacts'));
         } else {
-            if ($contact == null) {
+            if ($contact) {
+                $contact->name = $request->input('cname');
+                $contact->address = $request->input('address');
+                $contact->phone = $request->input('phone');
+                $contact->po_box = $request->input('po_box');
+                $contact->email = $request->input('email');
+                $contact->save();
+            } else {
                 $contact = new Contact();
+                $contact->name = $request->input('cname');
+                $contact->address = $request->input('address');
+                $contact->phone = $request->input('phone');
+                $contact->po_box = $request->input('po_box');
+                $contact->email = $request->input('email');
+                $contact->save();
             }
-            $contact->name = $request->input('cname');
-            $contact->address = $request->input('address');
-            $contact->phone = $request->input('phone');
-            $contact->po_box = $request->input('po_box');
-            $contact->email = $request->input('email');
-            $contact->save();
-            $individualContact = $request->input('individualContactsDatas');
-            foreach ($individualContact as $key => $contact) {
-                $individualcontact = new IndividualContact();
-                $individualcontact->name = $contact['name'];
-                $individualcontact->title = $contact['title'];
-                $individualcontact->post = $contact['post'];
-                $individualcontact->save();
+
+            $individualContactData = $request->input('individualContactsDatas', []);
+
+            foreach ($individualContactData as $data) {
+                $individualcontact = IndividualContact::updateOrCreate(
+                    ['id' => $data['id'] ?? null],
+                    [
+                        'name' => $data['name'],
+                        'title' => $data['title'],
+                        'post' => $data['post']
+                    ]
+                );
             }
+            file_put_contents(resource_path('views/front/cache/contact.blade.php'), view('admin.templete.contact', compact('contact'))->render());
+            file_put_contents(resource_path('views/front/cache/individualcontact.blade.php'), view('admin.templete.individualcontact', compact('individualcontacts'))->render());
+
+            return redirect()->route('admin.setting.contact.index')->with('success', 'Contact settings updated successfully.');
         }
-        file_put_contents(resource_path('views/front/cache/contact.blade.php'), view('admin.templete.contact', compact('contact'))->render());
-        file_put_contents(resource_path('views/front/cache/individualcontact.blade.php'), view('admin.templete.individualcontact', compact('contact', 'individualcontacts'))->render());
     }
 
     public function del($contact_id)

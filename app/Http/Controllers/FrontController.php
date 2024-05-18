@@ -7,6 +7,7 @@ use App\Models\Book;
 use App\Models\BookArtical;
 use App\Models\BookArticalAuthor;
 use App\Models\Client;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use PhpParser\Node\Expr\FuncCall;
@@ -49,15 +50,30 @@ class FrontController extends Controller
         if($request->getMethod() == 'GET'){
             return view('front.register.index');
         }else{
+            $request->validate([
+                'name'=>'required|string',
+                'country'=>'required|string',
+                'affiliation'=>'required|string',
+                'agree' => 'accepted',
+                'email'=>'required|email|unique:users,email',
+                'password' => 'required|string|min:6|confirmed',
+            ]);
+
+            $user = new User();
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = $request->password;
+            $user->role = 1;
+            $user->save();
+
             $client = new Client();
+            $client->user_id = $user->id;
             $client->name = $request->name;
-            $client->email = $request->email;
-            $client->password = $request->password;
             $client->country =$request->country;
             $client->affiliation =$request->affiliation;
             $client->save();
+            return redirect()->back()->with('success','Successfully Registered');
         }
-        return redirect()->route('client.index');
     }
 
     public function submission(){

@@ -34,7 +34,6 @@ Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::match(['get', 'post'], 'login', [LoginController::class,'adminLogin'])->name('login');
-
     Route::middleware('role:0')->group(function(){
         Route::get('/', [DashbordController::class, 'index'])->name('index');
         Route::get('/file', [FileController::class, 'index'])->name('file');

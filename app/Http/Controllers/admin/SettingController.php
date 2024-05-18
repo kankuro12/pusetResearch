@@ -29,7 +29,7 @@ class SettingController extends Controller
             if ($generalLayout == null) {
                 $generalLayout = new Generallayout();
                 $generalLayout->logo = "";
-            } {
+            }
                 $generalLayout->copy_right_name = $request->copy_right_name;
                 $generalLayout->copy_right_date = $request->copy_right_date;
                 $generalLayout->content =$request->content;
@@ -39,7 +39,7 @@ class SettingController extends Controller
                     $generalLayout->logo = $request->file('logo')->store('uploads/setting');
                 }
                 $generalLayout->save();
-            }
+
         }
         return redirect()->back()->with('success', 'successfully added');
     }

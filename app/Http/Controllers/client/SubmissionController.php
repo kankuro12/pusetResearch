@@ -5,6 +5,7 @@ namespace App\Http\Controllers\client;
 use App\Http\Controllers\Controller;
 use App\Models\Submission;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class SubmissionController extends Controller
@@ -23,11 +24,20 @@ class SubmissionController extends Controller
         if ($request->getMethod() == "GET") {
             return view('client.submission.add');
         } else {
+
+            $request->validate([
+                'title' => 'required|string',
+                'description' => 'required|string',
+                'file' => 'required|file|mimes:pdf',
+            ]);
+
+            $user = Auth::user();
             $submission = new Submission();
             $submission->title = $request->title;
             $submission->description = $request->description;
             $submission->file = $request->file('file')->store('uploads/submission');
             $submission->status = 0 ;
+            $submission->user_id = $user->id;
             $submission->save();
         }
         return redirect()->back()->with('success', 'successfully added');
@@ -38,6 +48,11 @@ class SubmissionController extends Controller
         if ($request->getMethod() == "GET") {
             return view('client.submission.edit', compact('submission'));
         } else {
+            $request->validate([
+                'title' => 'required|string',
+                'description' => 'required|string',
+                'file' => 'required|file|mimes:pdf',
+            ]);
             $submission->title = $request->title;
             $submission->description = $request->description;
             if ($request->hasFile('file')) {

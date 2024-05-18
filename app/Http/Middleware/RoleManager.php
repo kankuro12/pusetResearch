@@ -19,13 +19,14 @@ class RoleManager
         if(Auth::check()){
             $user=Auth::user();
             if($user->role!=$role){
-                if($role==0){
+                if($user->role==0){
                     return redirect()->route('admin.index');
-                }elseif($role==1){
+                }elseif($user->role==1){
                     return redirect()->route('client.index');
                 }
             }
         }else{
+            // dd($role);
             if($role==0){
                 return redirect()->route('admin.login');
             }elseif($role==1){

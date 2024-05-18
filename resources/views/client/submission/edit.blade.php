@@ -11,24 +11,27 @@
             enctype="multipart/form-data">
             @csrf
             <div class="row mb-2">
-                <div class="col-md-4 mb-2">
-                    <label for="title">Title</label>
-                    <input type="text" name="title" id="title" class="form-control"
-                        value="{{ $submission->title }}">
-                </div>
-                <div class="col-md-12 mb-2">
-                    <label for="description">Description</label>
-                    <textarea name="description" id="description" class="form-control"> {{ $submission->description }} </textarea>
-                </div>
-                <div class="col-md-12 mb-2">
+                <div class="col-md-3 mb-2">
                     <label for="file">File</label>
                     <input type="file" name="file" id="file" data-default-file="{{ vasset($submission->file) }}"
                         accept=".pdf, .docx" class="form-control photo">
                 </div>
-                <div class="col-md-12 mb-2 text-start">
-                    <button class="btn btn-primary btn-sm">
-                        update
-                    </button>
+                <div class="col-md-8">
+                    <div class="col-md-4 mb-2">
+                        <label for="title">Title</label>
+                        <input type="text" name="title" id="title" class="form-control"
+                            value="{{ $submission->title }}">
+                    </div>
+                    <div class="col-md-12 mb-2">
+                        <label for="description">Description</label>
+                        <textarea name="description" id="description" class="form-control"> {{ $submission->description }} </textarea>
+                    </div>
+
+                    <div class="col-md-12 mb-2 text-start">
+                        <button class="btn btn-primary btn-sm">
+                            update
+                        </button>
+                    </div>
                 </div>
             </div>
         </form>

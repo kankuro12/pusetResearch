@@ -4,7 +4,10 @@
     </div>
     <ul class="nav flex-column">
         <li class="nav-item">
-            <a class="nav-link" id="submission" href="{{route('client.submission.index')}}">Submission</a>
+            <a class="nav-link" id="submission" href="{{ route('client.submission.index') }}">Submission</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="profile" href="{{ route('client.info.index') }}">Profile</a>
         </li>
     </ul>
 </div>

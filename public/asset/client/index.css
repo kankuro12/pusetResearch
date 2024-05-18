@@ -50,10 +50,32 @@ body .navigation .right .profile {
   color: var(--top);
   font-size: 14px;
   line-height: 32px;
+  position: relative;
+}
+body .navigation .right .profile .drop-down {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  background-color: #002C40;
+  min-height: 40px;
+  width: 100%;
+  z-index: 1;
+}
+body .navigation .right .profile .drop-down .item a {
+  text-decoration: none;
+  display: block;
+  padding: 8px 16px;
+  color: #ddd;
+}
+body .navigation .right .profile a:hover {
+  background-color: #004F73;
+}
+body .navigation .right .profile:hover .drop-down {
+  display: block;
 }
 body .navigation .right .language:hover,
-body .navigation .right .homepage:hover,
-body .navigation .right .profile:hover {
+body .navigation .right .homepage:hover {
   background-color: #004F73;
 }
 body .col-md-2 #sidebar {

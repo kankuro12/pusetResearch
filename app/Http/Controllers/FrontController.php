@@ -72,7 +72,7 @@ class FrontController extends Controller
             $client->country =$request->country;
             $client->affiliation =$request->affiliation;
             $client->save();
-            return redirect()->back()->with('success','Successfully Registered');
+            return  redirect()->route('front.login')->with('success','Successfully Registered');
         }
     }
 

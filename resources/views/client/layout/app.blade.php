@@ -38,46 +38,103 @@
 </head>
 
 <body>
-    <div class="navigation">
-        <div class="left">
-            <div class="name">
-                <a href="">
-                    Name
-                </a>
+    @if (Auth::check() && Auth::user())
+        @php
+            $user = Auth::user();
+            $client = DB::table('clients')
+                ->where('user_id', $user->id)
+                ->first();
+        @endphp
+        <div class="navigation">
+            <div class="left">
+                <div class="name">
+                    <a href="">
+                        Name
+                    </a>
+                </div>
             </div>
-        </div>
-        <div class="right">
-            <div class="homepage">
-                <a href="{{ route('index') }}">
-                    <i class="fa-solid fa-eye"></i>
-                    view site
-                </a>
+            <div class="right">
+                <div class="homepage">
+                    <a href="{{ route('index') }}">
+                        <i class="fa-solid fa-eye"></i>
+                        view site
+                    </a>
+                </div>
+                <div class="profile">
+                    <i class="fa-solid fa-user"></i>
+                    {{ $client->name }}
+                    <div class="drop-down">
+                        <div class="item"><a href="#">Profile</a>
+                        </div>
+                        <div class="item">
+                            <a href="{{route('clientLogout')}}">Logout</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="profile">
-                <i class="fa-solid fa-user"></i>
-                username
-            </div>
-        </div>
 
-    </div>
-    <div class="row m-0">
-        <div class="col-md-2 p-0">
-            @include('client.sidebar')
         </div>
-        <div class="col-md-10 p-0">
-            <div class="top" style="background-color: #DDDDDD">
-                <h1 class="link">
-                    <a href="{{ route('client.index') }}">Dashboard</a>
-                    @yield('header-link')
-                </h1>
+        <div class="row m-0">
+            <div class="col-md-2 p-0">
+                @include('client.sidebar')
+            </div>
+            <div class="col-md-10 p-0">
+                <div class="top" style="background-color: #DDDDDD">
+                    <h1 class="link">
+                        <a href="{{ route('client.index') }}">Dashboard</a>
+                        @yield('header-link')
+                    </h1>
 
-                @yield('toolbar')
-            </div>
-            <div class="p-2">
-                @yield('content')
+                    @yield('toolbar')
+                </div>
+                <div class="p-2">
+                    @yield('content')
+                </div>
             </div>
         </div>
-    </div>
+    @else
+        <div class="navigation">
+            <div class="left">
+                <div class="name">
+                    <a href="">
+                        Name
+                    </a>
+                </div>
+            </div>
+            <div class="right">
+                <div class="homepage">
+                    <a href="{{ route('index') }}">
+                        <i class="fa-solid fa-eye"></i>
+                        view site
+                    </a>
+                </div>
+                <div class="profile">
+                    <i class="fa-solid fa-user"></i>
+                    user
+                </div>
+            </div>
+
+        </div>
+        <div class="row m-0">
+            <div class="col-md-2 p-0">
+                @include('client.sidebar')
+            </div>
+            <div class="col-md-10 p-0">
+                <div class="top" style="background-color: #DDDDDD">
+                    <h1 class="link">
+                        <a href="{{ route('client.index') }}">Dashboard</a>
+                        @yield('header-link')
+                    </h1>
+
+                    @yield('toolbar')
+                </div>
+                <div class="p-2">
+                    @yield('content')
+                </div>
+            </div>
+        </div>
+    @endif
+
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"

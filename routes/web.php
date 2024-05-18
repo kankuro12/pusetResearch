@@ -12,9 +12,11 @@ use App\Http\Controllers\admin\TeamController;
 use App\Http\Controllers\admin\TeamMemberController;
 use App\Http\Controllers\client\ClientController;
 use App\Http\Controllers\client\DashbordController as ClientDashbordController;
+use App\Http\Controllers\client\InfoController as ClientInfoController;
 use App\Http\Controllers\client\SubmissionController as ClientSubmissionController;
 use App\Http\Controllers\DashbordController;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\InfoController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,16 +30,13 @@ Route::get('submission', [FrontController::class, 'submission'])->name('submissi
 Route::match(['GET', 'POST'], 'register', [FrontController::class, 'register'])->name('register');
 Route::get('articleSingle/{article}', [FrontController::class, 'articleSingle'])->name('articleSingle');
 
-Route::match(['POST'], 'client-login', [LoginController::class, 'login'])->name('client.login');
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
-
-
+Route::get('clientLogout',[LoginController::class,'clientLogout'])->name('clientLogout');
 Route::prefix('admin')->name('admin.')->group(function () {
-    Route::match(['get', 'post'], 'login', [LoginController::class,'adminLogin'])->name('login');
-    Route::middleware('role:0')->group(function(){
+    Route::match(['get', 'post'], 'login', [LoginController::class, 'adminLogin'])->name('login');
+    Route::middleware('role:0')->group(function () {
         Route::get('/', [DashbordController::class, 'index'])->name('index');
         Route::get('/file', [FileController::class, 'index'])->name('file');
-
         Route::prefix('author')->name('author.')->group(function () {
             Route::get('index', [AuthorController::class, 'index'])->name('index');
             Route::match(['GET', 'POST'], 'add', [AuthorController::class, 'add'])->name('add');
@@ -139,12 +138,21 @@ Route::prefix('admin')->name('admin.')->group(function () {
 });
 
 Route::prefix('client')->name('client.')->group(function () {
-    Route::get('index', [ClientController::class, 'index'])->name('index');
-    Route::prefix('submission')->name('submission.')->group(function () {
-        Route::get('index', [ClientSubmissionController::class, 'index'])->name('index');
-        Route::match(['GET', 'POST'], 'add', [ClientSubmissionController::class, 'add'])->name('add');
-        Route::match(['GET', 'POST'], 'edit/{sub_id}', [ClientSubmissionController::class, 'edit'])->name('edit');
-        Route::match(['GET'], 'del/{sub_id}', [ClientSubmissionController::class, 'del'])->name('del');
-        Route::get('list', [ClientSubmissionController::class, 'list'])->name('list');
+    Route::match(['POST'], 'login', [LoginController::class, 'clientLogin'])->name('login');
+    Route::middleware('role:1')->group(function () {
+        Route::get('', [ClientController::class, 'index'])->name('index');
+        Route::prefix('submission')->name('submission.')->group(function () {
+            Route::get('index', [ClientSubmissionController::class, 'index'])->name('index');
+            Route::match(['GET', 'POST'], 'add', [ClientSubmissionController::class, 'add'])->name('add');
+            Route::match(['GET', 'POST'], 'edit/{sub_id}', [ClientSubmissionController::class, 'edit'])->name('edit');
+            Route::match(['GET'], 'del/{sub_id}', [ClientSubmissionController::class, 'del'])->name('del');
+            Route::get('list', [ClientSubmissionController::class, 'list'])->name('list');
+        });
+        Route::prefix('info')->name('info.')->group(function(){
+            Route::match(['GET','POST'],'index',[ClientInfoController::class,'index'])->name('index');
+        });
+        Route::prefix('password')->name('password.')->group(function(){
+            Route::match(['GET','POST'],'password',[ClientInfoController::class,'password'])->name('password');
+        });
     });
 });

@@ -105,7 +105,7 @@
 
                                                     <li class="nav-item" id="item">
                                                         <a class="nav-link" href="{{ route('archive') }}"
-                                                            id="item_a">Archive</a>
+                                                            id="item_a">ARCHIVE</a>
                                                     </li>
                                                     {{-- <li class="nav-item dropdown" id="dropdown">
                                                         <a class="nav-link dropdown-toggle" href="#"

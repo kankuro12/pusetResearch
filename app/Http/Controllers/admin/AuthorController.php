@@ -46,11 +46,15 @@ class AuthorController extends Controller
             $author->organization = $request->organization;
             $author->save();
         }
+        $c=new BookController();
+        $c->render();
         return redirect()->back()->with('success', 'successfully updated');
     }
     public function del($author_id)
     {
         Author::where('id', $author_id)->delete();
+        $c=new BookController();
+        $c->render();
         return redirect()->back()->with('success', 'successfully deleted');
     }
 }

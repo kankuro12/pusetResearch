@@ -36,11 +36,10 @@
   margin-top: 5px;
 }
 .archiveIssue .archive .chapters a {
+  display: inline;
+  white-space: wrap;
   font-size: 15px;
   text-decoration: underline;
-}
-.archiveIssue .archive .chapters a:not(:last-child)::after {
-  content: ", ";
 }
 .archiveIssue .archive p {
   font-size: 14px;

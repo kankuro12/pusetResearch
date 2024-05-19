@@ -37,12 +37,12 @@
         .chapters{
             margin-top: 5px;
             a{
+                display: inline;
+                white-space: wrap;
                 font-size: 15px;
                 text-decoration: underline;
             }
-            a:not(:last-child)::after {
-                content: ', ';
-            }
+
         }
         p{
             font-size: 14px;

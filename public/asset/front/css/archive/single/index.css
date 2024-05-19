@@ -3,14 +3,11 @@
   width: 100%;
 }
 .archiveSingle .container .row .banner {
-  padding: 45px 0;
+  padding: 10px 0;
 }
 .archiveSingle .container .row .banner h1 {
-  font-size: 42px;
-  margin: 0 0 22px;
-  padding: 0 0 22px;
-  line-height: 62px;
-  font-weight: 400;
+  font-size: 30px;
+  font-weight: 500;
 }
 .archiveSingle .container .row .banner .description {
   margin: 0;
@@ -22,11 +19,15 @@
 .archiveSingle .container .row .banner .description a {
   text-decoration: none;
 }
+.archiveSingle .container_b {
+  margin-top: 40px;
+}
 .archiveSingle .container_b .editorial h5 {
   font-size: 24px;
   color: var(--text);
   text-align: left;
-  font-weight: 400;
+  font-weight: 700;
+  margin-bottom: 0px;
 }
 .archiveSingle .container_b .data {
   padding: 0px 12px 10px 0px;
@@ -48,6 +49,11 @@
   line-height: 13px;
   margin: 0 0 10px 0px;
 }
+.archiveSingle .container_b .data .head .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .archiveSingle .container_b .data .head h3 {
   font-size: 16px;
   font-weight: 500;
@@ -57,8 +63,8 @@
 .archiveSingle .container_b .data .head h3 a {
   color: var(--text);
 }
-.archiveSingle .container_b .data .bottom .short_desc p {
-  color: var(--text);
+.archiveSingle .container_b .data .bottom .short_desc {
+  margin-bottom: 8px;
 }
 .archiveSingle .container_b .data .bottom .page_no {
   color: var(--text);

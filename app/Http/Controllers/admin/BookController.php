@@ -101,10 +101,18 @@ class BookController extends Controller
 
     public function render(){
 
-
         $books = DB::table('books')->where('iscurrent', 0)->get();
-        $bookArticles=DB::table('book_articals')->whereIn('id',$books->pluck('id'))->orderBy('en_page_no')->get();
+        $bookArticles=DB::table('book_articals')->whereIn('book_id',$books->pluck('id'))->orderBy('en_page_no')->get();
+        $authors=DB::table('authors')->get();
+        $bookArticlesAuthors=DB::table('book_artical_authors')->get();
+        $types=DB::table('artical_types')->get();
+
         file_put_contents(resource_path('views/front/cache/archive.blade.php'), view('admin.templete.archive.index', compact('books','bookArticles'))->render());
+        foreach ($books as $key => $book) {
+            file_put_contents(resource_path('views/front/cache/archive_header_link_'.$book->id.'.blade.php'), view('admin.templete.archive.single_book_header_link', compact('book'))->render());
+            file_put_contents(resource_path('views/front/cache/archive_meta_'.$book->id.'.blade.php'), view('admin.templete.archive.single_book_meta', compact('book'))->render());
+            file_put_contents(resource_path('views/front/cache/archive_single_'.$book->id.'.blade.php'), view('admin.templete.archive.single_book', compact('book','authors','bookArticlesAuthors','bookArticles','types'))->render());
+        }
     }
 
     public function indexArticle($book_id)
@@ -242,11 +250,15 @@ class BookController extends Controller
                 $authorArticle->author_id = $authorId;
                 $authorArticle->save();
             }
+            $this->render();
+
         }
     }
     public function delAuthor($articleAuthor_id)
     {
         BookArticalAuthor::where('id', $articleAuthor_id)->delete();
+        $this->render();
+
         return redirect()->back()->with('success', 'successfully deleted');
     }
 
@@ -257,6 +269,8 @@ class BookController extends Controller
         $author->link = $request->input('link');
         $author->designation = $request->input('designation');
         $author->organization = $request->input('organization');
+        $this->render();
+
         $author->save();
     }
 }

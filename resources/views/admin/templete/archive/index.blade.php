@@ -20,11 +20,19 @@
                         {{ $book->s_description }}
                     </div>
                 </a>
-                <div class="chapters">
-                    @foreach ($bookArticles->where('book_id',$book->id) as $article)
-                        <a href="{{route('articleSingle',['article'=>$article->id])}}">{{$article->title}}</a>
-                    @endforeach
-                </div>
+                @php
+                    $articles=$bookArticles->where('book_id',$book->id);
+                    $alen=$articles->count()
+                @endphp
+
+                @if ($alen>0)
+                    <div class="chapters">
+                        @foreach ($articles as $akey=>$article)
+                            <a href="{{route('articleSingle',['article'=>$article->id])}}">{{$article->title}}</a> @if(($alen-1)>$akey), @endif
+                        @endforeach
+                    </div>
+
+                @endif
             </div>
         </div>
 

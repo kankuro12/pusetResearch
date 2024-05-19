@@ -91,9 +91,7 @@ class FrontController extends Controller
     }
 
     public function bookSingle($book_id){
-        $book = Book::where('id',$book_id)->first();
-        $articles  = BookArtical::where('book_id',$book->id)->get();
-        return view('front.issue.archive.single.index',compact('book','articles'));
+        return view('front.issue.archive.single.index',compact('book_id'));
     }
 
     public function team(){

@@ -1,4 +1,5 @@
 <script>
+    const submissionStatues={!! json_encode(submissionStatues()) !!};
     const yes = (msg = 'Do you want to continue.') => {
         return prompt(msg) == 'yes';
     };

@@ -155,9 +155,8 @@ Route::prefix('client')->name('client.')->group(function () {
         });
         Route::prefix('info')->name('info.')->group(function(){
             Route::match(['GET','POST'],'index',[ClientInfoController::class,'index'])->name('index');
+            Route::match(['GET','POST'],'change-password',[ClientInfoController::class,'password'])->name('password');
         });
-        Route::prefix('password')->name('password.')->group(function(){
-            Route::match(['GET','POST'],'password',[ClientInfoController::class,'password'])->name('password');
-        });
+
     });
 });

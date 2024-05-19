@@ -116,4 +116,7 @@ body .col-md-10 .top h1 a {
 body .col-md-10 .top .link a:not(:last-child)::after {
   content: "/";
   margin: 0px 3px;
+}
+body .dt-length label {
+  margin-left: 10px;
 }/*# sourceMappingURL=index.css.map */

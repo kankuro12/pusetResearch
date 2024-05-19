@@ -1,10 +1,10 @@
 @extends('client.layout.app')
 @section('header-link')
-    <a href="{{ route('client.submission.index') }}">Submission</a>
+    <a href="{{ route('client.submission.index') }}">Submissions</a>
 @endsection
 @section('active', 'submission')
 @section('toolbar')
-    <a href="{{ route('client.submission.add') }}" class="btn btn-sm btn-primary">Add</a>
+    <a href="{{ route('client.submission.add') }}" class="btn btn-sm btn-primary">Add New Submission</a>
 @endsection
 @section('content')
     <div class="shadow mt-2 p-2">
@@ -13,6 +13,7 @@
                 <thead>
                     <tr>
                         <th>Title</th>
+                        <th>Status</th>
                         <th>Manage</th>
                     </tr>
                 </thead>

@@ -9,5 +9,8 @@
         <li class="nav-item">
             <a class="nav-link" id="profile" href="{{ route('client.info.index') }}">My Profile</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" id="pass" href="{{ route('client.info.password') }}">Change Password</a>
+        </li>
     </ul>
 </div>

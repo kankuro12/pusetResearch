@@ -36,9 +36,7 @@
 <body>
     @php
         $user = Auth::user();
-        $client = DB::table('clients')
-            ->where('user_id', $user->id)
-            ->first();
+
     @endphp
     <div class="navigation">
         <div class="left">
@@ -57,9 +55,13 @@
             </div>
             <div class="profile">
                 <i class="fa-solid fa-user"></i>
-                {{ $client->name }}
+                {{ $user->name }}
                 <div class="drop-down">
-                    <div class="item"><a href="{{ route('client.info.index') }}">My Profile</a>
+                    <div class="item">
+                        <a href="{{ route('client.info.index') }}">My Profile</a>
+                    </div>
+                    <div class="item">
+                        <a href="{{ route('client.info.password') }}">Change Password</a>
                     </div>
                     <div class="item">
                         <a href="{{ route('clientLogout') }}">Logout</a>

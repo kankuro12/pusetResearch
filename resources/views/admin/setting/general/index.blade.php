@@ -22,15 +22,6 @@
                     @endif
                 </div>
 
-                <div class="col-md-3 mb-2">
-                    <label for="copy_right_date">Date</label>
-                    @if ($generalLayout == null)
-                        <input type="date" name="copy_right_date" id="copy_right_date" class="form-control">
-                    @else
-                        <input type="date" name="copy_right_date" id="copy_right_date" class="form-control"
-                            value="{{ $generalLayout->copy_right_date }}">
-                    @endif
-                </div>
                 <h5 class="mt-4 mb-2">
                     Top Header Content
                 </h5>

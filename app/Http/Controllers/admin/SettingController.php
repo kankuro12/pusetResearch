@@ -31,7 +31,6 @@ class SettingController extends Controller
                 $generalLayout->logo = "";
             }
                 $generalLayout->copy_right_name = $request->copy_right_name;
-                $generalLayout->copy_right_date = $request->copy_right_date;
                 $generalLayout->content =$request->content;
                 $generalLayout->long_desc = $request->long_desc;
                 $generalLayout->short_desc = $request->short_desc;

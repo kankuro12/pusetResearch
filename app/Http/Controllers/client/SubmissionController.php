@@ -89,7 +89,7 @@ class SubmissionController extends Controller
             abort(404);
         }
         if($submission->status>2){
-            return redirect()->route('client.submission.index')->with('error', 'The document  '.submissionStatuMsg()[$submission->status].' and cannot be delete.');
+            return redirect()->route('client.submission.index')->with('error', 'The document  '.submissionStatusMsg()[$submission->status].' and cannot be delete.');
 
         }
         Submission::where('id', $id)->update(['canceled'=>1]);

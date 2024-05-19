@@ -38,7 +38,7 @@
         </form>
         @else
         <h5 class="text-danger">
-            The document {{submissionStatuMsg()[$submission->status]}} and cannot be edited.
+            The document {{submissionStatusMsg()[$submission->status]}} and cannot be edited.
         </h5>
         @endif
     </div>

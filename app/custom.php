@@ -22,7 +22,7 @@ function submissionStatues() {
     ];
 }
 
-function submissionStatuMsg() {
+function submissionStatusMsg() {
     return [
         0=>'is Pending',
         1=>'is On Review',

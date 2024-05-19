@@ -49,8 +49,7 @@ class BookController extends Controller
             if ($book->iscurrent) {
                 Book::where('id', '<>', $book->id)->update(['iscurrent' => 0]);
             }
-            $books = DB::table('books')->where('iscurrent', 0)->get();
-            file_put_contents(resource_path('views/front/cache/archive.blade.php'), view('admin.templete.archive.index', compact('books'))->render());
+            $this->render();
             return redirect()->back()->with('success', 'succesfully added');
         };
     }
@@ -81,9 +80,7 @@ class BookController extends Controller
             }
             $book->iscurrent =  $request->iscurrent ? true : false;
             $book->save();
-            $books = DB::table('books')->where('iscurrent', 0)->get();
-            file_put_contents(resource_path('views/front/cache/archive.blade.php'), view('admin.templete.archive.index', compact('books'))->render());
-            file_put_contents(resource_path('views/front/cache/archiveSingle.blade.php'), view('admin.templete.archive.single.index', compact('books'))->render());
+            $this->render();
             return redirect()->back()->with('success', 'Successfully updated');
         }
     }
@@ -97,10 +94,17 @@ class BookController extends Controller
             BookArticalAuthor::where('book_artical_id', $article->id)->delete();
             BookArtical::where('book_id', $book_id)->delete();
             Book::where('id', $book_id)->delete();
-            $books = DB::table('books')->where('iscurrent', 0)->get();
-            file_put_contents(resource_path('views/front/cache/archive.blade.php'), view('admin.templete.archive.index', compact('books'))->render());
+            $this->render();
             return redirect()->back()->with('success', 'succesfully deleted');
         }
+    }
+
+    public function render(){
+
+
+        $books = DB::table('books')->where('iscurrent', 0)->get();
+        $bookArticles=DB::table('book_articals')->whereIn('id',$books->pluck('id'))->orderBy('en_page_no')->get();
+        file_put_contents(resource_path('views/front/cache/archive.blade.php'), view('admin.templete.archive.index', compact('books','bookArticles'))->render());
     }
 
     public function indexArticle($book_id)
@@ -149,6 +153,8 @@ class BookController extends Controller
                 $authorArticle->author_id = $author_id;
                 $authorArticle->save();
             }
+            $this->render();
+
             return redirect()->back()->with('success', 'Successfully added');
         }
     }
@@ -191,6 +197,8 @@ class BookController extends Controller
                     }
                 }
             }
+            $this->render();
+
             return redirect()->back()->with('success', 'Successfully updated');
         }
     }
@@ -199,6 +207,8 @@ class BookController extends Controller
     {
         BookArticalAuthor::where('book_artical_id', $artical_id)->delete();
         BookArtical::where('id', $artical_id)->delete();
+        $this->render();
+
         return redirect()->back()->with('success', 'succesfully deleted');
     }
 

@@ -1,7 +1,8 @@
 @extends('admin.layout.app')
 @section('header-Links')
     <a href="{{ route('admin.book.index') }}">Issues</a>
-    <a href="{{ route('admin.book.add') }}">Add</a>
+    <a href="#">{{$book->title}}</a>
+    <a href="#">Edit</a>
 @endsection
 @section('active', 'book')
 @section('content')
@@ -70,8 +71,7 @@
                         </div>
                         <div class="col-md-12 mb-2">
                             <label for="s_description">Short Description</label>
-                            <input type="text" name="s_description" id="s_description" value="{{ $book->s_description }}"
-                                class="form-control">
+                            <textarea type="text" name="s_description" id="s_description" rows="3" class="form-control">{{ $book->s_description }}"</textarea>
                         </div>
                         <div class="col-md-12 mb-2">
                             <label for="description">Description</label>
@@ -81,12 +81,12 @@
                     </div>
                 </div>
 
-                <div class="col-md-12 mb-2 text-start">
+                <div class="col-md-12 mb-2 text-end">
                     <a class="btn btn-danger btn-sm" href="{{route('admin.book.index')}}" onclick="return yes();">
                         Cancel
                     </a>
                     <button class="btn btn-primary btn-sm">
-                        update
+                        Update
                     </button>
                 </div>
             </div>

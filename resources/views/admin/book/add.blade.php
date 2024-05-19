@@ -1,7 +1,7 @@
 @extends('admin.layout.app')
 @section('header-Links')
     <a href="{{route('admin.book.index')}}">Issues</a>
-    <a href="{{route('admin.book.add')}}">Add</a>
+    <a href="#">Add</a>
 @endsection
 @section('active','book')
 @section('content')
@@ -63,7 +63,7 @@
                     </div>
                     <div class="col-md-12 mb-2">
                         <label for="s_description">Short Description</label>
-                        <textarea type="text" name="s_description" id="s_description" class="form-control"></textarea>
+                        <textarea type="text" name="s_description" id="s_description" class="form-control" rows="3"></textarea>
                     </div>
                     <div class="col-md-12 mb-2">
                         <label for="description">Description</label>

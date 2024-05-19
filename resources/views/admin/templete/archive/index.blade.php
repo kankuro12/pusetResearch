@@ -1,9 +1,39 @@
-@foreach ($books as $book)
-    <div class="col-md-12">
-        <div class="content">
-            <a href="{{ route('archiveIssue.single', ['book_id' => $book->id]) }}">{{ $book->title }} <div class="date"> {{ $book->issue }}</div> </a>
-            <p>{{ $book->volume }}</p>
+@if ($books->count() > 0)
+    @php
+        $len=$books->count()-1;
+    @endphp
+    @foreach ($books as $key=>$book)
+    <div class="archive">
+        <div class="row">
+            <div class="col-md-2">
+                <img src="{{vasset($book->image)}}" alt="{{$book->volume}}">
+            </div>
+            <div class="col-md-9">
+                <a href="{{ route('book.single', ['book_id' => $book->id]) }}">
+                    <div class="name">
+                        {{ $book->title }}, {{ $book->volume }}
+                    </div>
+                    <div class="date">
+                        Issued {{ $book->issue }}
+                    </div>
+                    <div class="desc">
+                        {{ $book->s_description }}
+                    </div>
+                </a>
+                <div class="chapters">
+                    @foreach ($bookArticles->where('book_id',$book->id) as $article)
+                        <a href="{{route('articleSingle',['article'=>$article->id])}}">{{$article->title}}</a>
+                    @endforeach
+                </div>
+            </div>
         </div>
-        <hr>
+
     </div>
-@endforeach
+    @if ($len>$key)
+    <hr>
+    @endif
+
+    @endforeach
+@else
+    <h5>The journal doesn't have older issues.</h5>
+@endif

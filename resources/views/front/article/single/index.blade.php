@@ -1,11 +1,10 @@
 @extends('front.layout.app')
 @section('header_link')
-<a href="{{route('archiveIssue')}}">Issue</a>
+    <a href="#">Issue</a>
     <i class="fa-solid fa-circle"></i>
-    <a href="{{ route('archiveIssue.single', ['book_id' => $book->id]) }}">{{ $book->title }}</a>
+    <a href="{{ route('book.single', ['book_id' => $book->id]) }}">{{ $book->title }} {{ $book->volume }}</a>
     <i class="fa-solid fa-circle"></i>
-    <a href="#">{{ $article->title }}</a>
-
+    <a href="#">{{ $article->title }} </a>
 @endsection
 @section('top_name')
     {{ $article->title }}
@@ -14,7 +13,7 @@
     {{ $article->title }}
 @endsection
 @section('meta')
-    <meta property="og:title" content="{{ $article->title }}">
+    <meta property="og:title" content="{{ $article->title }},{{ $book->title }}">
     <meta property="og:description" content="{{ $article->abstract }}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ route('articleSingle', ['article' => $article->id]) }}">
@@ -51,10 +50,14 @@
                                 @endforeach
                                 <div class="doi">
                                     <strong>DOI:</strong>
-                                    <a href="">
-                                        <span class="doi_value">{{ $book->doi }}</span>
+                                    <a href="{{ $article->doi }}">
+                                        <span class="doi_value">{{ $article->doi }}</span>
                                     </a>
                                 </div>
+                                <div class="tags">
+                                    <strong>Tags : </strong> {{$article->tags}}
+                                </div>
+                                <hr>
                                 <div class="abstract">
                                     <h3>
                                         Abstract
@@ -72,7 +75,7 @@
                         <div class="col-md-4">
                             <div class="detail">
                                 <div class="pdf">
-                                    <a href="{{ asset($article->file) }}" target="_blank">
+                                    <a href="{{ vasset($article->file) }}" target="_blank">
                                         <i class="fa-regular fa-file-pdf"></i> PDF
                                     </a>
                                 </div>

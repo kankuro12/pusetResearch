@@ -86,11 +86,11 @@ class FrontController extends Controller
         return view('front.guidelines.index');
     }
 
-
     public function archiveIssue(){
         return view('front.issue.archive.index');
     }
-    public function archiveIssueSingle($book_id){
+
+    public function bookSingle($book_id){
         $book = Book::where('id',$book_id)->first();
         $articles  = BookArtical::where('book_id',$book->id)->get();
         return view('front.issue.archive.single.index',compact('book','articles'));

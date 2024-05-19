@@ -13,8 +13,8 @@
                 <thead>
                     <tr>
                         <th>Title</th>
-                        <th>Issue</th>
                         <th>Volume</th>
+                        <th>Issue</th>
                         <th>Issue Date</th>
                         <th>Published Date</th>
                         <th>manage</th>
@@ -52,13 +52,17 @@
                 },
                 columns: [
                     {
-                        data: 'title'
-                    },
-                    {
-                        data: 'issue_name'
+                        data: null,
+                        render: function(data, type, row) {
+                            console.log(data);
+                            return `${data.title} ${data.iscurrent?"(Current)":``}`;
+                        }
                     },
                     {
                         data: 'volume'
+                    },
+                    {
+                        data: 'issue_name'
                     },
                     {
                         data: 'issue'

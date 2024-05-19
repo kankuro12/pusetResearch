@@ -28,7 +28,7 @@ Route::get('contact', [FrontController::class, 'contact'])->name('contact');
 Route::get('submission', [FrontController::class, 'submission'])->name('submission');
 
 Route::get('archive',[FrontController::class,'archiveIssue'])->name('archive');
-Route::get('archiveIssueSingle/{book_id}',[FrontController::class,'archiveIssueSingle'])->name('archiveIssue.single');
+Route::get('book/single/{book_id}',[FrontController::class,'bookSingle'])->name('book.single');
 Route::get('articleSingle/{article}', [FrontController::class, 'articleSingle'])->name('articleSingle');
 
 Route::get('team',[FrontController::class,'team'])->name('team');

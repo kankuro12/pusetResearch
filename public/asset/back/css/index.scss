@@ -76,6 +76,13 @@ body {
     .dt-length label{
         margin-left: 10px;
     }
+    table.table td{
+       font-size: 14px;
+       .btn-sm{
+        font-size: 12px;
+        margin: 5px 5px 0px 0px;
+       }
+    }
 
 }
 

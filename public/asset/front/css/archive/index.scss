@@ -1,43 +1,56 @@
 .archiveIssue{
     min-height: 200px;
-    .container{
-        hr{
-            margin: 0px;
+    .archive{
+        padding: 20px 20px 15px 5px;
+        color: #636C77;
+        img{
+            width:100%;
+            max-width: 120px;
         }
-        .heading{
-            padding: 0px 0px 15px 5px;
-            h5{
 
+        a{
+            color: inherit;
+            display: block;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            .name{
+                font-size: 18px;
+                font-weight: 700;
+            }
+            .date{
+                padding: 3px 0px 0px 0px;
+            }
+            .desc{
+                line-height: 16px;
+                height:32px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            &:hover{
+                .name{
+                    color:#00A67D;
+                }
             }
         }
-        .row{
-            .col-md-12{
-                .content{
-                    padding: 20px 20px 15px 5px;
-                    a{
-                        text-decoration: none;
-                        color: #636C77;
-                        font-size: 18px;
-                        font-weight: 700;
-                        display: flex;
-                        column-gap: 5px;
-                        align-items: center;
-                        .date{
-                            padding: 3px 0px 0px 0px;
-                            color: #636C77;
-                            font-size: 14px;
-                            font-weight: 700;
-                        }
-                    }
-                    p{
-                        font-size: 14px;
-                        color: var(--text);
-                    }
-                }
-                hr{
-                    margin: 0px;
-                }
+        .chapters{
+            margin-top: 5px;
+            a{
+                font-size: 15px;
+                text-decoration: underline;
             }
+            a:not(:last-child)::after {
+                content: ', ';
+            }
+        }
+        p{
+            font-size: 14px;
+            color: var(--text);
         }
     }
+    hr{
+        margin: 0px;
+    }
+
 }

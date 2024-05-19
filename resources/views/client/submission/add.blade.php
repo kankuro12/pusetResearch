@@ -9,7 +9,7 @@
         <form action="{{ route('client.submission.add') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row mb-3">
-                <div class="col-md-4 mb-2">
+                <div class="col-md-3 mb-2">
                     <label for="file">Attachment</label>
                     <input type="file" name="file" id="file" class="form-control photo" data-max-file-size="2M" accept=".pdf,.docx,.doc" required>
                     @error('file')

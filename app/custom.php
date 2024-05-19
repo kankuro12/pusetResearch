@@ -19,3 +19,14 @@ function submissionStatues() {
         4=>'On Hold',
     ];
 }
+
+function submissionStatusColors() {
+    return [
+        0=>'text-warning',
+        1=>'text-primary',
+        2=>'text-success',
+        3=>'text-danger',
+        4=>'text-secondary',
+    ];
+}
+

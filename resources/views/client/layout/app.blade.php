@@ -105,7 +105,6 @@
     <script src="{{ asset('asset/back/plugins/drophify/js/dropify.min.js') }}"></script>
 
     @include('admin.layout.jshelper')
-    @yield('js')
     <script>
         $(document).ready(function() {
             $('.photo').dropify();

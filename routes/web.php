@@ -149,9 +149,8 @@ Route::prefix('client')->name('client.')->group(function () {
         Route::prefix('submission')->name('submission.')->group(function () {
             Route::get('index', [ClientSubmissionController::class, 'index'])->name('index');
             Route::match(['GET', 'POST'], 'add', [ClientSubmissionController::class, 'add'])->name('add');
-            Route::match(['GET', 'POST'], 'edit/{sub_id}', [ClientSubmissionController::class, 'edit'])->name('edit');
-            Route::match(['GET'], 'del/{sub_id}', [ClientSubmissionController::class, 'del'])->name('del');
-            Route::get('list', [ClientSubmissionController::class, 'list'])->name('list');
+            Route::match(['GET', 'POST'], 'edit/{id}', [ClientSubmissionController::class, 'edit'])->name('edit');
+            Route::match(['GET'], 'del/{id}', [ClientSubmissionController::class, 'del'])->name('del');
         });
         Route::prefix('info')->name('info.')->group(function(){
             Route::match(['GET','POST'],'index',[ClientInfoController::class,'index'])->name('index');

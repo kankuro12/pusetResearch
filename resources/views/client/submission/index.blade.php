@@ -14,11 +14,38 @@
                     <tr>
                         <th>Title</th>
                         <th>Status</th>
+                        <th>Description</th>
                         <th>Manage</th>
                     </tr>
                 </thead>
+                @php
+                    $submissionStatues=submissionStatues();
+                    $submissionStatusColors=submissionStatusColors();
+                @endphp
                 <tbody>
+                    @foreach ($submissions as $submission)
+                        <tr>
+                            <td>
+                                {{$submission->title}}
+                            </td>
+                            <td class="{{$submissionStatusColors[$submission->status]}}">
+                                {{$submissionStatues[$submission->status]}}
+                            </td>
+                            <td >
+                                <div style="max-widtd: 200px;">
+                                    {{substr($submission->description,0,150)}}
+                                </div>
+                            </td>
+                            <td>
+                                @if ($submission->status<2)
+                                    <a class="btn btn-sm btn-primary"  href="{{ route('client.submission.edit', ['id' => $submission->id]) }}">Edit</a>
+                                    <a class="btn btn-sm btn-danger"  href="{{ route('client.submission.del', ['id' => $submission->id]) }}">Delete</a>
 
+                                @endif
+
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -29,43 +56,17 @@
     <script>
         var table;
         $(document).ready(function() {
-            if ($.fn.DataTable.isDataTable('#sub')) {
-                $('#sub').DataTable().clear().destroy();
-            }
-            table = $('#sub').DataTable({
-                columnDefs: [{
-                        targets: [0],
-                        searchable: true
-                    },
+
+        $('#sub').DataTable({
+                columnDefs: [
                     {
-                        targets: [1],
+                        targets: [3],
+                        searchable: false,
                         orderable: false
                     }
-                ],
-                ajax: {
-                    url: "{{ route('client.submission.list') }}",
-                    dataSrc: ''
-                },
-                columns: [{
-                        data: 'title',
-                    },
-                    {
-                        data: null,
-                        render: function(data, type, row) {
-                            return getUrls(data.id);
-                        }
-                    }
-                ],
+                ]
             })
         });
 
-        function getUrls(id) {
-            const editURL = `{{ route('client.submission.edit', ['sub_id' => 'xxx_id']) }}`;
-            const delURL = `{{ route('client.submission.del', ['sub_id' => 'xxx_id']) }}`;
-            const editLink = `<a href="${editURL.replace('xxx_id', id)}" class="btn btn-sm btn-primary">Edit</a>`;
-            const deleteLink =
-                `<a onclick="return yes()" href="${delURL.replace('xxx_id', id)}" class="btn btn-sm btn-danger">Delete</a>`;
-            return `${editLink} ${deleteLink}`;
-        }
     </script>
 @endsection

@@ -10,6 +10,7 @@ use App\Models\Associatetitle;
 use App\Models\Generallayout;
 use App\Models\Policies;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use PhpParser\Node\Stmt\Return_;
 
@@ -39,6 +40,7 @@ class SettingController extends Controller
                 }
                 $generalLayout->save();
 
+                Cache::forget('generallayouts');
         }
         return redirect()->back()->with('success', 'successfully added');
     }

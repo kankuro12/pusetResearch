@@ -26,7 +26,7 @@
 
 <body>
     @php
-        $general = DB::table('generallayouts')->first();
+        $general = getGeneralLayout();
     @endphp
     <div class="content">
         <div class="topbar">
@@ -247,7 +247,7 @@
                     </div>
                 </div>
                 <div class="copyright">
-                    <p class="sj-copyrights">© {{ $general->copy_right_date }} <a href="">
+                    <p class="sj-copyrights">©{{ date("Y")}}, <a href="#">
                             {{ $general->copy_right_name }}</a>. All Rights Reserved</p>
                 </div>
 

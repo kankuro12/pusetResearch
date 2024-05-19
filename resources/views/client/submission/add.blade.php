@@ -8,15 +8,15 @@
     <div class="shadow mt-3 p-3 bg-white">
         <form action="{{ route('client.submission.add') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            <div class="row mb-2">
+            <div class="row mb-3">
                 <div class="col-md-4 mb-2">
                     <label for="file">Attachment</label>
-                    <input type="file" name="file" id="file" class="form-control photo" accept=".pdf,.docx,.doc" required>
+                    <input type="file" name="file" id="file" class="form-control photo" data-max-file-size="2M" accept=".pdf,.docx,.doc" required>
                     @error('file')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-9">
                     <div class="mb-2">
                         <label for="title">Title</label>
                         <input type="text" name="title" id="title" class="form-control" required>

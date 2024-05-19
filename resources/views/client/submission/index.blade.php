@@ -37,9 +37,10 @@
                                 </div>
                             </td>
                             <td>
+                                <a class="btn btn-sm btn-primary"  target="_blank" href="{{ route('client.file', ['id' => $submission->file_id]) }}">View File</a>
                                 @if ($submission->status<2)
                                     <a class="btn btn-sm btn-primary"  href="{{ route('client.submission.edit', ['id' => $submission->id]) }}">Edit</a>
-                                    <a class="btn btn-sm btn-danger"  href="{{ route('client.submission.del', ['id' => $submission->id]) }}">Delete</a>
+                                    <a class="btn btn-sm btn-danger"  href="{{ route('client.submission.del', ['id' => $submission->id]) }}" onclick="return yes('Do you want to delete submission?')">Delete</a>
 
                                 @endif
 

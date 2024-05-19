@@ -146,6 +146,7 @@ Route::prefix('client')->name('client.')->group(function () {
     Route::match(['POST'], 'login', [LoginController::class, 'clientLogin'])->name('login');
     Route::middleware('role:1')->group(function () {
         Route::get('', [ClientController::class, 'index'])->name('index');
+        Route::get('file/{id}', [ClientController::class, 'file'])->name('file');
         Route::prefix('submission')->name('submission.')->group(function () {
             Route::get('index', [ClientSubmissionController::class, 'index'])->name('index');
             Route::match(['GET', 'POST'], 'add', [ClientSubmissionController::class, 'add'])->name('add');

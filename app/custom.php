@@ -14,9 +14,21 @@ function submissionStatues() {
     return [
         0=>'Pending',
         1=>'On Review',
-        2=>'Accepted',
-        3=>'Rejected',
-        4=>'On Hold',
+        2=>'Reviewed',
+        3=>'Accepted',
+        4=>'Rejected',
+        5=>'On Hold',
+    ];
+}
+
+function submissionStatuMsg() {
+    return [
+        0=>'is Pending',
+        1=>'is On Review',
+        2=>'has been Reviewed',
+        3=>'has been Accepted',
+        4=>'has been Rejected',
+        5=>'has been put On Hold',
     ];
 }
 
@@ -24,9 +36,10 @@ function submissionStatusColors() {
     return [
         0=>'text-warning',
         1=>'text-primary',
-        2=>'text-success',
-        3=>'text-danger',
-        4=>'text-secondary',
+        2=>'text-primary',
+        3=>'text-success',
+        4=>'text-danger',
+        5=>'text-secondary',
     ];
 }
 

@@ -28,16 +28,15 @@ class SubmissionController extends Controller
             $request->validate([
                 'title' => 'required|string',
                 'description' => 'required|string',
-                'file' => 'required|file|mimes:pdf',
+                'file' => 'required|file|mimes:pdf,doc,docx',
             ]);
 
-            $user = Auth::user();
             $submission = new Submission();
             $submission->title = $request->title;
             $submission->description = $request->description;
             $submission->file = $request->file('file')->store('uploads/submission');
             $submission->status = 0 ;
-            $submission->user_id = $user->id;
+            $submission->user_id = Auth::id();
             $submission->save();
         }
         return redirect()->back()->with('success', 'successfully added');

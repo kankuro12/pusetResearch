@@ -1,7 +1,9 @@
 @extends('client.layout.app')
 @section('header-link')
+<a href="#">My Profile</a>
 @endsection
 @section('active','profile')
+
 @section('content')
     <div class="shadow mt-2 p-3">
         <form action="{{ route('client.info.index') }}" method="POST">

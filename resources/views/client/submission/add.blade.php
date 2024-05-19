@@ -10,37 +10,41 @@
             @csrf
             <div class="row mb-2">
                 <div class="col-md-4 mb-2">
-                    <label for="file">PDF FILE</label>
-                    <input type="file" name="file" id="file" class="form-control photo" accept=".pdf, .docx">
+                    <label for="file">Attachment</label>
+                    <input type="file" name="file" id="file" class="form-control photo" accept=".pdf,.docx,.doc" required>
                     @error('file')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="col-md-8">
-                    <div class="row">
-                        <div class="col-md-4 mb-2">
-                            <label for="title">Title</label>
-                            <input type="text" name="title" id="title" class="form-control">
-                            @error('title')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="col-md-12 mb-2">
-                            <label for="description">Description</label>
-                            <textarea name="description" id="description" class="form-control"></textarea>
-                            @error('description')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
+                    <div class="mb-2">
+                        <label for="title">Title</label>
+                        <input type="text" name="title" id="title" class="form-control" required>
+                        @error('title')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
-                    <div class="col-md-12 mb-2 text-start">
+                    <div class=" mb-2">
+                        <label for="description">Description</label>
+                        <textarea name="description" id="description" class="form-control" required rows="5"></textarea>
+                        @error('description')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <div class=" mb-2 text-end">
                         <button class="btn btn-primary btn-sm">
-                            Add
+                            Add Submission
                         </button>
                     </div>
                 </div>
 
             </div>
         </form>
+        <hr>
+        <ul class="text-danger">
+            <li> Attachment should be pdf or word document.</li>
+        </ul>
     </div>
+
 @endsection

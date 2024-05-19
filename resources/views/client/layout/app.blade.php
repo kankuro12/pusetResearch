@@ -28,7 +28,7 @@
         }
 
         label {
-            font-weight: 500;
+            font-weight: 600;
         }
     </style>
 </head>
@@ -44,7 +44,7 @@
         <div class="left">
             <div class="name">
                 <a href="">
-                    Name
+                    {{config('app.title')}}
                 </a>
             </div>
         </div>
@@ -83,7 +83,7 @@
             </div>
 
 
-            <div class="p-4">
+            <div class="px-4 py-2">
                 @yield('content')
             </div>
         </div>

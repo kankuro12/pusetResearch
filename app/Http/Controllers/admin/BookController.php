@@ -49,8 +49,10 @@ class BookController extends Controller
             if ($book->iscurrent) {
                 Book::where('id', '<>', $book->id)->update(['iscurrent' => 0]);
             }
+            $books = DB::table('books')->where('iscurrent', 0)->get();
+            file_put_contents(resource_path('views/front/cache/archive.blade.php'), view('admin.templete.archive.index', compact('books'))->render());
+            return redirect()->back()->with('success', 'succesfully added');
         };
-        return redirect()->back()->with('success', 'succesfully added');
     }
     public function edit(Request $request, $book_id)
     {
@@ -78,10 +80,12 @@ class BookController extends Controller
                 $book->file = $request->file('file')->store('uploads/file');
             }
             $book->iscurrent =  $request->iscurrent ? true : false;
-
             $book->save();
+            $books = DB::table('books')->where('iscurrent', 0)->get();
+            file_put_contents(resource_path('views/front/cache/archive.blade.php'), view('admin.templete.archive.index', compact('books'))->render());
+            file_put_contents(resource_path('views/front/cache/archiveSingle.blade.php'), view('admin.templete.archive.single.index', compact('books'))->render());
+            return redirect()->back()->with('success', 'Successfully updated');
         }
-        return redirect()->back()->with('success', 'Successfully updated');
     }
 
     public function del($book_id)
@@ -93,8 +97,10 @@ class BookController extends Controller
             BookArticalAuthor::where('book_artical_id', $article->id)->delete();
             BookArtical::where('book_id', $book_id)->delete();
             Book::where('id', $book_id)->delete();
+            $books = DB::table('books')->where('iscurrent', 0)->get();
+            file_put_contents(resource_path('views/front/cache/archive.blade.php'), view('admin.templete.archive.index', compact('books'))->render());
+            return redirect()->back()->with('success', 'succesfully deleted');
         }
-        return redirect()->back()->with('success', 'succesfully deleted');
     }
 
     public function indexArticle($book_id)

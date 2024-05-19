@@ -1,0 +1,21 @@
+.team {
+  color: var(--text);
+}
+.team .container .title {
+  padding: 0px 0px 20px 0px;
+}
+.team .container .title h5 {
+  font-size: 24px;
+  font-family: 700;
+}
+.team .container .row .col-md-12 .member .designation {
+  padding: 0px 0px 20px 0px;
+  font-size: 18px;
+  font-weight: 700;
+}
+.team .container .row .col-md-12 .member .info {
+  font-size: 16px;
+}
+.team .container .row .col-md-12 .member .email {
+  padding: 20px 0px 0px 0px;
+}/*# sourceMappingURL=index.css.map */

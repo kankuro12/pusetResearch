@@ -16,7 +16,10 @@
     <link rel="stylesheet" href="{{ asset('asset/front/css/articlesingle/index.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/front/css/contact/index.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/front/css/register/index.css') }}">
-    <title>{{config('app.name')}} @yield('title')</title>
+    <link rel="stylesheet" href="{{ asset('asset/front/css/archive/index.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/front/css/archive/single/index.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/front/css/team/index.css') }}">
+    <title>{{ config('app.name') }} @yield('title')</title>
     <style>
 
     </style>
@@ -28,12 +31,13 @@
 <body>
     @php
         $general = DB::table('generallayouts')->first();
+        $teams = DB::table('teams')->get();
     @endphp
     <div class="content">
         <div class="topbar">
             <div class="container" style="padding :10px">
                 <div class="left">
-                {{$general->content}}
+                    {{ $general->content }}
                 </div>
                 <div class="logins">
                     <div class="login-area">
@@ -49,7 +53,7 @@
                     </div>
                 </div>
             </div>
-            <div class="line px-4" >
+            <div class="line px-4">
                 <hr class="m-0">
             </div>
         </div>
@@ -99,17 +103,34 @@
                                                         <a class="nav-link" href="{{ route('submission') }}"
                                                             id="item_a">INSTRUCTION & GUIDELINES</a>
                                                     </li>
-                                                    <li class="nav-item dropdown" id="dropdown">
+                                                    @if ($teams)
+                                                        @foreach ($teams as $item)
+                                                            <li class="nav-item" id="item">
+                                                                <a class="nav-link"
+                                                                    href="{{ route('team.member', ['team_id' => $item->id]) }}"
+                                                                    id="item_a">{{ strtoupper($item->title) }}</a>
+                                                            </li>
+                                                        @endforeach
+                                                    @else
+                                                    @endif
+
+                                                    <li class="nav-item" id="item">
+                                                        <a class="nav-link" href="{{ route('archiveIssue') }}"
+                                                            id="item_a">OLD ISSUE</a>
+                                                    </li>
+                                                    {{-- <li class="nav-item dropdown" id="dropdown">
                                                         <a class="nav-link dropdown-toggle" href="#"
                                                             id="navbarDropdown" role="button"
                                                             data-bs-toggle="dropdown" aria-expanded="false">
-                                                            ARTICLES
+                                                            ISSUE
                                                         </a>
                                                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                            <li><a class="dropdown-item" href="#">Action</a>
+                                                            <li><a class="dropdown-item" href="#">Current</a>
+                                                            </li>
+                                                            <li><a class="dropdown-item" href="{{route('archiveIssue')}}">Archives</a>
                                                             </li>
                                                         </ul>
-                                                    </li>
+                                                    </li> --}}
                                                 </ul>
                                             </div>
                                         </div>
@@ -246,10 +267,10 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
-    integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     @include('front.layout.jshelper')
     @yield('js')

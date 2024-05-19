@@ -1,0 +1,76 @@
+.archiveSingle .container .row .bookimage a img {
+  max-width: 400px;
+  width: 100%;
+}
+.archiveSingle .container .row .banner {
+  padding: 45px 0;
+}
+.archiveSingle .container .row .banner h1 {
+  font-size: 42px;
+  margin: 0 0 22px;
+  padding: 0 0 22px;
+  line-height: 62px;
+  font-weight: 400;
+}
+.archiveSingle .container .row .banner .description {
+  margin: 0;
+  color: #636C77;
+  font-size: 18px;
+  line-height: 32px;
+  text-align: justify;
+}
+.archiveSingle .container .row .banner .description a {
+  text-decoration: none;
+}
+.archiveSingle .container_b .editorial h5 {
+  font-size: 24px;
+  color: var(--text);
+  text-align: left;
+  font-weight: 400;
+}
+.archiveSingle .container_b .data {
+  padding: 0px 12px 10px 0px;
+}
+.archiveSingle .container_b .data a {
+  text-decoration: none;
+  color: var(--text);
+}
+.archiveSingle .container_b .data .head {
+  padding: 0 0 10px;
+}
+.archiveSingle .container_b .data .head .authorname {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+  color: var(--text);
+  font-size: 13px;
+  line-height: 13px;
+  margin: 0 0 10px 0px;
+}
+.archiveSingle .container_b .data .head h3 {
+  font-size: 16px;
+  font-weight: 500;
+  padding: 0;
+  margin: 0;
+}
+.archiveSingle .container_b .data .head h3 a {
+  color: var(--text);
+}
+.archiveSingle .container_b .data .bottom .short_desc p {
+  color: var(--text);
+}
+.archiveSingle .container_b .data .bottom .page_no {
+  color: var(--text);
+}
+.archiveSingle .container_b .data .bottom button {
+  border: none;
+  background-color: var(--text);
+  padding: 6px 20px;
+}
+.archiveSingle .container_b .data .bottom button i {
+  color: white;
+}
+.archiveSingle .container_b .data .bottom button a {
+  color: white;
+}/*# sourceMappingURL=index.css.map */

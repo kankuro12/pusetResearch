@@ -1,0 +1,42 @@
+.archiveIssue{
+    .container{
+        hr{
+            margin: 0px;
+        }
+        .heading{
+            padding: 0px 0px 15px 5px;
+            h5{
+
+            }
+        }
+        .row{
+            .col-md-12{
+                .content{
+                    padding: 20px 20px 15px 5px;
+                    a{
+                        text-decoration: none;
+                        color: #636C77;
+                        font-size: 18px;
+                        font-weight: 700;
+                        display: flex;
+                        column-gap: 5px;
+                        align-items: center;
+                        .date{
+                            padding: 3px 0px 0px 0px;
+                            color: #636C77;
+                            font-size: 14px;
+                            font-weight: 700;
+                        }
+                    }
+                    p{
+                        font-size: 14px;
+                        color: var(--text);
+                    }
+                }
+                hr{
+                    margin: 0px;
+                }
+            }
+        }
+    }
+}

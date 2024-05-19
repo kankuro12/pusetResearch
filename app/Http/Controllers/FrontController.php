@@ -7,6 +7,8 @@ use App\Models\Book;
 use App\Models\BookArtical;
 use App\Models\BookArticalAuthor;
 use App\Models\Client;
+use App\Models\Team;
+use App\Models\TeamMember;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -21,6 +23,7 @@ class FrontController extends Controller
         if($book){
             $articles = BookArtical::where('book_id',$book->id)->get();
         }
+
         return view('front.index', compact('book','articles'));
     }
 
@@ -78,5 +81,20 @@ class FrontController extends Controller
 
     public function submission(){
         return view('front.guidelines.index');
+    }
+
+    public function archiveIssue(){
+        return view('front.issue.archive.index');
+    }
+    public function archiveIssueSingle($book_id){
+        $book = Book::where('id',$book_id)->first();
+        $articles  = BookArtical::where('book_id',$book->id)->get();
+        return view('front.issue.archive.single.index',compact('book','articles'));
+    }
+
+    public function team_member($team_id){
+        $team  = Team::where('id',$team_id)->first();
+        $members = TeamMember::where('team_id',$team_id)->get();
+        return view('front.team.index',compact('members','team'));
     }
 }

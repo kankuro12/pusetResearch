@@ -25,8 +25,11 @@ class TeamController extends Controller
             $team->title = $request->title;
             $team->desc = $request->desc;
             $team->save();
+
+            // $teams = DB::table('teams')->get();
+            // file_put_contents(resource_path('views/front/cache/team'),view('admin.templete.team',compact('teams'))->render());
+            return redirect()->back()->with('success','Succesfully Added');
         }
-        return redirect()->back()->with('success','Succesfully Added');
     }
 
     public function edit(Request $request ,$team_id){

@@ -1,0 +1,32 @@
+.archiveIssue .container hr {
+  margin: 0px;
+}
+.archiveIssue .container .heading {
+  padding: 0px 0px 15px 5px;
+}
+.archiveIssue .container .row .col-md-12 .content {
+  padding: 20px 20px 15px 5px;
+}
+.archiveIssue .container .row .col-md-12 .content a {
+  text-decoration: none;
+  color: #636C77;
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  -moz-column-gap: 5px;
+       column-gap: 5px;
+  align-items: center;
+}
+.archiveIssue .container .row .col-md-12 .content a .date {
+  padding: 3px 0px 0px 0px;
+  color: #636C77;
+  font-size: 14px;
+  font-weight: 700;
+}
+.archiveIssue .container .row .col-md-12 .content p {
+  font-size: 14px;
+  color: var(--text);
+}
+.archiveIssue .container .row .col-md-12 hr {
+  margin: 0px;
+}/*# sourceMappingURL=index.css.map */

@@ -12,16 +12,17 @@
         .row{
             .col-md-12{
                 .member{
+                    font-size: 16px;
                     .designation{
-                        padding: 0px 0px 20px 0px;
+                        margin-bottom: 5px;
                         font-size: 18px;
                         font-weight: 700;
                     }
-                    .info{
-                        font-size: 16px;
+                    .name{
+                        font-weight: 600;
                     }
+
                     .email{
-                        padding: 20px 0px 0px 0px;
                     }
                 }
             }

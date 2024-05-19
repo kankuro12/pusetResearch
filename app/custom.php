@@ -3,7 +3,8 @@
 define('t_books','books');
 
 function vasset($file){
-    return route('admin.file',['filename'=>urlencode($file)]);
+    // return route('admin.file',['filename'=>urlencode($file)]);
+    return asset($file)."?v=".config('app.version');
 }
 
 function isGet(){

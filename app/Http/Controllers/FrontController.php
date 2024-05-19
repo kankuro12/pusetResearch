@@ -86,6 +86,7 @@ class FrontController extends Controller
         return view('front.guidelines.index');
     }
 
+
     public function archiveIssue(){
         return view('front.issue.archive.index');
     }
@@ -95,9 +96,9 @@ class FrontController extends Controller
         return view('front.issue.archive.single.index',compact('book','articles'));
     }
 
-    public function team_member($team_id){
-        $team  = Team::where('id',$team_id)->first();
-        $members = TeamMember::where('team_id',$team_id)->get();
-        return view('front.team.index',compact('members','team'));
+    public function team(){
+        $members = TeamMember::all();
+        $teams  = Team::whereIn('id',$members->pluck('id'))->get();
+        return view('front.team.index',compact('members','teams'));
     }
 }

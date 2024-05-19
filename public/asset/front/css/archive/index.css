@@ -1,3 +1,6 @@
+.archiveIssue {
+  min-height: 200px;
+}
 .archiveIssue .container hr {
   margin: 0px;
 }

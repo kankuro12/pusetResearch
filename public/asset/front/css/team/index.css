@@ -8,14 +8,14 @@
   font-size: 24px;
   font-family: 700;
 }
+.team .container .row .col-md-12 .member {
+  font-size: 16px;
+}
 .team .container .row .col-md-12 .member .designation {
-  padding: 0px 0px 20px 0px;
+  margin-bottom: 5px;
   font-size: 18px;
   font-weight: 700;
 }
-.team .container .row .col-md-12 .member .info {
-  font-size: 16px;
-}
-.team .container .row .col-md-12 .member .email {
-  padding: 20px 0px 0px 0px;
+.team .container .row .col-md-12 .member .name {
+  font-weight: 600;
 }/*# sourceMappingURL=index.css.map */

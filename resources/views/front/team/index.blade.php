@@ -1,14 +1,15 @@
 @extends('front.layout.app')
 @section('content')
-    <div class="team">
-        <div class="container">
-            <div class="title">
-                <h5>
-                    {{ strtoupper($team->title) }}
-                </h5>
-            </div>
-            @if ($members)
-                @foreach ($members as $member)
+
+    @foreach ($teams as $team)
+        <div class="team">
+            <div class="container">
+                <div class="title">
+                    <h5>
+                        {{ strtoupper($team->title) }}
+                    </h5>
+                </div>
+                @foreach ($members->where('team_id',$team->id)->values() as $member)
                     <div class="row">
                         <div class="col-md-12">
                             <div class="member">
@@ -17,25 +18,25 @@
                                         {{ $member->designation }}
                                     </strong>
                                 </div>
-                                <div class="info">
-                                    <div class="name">
-                                        {{ $member->name }}
-                                    </div>
-                                    <div class="organization">
-                                        {{ $member->organization }}
-                                    </div>
-                                    <div class="address">
-                                        {{ $member->address }}
-                                    </div>
+                                <div class="name">
+                                    {{ $member->name }}
+                                </div>
+                                <div class="organization">
+                                    {{ $member->organization }}
+                                </div>
+                                <div class="address">
+                                    {{ $member->address }}
                                 </div>
                                 <div class="email">
-                                    Email: {{ $member->email }}
+                                    Email: <a href="mailto:{{$member->mail}}">{{ $member->email }}</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 @endforeach
-            @endif
+
+            </div>
         </div>
-    </div>
+
+    @endforeach
 @endsection

@@ -11,6 +11,7 @@ use App\Models\Team;
 use App\Models\TeamMember;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use PhpParser\Node\Expr\FuncCall;
 
@@ -75,6 +76,8 @@ class FrontController extends Controller
             $client->country =$request->country;
             $client->affiliation =$request->affiliation;
             $client->save();
+
+            Auth::user($user);
             return  redirect()->route('front.login')->with('success','Successfully Registered');
         }
     }

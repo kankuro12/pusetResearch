@@ -72,7 +72,7 @@
                             <div class="col-md-10">
                                 <div class="savepassword">
                                     <div class="left">
-                                        <input type="checkbox" name="agree" id="agree">
+                                        <input type="checkbox" name="agree" id="agree" required>
                                         <div class="text">
                                             Yes, I agree to have my data collected and stored according to the information.
                                         </div>

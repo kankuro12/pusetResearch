@@ -22,19 +22,21 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FrontController::class, 'index'])->name('index');
 Route::get('layout', [FrontController::class, 'layout'])->name('layout');
-Route::get('front-login', [FrontController::class, 'login'])->name('front.login');
 Route::get('about', [FrontController::class, 'about'])->name('about');
 Route::get('policy', [FrontController::class, 'policy'])->name('policy');
 Route::get('contact', [FrontController::class, 'contact'])->name('contact');
 Route::get('submission', [FrontController::class, 'submission'])->name('submission');
 Route::get('archiveIssue',[FrontController::class,'archiveIssue'])->name('archiveIssue');
 Route::get('archiveIssueSingle/{book_id}',[FrontController::class,'archiveIssueSingle'])->name('archiveIssue.single');
-Route::match(['GET', 'POST'], 'register', [FrontController::class, 'register'])->name('register');
 Route::get('articleSingle/{article}', [FrontController::class, 'articleSingle'])->name('articleSingle');
 Route::get('team_member/{team_id}',[FrontController::class,'team_member'])->name('team.member');
 
+//register login
+Route::match(['GET', 'POST'], 'register', [FrontController::class, 'register'])->name('register');
+Route::get('front-login', [FrontController::class, 'login'])->name('front.login');
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('clientLogout',[LoginController::class,'clientLogout'])->name('clientLogout');
+
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::match(['get', 'post'], 'login', [LoginController::class, 'adminLogin'])->name('login');
     Route::middleware('role:0')->group(function () {

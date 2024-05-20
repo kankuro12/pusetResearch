@@ -1,0 +1,73 @@
+.inner-banner {
+    background-color: #636C77;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+
+    h1 {
+        font-size: 16px;
+        margin: 0px;
+        color: white;
+    }
+
+    .header-link {
+        display: flex;
+        align-items: center;
+        column-gap: 10px;
+        a {
+            text-decoration: none;
+            font-size: 16px;
+            color: white;
+            max-width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        i {
+            font-size: 6px;
+            color: white;
+        }
+    }
+}
+
+@media (max-width:768px){
+    .inner-banner {
+        background-color: #636C77;
+        display: block;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 15px;
+
+        h1 {
+            display: none;
+        }
+
+        .header-link {
+            display: block;
+            column-gap: 10px;
+            a {
+                display: block;
+                text-decoration: none;
+                font-size: 14px;
+                color: white;
+                max-width: 100%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                &::before {
+                    content: "•"; /* Insert bullet */
+                    margin-right: 8px; /* Add some space after the bullet */
+                    color: white; /* Bullet color */
+                }
+            }
+
+            i {
+                display: none;
+                font-size: 6px;
+                color: white;
+            }
+        }
+    }
+}

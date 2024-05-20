@@ -28,19 +28,20 @@ body {
         padding: 0;
     }
 }
-@import '_header.scss';
-@import '_banner.scss';
-@import 'article.scss';
-@import 'footer.scss';
-@import 'sidebar.scss';
-@import 'innerbanner.scss';
+@import 'header';
+@import 'banner';
+@import 'article';
+@import 'footer';
+@import 'sidebar';
+@import 'innerbanner';
 
 @import 'login/index.scss';
 @import 'aboutus/index.scss';
-@import 'articlesingle/index.scss';
 @import 'contact/index.scss';
 @import 'register/index.scss';
-@import 'archive/index.scss';
 @import 'archive/single/index.scss';
 @import 'team/index.scss';
 @import 'submission/index.scss';
+
+@import 'articlesingle/index';
+@import 'archive/index';

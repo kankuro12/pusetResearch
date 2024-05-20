@@ -52,8 +52,9 @@
                     url: "{{ route('admin.book.article.listArticle') }}?book_id={{$book->id}}",
                     dataSrc: ''
                 },
-                columns: [{
-                        data: 'title'
+                columns: [
+                    {
+                        data:'title'
                     },
                     {
                         data: 'artical_type_name'
@@ -65,8 +66,11 @@
                         data: 'tags'
                     },
                     {
-                        data: 'abstract',
-                        className: 'text-end'
+                        data: null,
+                        render: function(data, type, row) {
+
+                            return `<div style="max-width:150px">${data.abstract.substr(0,160)}</div>`;
+                        }
                     },
                     {
                         data: null,

@@ -43,9 +43,11 @@
                     padding: 0px 0px;
 
                     a {
+                        display: block;
+                        text-align: center;
                         img {
-                            max-width: 400px;
-                            width: 100%;
+                            width: auto;
+                            max-height:40vh ;
                         }
                     }
                 }

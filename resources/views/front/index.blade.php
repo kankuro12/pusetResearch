@@ -30,60 +30,61 @@
 
         </div>
         <div class="article">
-            @foreach ($articles as $item)
-            @php
-                $authors = DB::table('book_artical_authors')->where('book_artical_id',$item->id)->get();
-            @endphp
-                <div class="container p-0">
-                    <div class="editorial">
+            @foreach ($articles->groupBy('artical_type_id') as $key=>$articles)
+                <div class="container p-0 mt-3 mb-3 mt-md-2">
+                    <div class="article-type">
                         <h5>
-                            Editorial
+                            {{DB::table('artical_types')->where('id',$key)->first('name')->name}}
                         </h5>
                     </div>
-                    <hr>
-                    <div class="data">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="head">
-                                    <div class="authorname">
-                                        <i class="fa-regular fa-user"></i>
-                                        @foreach ($authors as $author)
-                                        <a href="">{{$author->author_name}} </a>
-                                        @endforeach
-                                    </div>
-                                    <h3>
-                                        <a href="{{route('articleSingle',['article'=>$item->id])}}">{{$item->title}}</a>
-                                    </h3>
+                    <hr class="mt-0">
+                    @php
+                        $articlesLen=$articles->count();
+                    @endphp
+                    @foreach ($articles->sortBy('en_page_no')->values() as $articleKey=>$item)
+                        @php
+                            $authors = DB::table('book_artical_authors')
+                            ->join('authors','authors.id','=','book_artical_authors.book_id')
+                            ->where('book_artical_id',$item->id)->get(['authors.name']);
+                        @endphp
+
+                        <div class="data">
+                            <div class="head">
+                                <div class="authorname">
+                                    <i class="fa-regular fa-user"></i>
+                                    @foreach ($authors as $author)
+                                    <a href="">{{$author->name}} </a>
+                                    @endforeach
                                 </div>
+                                <h3>
+                                    <a href="{{route('articleSingle',['article'=>$item->id])}}">{{$item->title}}</a>
+                                </h3>
                             </div>
-                            <div class="col-md-12">
-                                <div class="bottom">
-                                    <div class="row">
-                                        <div class="col-md-10">
-                                            <div class="short_desc">
-                                                <p>
-                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut minima numquam
-                                                    consectetur iusto rem sit, laboriosam possimus saepe veniam placeat
-                                                    similique nemo dicta inventore voluptate eveniet dolor consequuntur nulla
-                                                    unde?
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2 text-end">
-                                            <div class="page_no">
-                                                {{$item->st_page_no}} - {{$item->en_page_no}}
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <button>
-                                                <i class="fa-regular fa-file-pdf"></i> <a href="{{vasset($item->file)}}">PDF</a>
-                                            </button>
+                            <div class="bottom">
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <div class="short_desc">
+                                            <p>{{$item->abstract}}</p>
                                         </div>
                                     </div>
+                                    <div class="col-md-2 text-end">
+                                        <div class="page_no">
+                                            {{$item->st_page_no}} - {{$item->en_page_no}}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button>
+                                            <i class="fa-regular fa-file-pdf"></i> <a href="{{vasset($item->file)}}">PDF</a>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
+
                         </div>
-                    </div>
+                        @if (($articlesLen-1)>$articleKey)
+                            <hr>
+                        @endif
+                    @endforeach
                 </div>
             @endforeach
         </div>

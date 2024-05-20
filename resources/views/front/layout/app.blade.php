@@ -11,10 +11,8 @@
     <link rel="stylesheet" href="{{ asset('asset/front/css/index.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/front/css/login/index.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/front/css/aboutus/index.css') }}">
-    <link rel="stylesheet" href="{{ asset('asset/front/css/articlesingle/index.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/front/css/contact/index.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/front/css/register/index.css') }}">
-    <link rel="stylesheet" href="{{ asset('asset/front/css/archive/index.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/front/css/archive/single/index.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/front/css/team/index.css') }}">
     @yield('style')
@@ -125,20 +123,15 @@
             @yield('hideInnerBanner')
         @else
             <div class="inner-banner">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12 col-12 col-lg-12 ">
-                            <h1>
-                                @yield('top_name')
-                            </h1>
-                            <div class="header-link">
-                                <a href="{{ route('index') }}">Home</a>
-                                <i class="fa-solid fa-circle"></i>
-                                @yield('header_link')
-                            </div>
-                        </div>
-                    </div>
+                <h1>
+                    @yield('top_name')
+                </h1>
+                <div class="header-link">
+                    <a href="{{ route('index') }}">Home</a>
+                    <i class="fa-solid fa-circle"></i>
+                    @yield('header_link')
                 </div>
+
             </div>
         @endif
         <div class="main-container" style="border-top:1px solid #DDDDDD ;border-bottom:1px solid #DDDDDD;">

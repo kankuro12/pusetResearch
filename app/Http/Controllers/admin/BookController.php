@@ -107,8 +107,10 @@ class BookController extends Controller
         $bookArticlesAuthors=DB::table('book_artical_authors')->get();
         $types=DB::table('artical_types')->get();
 
-        file_put_contents(resource_path('views/front/cache/archive.blade.php'), view('admin.templete.archive.index', compact('books','bookArticles'))->render());
-        foreach ($books->where('iscurrent',0) as $key => $book) {
+        file_put_contents(resource_path('views/front/cache/archive.blade.php'), view('admin.templete.archive.index', [
+            'books'=>$books->where('iscurrent',0),'bookArticles'=>$bookArticles
+        ])->render());
+        foreach ($books as $key => $book) {
             file_put_contents(resource_path('views/front/cache/archive_header_link_'.$book->id.'.blade.php'), view('admin.templete.archive.single_book_header_link', compact('book'))->render());
             file_put_contents(resource_path('views/front/cache/archive_meta_'.$book->id.'.blade.php'), view('admin.templete.archive.single_book_meta', compact('book'))->render());
             file_put_contents(resource_path('views/front/cache/archive_single_'.$book->id.'.blade.php'), view('admin.templete.archive.single_book', compact('book','authors','bookArticlesAuthors','bookArticles','types'))->render());

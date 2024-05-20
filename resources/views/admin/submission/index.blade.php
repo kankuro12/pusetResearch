@@ -60,6 +60,10 @@
                     </div>
                     <div class="col-md-9" style="height:78vh">
                         <iframe src="" id="preview" style="width: 100%;height:100%;" frameborder="0"></iframe>
+                        <div id="no-preview" class="text-center" style="display: none">
+                            This browser not supported preview. <br>
+                            <a href="" class="btn btn-primary btn-sm" target="_blank">Download To View</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -158,12 +162,21 @@
                     <small>${submission.affiliation}</small>
                     <hr class="my-1">
                     <strong>
-                        <a href="${url}" target="_blank" download="${submission.title}.${submission.file_ext}">
+                        <a href="${url}" target="_blank" download="${submission.title}_by_${submission.name}.${submission.file_ext}">
                             Download File
                         </a>
                     </strong>
                 </div>`);
-                $('#preview').attr('src',url);
+                if(submission.file_ext=='pdf'){
+                    $('#preview').attr('src',url);
+                    $('#preview').show();
+                    $('#no-preview').hide();
+                }else{
+                    $('#preview').hide();
+                    $('#no-preview').show();
+                    $('#no-preview a').attr('href',url);
+                    $('#no-preview a').attr('download',`${submission.title}_by_${submission.name}.${submission.file_ext}`);
+                }
             }
         }
 

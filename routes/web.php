@@ -42,8 +42,10 @@ Route::get('clientLogout',[LoginController::class,'clientLogout'])->name('client
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::match(['get', 'post'], 'login', [LoginController::class, 'adminLogin'])->name('login');
     Route::middleware('role:0')->group(function () {
+
         Route::get('/', [DashbordController::class, 'index'])->name('index');
-        Route::get('/file', [FileController::class, 'index'])->name('file');
+        Route::get('/file/{id}', [FileController::class, 'index'])->name('file');
+
         Route::prefix('author')->name('author.')->group(function () {
             Route::get('index', [AuthorController::class, 'index'])->name('index');
             Route::match(['GET', 'POST'], 'add', [AuthorController::class, 'add'])->name('add');

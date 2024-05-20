@@ -14,6 +14,7 @@ class SubmissionController extends Controller
     {
         $submissions = DB::table('submissions')
             ->join('clients','clients.user_id','=','submissions.user_id')
+            ->join('files','files.id','=','submissions.file_id')
             ->select(
                 'submissions.id',
                 'submissions.user_id as uid',
@@ -25,6 +26,7 @@ class SubmissionController extends Controller
                 'submissions.updated_at as u',
                 'clients.name as n',
                 'clients.affiliation as a',
+                'files.path as p',
             )
             ->get();
         return view('admin.submission.index',compact('submissions'));

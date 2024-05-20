@@ -101,8 +101,8 @@ class BookController extends Controller
 
     public function render(){
 
-        $books = DB::table('books')->where('iscurrent', 0)->get();
-        $bookArticles=DB::table('book_articals')->whereIn('book_id',$books->pluck('id'))->orderBy('en_page_no')->get();
+        $books = DB::table('books')->get();
+        $bookArticles=DB::table('book_articals')->orderBy('en_page_no')->get();
         $authors=DB::table('authors')->get();
         $bookArticlesAuthors=DB::table('book_artical_authors')->get();
         $types=DB::table('artical_types')->get();
@@ -112,6 +112,29 @@ class BookController extends Controller
             file_put_contents(resource_path('views/front/cache/archive_header_link_'.$book->id.'.blade.php'), view('admin.templete.archive.single_book_header_link', compact('book'))->render());
             file_put_contents(resource_path('views/front/cache/archive_meta_'.$book->id.'.blade.php'), view('admin.templete.archive.single_book_meta', compact('book'))->render());
             file_put_contents(resource_path('views/front/cache/archive_single_'.$book->id.'.blade.php'), view('admin.templete.archive.single_book', compact('book','authors','bookArticlesAuthors','bookArticles','types'))->render());
+        }
+
+        file_put_contents(resource_path('views/front/cache/home.blade.php'), view('admin.templete.home')->render());
+
+
+        foreach ($bookArticles as $key => $article) {
+            $book=$books->where('id',$article->book_id)->first();
+            file_put_contents(resource_path('views/front/cache/article_header_'.$article->id.'.blade.php'), view('admin.templete.article.header', compact('book','article'))->render());
+            file_put_contents(resource_path('views/front/cache/article_title_'.$article->id.'.blade.php'), view('admin.templete.article.title', compact('book','article'))->render());
+            file_put_contents(resource_path('views/front/cache/article_meta_'.$article->id.'.blade.php'), view('admin.templete.article.meta', compact('book','article'))->render());
+            $localArticleAuthors=$bookArticlesAuthors->where('book_artical_id',$article->id)->values();
+            $type=$types->where('id',$article->artical_type_id)->first();
+            file_put_contents(
+                resource_path('views/front/cache/article_index_'.$article->id.'.blade.php'),
+                view('admin.templete.article.index',
+                [
+                    'book'=>$book,
+                    'article'=>$article,
+                    'authors'=>$localArticleAuthors,
+                    'allAuthors'=>$authors,
+                    'articleType'=>$type
+                ]
+            )->render());
         }
     }
 

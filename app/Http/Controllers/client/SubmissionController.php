@@ -13,7 +13,7 @@ class SubmissionController extends Controller
 {
     public function index()
     {
-        $submissions = DB::table('submissions')->where('canceled',0)->get(['id','title','status','description','file_id']);
+        $submissions = DB::table('submissions')->where('canceled',0)->where('user_id',Auth::id())->get(['id','title','status','description','file_id']);
         return view('client.submission.index',compact('submissions'));
     }
 

@@ -51,11 +51,9 @@ class SubmissionController extends Controller
         return redirect()->back()->with('success', 'successfully added');
     }
 
-    public function edit(Request $request, $sub_id)
+    public function edit(Request $request)
     {
-        $submission = Submission::where('id', $sub_id)->first();
-        $submission->status = $request->input('status');
-        $submission->save();
+        Submission::where('id', $request->id)->update(['status'=>$request->status]);
     }
 
     // public function del($sub_id)

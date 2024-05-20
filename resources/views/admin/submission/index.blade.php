@@ -55,8 +55,16 @@
         <div class="offcanvas-body large p-0" >
             <div class="px-3" style="min-height: 400px;">
                 <div class="row">
-                    <div class="col-md-3"  id="detail">
-
+                    <div class="col-md-3"  >
+                        <form onSubmit="event.preventDefault();updateStatus()">
+                            <select id="status_change" class="form-control">
+                            </select>
+                            <button class="btn btn-primary btn-sm mt-2">
+                                Update Status
+                            </button>
+                            <hr>
+                        </form>
+                        <div id="detail"></div>
                     </div>
                     <div class="col-md-9" style="height:78vh">
                         <iframe src="" id="preview" style="width: 100%;height:100%;" frameborder="0"></iframe>
@@ -108,6 +116,13 @@
 
             $('#status').append(submissionStatues.map((status, index) =>
                 `<option value="${index}">${status}</option>`))
+
+
+            $('#status_change').html(
+                submissionStatues.map((status, index) =>{
+                        return `<option value="${index}">${status}</option>`;
+                }
+            ).join(''));
             loadData();
             $('#status').change(function(e) {
                 loadData();
@@ -143,6 +158,7 @@
                 </tr>`
         }
 
+        var currentSubmission;
         function showDetail(id){
             const submission=submissions.find(o=>o.id==id);
             if(submission){
@@ -177,6 +193,9 @@
                     $('#no-preview a').attr('href',url);
                     $('#no-preview a').attr('download',`${submission.title}_by_${submission.name}.${submission.file_ext}`);
                 }
+                currentSubmission=submission;
+
+                $('#status_change').val(submission.status);
             }
         }
 
@@ -193,27 +212,34 @@
 
         }
 
-        function updateStatus(id) {
-            const status = $('#status_' + id).val();
-            const data = {
-                status: status
-            };
+        function updateStatus() {
+            if(currentSubmission){
+                if(yes()){
 
-            axios.post(`/admin/submission/edit/${id}`, data)
-                .then(response => {
-                    success('successfully updated')
-                    // table.ajax.reload();
-                    location.reload()
-                })
-                .catch(error => {
-                    console.error('Error updating status:', error);
-                });
+                    const status = $('#status_change').val();
+
+                    const data = {
+                        status,
+                        id:currentSubmission.id
+                    };
+
+                    axios.post(`/admin/submission/edit`, data)
+                        .then(response => {
+                            success('successfully updated')
+                            const index=submissions.findIndex(o=>o.id==currentSubmission.id);
+                            if(index>-1){
+                                submissions[index].status=status;
+                                loadData();
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error updating status:', error);
+                        });
+                }
+
+            }
         }
 
-        function getUrls(id) {
-            const delURL = "{{ route('admin.submission.del', ['sub_id' => 'xxx_id']) }}";
-            return `<a href="#" class="btn btn-sm btn-primary" onclick="updateStatus(${id})">Update</a>
-                    <a onclick="return yes()" href="${delURL.replace('xxx_id', id)}" class="btn btn-sm btn-danger">Delete</a>`;
-        }
+
     </script>
 @endsection

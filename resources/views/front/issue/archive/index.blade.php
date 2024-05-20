@@ -1,7 +1,5 @@
 @extends('front.layout.app')
 @section('header_link')
-<a href="{{route('archive')}}">Issues</a>
-<i class="fa-solid fa-circle"></i>
 <a href="{{route('archive')}}">Archive</a>
 @endsection
 @section('top_name')

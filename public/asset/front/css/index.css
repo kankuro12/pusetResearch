@@ -914,4 +914,56 @@ footer .container .copyright {
 }
 .archiveIssue hr {
   margin: 0px;
+}
+
+@media (max-width: 768px) {
+  .archiveIssue {
+    min-height: 200px;
+  }
+  .archiveIssue .archive {
+    padding: 0px 0px 0px 0px;
+  }
+  .archiveIssue .archive img {
+    max-width: 100px;
+  }
+  .archiveIssue .archive a {
+    color: inherit;
+    display: block;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+  }
+  .archiveIssue .archive a .name {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .archiveIssue .archive a .date {
+    padding: 3px 0px 0px 0px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .archiveIssue .archive a .desc {
+    height: 32px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .archiveIssue .archive a:hover .name {
+    color: #00A67D;
+  }
+  .archiveIssue .archive .chapters {
+    margin-top: 5px;
+  }
+  .archiveIssue .archive .chapters a {
+    display: inline;
+    white-space: wrap;
+    font-size: 15px;
+    text-decoration: underline;
+  }
+  .archiveIssue .archive p {
+    font-size: 14px;
+    color: var(--text);
+  }
+  .archiveIssue hr {
+    margin: 0px;
+  }
 }/*# sourceMappingURL=index.css.map */

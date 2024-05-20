@@ -57,3 +57,62 @@
     }
 
 }
+
+@media (max-width:768px){
+    .archiveIssue{
+        min-height: 200px;
+        .archive{
+            padding: 0px 0px 0px 0px;
+            img{
+              max-width: 100px;
+            }
+
+            a{
+                color: inherit;
+                display: block;
+                text-decoration: none;
+                font-weight: 500;
+                font-size: 14px;
+                .name{
+                    font-size: 18px;
+                    font-weight: 600;
+                }
+                .date{
+                    padding: 3px 0px 0px 0px;
+                    font-weight: 600;
+                    margin-bottom: 10px;
+                }
+                .desc{
+                    height:32px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
+                &:hover{
+                    .name{
+                        color:#00A67D;
+                    }
+                }
+            }
+            .chapters{
+                margin-top: 5px;
+                a{
+                    display: inline;
+                    white-space: wrap;
+                    font-size: 15px;
+                    text-decoration: underline;
+                }
+
+            }
+            p{
+                font-size: 14px;
+                color: var(--text);
+            }
+        }
+        hr{
+            margin: 0px;
+        }
+
+    }
+
+}

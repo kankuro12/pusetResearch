@@ -6,29 +6,28 @@
 @section('content')
     @if($book)
         <div class="banner">
-            <div class="container">
-                <div class="books">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="bookimage" style="padding: 50px 0px ">
-                                <a href="#">
-                                    <img src="{{ asset($book->image) }}" alt="book-cover">
-                                </a>
-                            </div>
+            <div class="books">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="bookimage" >
+                            <a href="#">
+                                <img src="{{ asset($book->image) }}" alt="book-cover">
+                            </a>
                         </div>
-                        <div class="col-md-8">
-                            <div class="banner">
-                                <h1 style="color: var(--text)">
-                                    {{ $book->title }}
-                                </h1>
-                                <div class="description">
-                                    {{ $book->s_description }} <a href="#">Read more</a>
-                                </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="banner-inner">
+                            <h1 style="color: var(--text)">
+                                {{ $book->title }},{{$book->volume}}
+                            </h1>
+                            <div class="description">
+                                {{ $book->s_description }}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
         <div class="article">
             @foreach ($articles as $item)

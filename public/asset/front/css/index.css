@@ -135,31 +135,54 @@ header .navbar #dropdown:hover #navbarDropdown {
     color: var(--text);
   }
 }
-.banner .container .books .row .bookimage a img {
+.banner .books .row .bookimage {
+  padding: 50px 0px;
+}
+.banner .books .row .bookimage a img {
   max-width: 400px;
   width: 100%;
 }
-.banner .container .books .row .banner {
+.banner .books .row .banner-inner {
   padding: 85px 0;
 }
-.banner .container .books .row .banner h1 {
-  font-size: 42px;
-  margin: 0 0 32px;
-  padding: 0 0 22px;
-  line-height: 62px;
+.banner .books .row .banner-inner h1 {
+  font-size: 30px;
+  margin: 0 0 10px 0px;
+  line-height: 42px;
   font-weight: 400;
 }
-.banner .container .books .row .banner .description {
+.banner .books .row .banner-inner .description {
   margin: 0;
   color: #636C77;
   font-size: 18px;
   line-height: 32px;
   text-align: justify;
 }
-.banner .container .books .row .banner .description a {
-  text-decoration: none;
-}
 
+@media (max-width: 768px) {
+  .banner .books .row .bookimage {
+    padding: 0px 0px;
+  }
+  .banner .books .row .bookimage a img {
+    max-width: 400px;
+    width: 100%;
+  }
+  .banner .books .row .banner-inner {
+    padding: 15px 0;
+  }
+  .banner .books .row .banner-inner h1 {
+    font-size: 20px;
+    margin: 0 0 10px 0px;
+    line-height: 25px;
+    font-weight: 500;
+  }
+  .banner .books .row .banner-inner .description {
+    margin: 0;
+    font-size: 16px;
+    line-height: 18px;
+    text-align: justify;
+  }
+}
 .article .container .current-issue {
   display: flex;
   flex-direction: column;

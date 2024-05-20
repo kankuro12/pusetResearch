@@ -135,10 +135,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
                 Route::get('delArtical/{artical_id}', [SettingController::class, 'delArtical'])->name('delArtical');
             });
             Route::prefix('associate')->name('associate.')->group(function () {
-                Route::match(['GET', 'POST'], 'indexAsso', [SettingController::class, 'indexAsso'])->name('indexAsso');
-                Route::match(["POST"], 'addAsso', [SettingController::class, 'addAsso'])->name('addAsso');
-                Route::match(["POST"], 'editAsso', [SettingController::class, 'editAsso'])->name('editAsso');
-                Route::match(["GET"], 'delAsso/{asso_id}', [SettingController::class, 'delAsso'])->name('delAsso');
+                Route::match(['GET', 'POST'], '', [SettingController::class, 'indexAsso'])->name('index');
+                Route::match(["POST"], 'add', [SettingController::class, 'addAsso'])->name('add');
+                Route::match(["POST"], 'edit', [SettingController::class, 'editAsso'])->name('edit');
+                Route::match(["GET"], 'del/{id}', [SettingController::class, 'delAsso'])->name('del');
             });
         });
     });

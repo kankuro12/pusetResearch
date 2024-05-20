@@ -4,7 +4,7 @@
 @endsection
 @section('active', 'setting')
 @section('content')
-    <div class="shadow mt-2 p-3 rounded">
+    <div class="shadow mt-2 p-3 bg-white rounded">
         <form id="uploads">
             @csrf
             <div class="row">
@@ -75,7 +75,7 @@
                     formData.append(name, files[0]);
                 }
             });
-            axios.post("{{ route('admin.setting.associate.indexAsso') }}", formData)
+            axios.post("{{ route('admin.setting.associate.index') }}", formData)
                 .then((res) => {
                     success('succesfully added')
                     $('#body').html("");
@@ -84,7 +84,7 @@
                 });
         }
         function removefile(id){
-            axios.get('{{route('admin.setting.associate.delAsso',['asso_id'=>":id"])}}'.replace(':id',id))
+            axios.get('{{route('admin.setting.associate.del',['id'=>":id"])}}'.replace(':id',id))
             .then(res => {
             success('successfully deleted')
             location.reload()

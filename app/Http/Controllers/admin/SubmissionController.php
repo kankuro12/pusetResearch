@@ -12,20 +12,26 @@ class SubmissionController extends Controller
 {
     public function index()
     {
-        return view('admin.submission.index');
+        $submissions = DB::table('submissions')
+            ->join('clients','clients.user_id','=','submissions.user_id')
+            ->select(
+                'submissions.id',
+                'submissions.user_id as uid',
+                'submissions.title as t',
+                'submissions.status as s',
+                'submissions.description as d',
+                'submissions.file_id as f',
+                'submissions.created_at as c',
+                'submissions.updated_at as u',
+                'clients.name as n',
+                'clients.affiliation as a',
+            )
+            ->get();
+        return view('admin.submission.index',compact('submissions'));
     }
 
     public function list()
     {
-        $submissions = DB::table('submissions')
-            ->select(
-                'id',
-                'title',
-                'status',
-                'description'
-            )
-            ->get();
-        return response()->json($submissions);
     }
     public function add(Request $request)
     {
@@ -36,7 +42,7 @@ class SubmissionController extends Controller
             // $submission->user_id = $request->user_id;
             $submission->title = $request->title;
             $submission->description = $request->description;
-            $submission->file = $request->file('file')->store('uploads/submission');
+            $submission->file = $request->file('file')->store('','sub');
             $submission->status = $request->status;
             $submission->save();
         }
@@ -50,9 +56,9 @@ class SubmissionController extends Controller
         $submission->save();
     }
 
-    public function del($sub_id)
-    {
-        Submission::where('id', $sub_id)->delete();
-        return redirect()->back()->with('success', 'successfully deleted');
-    }
+    // public function del($sub_id)
+    // {
+    //     Submission::where('id', $sub_id)->delete();
+    //     return redirect()->back()->with('success', 'successfully deleted');
+    // }
 }

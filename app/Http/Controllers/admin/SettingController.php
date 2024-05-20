@@ -147,6 +147,8 @@ class SettingController extends Controller
     }
 
 
+    //association
+
     public function indexAsso(Request $request)
     {
         $title = Associatetitle::first();
@@ -171,8 +173,8 @@ class SettingController extends Controller
         };
         return redirect()->back()->with('success','successfully Added');
     }
-    public function delAsso($asso_id)
+    public function delAsso($id)
     {
-        Associate::where('id', $asso_id)->delete();
+        Associate::where('id', $id)->delete();
     }
 }

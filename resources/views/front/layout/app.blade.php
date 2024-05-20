@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ config('app.name') }} @yield('title')</title>
 
+    @yield('meta')
     <link rel="stylesheet" href="{{ asset('asset/front/css/index.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/front/css/login/index.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/front/css/aboutus/index.css') }}">
@@ -15,12 +17,7 @@
     <link rel="stylesheet" href="{{ asset('asset/front/css/archive/index.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/front/css/archive/single/index.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/front/css/team/index.css') }}">
-    <title>{{ config('app.name') }} @yield('title')</title>
-    <style>
-
-    </style>
-
-    @yield('meta')
+    @yield('style')
 
 </head>
 
@@ -30,107 +27,96 @@
     @endphp
     <div class="content">
         <div class="topbar">
-            <div class="container" style="padding :10px">
-                <div class="left">
-                    {{ $general->content }}
-                </div>
-                <div class="logins">
-                    <div class="login-area">
-                        <div class="login">
-                            <a href="{{ route('front.login') }}">Login</a>
-                        </div>
-                        <div class="register">
-                            <a href="{{ route('register') }}">Register</a>
-                        </div>
-                    </div>
-                    <div class="language">
-
-                    </div>
-                </div>
+            <div class="left">
+                {{ $general->content }}
             </div>
-            <div class="line px-4">
-                <hr class="m-0">
+            <div class="d-block d-md-none">
+                <hr>
+            </div>
+            <div class="logins">
+                <div class="login-area">
+                    <div class="login">
+                        <a href="{{ route('front.login') }}">Login</a>
+                    </div>
+                    <div class="register">
+                        <a href="{{ route('register') }}">Register</a>
+                    </div>
+                </div>
             </div>
         </div>
+        <hr class="m-0">
         <header>
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 p-2 col-md-12 p-0">
-                        <div class="navigation">
-                            <div class="left">
-                                <div class="logo">
-                                    <a href="{{ route('index') }}">
-                                        <img src="{{ vasset($general->logo) }}" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="right">
-                                <div class="headers  d-flex justify-content-end">
-                                    <nav class="navbar navbar-expand-lg ">
-                                        <div class="container-fluid">
-                                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                                                data-bs-target="#navbarSupportedContent"
-                                                aria-controls="navbarSupportedContent" aria-expanded="false"
-                                                aria-label="Toggle navigation">
-                                                <span class="navbar-toggler-icon"></span>
-                                            </button>
-                                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                                    <li class="nav-item" id="item">
-                                                        <a class="nav-link" href="{{ route('index') }}"
-                                                            id="item_a">HOME</a>
-                                                    </li>
-                                                    <li class="nav-item" id="item">
-                                                        <a class="nav-link" href="{{ route('about') }}"
-                                                            id="item_a">ABOUT
-                                                            US</a>
-                                                    </li>
-                                                    <li class="nav-item" id="item">
-                                                        <a class="nav-link" href="{{ route('policy') }}"
-                                                            id="item_a">
-                                                            POLICY</a>
-                                                    </li>
-                                                    <li class="nav-item" id="item">
-                                                        <a class="nav-link" href="{{ route('contact') }}"
-                                                            id="item_a">CONTACT</a>
-                                                    </li>
-                                                    <li class="nav-item" id="item">
-                                                        <a class="nav-link" href="{{ route('submission') }}"
-                                                            id="item_a">INSTRUCTION & GUIDELINES</a>
-                                                    </li>
-                                                    <li class="nav-item" id="item">
-                                                        <a class="nav-link"
-                                                            href="{{ route('team')}}"> TEAM </a>
-                                                    </li>
+            <div class="navigation">
+                <div class="left">
+                    <div class="logo">
+                        <a href="{{ route('index') }}">
+                            <img src="{{ vasset($general->logo) }}" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="headers  d-flex justify-content-end">
+                        <nav class="navbar navbar-expand-lg ">
+                            <div class="container-fluid">
+                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#navbarSupportedContent"
+                                    aria-controls="navbarSupportedContent" aria-expanded="false"
+                                    aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                        <li class="nav-item" id="item">
+                                            <a class="nav-link" href="{{ route('index') }}"
+                                                id="item_a">HOME</a>
+                                        </li>
+                                        <li class="nav-item" id="item">
+                                            <a class="nav-link" href="{{ route('about') }}"
+                                                id="item_a">ABOUT
+                                                US</a>
+                                        </li>
+                                        <li class="nav-item" id="item">
+                                            <a class="nav-link" href="{{ route('policy') }}"
+                                                id="item_a">
+                                                POLICY</a>
+                                        </li>
+                                        <li class="nav-item" id="item">
+                                            <a class="nav-link" href="{{ route('contact') }}"
+                                                id="item_a">CONTACT</a>
+                                        </li>
+                                        <li class="nav-item" id="item">
+                                            <a class="nav-link" href="{{ route('submission') }}"
+                                                id="item_a">INSTRUCTION & GUIDELINES</a>
+                                        </li>
+                                        <li class="nav-item" id="item">
+                                            <a class="nav-link"
+                                                href="{{ route('team')}}"> TEAM </a>
+                                        </li>
 
-                                                    <li class="nav-item" id="item">
-                                                        <a class="nav-link" href="{{ route('archive') }}"
-                                                            id="item_a">ARCHIVE</a>
-                                                    </li>
-                                                    {{-- <li class="nav-item dropdown" id="dropdown">
-                                                        <a class="nav-link dropdown-toggle" href="#"
-                                                            id="navbarDropdown" role="button"
-                                                            data-bs-toggle="dropdown" aria-expanded="false">
-                                                            ISSUE
-                                                        </a>
-                                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                            <li><a class="dropdown-item" href="#">Current</a>
-                                                            </li>
-                                                            <li><a class="dropdown-item" href="{{route('archiveIssue')}}">Archives</a>
-                                                            </li>
-                                                        </ul>
-                                                    </li> --}}
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </nav>
+                                        <li class="nav-item" id="item">
+                                            <a class="nav-link" href="{{ route('archive') }}"
+                                                id="item_a">ARCHIVE</a>
+                                        </li>
+                                        {{-- <li class="nav-item dropdown" id="dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#"
+                                                id="navbarDropdown" role="button"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                ISSUE
+                                            </a>
+                                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                <li><a class="dropdown-item" href="#">Current</a>
+                                                </li>
+                                                <li><a class="dropdown-item" href="{{route('archiveIssue')}}">Archives</a>
+                                                </li>
+                                            </ul>
+                                        </li> --}}
+                                    </ul>
                                 </div>
                             </div>
-                        </div>
+                        </nav>
                     </div>
                 </div>
             </div>
-
         </header>
         @if (View::hasSection('hideInnerBanner'))
             @yield('hideInnerBanner')

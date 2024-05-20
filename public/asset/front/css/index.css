@@ -1,5 +1,4 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css");
-@import url("path/to/font-awesome/css/font-awesome.min.css");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css");
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
@@ -27,52 +26,56 @@ body .content {
 }
 .topbar {
   padding: 10px 0px;
-}
-.topbar .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 0px;
+  max-width: 2000px;
 }
-.topbar .container .left {
+.topbar .left {
   font-size: 16px;
   font-weight: 600;
 }
-.topbar .container .logins .login-area {
+.topbar .logins .login-area {
   display: flex;
   -moz-column-gap: 15px;
        column-gap: 15px;
 }
-.topbar .container .logins .login-area a {
+.topbar .logins .login-area a {
   text-decoration: none;
   color: var(--text);
 }
 
-header .container .navigation {
+header .navigation {
   padding: 0px 0px 2px 0px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-header .container .navigation .left .logo a {
+header .navigation .left .logo a {
   text-decoration: none;
 }
-header .container .navigation .left .logo a img {
+header .navigation .left .logo a img {
   max-width: 100%;
   width: auto;
   height: 50px;
 }
-header .container .navigation .right .headers .navbar ul.navbar-nav #item a {
+header .navigation .right .navbar-toggler-icon {
+  height: 1rem;
+  width: 1rem;
+}
+header .navigation .right .headers .navbar ul.navbar-nav #item a {
   font-size: 16px;
   font-weight: 500;
 }
-header .container .navigation .right .headers .navbar ul.navbar-nav #dropdown a {
+header .navigation .right .headers .navbar ul.navbar-nav #dropdown a {
   font-size: 16px;
   font-weight: 500;
 }
-header .container .navigation .right .headers .navbar ul.navbar-nav #dropdown .dropdown-item {
+header .navigation .right .headers .navbar ul.navbar-nav #dropdown .dropdown-item {
   color: #636c77;
 }
-header .container .navigation .right .headers .navbar ul.navbar-nav #dropdown ul .side_menu {
+header .navigation .right .headers .navbar ul.navbar-nav #dropdown ul .side_menu {
   display: none;
   position: absolute;
   top: 42px;
@@ -84,38 +87,55 @@ header .container .navigation .right .headers .navbar ul.navbar-nav #dropdown ul
   border-radius: 2px;
   text-align: left;
 }
-header .container .navigation .right .headers .navbar ul.navbar-nav #dropdown ul .side_menu ul {
+header .navigation .right .headers .navbar ul.navbar-nav #dropdown ul .side_menu ul {
   list-style: none;
   margin: 0;
   padding: 10px;
 }
-header .container .navigation .right .headers .navbar ul.navbar-nav #dropdown ul .side_menu ul li {
+header .navigation .right .headers .navbar ul.navbar-nav #dropdown ul .side_menu ul li {
   list-style: none;
 }
-header .container .navigation .right .headers .navbar ul.navbar-nav #dropdown ul .side_menu ul li a {
+header .navigation .right .headers .navbar ul.navbar-nav #dropdown ul .side_menu ul li a {
   text-decoration: none;
   color: var(--text);
 }
-header .container .navigation .right .headers .navbar #item:hover {
+header .navigation .right .headers .navbar #item:hover {
   border: 0.5px solid #D4D4D4;
   border-radius: 6px;
   background-color: #fff;
 }
-header .container .navigation .right .headers .navbar #item:hover #item_a {
+header .navigation .right .headers .navbar #item:hover #item_a {
   color: #5E9CEA;
 }
-header .container .navigation .right .headers .navbar #dropdown:hover {
+header .navigation .right .headers .navbar #dropdown:hover {
   border: 0.5px solid #D4D4D4;
   background-color: #fff;
   border-radius: 6px;
 }
-header .container .navigation .right .headers .navbar #dropdown:hover #navbarDropdown {
+header .navigation .right .headers .navbar #dropdown:hover #navbarDropdown {
   color: #5E9CEA;
 }
-header .container .navigation .row {
+header .navigation .row {
   align-items: center;
 }
 
+@media (max-width: 500px) {
+  .topbar .container {
+    display: block;
+  }
+  .topbar .container .left {
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+  }
+  .topbar .container .logins .login-area {
+    justify-content: space-between;
+  }
+  .topbar .container .logins .login-area a {
+    text-decoration: none;
+    color: var(--text);
+  }
+}
 .banner .container .books .row .bookimage a img {
   max-width: 400px;
   width: 100%;
@@ -379,6 +399,346 @@ footer .container .copyright {
   color: white;
 }
 
+.login .container .row .col-md-5 .heading {
+  padding: 10px 0px 10px 13px;
+}
+.login .container .row .col-md-5 .heading h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 40px;
+  color: var(--text);
+}
+.login .container .row .col-md-5 .inputs .form-group input {
+  padding: 10px 13px;
+}
+.login .container .row .col-md-5 .savepassword {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 0px 20px;
+}
+.login .container .row .col-md-5 .savepassword .left {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+}
+.login .container .row .col-md-5 .savepassword .right {
+  font-size: 15px;
+}
+.login .container .row .col-md-5 button {
+  border: none;
+  border-radius: 4px;
+  background-color: #5e9cea;
+  padding: 10px 50px;
+  font-size: 14px;
+  color: white;
+}
+
+.about .item {
+  padding: 20px 10px;
+}
+.about .item span {
+  font-weight: 700;
+  padding: 0px 0px 20px 0px;
+  font-size: 20px;
+}
+.about .item .description {
+  text-align: justify;
+  font-size: 18px;
+  color: var(--text);
+}
+
+.article-single {
+  border: 1px solid #DDDDDD;
+  padding: 30px 0px 0px 0px;
+}
+.article-single .container .row .col-md-12 h1 {
+  padding: 20px 20px 40px 0px;
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 700;
+}
+.article-single .container .row .col-md-12 .col-md-8 {
+  padding: 20px;
+  border-top: 1px solid #DDDDDD;
+  border-right: 1px solid #DDDDDD;
+}
+.article-single .container .row .col-md-12 .col-md-8 .info .author_name {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 0px 25px;
+}
+.article-single .container .row .col-md-12 .col-md-8 .info .author_name .name {
+  font-weight: bold;
+}
+.article-single .container .row .col-md-12 .col-md-8 .info .author_name .affiliation {
+  font-size: 16px;
+  color: var(--text);
+}
+.article-single .container .row .col-md-12 .col-md-8 .info .doi {
+  padding: 0px 0px 30px;
+  font-size: 13px;
+}
+.article-single .container .row .col-md-12 .col-md-8 .info .abstract h3 {
+  font-size: 16px;
+  font-weight: 700;
+  padding: 0px 0px 10px;
+}
+.article-single .container .row .col-md-12 .col-md-4 {
+  padding: 0;
+  border-top: 1px solid #DDDDDD;
+}
+.article-single .container .row .col-md-12 .col-md-4 .detail .pdf {
+  padding: 20px;
+  border-bottom: 1px solid #DDDDDD;
+}
+.article-single .container .row .col-md-12 .col-md-4 .detail .pdf a {
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+}
+.article-single .container .row .col-md-12 .col-md-4 .detail .published {
+  padding: 20px;
+  border-bottom: 1px solid #DDDDDD;
+}
+.article-single .container .row .col-md-12 .col-md-4 .detail .published .heading {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+}
+.article-single .container .row .col-md-12 .col-md-4 .detail .issue {
+  padding: 20px;
+  border-bottom: 1px solid #DDDDDD;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.article-single .container .row .col-md-12 .col-md-4 .detail .issue .item .heading {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+}
+.contact .container h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+.contact .container .row .col-md-12 {
+  padding: 0px;
+}
+.contact .container .row .col-md-6 {
+  padding: 0;
+  margin-bottom: 10px;
+}
+.contact .container .row .col-md-6 .item h3 {
+  font-size: 18px;
+  font-weight: 700;
+}
+.contact .container .row .col-md-6 .item .name {
+  color: var(--text);
+  font-size: 16px;
+}
+.contact .container .row .col-md-6 .item .post {
+  font-size: 16px;
+  color: var(--text);
+}
+
+.register .container .row .col-md-12 .heading {
+  padding: 10px 0px 10px 13px;
+}
+.register .container .row .col-md-12 .heading h3 {
+  margin: 0;
+  font-weight: 500;
+  line-height: 40px;
+  color: var(--text);
+}
+.register .container .row .col-md-12 form .row .col-md-6 .heading {
+  font-size: 18px;
+}
+.register .container .row .col-md-12 .inputs .form-group input {
+  padding: 10px 13px;
+}
+.register .container .row .col-md-12 .savepassword {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 0px 20px;
+}
+.register .container .row .col-md-12 .savepassword .left {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+  font-size: 15px;
+  color: var(--text);
+}
+.register .container .row .col-md-12 button {
+  border: none;
+  border-radius: 4px;
+  background-color: #5e9cea;
+  padding: 10px 50px;
+  font-size: 14px;
+  color: white;
+}
+
+.archiveIssue {
+  min-height: 200px;
+}
+.archiveIssue .archive {
+  padding: 20px 20px 15px 5px;
+  color: #636C77;
+}
+.archiveIssue .archive img {
+  width: 100%;
+  max-width: 120px;
+}
+.archiveIssue .archive a {
+  color: inherit;
+  display: block;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+.archiveIssue .archive a .name {
+  font-size: 18px;
+  font-weight: 700;
+}
+.archiveIssue .archive a .date {
+  padding: 3px 0px 0px 0px;
+}
+.archiveIssue .archive a .desc {
+  line-height: 16px;
+  height: 32px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.archiveIssue .archive a:hover .name {
+  color: #00A67D;
+}
+.archiveIssue .archive .chapters {
+  margin-top: 5px;
+}
+.archiveIssue .archive .chapters a {
+  display: inline;
+  white-space: wrap;
+  font-size: 15px;
+  text-decoration: underline;
+}
+.archiveIssue .archive p {
+  font-size: 14px;
+  color: var(--text);
+}
+.archiveIssue hr {
+  margin: 0px;
+}
+
+.archiveSingle .container .row .bookimage a img {
+  max-width: 400px;
+  width: 100%;
+}
+.archiveSingle .container .row .banner {
+  padding: 10px 0;
+}
+.archiveSingle .container .row .banner h1 {
+  font-size: 30px;
+  font-weight: 500;
+}
+.archiveSingle .container .row .banner .description {
+  margin: 0;
+  color: #636C77;
+  font-size: 18px;
+  line-height: 32px;
+  text-align: justify;
+}
+.archiveSingle .container .row .banner .description a {
+  text-decoration: none;
+}
+.archiveSingle .container_b {
+  margin-top: 40px;
+}
+.archiveSingle .container_b .editorial h5 {
+  font-size: 24px;
+  color: var(--text);
+  text-align: left;
+  font-weight: 700;
+  margin-bottom: 0px;
+}
+.archiveSingle .container_b .data {
+  padding: 0px 12px 10px 0px;
+}
+.archiveSingle .container_b .data a {
+  text-decoration: none;
+  color: var(--text);
+}
+.archiveSingle .container_b .data .head {
+  padding: 0 0 10px;
+}
+.archiveSingle .container_b .data .head .authorname {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+  color: var(--text);
+  font-size: 13px;
+  line-height: 13px;
+  margin: 0 0 10px 0px;
+}
+.archiveSingle .container_b .data .head .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.archiveSingle .container_b .data .head h3 {
+  font-size: 16px;
+  font-weight: 500;
+  padding: 0;
+  margin: 0;
+}
+.archiveSingle .container_b .data .head h3 a {
+  color: var(--text);
+}
+.archiveSingle .container_b .data .bottom .short_desc {
+  margin-bottom: 8px;
+}
+.archiveSingle .container_b .data .bottom .page_no {
+  color: var(--text);
+}
+.archiveSingle .container_b .data .bottom button {
+  border: none;
+  background-color: var(--text);
+  padding: 6px 20px;
+}
+.archiveSingle .container_b .data .bottom button i {
+  color: white;
+}
+.archiveSingle .container_b .data .bottom button a {
+  color: white;
+}
+
+.team {
+  color: var(--text);
+}
+.team .container .title {
+  padding: 0px 0px 20px 0px;
+}
+.team .container .title h5 {
+  font-size: 24px;
+  font-family: 700;
+}
+.team .container .row .col-md-12 .member {
+  font-size: 16px;
+}
+.team .container .row .col-md-12 .member .designation {
+  margin-bottom: 5px;
+  font-size: 18px;
+  font-weight: 700;
+}
+.team .container .row .col-md-12 .member .name {
+  font-weight: 600;
+}
 .submission .container .row h1 {
   font-size: 24px;
   font-weight: 700;

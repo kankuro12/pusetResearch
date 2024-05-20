@@ -95,8 +95,7 @@ class FrontController extends Controller
     }
 
     public function team(){
-        $members = TeamMember::all();
-        $teams  = Team::whereIn('id',$members->pluck('id'))->get();
-        return view('front.team.index',compact('members','teams'));
+
+        return view('front.team.index');
     }
 }

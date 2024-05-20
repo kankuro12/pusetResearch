@@ -25,9 +25,9 @@ class TeamController extends Controller
             $team->title = $request->title;
             $team->desc = $request->desc;
             $team->save();
+            self::render();
 
             // $teams = DB::table('teams')->get();
-            // file_put_contents(resource_path('views/front/cache/team'),view('admin.templete.team',compact('teams'))->render());
             return redirect()->back()->with('success','Succesfully Added');
         }
     }
@@ -42,11 +42,20 @@ class TeamController extends Controller
             $team->desc = $request->desc;
             $team->save();
         }
+        self::render();
+
         return redirect()->back()->with('success','Succesfully updated');
     }
     public function del($team_id){
         TeamMember::where('team_id',$team_id)->delete();
         Team::where('id',$team_id)->delete();
+        self::render();
         return redirect()->back()->with('success','Succesfully deleted');
+    }
+
+    public static function render(){
+        $members = TeamMember::all();
+        $teams  = Team::whereIn('id',$members->pluck('team_id'))->get();
+        file_put_contents(resource_path('views/front/cache/team.blade.php'),view('admin.templete.team',compact('teams','members'))->render());
     }
 }

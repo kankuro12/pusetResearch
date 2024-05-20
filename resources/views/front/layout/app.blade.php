@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="{{ asset('asset/front/css/contact/index.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/front/css/register/index.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/front/css/archive/single/index.css') }}">
-    <link rel="stylesheet" href="{{ asset('asset/front/css/team/index.css') }}">
     @yield('style')
 
 </head>

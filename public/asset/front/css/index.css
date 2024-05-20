@@ -665,27 +665,6 @@ footer .container .copyright {
   color: white;
 }
 
-.team {
-  color: var(--text);
-}
-.team .container .title {
-  padding: 0px 0px 20px 0px;
-}
-.team .container .title h5 {
-  font-size: 24px;
-  font-family: 700;
-}
-.team .container .row .col-md-12 .member {
-  font-size: 16px;
-}
-.team .container .row .col-md-12 .member .designation {
-  margin-bottom: 5px;
-  font-size: 18px;
-  font-weight: 700;
-}
-.team .container .row .col-md-12 .member .name {
-  font-weight: 600;
-}
 .submission .container .row h1 {
   font-size: 24px;
   font-weight: 700;
@@ -966,4 +945,24 @@ footer .container .copyright {
   .archiveIssue hr {
     margin: 0px;
   }
+}
+.team {
+  color: var(--text);
+  margin-bottom: 50px;
+}
+.team .container .title {
+  padding: 0px 0px 0px 0px;
+  font-size: 30px;
+  font-weight: 700;
+}
+.team .container .member {
+  font-size: 16px;
+}
+.team .container .member .designation {
+  margin-bottom: 5px;
+  font-size: 18px;
+  font-weight: 600;
+}
+.team .container .member .name {
+  font-weight: 600;
 }/*# sourceMappingURL=index.css.map */

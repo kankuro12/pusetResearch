@@ -11,7 +11,6 @@ use App\Http\Controllers\admin\SubmissionController;
 use App\Http\Controllers\admin\TeamController;
 use App\Http\Controllers\admin\TeamMemberController;
 use App\Http\Controllers\client\ClientController;
-use App\Http\Controllers\client\DashbordController as ClientDashbordController;
 use App\Http\Controllers\client\InfoController as ClientInfoController;
 use App\Http\Controllers\client\SubmissionController as ClientSubmissionController;
 use App\Http\Controllers\DashbordController;

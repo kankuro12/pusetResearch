@@ -21,6 +21,7 @@ class TeamMemberController extends Controller
         ->where('team_id', $team_id)
         ->select('id', 'name', 'email', 'designation', 'address', 'phone','team_id')
         ->get();
+
         return response()->json($team_members);
     }
     public function add(Request $request, $team_id)
@@ -40,11 +41,12 @@ class TeamMemberController extends Controller
             $team_member->phone = $request->phone;
             $team_member->email = $request->email;
             $team_member->save();
+            TeamController::render();
+            return redirect()->back()->with('success', 'successfully added');
         }
-        return redirect()->back()->with('success', 'successfully added');
     }
 
-    public function edit(Request $request, $team_member_id, $team_id)
+    public function edit(Request $request,$team_id, $team_member_id )
     {
         $team = Team::where('id', $team_id)->first();
         $team_member = TeamMember::where('id', $team_member_id)->first();
@@ -61,13 +63,15 @@ class TeamMemberController extends Controller
             $team_member->phone = $request->phone;
             $team_member->email = $request->email;
             $team_member->save();
+            TeamController::render();
+            return redirect()->back()->with('success', 'successfully updated');
         }
-        return redirect()->back()->with('success', 'successfully updated');
     }
 
     public function del($team_member_id)
     {
         TeamMember::where('id', $team_member_id)->delete();
+        TeamController::render();
         return redirect()->back()->with('success', 'successfully deleted');
     }
 }

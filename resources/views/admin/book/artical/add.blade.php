@@ -6,7 +6,7 @@
     <a href="#">Add</a>
 @endsection
 @section('toolbar')
-    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#newAuthorModal">
         Add New Author
     </button>
 @endsection
@@ -82,18 +82,18 @@
             </div>
         </form>
 
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="newAuthorModal" tabindex="-1" aria-labelledby="newAuthorModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content" style="width: 700px">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Aurhor</h1>
+                        <h1 class="modal-title fs-5" id="newAuthorModalLabel">Add New Aurhor</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-6 mb-2">
                                 <label for="name">Name</label>
-                                <input type="text" name="author-name" id="author-name" class="form-control">
+                                <input type="text" name="author-name" id="author-name" class="form-control" required>
                             </div>
                             <div class="col-md-6 mb-2">
                                 <label for="link">Link</label>

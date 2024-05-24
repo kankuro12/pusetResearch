@@ -53,8 +53,7 @@ class TeamController extends Controller
     }
 
     public static function render(){
-        $members = TeamMember::all();
-        $teams  = Team::whereIn('id',$members->pluck('team_id'))->get();
+        $teams  = Team::all();
         file_put_contents(resource_path('views/front/cache/team.blade.php'),view('admin.templete.team',compact('teams','members'))->render());
     }
 }

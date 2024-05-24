@@ -46,9 +46,10 @@
                 @foreach ($articles->sortBy('en_page_no')->values() as $articleKey => $item)
                     @php
                         $authors = DB::table('book_artical_authors')
-                            ->join('authors', 'authors.id', '=', 'book_artical_authors.book_id')
+                            ->join('authors', 'authors.id', '=', 'book_artical_authors.author_id')
                             ->where('book_artical_id', $item->id)
                             ->get(['authors.name']);
+
                     @endphp
 
                     <div class="data">

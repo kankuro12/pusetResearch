@@ -24,10 +24,10 @@ class GuidelineController extends Controller
             $guideline->title = $request->title;
             $guideline->description = $request->description;
             $guideline->save();
+            self::cache();
+            return redirect()->back()->with('success','successfully added');
         }
-        $guidelines = Guideline::get();
-        file_put_contents(resource_path('views/front/cache/guidelines.blade.php'),view('admin.templete.guidelines',compact('guidelines'))->render());
-        return redirect()->back()->with('success','successfully added');
+
     }
 
     public function edit(Request $request,$guideline_id){
@@ -38,16 +38,21 @@ class GuidelineController extends Controller
             $guideline->title = $request->title;
             $guideline->description = $request->description;
             $guideline->save();
+            self::cache();
+            return redirect()->back()->with('success','successfully updated');
         }
-        $guidelines = Guideline::get();
-        file_put_contents(resource_path('views/front/cache/guidelines.blade.php'),view('admin.templete.guidelines',compact('guidelines'))->render());
-        return redirect()->back()->with('success','successfully updated');
+
     }
 
     public function del($guideline_id){
         Guideline::where('id',$guideline_id)->delete();
+        self::cache();
+        return redirect()->back()->with('success','successfully updated');
+    }
+
+    public static function cache(){
         $guidelines = Guideline::get();
         file_put_contents(resource_path('views/front/cache/guidelines.blade.php'),view('admin.templete.guidelines',compact('guidelines'))->render());
-        return redirect()->back()->with('success','successfully updated');
+
     }
 }

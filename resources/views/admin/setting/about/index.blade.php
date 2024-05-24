@@ -17,7 +17,7 @@
             </div> --}}
             <div class="col-md-12 mb-2">
                 <label for="description">Description</label>
-                <textarea type="text" name="description" id="description" class="form-control" required></textarea>
+                <textarea type="text" name="description" id="description" class="form-control note" required></textarea>
             </div>
             <div class="col-md-12 mb-2 text-start">
                 <button class="btn btn-primary btn-sm" onclick="saveData()">
@@ -42,8 +42,8 @@
                             <td>
                                {{ $about->title }}
                             </td>
-                            <td >
-                                    {{ $about->description }}
+                            <td style="max-width: 500px;overflow:hidden;">
+                                    {!! $about->description !!}
                             </td>
                             <td>
                                 <a

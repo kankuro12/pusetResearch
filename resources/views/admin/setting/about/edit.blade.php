@@ -18,11 +18,11 @@
             </div> --}}
             <div class="col-md-12 mb-2">
                 <label for="description">Description</label>
-                <textarea type="text" name="description" id="description" class="form-control" required>{{ $about->description }}</textarea>
+                <textarea type="text" name="description" id="description" class="form-control note" required>{!! $about->description !!}</textarea>
             </div>
             <div class="col-md-12 mb-2 text-start">
                 <button class="btn btn-primary btn-sm" onclick="editData({{ $about->id }})">
-                    Edit
+                    Update
                 </button>
             </div>
         </div>

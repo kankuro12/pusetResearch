@@ -88,6 +88,8 @@ class SettingController extends Controller
     }
 
 
+    //about start
+
     public function about_index()
     {
         $abouts = DB::table('abouts')->get();
@@ -113,11 +115,11 @@ class SettingController extends Controller
             $about->description = $request->description;
             $about->save();
             self::aboutRender();
+            return redirect()->back()->with('success','successfully updated');
 
         } else {
             return view('admin.setting.about.edit', compact('about'));
         }
-        return redirect()->back()->with('success','successfully updated');
     }
     public function about_del($about_id)
     {
@@ -130,6 +132,8 @@ class SettingController extends Controller
         $abouts = DB::table('abouts')->get();
         file_put_contents(resource_path('views/front/cache/about.blade.php'), view('admin.templete.about', compact('abouts'))->render());
     }
+
+    // end about
 
     public function indexArtical()
     {

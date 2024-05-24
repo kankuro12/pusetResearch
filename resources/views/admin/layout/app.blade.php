@@ -57,6 +57,10 @@
                 tabsize: 2,
                 height: 200,
             });
+            var noteBar = $('.note-toolbar');
+            noteBar.find('[data-toggle]').each(function() {
+                $(this).attr('data-bs-toggle', $(this).attr('data-toggle')).removeAttr('data-toggle');
+            });
             $('#@yield('active')').addClass('active');
             $('.tool-bar .btn').addClass('btn-sm');
         });

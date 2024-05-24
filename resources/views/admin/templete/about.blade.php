@@ -7,7 +7,7 @@
             </span>
             <div class="description">
                 <p>
-                    {{$about->description}}
+                    {!! $about->description !!}
                 </p>
             </div>
          </div>

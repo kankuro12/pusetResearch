@@ -1,10 +1,10 @@
 @extends('front.layout.app')
 @section('header_link')
-
+<a href="#">Contact</a>
 @endsection
 @section('top_name')
-
+Contact
 @endsection
 @section('content')
-@include('front.cache.individualcontact');
+@includeif('front.cache.individualcontact');
 @endsection

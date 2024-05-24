@@ -14,7 +14,7 @@ class TeamController extends Controller
         return view('admin.team.index');
     }
     public function list(){
-        $teams = DB::table('teams')->get(['id','title','desc']);
+        $teams = DB::table('teams')->get(['id','title']);
         return response()->json($teams);
     }
     public function add(Request $request){

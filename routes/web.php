@@ -24,7 +24,7 @@ Route::get('layout', [FrontController::class, 'layout'])->name('layout');
 Route::get('about', [FrontController::class, 'about'])->name('about');
 Route::get('policy', [FrontController::class, 'policy'])->name('policy');
 Route::get('contact', [FrontController::class, 'contact'])->name('contact');
-Route::get('submission', [FrontController::class, 'submission'])->name('submission');
+Route::get('guidelines', [FrontController::class, 'submission'])->name('submission');
 
 Route::get('archive',[FrontController::class,'archiveIssue'])->name('archive');
 Route::get('book/single/{book_id}',[FrontController::class,'bookSingle'])->name('book.single');
@@ -80,13 +80,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::match(['GET', 'POST'], 'edit/{team_id}', [TeamController::class, 'edit'])->name('edit');
             Route::get('del/{team_id}', [TeamController::class, 'del'])->name('del');
             Route::get('list', [TeamController::class, 'list'])->name('list');
-            Route::prefix('team_member')->name('team_member.')->group(function () {
-                Route::get('index/{team_id}', [TeamMemberController::class, 'index'])->name('index');
-                Route::match(['GET', 'POST'], 'add/{team_id}', [TeamMemberController::class, 'add'])->name('add');
-                Route::match(['GET', 'POST'], 'edit/{team_id}/{team_member_id}', [TeamMemberController::class, 'edit'])->name('edit');
-                Route::get('del/{team_member_id}', [TeamMemberController::class, 'del'])->name('del');
-                Route::get('list/{team_id}', [TeamMemberController::class, 'list'])->name('list');
-            });
+            // Route::prefix('team_member')->name('team_member.')->group(function () {
+            //     Route::get('index/{team_id}', [TeamMemberController::class, 'index'])->name('index');
+            //     Route::match(['GET', 'POST'], 'add/{team_id}', [TeamMemberController::class, 'add'])->name('add');
+            //     Route::match(['GET', 'POST'], 'edit/{team_id}/{team_member_id}', [TeamMemberController::class, 'edit'])->name('edit');
+            //     Route::get('del/{team_member_id}', [TeamMemberController::class, 'del'])->name('del');
+            //     Route::get('list/{team_id}', [TeamMemberController::class, 'list'])->name('list');
+            // });
         });
         Route::prefix('submission')->name('submission.')->group(function () {
             Route::get('index', [SubmissionController::class, 'index'])->name('index');

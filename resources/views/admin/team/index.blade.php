@@ -13,7 +13,6 @@
                 <thead>
                     <tr>
                         <th>Title</th>
-                        <th>Description</th>
                         <th>manage</th>
                     </tr>
                 </thead>
@@ -31,11 +30,11 @@
         $(document).ready(function() {
             table = $('#teams').DataTable({
                 columnDefs: [{
-                        targets: [0, 1],
+                        targets: [0],
                         searchable: true
                     },
                     {
-                        targets: [2],
+                        targets: [1],
                         orderable: false
                     }
                 ],

@@ -7,17 +7,17 @@
 @section('content')
     <div class="shadow mt-3 p-3 bg-white rounded">
         <div class="row mb-2">
-            <div class="col-md-3 mb-2">
+            <div class="col-md-12 mb-2 ">
                 <label for="title">Title</label>
-                <input type="text" name="title" id="title" class="form-control">
+                <input type="text" name="title" id="title" class="form-control" required>
             </div>
-            <div class="col-md-3">
+            {{-- <div class="col-md-3">
                 <label for="sub_title">Sub Title</label>
                 <input type="text" name="sub_title" id="sub_title" class="form-control">
-            </div>
+            </div> --}}
             <div class="col-md-12 mb-2">
                 <label for="description">Description</label>
-                <textarea type="text" name="description" id="description" class="form-control"></textarea>
+                <textarea type="text" name="description" id="description" class="form-control" required></textarea>
             </div>
             <div class="col-md-12 mb-2 text-start">
                 <button class="btn btn-primary btn-sm" onclick="saveData()">
@@ -31,7 +31,7 @@
                     <tr>
                         <th>SN</th>
                         <th>Title</th>
-                        <th>Sub title</th>
+                        <th>Description</th>
                         <th>Manage</th>
                     </tr>
                 </thead>
@@ -40,12 +40,10 @@
                         <tr>
                             <td>{{ $key + 1 }}</td>
                             <td>
-                                <input type="text" name="title" id="title_{{ $about->id }}" class="form-control"
-                                    value="{{ $about->title }}">
+                               {{ $about->title }}
                             </td>
-                            <td>
-                                <input type="text" name="sub_title" id="sub_title_{{ $about->id }}"
-                                    class="form-control" value="{{ $about->sub_title }}">
+                            <td >
+                                    {{ $about->description }}
                             </td>
                             <td>
                                 <a
@@ -64,13 +62,11 @@
     <script>
         function saveData() {
             const title = $('#title').val();
-            const sub_title = $('#sub_title').val();
             const description = $('#description').val();
 
             console.log('sub_title');
             axios.post('{{ route('admin.setting.about.about_add') }}', {
                 title: title,
-                sub_title: sub_title,
                 description: description,
             }).then(res => {
                 success('succesfully added');

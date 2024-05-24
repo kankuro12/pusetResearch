@@ -98,20 +98,22 @@ class SettingController extends Controller
     {
         $about = new About();
         $about->title = $request->title;
-        $about->sub_title = $request->sub_title;
+        $about->sub_title = $request->sub_title??"";
         $about->description = $request->description;
         $about->save();
-        $abouts = DB::table('abouts')->get();
-        file_put_contents(resource_path('views/front/cache/about.blade.php'), view('admin.templete.about', compact('abouts'))->render());
+        self::aboutRender();
+
     }
     public function about_edit(Request $request, $about_id)
     {
         $about = About::where('id', $about_id)->first();
         if ($request->getMethod() == "POST") {
             $about->title = $request->title;
-            $about->sub_title = $request->sub_title;
+            $about->sub_title = $request->sub_title??"";
             $about->description = $request->description;
             $about->save();
+            self::aboutRender();
+
         } else {
             return view('admin.setting.about.edit', compact('about'));
         }
@@ -120,7 +122,13 @@ class SettingController extends Controller
     public function about_del($about_id)
     {
         About::where('id', $about_id)->delete();
+        self::aboutRender();
         return redirect()->back()->with('success', 'successfully deleted');
+    }
+
+    public static function aboutRender(){
+        $abouts = DB::table('abouts')->get();
+        file_put_contents(resource_path('views/front/cache/about.blade.php'), view('admin.templete.about', compact('abouts'))->render());
     }
 
     public function indexArtical()

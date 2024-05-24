@@ -64,11 +64,11 @@
                                 id="item_a">ABOUT
                                 US</a>
                         </li>
-                        <li class="nav-item" id="item">
+                        {{-- <li class="nav-item" id="item">
                             <a class="nav-link" href="{{ route('policy') }}"
                                 id="item_a">
                                 POLICY</a>
-                        </li>
+                        </li> --}}
                         <li class="nav-item" id="item">
                             <a class="nav-link" href="{{ route('contact') }}"
                                 id="item_a">CONTACT</a>
@@ -79,7 +79,7 @@
                         </li>
                         <li class="nav-item" id="item">
                             <a class="nav-link"
-                                href="{{ route('team')}}"> TEAM </a>
+                                href="{{ route('team')}}"> EDITORIAL </a>
                         </li>
 
                         <li class="nav-item" id="item">

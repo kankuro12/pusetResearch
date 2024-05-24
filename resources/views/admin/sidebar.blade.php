@@ -13,19 +13,16 @@
             <a class="nav-link" id="book" href="{{ route('admin.book.index')}}">Issues</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="team" href="{{ route('admin.team.index')}}">Team</a>
+            <a class="nav-link" id="team" href="{{ route('admin.team.index')}}">Editorial</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="guideline" href="{{ route('admin.guideline.index')}}">Guideline</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="submission" href="{{ route('admin.submission.index')}}">Submission</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="setting" href="{{ route('admin.setting.index')}}">Setting</a>
+            <a class="nav-link" id="submission" href="{{ route('admin.submission.index')}}">Submissions</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" id="faq" href="{{ route('admin.faq.index')}}">FAQ</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="setting" href="{{ route('admin.setting.index')}}">Setting</a>
         </li>
     </ul>
 </div>

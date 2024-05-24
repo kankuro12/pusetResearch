@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 @section('header-Links')
-    <a href="{{ route('admin.setting.artical_type.indexArtical') }}">Artical Type</a>
+    <a href="{{ route('admin.setting.artical_type.indexArtical') }}">Article Type</a>
 @endsection
 @section('active', 'setting')
 @section('content')

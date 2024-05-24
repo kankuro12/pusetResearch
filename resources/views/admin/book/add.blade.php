@@ -12,30 +12,30 @@
             <div class="col-md-3 mb-3">
                 <div class="mb-2">
                     <label for="image">Cover Image</label>
-                    <input type="file" name="image" id="image" class="form-control photo" accept="image/jpeg, image/jpg ,image/png">
+                    <input type="file" name="image" id="image" class="form-control photo" accept="image/jpeg, image/jpg ,image/png" required>
                 </div>
                 <div class="mb-3">
                     <label for="file">PDF File</label>
-                    <input type="file" name="file" id="file" class="form-control photo"accept=".pdf">
+                    <input type="file" name="file" id="file" class="form-control photo"accept=".pdf" required>
                 </div>
             </div>
             <div class="col-md-9">
                 <div class="row">
                     <div class="col-md-4 mb-2">
                         <label for="title">Original Title</label>
-                        <input type="text" name="title" id="title" class="form-control" onInput="$('#eng_title').val(this.value)">
+                        <input type="text" name="title" id="title" class="form-control" onInput="$('#eng_title').val(this.value)" required>
                     </div>
                     <div class="col-md-4 mb-2">
                         <label for="eng_title">English Title</label>
-                        <input type="text" name="eng_title" id="eng_title" class="form-control">
+                        <input type="text" name="eng_title" id="eng_title" class="form-control" required>
                     </div>
                     <div class="col-md-2 mb-2">
                         <label for="issn">Issn</label>
-                        <input type="number" name="issn" id="issn" class="form-control">
+                        <input type="number" name="issn" id="issn" class="form-control" required>
                     </div>
                     <div class="col-md-2 mb-2">
                         <label for="doi">DOI</label>
-                        <input type="text" name="doi" id="doi" class="form-control">
+                        <input type="text" name="doi" id="doi" class="form-control" required>
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="issue_name">Issue</label>
@@ -47,15 +47,15 @@
                     </div>
                     <div class="col-md-4 mb-2">
                         <label for="language_of_publication">Language Of Publication</label>
-                        <input type="text" name="language_of_publication" id="language_of_publication" class="form-control" value="English">
+                        <input type="text" name="language_of_publication" id="language_of_publication" class="form-control" value="English" required>
                     </div>
                     <div class="col-md-3 mb-2">
                         <label for="issue">Issue Date</label>
-                        <input type="date" name="issue" id="issue"  class="form-control">
+                        <input type="date" name="issue" id="issue"  class="form-control" required>
                     </div>
                     <div class="col-md-3 mb-2">
                         <label for="published_date">Published Date</label>
-                        <input type="date" name="published_date" id="published_date" class="form-control">
+                        <input type="date" name="published_date" id="published_date" class="form-control" required>
                     </div>
                     <div class="col-md-3 mb-2" style="align-content: center">
                         <input type="checkbox" name="iscurrent" id="iscurrent">
@@ -63,11 +63,11 @@
                     </div>
                     <div class="col-md-12 mb-2">
                         <label for="s_description">Short Description</label>
-                        <textarea type="text" name="s_description" id="s_description" class="form-control" rows="3"></textarea>
+                        <textarea type="text" name="s_description" id="s_description" class="form-control" rows="3" required></textarea>
                     </div>
                     <div class="col-md-12 mb-2">
                         <label for="description">Description</label>
-                        <textarea type="text" name="description" id="description" class="form-control"></textarea>
+                        <textarea type="text" name="description" id="description" class="form-control" required></textarea>
                     </div>
 
                     <div class="col-md-12 mb-2 text-end">

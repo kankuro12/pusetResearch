@@ -64,19 +64,19 @@
                         <div class="row">
                             <div class="col-md-6 mb-2">
                                 <label for="name">Name</label>
-                                <input type="text" name="author-name" id="author-name" class="form-control">
+                                <input type="text" name="author-name" id="author-name" class="form-control" required>
                             </div>
                             <div class="col-md-6 mb-2">
                                 <label for="link">Link</label>
-                                <input type="text" name="author-link" id="author-link" class="form-control">
+                                <input type="text" name="author-link" id="author-link" class="form-control" required>
                             </div>
                             <div class="col-md-6 mb-2">
                                 <label for="designation">Designation</label>
-                                <input type="text" name="author-designation" id="author-designation" class="form-control">
+                                <input type="text" name="author-designation" id="author-designation" class="form-control" required>
                             </div>
                             <div class="col-md-6 mb-2">
                                 <label for="organization">Organization</label>
-                                <input type="text" name="author-organization" id="author-organization" class="form-control">
+                                <input type="text" name="author-organization" id="author-organization" class="form-control" required>
                             </div>
                         </div>
                     </div>

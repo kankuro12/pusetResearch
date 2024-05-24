@@ -43,12 +43,12 @@
                         </div>
                         <div class="col-md-4 mb-2">
                             <label for="tags">Searchable Tags</label>
-                            <input type="text" name="tags" id="tags" class="form-control">
+                            <input type="text" name="tags" id="tags" class="form-control" required>
                         </div>
 
                         <div class="col-md-4 mb-2">
                             <label for="doi">DOI</label>
-                            <input type="text" name="doi" id="doi" class="form-control">
+                            <input type="text" name="doi" id="doi" class="form-control" required>
                         </div>
                         <div class="col-md-4 mb-2">
                             <label for="starting_page">Starting Page No</label>
@@ -62,7 +62,7 @@
                         </div>
                         <div class="col-md-12 mb-2">
                             <label for="abstract">Abstract</label>
-                            <textarea type="text" name="abstract" id="abstract" class="form-control"></textarea>
+                            <textarea type="text" name="abstract" id="abstract" class="form-control" required></textarea>
                         </div>
                         <div class="col-md-12 mb-2">
                             <label for="author" class="mb-2">Select Authors</label>

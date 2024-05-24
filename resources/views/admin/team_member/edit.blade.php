@@ -28,7 +28,7 @@
                 <div class="col-md-6 mb-2">
                     <label for="team_designation">Team Designation</label>
                     <input type="text" name="team_designation" id="team_designation"
-                        value="{{ $team_member->team_designation }}" class="form-control" >
+                        value="{{ $team_member->team_designation }}" class="form-control" required >
                 </div>
                 <div class="col-md-3 mb-2">
                     <label for="organization">Organization</label>

@@ -9,11 +9,11 @@
         <div class="row mb-2">
             <div class="col-md-3 mb-2">
                 <label for="title">Title</label>
-                <input type="text" name="title" id="title" class="form-control">
+                <input type="text" name="title" id="title" class="form-control" required>
             </div>
             <div class="col-md-12 mb-2">
                 <label for="answer">Answer</label>
-                <textarea type="text" name="answer" id="answer" class="form-control"></textarea>
+                <textarea type="text" name="answer" id="answer" class="form-control" required></textarea>
             </div>
             <div class="col-md-12 mb-2 text-start">
                 <button class="btn btn-primary btn-sm" onclick="saveData()">

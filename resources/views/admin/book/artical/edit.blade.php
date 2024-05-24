@@ -56,20 +56,20 @@
                         <div class="col-md-4 mb-2">
                             <label for="starting_page">Starting Page No</label>
                             <input type="number" name="starting_page" id="starting_page" class="form-control"
-                                value="{{ $artical->st_page_no }}" required oninput="valueCheck()">
+                                value="{{ $artical->st_page_no }}" required oninput="valueCheck()" required>
                         </div>
                         <div class="col-md-4 mb-2">
                             <label for="ending_page">Ending Page No</label>
                             <input type="number" name="ending_page" id="ending_page" class="form-control"
-                                value="{{ $artical->en_page_no }}" required oninput="valueCheck()">
+                                value="{{ $artical->en_page_no }}" required oninput="valueCheck()" required>
                         </div>
                         <div class="col-md-12 mb-2">
                             <label for="abstract">Abstract</label>
-                            <textarea type="text" name="abstract" id="abstract" class="form-control"> {{ $artical->abstract }} </textarea>
+                            <textarea type="text" name="abstract" id="abstract" class="form-control" required> {{ $artical->abstract }} </textarea>
                         </div>
                         <div class="col-md-12 mb-2">
                             <label for="author" class="mb-2">Select Authors</label>
-                            <select name="author_ids[]" id="author" multiple="multiple" class="author form-control">
+                            <select name="author_ids[]" id="author" multiple="multiple" class="author form-control" >
 
                             </select>
                         </div>

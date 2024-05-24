@@ -13,35 +13,35 @@
             <div class="row" style="align-items: flex-end">
                 <div class="col-md-3 mb-2">
                     <label for="name">Name</label>
-                    <input type="text" name="name" id="name" class="form-control">
+                    <input type="text" name="name" id="name" class="form-control" required >
                 </div>
                 <div class="col-md-3 mb-2">
                     <label for="designation">Designation</label>
-                    <input type="text" name="designation" id="designation" class="form-control">
+                    <input type="text" name="designation" id="designation" class="form-control" required >
                 </div>
                 <div class="col-md-6 mb-2">
                     <label for="team_designation">Team Designation</label>
-                    <input type="text" name="team_designation" id="team_designation" class="form-control">
+                    <input type="text" name="team_designation" id="team_designation" class="form-control" required>
                 </div>
                 <div class="col-md-3 mb-2">
                     <label for="organization">Organization</label>
-                    <input type="text" name="organization" id="organization" class="form-control">
+                    <input type="text" name="organization" id="organization" class="form-control" required >
                 </div>
                 <div class="col-md-3 mb-2">
                     <label for="address">Address</label>
-                    <input type="text" name="address" id="address" class="form-control">
+                    <input type="text" name="address" id="address" class="form-control" required >
                 </div>
                 <div class="col-md-3 mb-2">
                     <label for="phone">Phone</label>
-                    <input type="number" name="phone" id="phone" class="form-control">
+                    <input type="number" name="phone" id="phone" class="form-control" required >
                 </div>
                 <div class="col-md-3 mb-2">
                     <label for="email">Email</label>
-                    <input type="email" name="email" id="email" class="form-control">
+                    <input type="email" name="email" id="email" class="form-control" required >
                 </div>
                 <div class="col-md-8 mb-2">
                     <label for="detail">Detail</label>
-                    <input type="text" name="detail" id="detail" class="form-control">
+                    <input type="text" name="detail" id="detail" class="form-control" required >
                 </div>
                 <div class="col-md-4 mb-2 text-start d-flex align-items-end py-1">
                     <button class="btn btn-primary btn-sm">

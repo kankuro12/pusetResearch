@@ -11,11 +11,11 @@
         <div class="row">
             <div class="col-md-3 mb-2">
                 <label for="title">Title</label>
-                <input type="text" name="title" id="title" class="form-control">
+                <input type="text" name="title" id="title" class="form-control" required>
             </div>
             <div class="col-md-12 mb-2">
                 <label for="desc">Desription</label>
-                <textarea type="text" name="desc" id="desc" class="form-control"></textarea>
+                <textarea type="text" name="desc" id="desc" class="form-control" required></textarea>
             </div>
             <div class="col-md-12 mb-2 text-start">
                 <button class="btn btn-primary btn-sm">

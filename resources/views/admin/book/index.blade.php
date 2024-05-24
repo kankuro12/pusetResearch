@@ -14,7 +14,7 @@
                     <tr>
                         <th>Title</th>
                         <th>Volume</th>
-                        <th>Issue</th>
+                        {{-- <th>Issue</th> --}}
                         <th>Issue Date</th>
                         <th>Published Date</th>
                         <th>manage</th>
@@ -33,16 +33,9 @@
         var table;
         $(document).ready(function() {
             table = $('#books').DataTable({
-                columnDefs: [{
-                        targets: [0, 1],
-                        searchable: true
-                    },
+                columnDefs: [
                     {
-                        targets: [2, 3, 4],
-                        searchable: false
-                    },
-                    {
-                        targets: [5],
+                        targets: [4],
                         orderable: false
                     }
                 ],
@@ -61,9 +54,9 @@
                     {
                         data: 'volume'
                     },
-                    {
+                    {{-- {
                         data: 'issue_name'
-                    },
+                    }, --}}
                     {
                         data: 'issue'
                     },

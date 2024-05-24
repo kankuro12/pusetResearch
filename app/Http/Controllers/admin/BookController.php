@@ -30,20 +30,20 @@ class BookController extends Controller
         } else {
             $book = new Book();
             $book->title = $request->title;
-            $book->eng_title = $request->eng_title;
-            $book->issn = $request->issn;
-            $book->doi = $request->doi;
+            $book->eng_title = $request->title;
+            $book->issn = $request->issn??"";
+            $book->doi = $request->doi??"";
             $book->website = $request->website ?? "";
-            $book->volume = $request->volume;
-            $book->issue_name = $request->issue_name;
-            $book->language_of_publication = $request->language_of_publication;
-            $book->issue = $request->issue;
+            $book->volume = $request->volume??"";
+            $book->issue_name = $request->issue_name??"";
+            $book->language_of_publication = $request->language_of_publication??"";
+            $book->issue = $request->issue??"";
             $book->published_date = $request->published_date;
-            $book->description = $request->description;
-            $book->s_description = $request->s_description;
-            $book->title = $request->title;
+            $book->description = $request->description??"";
+            $book->s_description = $request->s_description??"";
             $book->image = $request->file('image')->store('uploads/image');
-            $book->file = $request->file('file')->store('uploads/file');
+            // $book->file = $request->file('file')->store('uploads/file');
+            $book->file = "";
             $book->iscurrent =  $request->filled('iscurrent') ? true : false;
             $book->save();
             if ($book->iscurrent) {
@@ -60,26 +60,34 @@ class BookController extends Controller
             return view('admin.book.edit', compact('book'));
         } else {
             $book->title = $request->title;
-            $book->eng_title = $request->eng_title;
-            $book->issn = $request->issn;
-            $book->doi = $request->doi;
-            $book->website = $request->website ?? "";
             $book->volume = $request->volume;
-            $book->issue_name = $request->issue_name;
+
+            $book->eng_title = $request->eng_title??"";
+            $book->issn = $request->issn??"";
+            $book->doi = $request->doi??"";
+            $book->website = $request->website ?? "";
+            $book->issue_name = $request->issue_name??"";
+
             $book->language_of_publication = $request->language_of_publication;
             $book->issue = $request->issue;
             $book->published_date = $request->published_date;
-            $book->description = $request->description;
-            $book->s_description = $request->s_description;
-            $book->title = $request->title;
+
+            $book->description = $request->description??"";
+            $book->s_description = $request->s_description??"";
+
             if ($request->hasFile('image')) {
                 $book->image = $request->file('image')->store('uploads/image');
             }
-            if ($request->hasFile('file')) {
-                $book->file = $request->file('file')->store('uploads/file');
-            }
+            // if ($request->hasFile('file')) {
+            //     $book->file = $request->file('file')->store('uploads/file');
+            // }
             $book->iscurrent =  $request->iscurrent ? true : false;
             $book->save();
+
+            if ($book->iscurrent) {
+                Book::where('id', '<>', $book->id)->update(['iscurrent' => 0]);
+            }
+
             $this->render();
             return redirect()->back()->with('success', 'Successfully updated');
         }
@@ -203,7 +211,7 @@ class BookController extends Controller
         } else {
             $artical->title = $request->title;
             $artical->doi = $request->doi;
-            $artical->tags = $request->tags;
+            $artical->tags = $request->tags??"";
             $artical->st_page_no = $request->starting_page;
             $artical->en_page_no = $request->ending_page;
             $artical->abstract = $request->abstract;

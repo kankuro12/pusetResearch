@@ -14,7 +14,7 @@
                     <div class=" mb-2">
                         <label for="image">Image</label>
                         <input type="file" name="image" id="image" class="form-control photo"
-                            data-default-file="{{ asset($book->image) }}" accept="image/jpeg, image/png,image/png" required>
+                            data-default-file="{{ asset($book->image) }}" accept="image/jpeg, image/png,image/png" >
                     </div>
                     {{-- <div class="mb-2">
                         <label for="file">file</label>

@@ -90,6 +90,7 @@ class BookController extends Controller
         $article = BookArtical::where('book_id', $book_id)->first();
         if ($article == null) {
             Book::where('id', $book_id)->delete();
+            return redirect()->back()->with('success','successfully added');
         } else {
             BookArticalAuthor::where('book_artical_id', $article->id)->delete();
             BookArtical::where('book_id', $book_id)->delete();

@@ -54,6 +54,6 @@ class TeamController extends Controller
 
     public static function render(){
         $teams  = Team::all();
-        file_put_contents(resource_path('views/front/cache/team.blade.php'),view('admin.templete.team',compact('teams','members'))->render());
+        file_put_contents(resource_path('views/front/cache/team.blade.php'),view('admin.templete.team',compact('teams'))->render());
     }
 }

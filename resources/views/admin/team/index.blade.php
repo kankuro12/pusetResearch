@@ -45,10 +45,7 @@
                 columns: [{
                         data: 'title'
                     },
-                    {
-                        data: 'desc',
-                        className: 'text-end'
-                    },
+
                     {
                         data: null,
                         render: function(data, type, row) {
@@ -62,11 +59,11 @@
         function getUrls(id) {
             const editURL = "{{ route('admin.team.edit', ['team_id' => 'xxx_id']) }}";
             const delURL = "{{ route('admin.team.del', ['team_id' => 'xxx_id']) }}";
-            const teamMember = "{{ route('admin.team.team_member.index', ['team_id' => 'abc_id']) }}";
+            {{-- const teamMember = "{{ route('admin.team.team_member.index', ['team_id' => 'abc_id']) }}" --}};
             return '<a href="' + editURL.replace('xxx_id', id) + '" class="btn btn-sm btn-primary">Edit</a> ' +
                 '<a onclick="return yes()" href="' + delURL.replace('xxx_id', id) +
-                '" class="btn btn-sm btn-danger">Delete</a> ' + '<a href="' + teamMember.replace('abc_id', id) +
-                '" class="btn btn-sm btn-success">Manage Members</a> ';
+                '" class="btn btn-sm btn-danger">Delete</a> ' {{-- + '<a href="' + teamMember.replace('abc_id', id) +
+                '" class="btn btn-sm btn-success">Manage Members</a> ' --}};
         }
     </script>
 @endsection

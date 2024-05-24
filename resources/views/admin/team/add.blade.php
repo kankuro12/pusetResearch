@@ -15,7 +15,7 @@
             </div>
             <div class="col-md-12 mb-2">
                 <label for="desc">Desription</label>
-                <textarea type="text" name="desc" id="desc" class="form-control" required></textarea>
+                <textarea type="text" name="desc" id="desc" class="form-control note" required></textarea>
             </div>
             <div class="col-md-12 mb-2 text-start">
                 <button class="btn btn-primary btn-sm">

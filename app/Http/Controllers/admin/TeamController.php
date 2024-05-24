@@ -27,7 +27,6 @@ class TeamController extends Controller
             $team->save();
             self::render();
 
-            // $teams = DB::table('teams')->get();
             return redirect()->back()->with('success','Succesfully Added');
         }
     }

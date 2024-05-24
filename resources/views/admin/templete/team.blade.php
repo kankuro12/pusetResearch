@@ -7,8 +7,12 @@
         <div class="title">
             {{ strtoupper($team->title) }}
         </div>
-        <hr class="my-1">
-        @php
+        <hr class="my-0">
+        <div style="overflow: auto">
+            {!! $team->desc !!}
+        </div>
+        {{-- <hr class="my-1"> --}}
+        {{-- @php
             $teamMembers=$members->where('team_id',$team->id)->values();
             $memberCount=$teamMembers->count()-1;
         @endphp
@@ -37,7 +41,7 @@
             @if ( $memberCount!=$memberKey)
                 <hr>
             @endif
-        @endforeach
+        @endforeach --}}
 
     </div>
 </div>

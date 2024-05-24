@@ -15,7 +15,7 @@
             </div>
             <div class="col-md-12 mb-2">
                 <label for="desc">Desription</label>
-                <textarea type="text" name="desc" id="desc" class="form-control" required >{{$team->desc}}</textarea>
+                <textarea type="text" name="desc" id="desc" class="form-control note" required >{{$team->desc}}</textarea>
             </div>
             <div class="col-md-12 mb-2 text-start">
                 <button class="btn btn-primary btn-sm">

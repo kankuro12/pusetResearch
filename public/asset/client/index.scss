@@ -12,6 +12,20 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css');
 
 body {
+    .dashboard{
+        a{
+            padding: 30px 20px;
+            font-size: 1.2rem;
+            display: block;
+            background-color: #002C40;
+            color: white;
+            &:hover{
+                background-color: var(--bs-danger);
+            }
+            margin-bottom: 15px;
+        }
+
+    }
     a {
         text-decoration: none;
     }
@@ -172,6 +186,20 @@ body {
 
 @media (max-width:500px){
     body{
+        .dashboard{
+            a{
+                padding: 15px 10px;
+                font-size: 0.8rem;
+                display: block;
+                background-color: var(--bs-primary);
+                color: white;
+                &:hover{
+                    background-color: var(--bs-danger);
+                }
+                margin-bottom: 15px;
+            }
+
+        }
         #sidebar {
             border-right: none;
             width: 0px;

@@ -1,4 +1,9 @@
 .contact{
+    a{
+        color:#39628C ;
+        text-decoration: none;
+        font-weight: 500;
+    }
     .container{
         h1{
             font-size: 24px;
@@ -21,11 +26,7 @@
                         font-size: 18px;
                         font-weight: 700;
                     }
-                    a{
-                        color: var(--text);
-                        text-decoration: none;
 
-                    }
 
                 }
             }

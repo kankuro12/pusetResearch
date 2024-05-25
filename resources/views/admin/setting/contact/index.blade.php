@@ -29,29 +29,29 @@
             <div class="col-md-4 mb-2">
                 <label for="phone">Phone No</label>
                 @if ($contact)
-                    <input type="number" name="phone" id="phone" class="form-control" value="{{ $contact->phone }}"
+                    <input type="text" name="phone" id="phone" class="form-control" value="{{ $contact->phone }}"
                         required>
                 @else
-                    <input type="number" name="phone" id="phone" class="form-control" required>
+                    <input type="text" name="phone" id="phone" class="form-control" required>
                 @endif
 
             </div>
             <div class="col-md-4 mb-2">
                 <label for="po_box">P.O.Box</label>
                 @if ($contact)
-                    <input type="number" name="po_box" id="po_box" class="form-control" value="{{ $contact->po_box }}"
+                    <input type="text" name="po_box" id="po_box" class="form-control" value="{{ $contact->po_box }}"
                         required>
                 @else
-                    <input type="number" name="po_box" id="po_box" class="form-control" required>
+                    <input type="text" name="po_box" id="po_box" class="form-control" required>
                 @endif
             </div>
             <div class="col-md-4 mb-2">
                 <label for="email">Email</label>
                 @if ($contact)
-                    <input type="email" name="email" id="email" class="form-control" value="{{ $contact->email }}"
+                    <input type="text" name="email" id="email" class="form-control" value="{{ $contact->email }}"
                         required>
                 @else
-                    <input type="email" name="email" id="email" class="form-control" required>
+                    <input type="text" name="email" id="email" class="form-control" required>
                 @endif
             </div>
             <div class="col-12">

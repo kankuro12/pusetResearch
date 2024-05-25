@@ -926,6 +926,11 @@ footer .container .copyright {
 .team .container .member .name {
   font-weight: 600;
 }
+.contact a {
+  color: #39628C;
+  text-decoration: none;
+  font-weight: 500;
+}
 .contact .container h1 {
   font-size: 24px;
   font-weight: 700;
@@ -944,10 +949,6 @@ footer .container .copyright {
 .contact .container .row .col-md-6 .item h3 {
   font-size: 18px;
   font-weight: 700;
-}
-.contact .container .row .col-md-6 .item a {
-  color: var(--text);
-  text-decoration: none;
 }
 
 .about .item {

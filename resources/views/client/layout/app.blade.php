@@ -38,7 +38,7 @@
         $user = Auth::user();
 
     @endphp
-    <div class="navigation">
+    {{-- <div class="navigation">
         <div class="left">
             <div class="name">
                 <a href="">
@@ -70,26 +70,35 @@
             </div>
         </div>
 
-    </div>
-    <div class="row m-0">
-        <div class="col-md-2 p-0">
-            @include('client.sidebar')
+    </div> --}}
+    @include('client.sidebar')
+    <div class="main">
+
+        <div class="menu d-flex d-md-none">
+            <span class="title">
+                {{config('app.title')}}
+            </span>
+            <span class="open" onclick="$('#sidebar').addClass('active')">
+                &#8801;
+            </span>
         </div>
-        <div class="col-md-10 p-0">
-            <div class="top" style="background-color: #DDDDDD">
-                <h1 class="link">
-                    <a href="{{ route('client.index') }}">Dashboard</a>
-                    @yield('header-link')
-                </h1>
-                @yield('toolbar')
-            </div>
+        <div class="top" style="background-color: #DDDDDD">
+            <h1 class="link">
+                <a href="{{ route('client.index') }}">Dashboard</a>
+                @yield('header-link')
+            </h1>
+            @yield('toolbar')
+        </div>
 
 
-            <div class="px-4 py-2">
-                @yield('content')
-            </div>
+        <div class="px-4 py-2">
+            @yield('content')
         </div>
     </div>
+
+
+
+
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>

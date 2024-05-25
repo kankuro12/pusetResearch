@@ -36,12 +36,14 @@
                         <a href="{{ route('client.submission.add') }}">Make a Submission</a>
                     </div>
                     <span>
-                        <div class="login">
-                            <a href="{{ route('front.login') }}">Login</a>
-                        </div>
-                        <div class="register">
-                            <a href="{{ route('register') }}">Register</a>
-                        </div>
+                        @guest
+                            <div class="login">
+                                <a href="{{ route('front.login') }}">Login</a>
+                            </div>
+                            <div class="register">
+                                <a href="{{ route('register') }}">Register</a>
+                            </div>
+                        @endauth
                     </span>
                 </div>
             </div>

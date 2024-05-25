@@ -105,25 +105,40 @@ body {
         }
     }
 
-    .col-md-2 {
-        #sidebar {
-            background: #002C40;
-            min-height: 100vh;
-            height: 100%;
+    #sidebar {
 
-            #heading {
-                color: var(--top);
-            }
+        background: #002C40;
+        min-height: 100vh;
+        height: 100%;
+        position: fixed;
+        top: 0px;
+        bottom: 0px;
+        width: 300px;
+        z-index: 1;
+        overflow-y: auto;
+        overflow-x: hidden;
+        border-right: white 1px solid;
+        color: var(--top);
+        transition: 0.2s all;
 
-            a {
-                font-size: 15px;
-                font-weight: 500;
-                color: var(--top);
+        #heading {
+            color: var(--top);
+            padding: 10px 0px 0px 10px;
+            font-weight: 600;
+            .close{
+                display: none;
             }
+        }
+
+        a {
+            font-size: 15px;
+            font-weight: 500;
         }
     }
 
-    .col-md-10 {
+
+    .main {
+        margin-left: 300px;
         .top {
             background: #ddd;
             padding: 16px 32px;
@@ -147,79 +162,72 @@ body {
             }
         }
 
-        // .middle {
-        //     .tablist {
-        //         padding: 0 96px 0 32px;
-        //         background: #ddd;
-        //         font-size: 14px;
-        //         display: flex;
-        //         justify-content: space-between;
-        //         align-items: baseline;
-        //         .left {
-        //             display: flex;
-        //             align-items: center;
-        //             .queue {
-        //                 background-color: white;
-        //                 padding: 15px;
-        //                 font-size: 15px;
-        //                 font-weight: 700;
-        //                 border-radius: 2px;
-        //                 border-top: 3px solid #007AB2;
-
-        //                 a {
-        //                     color: rgba(0, 0, 0, 0.54);
-
-        //                 }
-        //             }
-
-        //             .issue {
-        //                 padding: 16px;
-        //                 font-size: 15px;
-        //                 font-weight: 700;
-        //                 border-radius: 2px;
-
-        //                 // border-top: 3px solid #007AB2;
-        //                 a {
-        //                     color: #007AB2;
-        //                 }
-        //             }
-        //         }
-        //         .right{
-        //             .help{
-        //                 padding: 8px 8px 16px 8px ;
-        //                 background-color: white;
-        //                 a{
-        //                     i{
-        //                     color: #00B24E;
-        //                 }
-        //                 }
-
-        //                 // color: ;
-        //             }
-        //         }
-        //     }
-        //     .panel{
-        //         .content{
-        //             padding: 15px;
-        //             display: flex;
-        //             justify-content: space-between;
-        //             .title{
-        //                 font-size: 16px;
-        //                 font-weight: 700;
-        //                 color: #262626;
-        //             }
-        //             .search{
-
-        //             }
-        //         }
-        //     }
-        // }
-
-
     }
 
     .dt-length label{
         margin-left: 10px;
     }
 
+}
+
+@media (max-width:500px){
+    body{
+        #sidebar {
+            border-right: none;
+            width: 0px;
+            box-shadow: 100px 0px 50px rgba($color: #000000, $alpha: 0.3);
+            &.active{
+                width: 300px;
+            }
+            #heading {
+                display: flex;
+                justify-content: space-between;
+                padding-right: 10px;
+                .close{
+                    display: inline;
+                }
+            }
+
+            a {
+                font-size: 15px;
+                font-weight: 500;
+            }
+        }
+
+
+        .main {
+            .menu{
+                padding: 15px;
+                font-size: 1.2rem;
+                justify-content: space-between;
+                color: white;
+                background: #002C40;
+
+            }
+            margin-left: 0px;
+            .top {
+                background: #ddd;
+                padding: 15px 15px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                h1 {
+                    color: var(--content);
+                    font-size: 16px;
+
+                    a {
+                        color: black;
+                        font-weight: 600;
+                    }
+                }
+
+                .link a:not(:last-child)::after {
+                    content: '/';
+                    margin: 0px 3px;
+                }
+            }
+
+        }
+    }
 }

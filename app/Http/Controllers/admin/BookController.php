@@ -117,7 +117,7 @@ class BookController extends Controller
         $types=DB::table('artical_types')->get();
 
         file_put_contents(resource_path('views/front/cache/archive.blade.php'), view('admin.templete.archive.index', [
-            'books'=>$books->where('iscurrent',0),'bookArticles'=>$bookArticles
+            'books'=>$books->where('iscurrent',0)->values(),'bookArticles'=>$bookArticles
         ])->render());
         foreach ($books as $key => $book) {
             file_put_contents(resource_path('views/front/cache/archive_header_link_'.$book->id.'.blade.php'), view('admin.templete.archive.single_book_header_link', compact('book'))->render());

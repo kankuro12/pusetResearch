@@ -895,9 +895,6 @@ footer .container .copyright {
   font-size: 14px;
   color: var(--text);
 }
-.archiveIssue hr {
-  margin: 0px;
-}
 
 @media (max-width: 768px) {
   .archiveIssue {
@@ -945,9 +942,6 @@ footer .container .copyright {
   .archiveIssue .archive p {
     font-size: 14px;
     color: var(--text);
-  }
-  .archiveIssue hr {
-    margin: 0px;
   }
 }
 .team {

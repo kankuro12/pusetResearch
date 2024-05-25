@@ -7,4 +7,9 @@ Contact
 @endsection
 @section('content')
     @includeif('front.cache.contact')
+    <h2 class="mt-2">
+        Faqs
+    </h2>
+    @includeif('front.cache.faq')
+
 @endsection

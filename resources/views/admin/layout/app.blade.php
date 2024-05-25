@@ -59,7 +59,7 @@
             $('.photo').dropify();
             $('.note').summernote({
                 tabsize: 2,
-                height: 200,
+                height: 150,
             });
             var noteBar = $('.note-toolbar');
             noteBar.find('[data-toggle]').each(function() {

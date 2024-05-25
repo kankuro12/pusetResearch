@@ -47,6 +47,10 @@ body .content {
   color: var(--text);
   font-weight: 500;
 }
+.topbar .logins .login, .topbar .logins .register {
+  display: inline;
+  margin-left: 10px;
+}
 
 header {
   z-index: 1;

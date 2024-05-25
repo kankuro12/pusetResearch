@@ -32,12 +32,17 @@
             </div>
             <div class="logins">
                 <div class="login-area">
-                    <div class="login">
-                        <a href="{{ route('front.login') }}">Login</a>
-                    </div>
                     <div class="register">
-                        <a href="{{ route('register') }}">Register</a>
+                        <a href="{{ route('client.submission.add') }}">Make a Submission</a>
                     </div>
+                    <span>
+                        <div class="login">
+                            <a href="{{ route('front.login') }}">Login</a>
+                        </div>
+                        <div class="register">
+                            <a href="{{ route('register') }}">Register</a>
+                        </div>
+                    </span>
                 </div>
             </div>
         </div>

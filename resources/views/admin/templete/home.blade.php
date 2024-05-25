@@ -57,7 +57,7 @@
                             <div class="authorname">
                                 <i class="fa-regular fa-user"></i>
                                 @foreach ($authors as $author)
-                                    <a href="">{{ $author->name }} </a>
+                                    <a href="">{{ $author->name }}, </a>
                                 @endforeach
                             </div>
                             <h3>

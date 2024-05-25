@@ -23,6 +23,11 @@
 
             }
         }
+
+        .login,.register{
+            display: inline;
+            margin-left:10px ;
+        }
     }
 }
 
@@ -146,6 +151,8 @@ header {
                     color: var(--text);
                 }
             }
+
+
         }
     }
 

@@ -6,5 +6,5 @@
 Contact
 @endsection
 @section('content')
-@includeif('front.cache.individualcontact');
+@includeif('front.cache.contact');
 @endsection

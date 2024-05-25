@@ -510,44 +510,6 @@ footer .container .copyright {
   color: white;
 }
 
-.about .item {
-  padding: 20px 10px;
-}
-.about .item span {
-  font-weight: 700;
-  padding: 0px 0px 20px 0px;
-  font-size: 20px;
-}
-.about .item .description {
-  text-align: justify;
-  font-size: 18px;
-  color: var(--text);
-}
-
-.contact .container h1 {
-  font-size: 24px;
-  font-weight: 700;
-}
-.contact .container .row .col-md-12 {
-  padding: 0px;
-}
-.contact .container .row .col-md-6 {
-  padding: 0;
-  margin-bottom: 10px;
-}
-.contact .container .row .col-md-6 .item h3 {
-  font-size: 18px;
-  font-weight: 700;
-}
-.contact .container .row .col-md-6 .item .name {
-  color: var(--text);
-  font-size: 16px;
-}
-.contact .container .row .col-md-6 .item .post {
-  font-size: 16px;
-  color: var(--text);
-}
-
 .register .container .row .col-md-12 .heading {
   padding: 10px 0px 10px 13px;
 }
@@ -963,4 +925,41 @@ footer .container .copyright {
 }
 .team .container .member .name {
   font-weight: 600;
+}
+.contact .container h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+.contact .container .row .col-md-12 {
+  padding: 0px;
+}
+.contact .container .row .col-md-6 {
+  padding: 0;
+  margin-bottom: 10px;
+}
+.contact .container .row .col-md-6 .item {
+  color: var(--text);
+  font-size: 16px;
+}
+.contact .container .row .col-md-6 .item h3 {
+  font-size: 18px;
+  font-weight: 700;
+}
+.contact .container .row .col-md-6 .item a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.about .item {
+  padding: 20px 10px;
+}
+.about .item span {
+  font-weight: 700;
+  padding: 0px 0px 20px 0px;
+  font-size: 20px;
+}
+.about .item .description {
+  text-align: justify;
+  font-size: 18px;
+  color: var(--text);
 }/*# sourceMappingURL=index.css.map */

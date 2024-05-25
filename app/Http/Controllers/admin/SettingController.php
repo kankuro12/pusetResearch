@@ -44,6 +44,9 @@ class SettingController extends Controller
                 $generalLayout->save();
 
                 Cache::forget('generallayouts');
+
+                file_put_contents(resource_path('views/front/cache/meta.blade.php'),view('admin.templete.meta',compact('generalLayout'))->render());
+
         }
         return redirect()->back()->with('success', 'successfully added');
     }

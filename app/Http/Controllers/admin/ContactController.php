@@ -12,7 +12,7 @@ class ContactController extends Controller
     public function index(Request $request)
     {
         $contact = Contact::first();
-        $individualcontacts = IndividualContact::get();
+        $individualcontacts = IndividualContact::all();
 
         if ($request->isMethod('get')) {
             return view('admin.setting.contact.index', compact('contact', 'individualcontacts'));
@@ -32,32 +32,45 @@ class ContactController extends Controller
                 $contact->po_box = $request->input('po_box');
                 $contact->email = $request->input('email');
                 $contact->save();
+                $this->render();
             }
-
-            $individualContactData = $request->input('individualContactsDatas', []);
-
-            foreach ($individualContactData as $data) {
-                $individualcontact = IndividualContact::updateOrCreate(
-                    ['id' => $data['id'] ?? null],
-                    [
-                        'name' => $data['name'],
-                        'title' => $data['title'],
-                        'post' => $data['post']
-                    ]
-                );
-            }
-            file_put_contents(resource_path('views/front/cache/contact.blade.php'), view('admin.templete.contact', compact('contact'))->render());
-            file_put_contents(resource_path('views/front/cache/individualcontact.blade.php'), view('admin.templete.individualcontact', compact('individualcontacts'))->render());
-
-            return redirect()->route('admin.setting.contact.index')->with('success', 'Contact settings updated successfully.');
         }
     }
+
+    public function render(){
+        $contact=Contact::First();
+        $individualcontacts = IndividualContact::all();
+        file_put_contents(resource_path('views/front/cache/contact.blade.php'), view('admin.templete.contact', compact('contact','individualcontacts'))->render());
+    }
+
+    public function add(Request $request){
+        $contact=New IndividualContact();
+        $contact->name=$request->name??"";
+        $contact->post=$request->post??"";
+        $contact->email=$request->email??"";
+        $contact->phone=$request->phone??"";
+        $contact->save();
+        $this->render();
+
+        return redirect()->back()->with('message','Contact added successfully');
+    }
+
+    public function update(Request $request){
+        $contact=IndividualContact::where('id',$request->id)->first();
+        $contact->name=$request->name??"";
+        $contact->post=$request->post??"";
+        $contact->email=$request->email??"";
+        $contact->phone=$request->phone??"";
+        $contact->save();
+        $this->render();
+
+        return redirect()->back()->with('message','Contact added successfully');
+    }
+
 
     public function del($contact_id)
     {
         IndividualContact::where('id', $contact_id)->delete();
-        $contact = Contact::first();
-        $individualcontacts = IndividualContact::get();
-        file_put_contents(resource_path('views/front/cache/individualcontact.blade.php'), view('admin.templete.individualcontact', compact('contact', 'individualcontacts'))->render());
+        $this->render();
     }
 }

@@ -128,6 +128,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
             });
             Route::prefix('contact')->name('contact.')->group(function () {
                 Route::match(['GET', 'POST'], 'index', [ContactController::class, 'index'])->name('index');
+                Route::match(['GET', 'POST'], 'add', [ContactController::class, 'add'])->name('add');
+                Route::match(['GET', 'POST'], 'update', [ContactController::class, 'update'])->name('update');
                 Route::get('del/{contact_id}', [ContactController::class, 'del'])->name('del');
             });
             Route::prefix('article_type')->name('artical_type.')->group(function () {

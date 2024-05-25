@@ -36,8 +36,6 @@ body {
 @import 'innerbanner';
 
 @import 'login/index.scss';
-@import 'aboutus/index.scss';
-@import 'contact/index.scss';
 @import 'register/index.scss';
 @import 'archive/single/index.scss';
 @import 'submission/index.scss';
@@ -45,3 +43,5 @@ body {
 @import 'articlesingle/index';
 @import 'archive/index';
 @import 'team/index';
+@import 'contact/index.scss';
+@import 'aboutus/index.scss';

@@ -1,30 +1,46 @@
-<div class="item">
-    <ul>
-        <li class="address">
-            <i class="fa-solid fa-house"></i>
-            <div class="item">
-               {{$contact->address}}
+<div class="contact">
+    <div class="container">
+        <h1>
+            Contact
+        </h1>
+        <div class="row m-0">
+            <div class="col-md-12 mb-5">
+                <div class="main-contact" style="font-size:16px; color: var(--text)">
+                    {{ $contact->name }} , {{ $contact->address }}
+                    <br>
+                    P.O.Box {{ $contact->po_box }}
+                    <br>
+                    {{ $contact->phone }}
+                </div>
             </div>
-        </li>
-        <li><a href="tel:(+977)98000898">
-                <i class="fa-solid fa-phone"></i>
-                <div class="item">
-                    (+977){{$contact->phone}}
+            @foreach ($individualcontacts as $indcontact)
+                <div class="col-md-6">
+                    <div class="item">
+                        <h3>
+                            <strong>
+                                {{ $indcontact->post }}
+                            </strong>
+                        </h3>
+                        <div class="name">
+                            {{ $indcontact->name }}
+                        </div>
+
+                        <div class="phone">
+
+                            @foreach (explode(',', $indcontact->phone) as $phone)
+                                <a  href="tel:{{ $phone }}">{{ $phone }}</a> @if (!$loop->last),@endif
+                            @endforeach
+
+                        </div>
+
+                        <div class="email">
+                            @foreach (explode(',', $indcontact->email) as $email)
+                                <a href="mailto:{{ $email }}">{{ $email }}</a> @if (!$loop->last),@endif
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
-            </a>
-        </li>
-        <li>
-            <a href="mailto:test@gamil.com">
-                <i class="fa-solid fa-envelope"></i>
-                <div class="item">
-                    {{$contact->email}}
-                </div>
-            </a>
-        </li>
-        <li>
-            <a href="">
-                More
-            </a>
-        </li>
-    </ul>
+            @endforeach
+        </div>
+    </div>
 </div>

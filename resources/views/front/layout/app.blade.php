@@ -11,12 +11,11 @@
     <title>{{ config('app.name') }} @yield('title')</title>
     <link rel="icon" type="image/x-icon" href="{{asset($general->fav)}}">
     @yield('meta')
+    @if (!View::hasSection('meta'))
+            @include('front.cache.meta')
+    @endif
     <link rel="stylesheet" href="{{ asset('asset/front/css/index.css') }}">
-    <link rel="stylesheet" href="{{ asset('asset/front/css/login/index.css') }}">
-    <link rel="stylesheet" href="{{ asset('asset/front/css/aboutus/index.css') }}">
-    <link rel="stylesheet" href="{{ asset('asset/front/css/contact/index.css') }}">
-    <link rel="stylesheet" href="{{ asset('asset/front/css/register/index.css') }}">
-    <link rel="stylesheet" href="{{ asset('asset/front/css/archive/single/index.css') }}">
+
     @yield('style')
 
 </head>

@@ -65,7 +65,7 @@
                             <textarea type="text" name="abstract" id="abstract" class="form-control" required></textarea>
                         </div>
                         <div class="col-md-12 mb-2">
-                            <label for="author" class="mb-2">Select Authors</label>
+                            <label for="author" class="mb-2 w-100 d-flex justify-content-between">Select Authors <span data-bs-toggle="modal" data-bs-target="#newAuthorModal">New Author ( alt + n )</span> </label>
                             <select name="author_ids[]" id="author" multiple="multiple" class="author form-control"></select>
                         </div>
                         <div class="col-md-12 mb-2 text-end">
@@ -93,20 +93,20 @@
                         <div class="row">
                             <div class="col-md-6 mb-2">
                                 <label for="name">Name</label>
-                                <input type="text" name="author-name" id="author-name" class="form-control" required>
+                                <input type="text" name="author-name" id="author-name" class="form-control" onkeydown="saveEnter(event)" required autofocus>
                             </div>
                             <div class="col-md-6 mb-2">
                                 <label for="link">Link</label>
-                                <input type="text" name="author-link" id="author-link" class="form-control">
+                                <input type="text" name="author-link" id="author-link" class="form-control" onkeydown="saveEnter(event)" >
                             </div>
                             <div class="col-md-6 mb-2">
                                 <label for="designation">Designation</label>
-                                <input type="text" name="author-designation" id="author-designation"
+                                <input type="text" name="author-designation" id="author-designation" onkeydown="saveEnter(event)"
                                     class="form-control">
                             </div>
                             <div class="col-md-6 mb-2">
                                 <label for="organization">Organization</label>
-                                <input type="text" name="author-organization" id="author-organization"
+                                <input type="text" name="author-organization" id="author-organization" onkeydown="saveEnter(event)"
                                     class="form-control">
                             </div>
                         </div>
@@ -156,7 +156,17 @@
                 .catch(function(error) {
                     console.error('Error fetching authors:', error);
                 });
+
+                $('#newAuthorModal').on('shown.bs.modal', function () {
+                    $('#author-name').focus()
+                });
         })
+
+        function saveEnter(e ) {
+            if(e.which==13){
+                saveNewAuthor();
+            }
+        }
 
         function saveNewAuthor() {
             var name = $('#author-name').val();
@@ -165,6 +175,7 @@
             var organization = $('#author-organization').val();
             if(name==''){
                 error('Please enter name');
+                $('#author-name').focus();
                 return;
             }
 
@@ -192,5 +203,18 @@
                     error('Error adding author:', err);
                 });
         }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.altKey && event.key === 'n') {
+                event.preventDefault();
+                $('#newAuthorModal').modal('show');
+                $('#author-name').focus();
+                $('#author-name').select();
+
+
+            }
+        });
+
+
     </script>
 @endsection

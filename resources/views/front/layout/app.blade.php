@@ -197,9 +197,9 @@
                                 </div> --}}
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-9">
                             <div class="getintouch">
-                                <div class="head">
+                                <div class="head pb-2">
                                     <h5>Get In Touch</h5>
                                 </div>
                                 @includeif('front.cache.contact_footer')

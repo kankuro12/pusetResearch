@@ -268,7 +268,7 @@ footer .container .footer-column {
   padding: 20px 0px;
 }
 footer .container .footer-column .aboutus {
-  text-align: center;
+  text-align: start;
 }
 footer .container .footer-column .aboutus .logo a img {
   max-width: 100%;

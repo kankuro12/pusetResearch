@@ -21,7 +21,7 @@
                 <div class="col-md-3">
                     <div class="mb-3">
                         <label for="file">PDF File</label>
-                        <input type="file" name="file" id="file" class="form-control photo" accept=".pdf"
+                        <input type="file" name="file" id="file" class="form-control photo" accept=".pdf,docx,.doc,.jpg,.png"
                             required>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
 
                         <div class="col-md-4 mb-2">
                             <label for="doi">DOI</label>
-                            <input type="text" name="doi" id="doi" class="form-control" required>
+                            <input type="text" name="doi" id="doi" class="form-control">
                         </div>
                         <div class="col-md-4 mb-2">
                             <label for="starting_page">Starting Page No</label>

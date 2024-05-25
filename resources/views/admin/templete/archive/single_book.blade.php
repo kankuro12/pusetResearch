@@ -44,7 +44,7 @@
                         </div>
                         <div class="title">
                             <h3>
-                                <a href="{{ route('articleSingle', ['article' => $item->id]) }}">{{ $item->title }}</a>
+                                <a href="{{ route('articleSingle', ['article' => $item->slug??$item->id]) }}">{{ $item->title }}</a>
                             </h3>
                             <div class="page_no">
                                 {{ $item->st_page_no }} - {{ $item->en_page_no }}

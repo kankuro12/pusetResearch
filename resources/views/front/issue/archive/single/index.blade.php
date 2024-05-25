@@ -6,8 +6,7 @@
 {{-- {{$book->title}}, {{$book->volume}} --}}
 @endsection
 @section('meta')
-@includeif('front.cache.archive_meta_link_'.$book_id)
-
+@includeif('front.cache.archive_meta_'.$book_id)
 @endsection
 @section('content')
 @includeif('front.cache.archive_single_'.$book_id)

@@ -31,16 +31,21 @@ class BookController extends Controller
             $book = new Book();
             $book->title = $request->title;
             $book->eng_title = $request->title;
+            $book->volume = $request->volume??"";
+
+            $book->slug=$this->getSlug('books',$book->title.", ".$book->volume,null);
+
             $book->issn = $request->issn??"";
             $book->doi = $request->doi??"";
             $book->website = $request->website ?? "";
-            $book->volume = $request->volume??"";
             $book->issue_name = $request->issue_name??"";
             $book->language_of_publication = $request->language_of_publication??"";
             $book->issue = $request->issue??"";
             $book->published_date = $request->published_date;
+
             $book->description = $request->description??"";
             $book->s_description = $request->s_description??"";
+
             $book->image = $request->file('image')->store('uploads/image');
             // $book->file = $request->file('file')->store('uploads/file');
             $book->file = "";
@@ -59,8 +64,10 @@ class BookController extends Controller
         if ($request->getMethod() == "GET") {
             return view('admin.book.edit', compact('book'));
         } else {
+
             $book->title = $request->title;
             $book->volume = $request->volume;
+            $book->slug=$this->getSlug('books',$book->title.", ".$book->volume,$book->id);
 
             $book->eng_title = $request->eng_title??"";
             $book->issn = $request->issn??"";
@@ -93,6 +100,27 @@ class BookController extends Controller
         }
     }
 
+
+    function getSlug($table,$text,$id){
+        $increment=1;
+        $slug=str($text)->slug();
+        $originalSlug=$slug;
+        if($id==null){
+            while(DB::table($table)->where('slug',$slug)->count()>0){
+                $slug.=$slug."-". $increment;
+                $increment+=1;
+            }
+        }else{
+            while(DB::table($table)->where('id',"<>",$id)->where('slug',$slug)->count()>0){
+                $slug.=$slug."-". $increment;
+                $increment+=1;
+            }
+        }
+
+        return $slug;
+
+    }
+
     public function del($book_id)
     {
         $article = BookArtical::where('book_id', $book_id)->first();
@@ -116,13 +144,15 @@ class BookController extends Controller
         $bookArticlesAuthors=DB::table('book_artical_authors')->get();
         $types=DB::table('artical_types')->get();
 
+
         file_put_contents(resource_path('views/front/cache/archive.blade.php'), view('admin.templete.archive.index', [
             'books'=>$books->where('iscurrent',0)->values(),'bookArticles'=>$bookArticles
         ])->render());
+
         foreach ($books as $key => $book) {
-            file_put_contents(resource_path('views/front/cache/archive_header_link_'.$book->id.'.blade.php'), view('admin.templete.archive.single_book_header_link', compact('book'))->render());
-            file_put_contents(resource_path('views/front/cache/archive_meta_'.$book->id.'.blade.php'), view('admin.templete.archive.single_book_meta', compact('book'))->render());
-            file_put_contents(resource_path('views/front/cache/archive_single_'.$book->id.'.blade.php'), view('admin.templete.archive.single_book', compact('book','authors','bookArticlesAuthors','bookArticles','types'))->render());
+            file_put_contents(resource_path('views/front/cache/archive_header_link_'.($book->slug??$book->id).'.blade.php'), view('admin.templete.archive.single_book_header_link', compact('book'))->render());
+            file_put_contents(resource_path('views/front/cache/archive_meta_'.($book->slug??$book->id).'.blade.php'), view('admin.templete.archive.single_book_meta', compact('book'))->render());
+            file_put_contents(resource_path('views/front/cache/archive_single_'.($book->slug??$book->id).'.blade.php'), view('admin.templete.archive.single_book', compact('book','authors','bookArticlesAuthors','bookArticles','types'))->render());
         }
 
         file_put_contents(resource_path('views/front/cache/home.blade.php'), view('admin.templete.home')->render());
@@ -130,13 +160,13 @@ class BookController extends Controller
 
         foreach ($bookArticles as $key => $article) {
             $book=$books->where('id',$article->book_id)->first();
-            file_put_contents(resource_path('views/front/cache/article_header_'.$article->id.'.blade.php'), view('admin.templete.article.header', compact('book','article'))->render());
-            file_put_contents(resource_path('views/front/cache/article_title_'.$article->id.'.blade.php'), view('admin.templete.article.title', compact('book','article'))->render());
-            file_put_contents(resource_path('views/front/cache/article_meta_'.$article->id.'.blade.php'), view('admin.templete.article.meta', compact('book','article'))->render());
-            $localArticleAuthors=$bookArticlesAuthors->where('book_artical_id',$article->id)->values();
+            file_put_contents(resource_path('views/front/cache/article_header_'.($article->slug?? $article->id).'.blade.php'), view('admin.templete.article.header', compact('book','article'))->render());
+            file_put_contents(resource_path('views/front/cache/article_title_'.($article->slug?? $article->id).'.blade.php'), view('admin.templete.article.title', compact('book','article'))->render());
+            file_put_contents(resource_path('views/front/cache/article_meta_'.($article->slug?? $article->id).'.blade.php'), view('admin.templete.article.meta', compact('book','article'))->render());
+            $localArticleAuthors=$bookArticlesAuthors->where('book_artical_id', $article->id)->values();
             $type=$types->where('id',$article->artical_type_id)->first();
             file_put_contents(
-                resource_path('views/front/cache/article_index_'.$article->id.'.blade.php'),
+                resource_path('views/front/cache/article_index_'.($article->slug?? $article->id).'.blade.php'),
                 view('admin.templete.article.index',
                 [
                     'book'=>$book,
@@ -173,7 +203,8 @@ class BookController extends Controller
         } else {
             $artical = new BookArtical();
             $artical->title = $request->title;
-            $artical->doi = $request->doi;
+            $artical->slug = $this->getSlug('book_articals',$artical->title,null);
+            $artical->doi = $request->doi??"";
             $artical->tags = $request->tags;
             $artical->st_page_no = $request->starting_page;
             $artical->en_page_no = $request->ending_page;
@@ -210,6 +241,7 @@ class BookController extends Controller
             return view('admin.book.artical.edit', compact('book', 'artical', 'articalTypes', 'articalAuthors'));
         } else {
             $artical->title = $request->title;
+            $artical->slug = $this->getSlug('book_articals',$artical->title,$artical->id);
             $artical->doi = $request->doi;
             $artical->tags = $request->tags??"";
             $artical->st_page_no = $request->starting_page;

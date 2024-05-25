@@ -9,7 +9,7 @@
                 <img src="{{vasset($book->image)}}" alt="{{$book->volume}}">
             </div>
             <div class="col-md-9">
-                <a href="{{ route('book.single', ['book_id' => $book->id]) }}">
+                <a href="{{ route('book.single', ['book_id' => $book->slug??$book->id]) }}">
                     <div class="name">
                         {{ $book->title }}, {{ $book->volume }}
                     </div>
@@ -28,7 +28,7 @@
                 @if ($alen>0)
                     <div class="chapters">
                         @foreach ($articles as $akey=>$article)
-                            <a href="{{route('articleSingle',['article'=>$article->id])}}">{{$article->title}}</a> @if(($alen-1)>$akey), @endif
+                            <a href="{{route('articleSingle',['article'=>($article->slug??$article->id)])}}">{{$article->title}}</a> @if(($alen-1)>$akey), @endif
                         @endforeach
                     </div>
 

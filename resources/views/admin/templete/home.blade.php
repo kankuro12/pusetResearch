@@ -61,7 +61,7 @@
                                 @endforeach
                             </div>
                             <h3>
-                                <a href="{{ route('articleSingle', ['article' => $item->id]) }}">{{ $item->title }}</a>
+                                <a href="{{ route('articleSingle', ['article' => $item->slug??$item->id]) }}">{{ $item->title }}</a>
                             </h3>
                         </div>
                         <div class="bottom">

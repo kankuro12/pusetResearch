@@ -175,10 +175,10 @@
                                 <div class="description mt-1">
                                     <p>
                                         {{ $general->short_desc }}
-                                        <a href="#">ReadMore</a>
+                                        <a href="{{route('about')}}">ReadMore</a>
                                     </p>
                                 </div>
-                                <div class="social-icons">
+                                {{-- <div class="social-icons">
                                     <div class="facebook-icon">
                                         <i class="fab fa-facebook-f"></i>
                                     </div>
@@ -194,7 +194,7 @@
                                     <div class="rss-icon">
                                         <i class="fa fa-rss"></i>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -202,10 +202,10 @@
                                 <div class="head">
                                     <h5>Get In Touch</h5>
                                 </div>
-                                @includeif('front.cache.contact')
+                                @includeif('front.cache.contact_footer')
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        {{-- <div class="col-md-3">
                             <div class="resource">
                                 <div class="head">
                                     <h5>Resource</h5>
@@ -235,7 +235,7 @@
                                     </ul>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class="copyright">

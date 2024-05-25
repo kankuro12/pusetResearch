@@ -35,6 +35,7 @@ class ContactController extends Controller
         $contact=Contact::First();
         $individualcontacts = IndividualContact::all();
         file_put_contents(resource_path('views/front/cache/contact.blade.php'), view('admin.templete.contact', compact('contact','individualcontacts'))->render());
+        file_put_contents(resource_path('views/front/cache/contact_footer.blade.php'), view('admin.templete.contact_footer', compact('contact','individualcontacts'))->render());
     }
 
     public function add(Request $request){

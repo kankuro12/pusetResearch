@@ -25,7 +25,7 @@
                     <label for="new_password_confirmation">Retype Password</label>
                     <input type="password" name="new_password_confirmation" id="new_password_confirmation" class="form-control" required placeholder="Retype New Password"/>
                 </div>
-                <div class="col-md-4 mb-2 d-flex align-items-end">
+                <div class="col-12 text-end">
                     <button class="btn btn-sm btn-primary">
                         Update Password
                     </button>

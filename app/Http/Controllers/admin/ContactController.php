@@ -17,23 +17,17 @@ class ContactController extends Controller
         if ($request->isMethod('get')) {
             return view('admin.setting.contact.index', compact('contact', 'individualcontacts'));
         } else {
-            if ($contact) {
-                $contact->name = $request->input('cname');
-                $contact->address = $request->input('address');
-                $contact->phone = $request->input('phone');
-                $contact->po_box = $request->input('po_box');
-                $contact->email = $request->input('email');
-                $contact->save();
-            } else {
+            if ($contact==null) {
+
                 $contact = new Contact();
-                $contact->name = $request->input('cname');
-                $contact->address = $request->input('address');
-                $contact->phone = $request->input('phone');
-                $contact->po_box = $request->input('po_box');
-                $contact->email = $request->input('email');
-                $contact->save();
-                $this->render();
             }
+            $contact->name = $request->input('cname');
+            $contact->address = $request->input('address');
+            $contact->phone = $request->input('phone');
+            $contact->po_box = $request->input('po_box');
+            $contact->email = $request->input('email');
+            $contact->save();
+            $this->render();
         }
     }
 

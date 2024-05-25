@@ -26,12 +26,17 @@ class AuthorController extends Controller
         } else {
             $author = new Author();
             $author->name = $request->name;
-            $author->link = $request->link;
-            $author->designation = $request->designation;
-            $author->organization = $request->organization;
+            $author->link = $request->link??"";
+            $author->designation = $request->designation??"";
+            $author->organization = $request->organization??"";
             $author->save();
+            if($request->filled('json')){
+                return response()->json($author);
+            }else{
+
+                return redirect()->back()->with('success', 'successfully added');
+            }
         }
-        return redirect()->back()->with('success', 'successfully added');
     }
 
     public function edit(Request $request, $author_id)

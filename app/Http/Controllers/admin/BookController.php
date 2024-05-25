@@ -256,7 +256,7 @@ class BookController extends Controller
 
     public function listAuthor()
     {
-        $authors = DB::table('authors')->get(['id', 'name']);
+        $authors = DB::table('authors')->get(['id', 'name','']);
         return response()->json($authors);
     }
 

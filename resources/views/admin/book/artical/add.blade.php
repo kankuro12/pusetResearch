@@ -122,6 +122,7 @@
 @endsection
 @section('js')
     <script>
+        var authorSelect;
         function valueCheck() {
             var st_page = $('#starting_page').val();
             var end_page = $('#ending_page').val();
@@ -138,20 +139,17 @@
                 height: 300,
             });
 
-            axios.post("{{ route('admin.book.article.articleAuthor.listAuthor') }}", {
-                    name: '',
-                    "_token": "{{ csrf_token() }}",
-                })
+            axios.get("{{ route('admin.author.list') }}")
                 .then(function(response) {
                     var data = response.data;
                     var results = data.map(function(item) {
                         return {
                             id: item.id,
-                            text: item.name
+                            text: item.name + ','+item.designation
                         };
                     });
 
-                    $('#author').select2({
+                    authorSelect=$('#author').select2({
                         data: results
                     });
                 })
@@ -165,19 +163,30 @@
             var link = $('#author-link').val();
             var designation = $('#author-designation').val();
             var organization = $('#author-organization').val();
+            if(name==''){
+                error('Please enter name');
+                return;
+            }
 
             const data = {
                 name: name,
                 link: link,
                 designation: designation,
                 organization: organization,
-                "_token": "{{ csrf_token() }}"
+                _token: "{{ csrf_token() }}",
+                json:true
             };
             const url = `{{ route('admin.author.add') }}`;
             axios.post(url, data)
                 .then(res => {
                     success('Author successfully added');
-                    location.reload();
+                    const newOption = new Option(res.data.name + ','+res.data.designation, res.data.id, true, true);
+                    authorSelect.append(newOption).trigger('change');
+                    $('#newAuthorModal').modal('hide');
+                    $('#author-name').val('');
+                    $('#author-link').val('');
+                    $('#author-designation').val('');
+                    $('#author-organization').val('');
                 })
                 .catch(err => {
                     error('Error adding author:', err);

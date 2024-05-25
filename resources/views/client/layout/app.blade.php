@@ -8,29 +8,11 @@
     <title>{{ config('app.name') }} @yield('title')</title>
 
     <link rel="stylesheet" href="{{ asset('asset/client/index.css') }}">
+    @php
+        $general = getGeneralLayout();
+    @endphp
+    <link rel="icon" type="image/x-icon" href="{{asset($general->fav)}}">
 
-    <style>
-        .nav .nav-item .nav-link {
-            color: rgb(192, 192, 192);
-            transition: all 1s;
-            font-size: 15px;
-            padding: 10px 10px 10px 10px;
-        }
-
-        .nav .nav-item .nav-link:hover,
-        .nav .nav-item .nav-link.active {
-            color: white;
-            background: #3A4F6A;
-        }
-
-        .nav .nav-item .nav-link.active {
-            transform: scale(1.05)
-        }
-
-        label {
-            font-weight: 600;
-        }
-    </style>
 </head>
 
 <body>

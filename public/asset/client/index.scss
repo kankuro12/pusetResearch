@@ -11,21 +11,46 @@
 @import url('/asset/back/plugins/drophify/css/dropify.min.css');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css');
 
+
+.nav .nav-item .nav-link {
+    color: rgb(192, 192, 192);
+    transition: all 1s;
+    font-size: 15px;
+    padding: 10px 10px 10px 10px;
+}
+
+.nav .nav-item .nav-link:hover,
+.nav .nav-item .nav-link.active {
+    color: white;
+    background: #3A4F6A;
+}
+
+.nav .nav-item .nav-link.active {
+    transform: scale(1.05)
+}
+
+label {
+    font-weight: 600;
+}
+
 body {
-    .dashboard{
-        a{
+    .dashboard {
+        a {
             padding: 30px 20px;
             font-size: 1.2rem;
             display: block;
             background-color: #002C40;
             color: white;
-            &:hover{
+
+            &:hover {
                 background-color: var(--bs-danger);
             }
+
             margin-bottom: 15px;
         }
 
     }
+
     a {
         text-decoration: none;
     }
@@ -36,6 +61,7 @@ body {
 
     .navigation {
         border-bottom: 1px solid white;
+
         a {
             text-decoration: none;
             color: var(--top);
@@ -103,9 +129,11 @@ body {
                     }
 
                 }
-                a:hover{
+
+                a:hover {
                     background-color: #004F73;
                 }
+
                 &:hover .drop-down {
                     display: block;
                 }
@@ -139,7 +167,8 @@ body {
             color: var(--top);
             padding: 10px 0px 0px 10px;
             font-weight: 600;
-            .close{
+
+            .close {
                 display: none;
             }
         }
@@ -153,6 +182,7 @@ body {
 
     .main {
         margin-left: 300px;
+
         .top {
             background: #ddd;
             padding: 16px 32px;
@@ -178,40 +208,46 @@ body {
 
     }
 
-    .dt-length label{
+    .dt-length label {
         margin-left: 10px;
     }
 
 }
 
-@media (max-width:500px){
-    body{
-        .dashboard{
-            a{
+@media (max-width:500px) {
+    body {
+        .dashboard {
+            a {
                 padding: 15px 10px;
                 font-size: 0.8rem;
                 display: block;
                 background-color: var(--bs-primary);
                 color: white;
-                &:hover{
+
+                &:hover {
                     background-color: var(--bs-danger);
                 }
+
                 margin-bottom: 15px;
             }
 
         }
+
         #sidebar {
             border-right: none;
             width: 0px;
             box-shadow: 100px 0px 50px rgba($color: #000000, $alpha: 0.3);
-            &.active{
+
+            &.active {
                 width: 300px;
             }
+
             #heading {
                 display: flex;
                 justify-content: space-between;
                 padding-right: 10px;
-                .close{
+
+                .close {
                     display: inline;
                 }
             }
@@ -224,7 +260,7 @@ body {
 
 
         .main {
-            .menu{
+            .menu {
                 padding: 15px;
                 font-size: 1.2rem;
                 justify-content: space-between;
@@ -232,7 +268,9 @@ body {
                 background: #002C40;
 
             }
+
             margin-left: 0px;
+
             .top {
                 background: #ddd;
                 padding: 15px 15px;

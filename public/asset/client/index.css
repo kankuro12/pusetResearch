@@ -10,6 +10,27 @@
   --content: #242424;
 }
 
+.nav .nav-item .nav-link {
+  color: rgb(192, 192, 192);
+  transition: all 1s;
+  font-size: 15px;
+  padding: 10px 10px 10px 10px;
+}
+
+.nav .nav-item .nav-link:hover,
+.nav .nav-item .nav-link.active {
+  color: white;
+  background: #3A4F6A;
+}
+
+.nav .nav-item .nav-link.active {
+  transform: scale(1.05);
+}
+
+label {
+  font-weight: 600;
+}
+
 body {
   font-family: "Noto Sans", sans-serif;
   font-style: normal;

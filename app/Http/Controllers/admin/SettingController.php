@@ -38,6 +38,9 @@ class SettingController extends Controller
                 if ($request->hasFile('logo')) {
                     $generalLayout->logo = $request->file('logo')->store('uploads/setting');
                 }
+                if ($request->hasFile('fav')) {
+                    $generalLayout->fav = $request->file('fav')->store('uploads/setting');
+                }
                 $generalLayout->save();
 
                 Cache::forget('generallayouts');

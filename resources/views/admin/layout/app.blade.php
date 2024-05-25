@@ -7,6 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('asset/back/plugins/drophify/css/dropify.min.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/back/css/index.css') }}">
+    @php
+        $general = getGeneralLayout();
+    @endphp
+    <link rel="icon" type="image/x-icon" href="{{asset($general->fav)}}">
     <title>{{config('app.name')}}</title>
     @yield('css')
 </head>

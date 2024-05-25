@@ -55,13 +55,22 @@
                     @endif
                 </div>
 
-                <div class="col-md-12 mb-2">
+                <div class="col-md-6 mb-2">
                     <label for="logo">Logo</label>
                     @if ($generalLayout == null)
                         <input type="file" name="logo" id="logo" accept="image/*" class="form-control photo">
                     @else
                         <input type="file" name="logo" id="logo" accept="image/*" class="form-control photo"
                             data-default-file="{{ asset($generalLayout->logo) }}">
+                    @endif
+                </div>
+                <div class="col-md-6 mb-2">
+                    <label for="fav">Favicon</label>
+                    @if ($generalLayout == null)
+                        <input type="file" name="fav" id="fav" accept="image/*" class="form-control photo">
+                    @else
+                        <input type="file" name="fav" id="fav" accept="image/*" class="form-control photo"
+                            data-default-file="{{ asset($generalLayout->fav) }}">
                     @endif
                 </div>
                 <div class="col-md-12 text-start">

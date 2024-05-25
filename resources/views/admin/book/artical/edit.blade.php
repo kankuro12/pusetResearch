@@ -6,7 +6,7 @@
     <a href="#">Edit</a>
 @endsection
 @section('toolbar')
-    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#newAuthorModal">
         Add New Author
     </button>
 @endsection
@@ -68,7 +68,7 @@
                             <textarea type="text" name="abstract" id="abstract" class="form-control" required> {{ $artical->abstract }} </textarea>
                         </div>
                         <div class="col-md-12 mb-2">
-                            <label for="author" class="mb-2">Select Authors</label>
+                            <label for="author" class="mb-2 w-100 d-flex justify-content-between">Select Authors <span data-bs-toggle="modal" data-bs-target="#newAuthorModal">New Author ( alt + n )</span> </label>
                             <select name="author_ids[]" id="author" multiple="multiple" class="author form-control" >
 
                             </select>
@@ -113,32 +113,32 @@
             </div>
 
         </div>
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="newAuthorModal" tabindex="-1" aria-labelledby="newAuthorModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content" style="width: 700px">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Author</h1>
+                        <h1 class="modal-title fs-5" id="newAuthorModalLabel">Add New Author</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-6 mb-2">
                                 <label for="name">Name</label>
-                                <input type="text" name="author-name" id="author-name" class="form-control">
+                                <input type="text" name="author-name" id="author-name" class="form-control"  onkeydown="saveEnter(event)" >
                             </div>
                             <div class="col-md-6 mb-2">
                                 <label for="link">Link</label>
-                                <input type="text" name="author-link" id="author-link" class="form-control">
+                                <input type="text" name="author-link" id="author-link" class="form-control"  onkeydown="saveEnter(event)" >
                             </div>
                             <div class="col-md-6 mb-2">
                                 <label for="designation">Designation</label>
                                 <input type="text" name="author-designation" id="author-designation"
-                                    class="form-control">
+                                    class="form-control"  onkeydown="saveEnter(event)" >
                             </div>
                             <div class="col-md-6 mb-2">
                                 <label for="organization">Organization</label>
                                 <input type="text" name="author-organization" id="author-organization"
-                                    class="form-control">
+                                    class="form-control"  onkeydown="saveEnter(event)" >
                             </div>
                         </div>
                     </div>
@@ -154,6 +154,7 @@
 @section('js')
 
     <script>
+        var authorSelect;
         function valueCheck() {
             var st_page = $('#starting_page').val();
             var end_page = $('#ending_page').val();
@@ -170,30 +171,43 @@
                 height: 300,
             });
 
-            axios.post("{{ route('admin.book.article.articleAuthor.listAuthor') }}", {
-                    name: '',
-                    "_token": "{{ csrf_token() }}",
-                })
+            axios.get("{{ route('admin.author.list') }}")
                 .then(function(response) {
                     var data = response.data;
                     var results = data.map(function(item) {
                         return {
                             id: item.id,
-                            text: item.name
+                            text: item.name+","+item.designation
                         };
                     });
 
-                    $('#author').select2({
+                    authorSelect=$('#author').select2({
                         data: results
                     });
                 })
                 .catch(function(error) {
                     console.error('Error fetching authors:', error);
                 });
+
+
+                $('#newAuthorModal').on('shown.bs.modal', function () {
+                    $('#author-name').focus()
+                });
         })
+
+        function saveEnter(e ) {
+            if(e.which==13){
+                saveNewAuthor();
+            }
+        }
 
         function saveNewAuthor() {
             var name = $('#author-name').val();
+            if(name==""){
+                error('Please enter author name');
+                $('#author-name').focus();
+                return;
+            }
             var link = $('#author-link').val();
             var designation = $('#author-designation').val();
             var organization = $('#author-organization').val();
@@ -203,17 +217,36 @@
                 link: link,
                 designation: designation,
                 organization: organization,
-                "_token": "{{ csrf_token() }}"
+                _token: "{{ csrf_token() }}",
+                json:true
+
             };
             const url = `{{ route('admin.author.add') }}`;
             axios.post(url, data)
                 .then(res => {
                     success('Author successfully added');
-                    location.reload();
+                    const newOption = new Option(res.data.name + ','+res.data.designation, res.data.id, true, true);
+                    authorSelect.append(newOption).trigger('change');
+                    $('#newAuthorModal').modal('hide');
+                    $('#author-name').val('');
+                    $('#author-link').val('');
+                    $('#author-designation').val('');
+                    $('#author-organization').val('');
                 })
                 .catch(err => {
                     error('Error adding author:', err);
                 });
         }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.altKey && event.key === 'n') {
+                event.preventDefault();
+                $('#newAuthorModal').modal('show');
+                $('#author-name').focus();
+                $('#author-name').select();
+
+
+            }
+        });
     </script>
 @endsection

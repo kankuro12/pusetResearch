@@ -5,93 +5,65 @@
 @section('active', 'setting')
 @section('content')
     <div class="shadow mt-2 p-3 bg-white rounded">
-        <form id="uploads">
+        <form action="" method="POST">
             @csrf
             <div class="row">
-                <div class="col-md-4 mb-2">
+                <div class="col-md-12 mb-2">
                     @if ($title == null)
-                    <label for="title">Title</label>
-                    <input type="text" name="title" id="title" class="form-control" required>
+                        <label for="title">Title</label>
+                        <input type="text" name="title" id="title" class="form-control" required>
                     @else
-                    <label for="title">Title</label>
-                    <input type="text" name="title" id="title" class="form-control" value="{{$title->title}}" required>
+                        <label for="title">Title</label>
+                        <input type="text" name="title" id="title" class="form-control" value="{{ $title->title }}"
+                            required>
                     @endif
                 </div>
-                <div class="col-md-12 mb-3">
-                    <div class="shadow p-3">
-                        <div class="head mb-2" style="display: flex;justify-content: space-between;">
-                            <h5>Associates</h5>
-                            <button onclick="render()" id="addButton" class="btn btn-sm btn-primary">
-                                Add
-                            </button>
-                        </div>
-                        <div class="row mb-3" id="body">
-                        </div>
-                        <div class="row">
-                            @foreach ($associates as $associate)
-                            <div class="col-md-4 mb-2 " style="position: relative">
-                                <input type="file" name="image_{{$associate->id}}" accept="image/*" data-default-file="{{asset($associate->image)}}" class="form-control photo" >
-                                <input type="text" name="link_{{$associate->id}}" class="form-control" value="{{$associate->link}}" placeholder="Link" required>
-                                <button type="button" class="btn btn-square btn-danger" style="position:absolute;top:0px;right:15px;z-index:99999;" onClick="removefile({{$associate->id}})">&times;</button>
-                            </div>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12 text-start">
-                    <button class="btn btn-primary" onclick="saveAll()">
-                        Save All
-                    </button>
+                <div>
+                    <button class="btn btn-danger btn-primary">Save Title</button>
                 </div>
             </div>
+
         </form>
     </div>
-@endsection
-@section('js')
-    <script>
-        document.getElementById('addButton').addEventListener('click', function(event) {
-            event.preventDefault();
-        });
-        let index = 0;
+    <div class="shadow mt-2 p-3 bg-white rounded">
+        <div class="head mb-2" style="display: flex;justify-content: space-between;">
+            <h5>Associates</h5>
+        </div>
 
-        function render() {
-            $('#body').append(`
-            <div class="col-md-4" id="fileinput_${index}" >
-                <input type="hidden" name="ids[]"  value="${index}">
-                <input type="file" name="image_${index}" accept="image/*" class="form-control photo" required>
-                <input type="text" name="link_${index}" class="form-control" placeholder="Link" required>
-            </div>`);
-            index++;
-            $('.photo').dropify();
-        }
-
-        function saveAll() {
-            const ele = document.getElementById('uploads');
-            let formData = new FormData(ele);
-            $('#body input[type="file"]').each(function() {
-                let name = $(this).attr('name');
-                let files = $(this).prop('files');
-                if (files.length > 0) {
-                    formData.append(name, files[0]);
-                }
-            });
-            axios.post("{{ route('admin.setting.associate.index') }}", formData)
-                .then((res) => {
-                    success('succesfully added')
-                    $('#body').html("");
-                }).catch((err) => {
-                    error('Cannot be saved');
-                });
-        }
-        function removefile(id){
-            axios.get('{{route('admin.setting.associate.del',['id'=>":id"])}}'.replace(':id',id))
-            .then(res => {
-            success('successfully deleted')
-            location.reload()
-            })
-            .catch(err => {
-                console.error(err);
-            })
-        }
-    </script>
+        <div class="row">
+            <div class="col-md-4 mb-3 " style="position: relative">
+                <form action="{{ route('admin.setting.associate.add') }}" method="POST" enctype="multipart/form-data"
+                    class="shadow">
+                    @csrf
+                    <input type="file" name="image" accept="image/*" class="form-control photo" required>
+                    <input type="text" name="link" class="form-control no-radius" placeholder=" Enter URL" required>
+                    <div class="row m-0">
+                        <div class="col-md-12 p-0">
+                            <button class="btn btn-primary btn-save no-radius w-100">Save Associate</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            @foreach ($associates as $associate)
+                <div class="col-md-4 mb-3 " style="position: relative" id="data-{{ $associate->id }}">
+                    <form action="{{ route('admin.setting.associate.edit') }}" method="POST" enctype="multipart/form-data"
+                        class="shadow">
+                        @csrf
+                        <input type="hidden" name="id" value="{{ $associate->id }}">
+                        <input type="file" name="image" accept="image/*"
+                            data-default-file="{{ asset($associate->image) }}" class="form-control photo">
+                        <input type="text" name="link" class="form-control no-radius"
+                            value="{{ $associate->link }}" placeholder="Link" required>
+                        <div class="row m-0">
+                            <div class="col-md-12 p-0">
+                                <button class="btn btn-primary btn-save no-radius w-100">Save Associate</button>
+                            </div>
+                        </div>
+                        <a href="{{route('admin.setting.associate.del',['id'=>$associate->id])}}" type="button" class="btn btn-square btn-danger"
+                            style="position:absolute;top:0px;right:15px;z-index:99999;" onClick="return yes();">&times;</a>
+                    </form>
+                </div>
+            @endforeach
+        </div>
+    </div>
 @endsection

@@ -169,30 +169,60 @@ class SettingController extends Controller
 
     public function indexAsso(Request $request)
     {
-        $title = Associatetitle::first();
         $associates = Associate::get();
+        $title = Associatetitle::first();
         if ($request->getMethod() == "GET") {
             return view('admin.setting.associate.index', compact('title', 'associates'));
         } else {
-            $associatetitle = new Associatetitle();
-            $associatetitle->title = $request->title;
-            $associatetitle->save();
-            if ($request->filled('ids')) {
-                foreach ($request->ids as $key => $id) {
-                    $associate = new Associate();
-                    $associate->link = $request->input('link_' . $id);
-                    if ($request->hasFile('image_' . $id)) {
-                        $associate->image = $request->file('image_' . $id)->store('uploads/associate/image');
-                    }
-                    $associate->save();
-                }
-            };
-            file_put_contents(resource_path('views/front/cache/sidebar.blade.php'), view('admin.templete.sidebar', compact('title', 'associates')));
+            if($title==null){
+                $title = new Associatetitle();
+
+            }
+            $title->title = $request->title;
+            $title->save();
+
+            $this->render();
+            return redirect()->back()->with('success','successfully Added');
         };
+    }
+
+    public function render(){
+        $title = Associatetitle::first()??((object)['title'=>'']);
+        $associates = Associate::get();
+        file_put_contents(resource_path('views/front/cache/sidebar.blade.php'), view('admin.templete.sidebar', compact('title', 'associates')));
+    }
+    public function addAsso(Request $request)
+    {
+        $associate=new Associate();
+        $associate->link = $request->input('link');
+        if ($request->hasFile('image')) {
+            $associate->image = $request->file('image')->store('uploads/associate/image');
+        }
+        $associate->save();
+        $this->render();
         return redirect()->back()->with('success','successfully Added');
+
+
+    }
+
+    public function editAsso(Request $request)
+    {
+        $associate=Associate::where('id',$request->id)->first();
+        $associate->link = $request->input('link');
+        if ($request->hasFile('image')) {
+            $associate->image = $request->file('image')->store('uploads/associate/image');
+        }
+        $associate->save();
+        $this->render();
+        return redirect()->back()->with('success','successfully Updated');
+
+
     }
     public function delAsso($id)
     {
         Associate::where('id', $id)->delete();
+        $this->render();
+        return redirect()->back()->with('success','successfully deleted');
+
     }
 }

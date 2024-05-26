@@ -385,13 +385,7 @@ footer .container .copyright {
   padding: 50px 0px 50px 20px;
 }
 .sidebar .heading {
-  border-radius: 4px;
-  padding: 10px;
-  background-color: #004E84;
-}
-.sidebar .heading a {
-  color: white;
-  text-decoration: none;
+  padding-left: 0px;
 }
 .sidebar .sidebar-content {
   padding: 10px 0px 0px 0px;
@@ -402,6 +396,20 @@ footer .container .copyright {
   height: auto;
 }
 
+@media (max-width: 788px) {
+  .sidebar {
+    padding: 50px 0px 50px 0px;
+  }
+  .sidebar .heading {
+    padding-left: 10px;
+  }
+  .sidebar .sidebar-content {
+    padding: 0px 15px;
+  }
+  .sidebar .sidebar-content a {
+    padding-bottom: 10px;
+  }
+}
 .inner-banner {
   background-color: #636C77;
   display: flex;

@@ -30,7 +30,7 @@
                         <div class="row">
                             @foreach ($associates as $associate)
                             <div class="col-md-4 mb-2 " style="position: relative">
-                                <input type="file" name="image_{{$associate->id}}" accept="image/*" data-default-file="{{vasset($associate->image)}}" class="form-control photo" >
+                                <input type="file" name="image_{{$associate->id}}" accept="image/*" data-default-file="{{asset($associate->image)}}" class="form-control photo" >
                                 <input type="text" name="link_{{$associate->id}}" class="form-control" value="{{$associate->link}}" placeholder="Link" required>
                                 <button type="button" class="btn btn-square btn-danger" style="position:absolute;top:0px;right:15px;z-index:99999;" onClick="removefile({{$associate->id}})">&times;</button>
                             </div>

@@ -123,17 +123,17 @@ class BookController extends Controller
 
     public function del($book_id)
     {
-        $article = BookArtical::where('book_id', $book_id)->first();
-        if ($article == null) {
+        $articles = BookArtical::where('book_id', $book_id)->get();
+        if ($articles->count()==0) {
             Book::where('id', $book_id)->delete();
-            return redirect()->back()->with('success','successfully added');
         } else {
-            BookArticalAuthor::where('book_artical_id', $article->id)->delete();
+            BookArticalAuthor::whereIn('book_artical_id', $articles->pluck('id'))->delete();
             BookArtical::where('book_id', $book_id)->delete();
             Book::where('id', $book_id)->delete();
-            $this->render();
-            return redirect()->back()->with('success', 'succesfully deleted');
+
         }
+        $this->render();
+        return redirect()->back()->with('success','successfully deleted');
     }
 
     public function render(){
@@ -204,11 +204,13 @@ class BookController extends Controller
             $artical = new BookArtical();
             $artical->title = $request->title;
             $artical->slug = $this->getSlug('book_articals',$artical->title,null);
+
             $artical->doi = $request->doi??"";
-            $artical->tags = $request->tags;
+            $artical->tags = $request->tags??"";
+            $artical->abstract = $request->abstract??"";
+
             $artical->st_page_no = $request->starting_page;
             $artical->en_page_no = $request->ending_page;
-            $artical->abstract = $request->abstract;
             $artical->book_id = $request->book_id;
             $artical->artical_type_id = $request->artical_type_id;
             $artical->file = $request->file('file')->store('uploads/artical');
@@ -217,14 +219,17 @@ class BookController extends Controller
             $authorArticle = new BookArticalAuthor();
             $article_id = $artical->id;
             $book_id = $request->input('book_id');
-            foreach ($request->author_ids as $author_id) {
-                $author = Author::where('id', $author_id)->first();
-                $authorArticle = new BookArticalAuthor();
-                $authorArticle->author_name = $author->name;
-                $authorArticle->book_artical_id = $article_id;
-                $authorArticle->book_id = $book_id;
-                $authorArticle->author_id = $author_id;
-                $authorArticle->save();
+            if($request->filled('author_ids')){
+
+                foreach ($request->author_ids as $author_id) {
+                    $author = Author::where('id', $author_id)->first();
+                    $authorArticle = new BookArticalAuthor();
+                    $authorArticle->author_name = $author->name;
+                    $authorArticle->book_artical_id = $article_id;
+                    $authorArticle->book_id = $book_id;
+                    $authorArticle->author_id = $author_id;
+                    $authorArticle->save();
+                }
             }
             $this->render();
 
@@ -242,32 +247,36 @@ class BookController extends Controller
         } else {
             $artical->title = $request->title;
             $artical->slug = $this->getSlug('book_articals',$artical->title,$artical->id);
-            $artical->doi = $request->doi;
+            $artical->doi = $request->doi??"";
             $artical->tags = $request->tags??"";
+            $artical->abstract = $request->abstract??"";
+
             $artical->st_page_no = $request->starting_page;
             $artical->en_page_no = $request->ending_page;
-            $artical->abstract = $request->abstract;
             $artical->artical_type_id = $request->artical_type_id;
             if ($request->hasFile('file')) {
                 $artical->file = $request->file('file')->store('uploads/artical');
             }
             $artical->save();
-            if ($request->author_ids) {
-                $existingAuthors = DB::table('book_artical_authors')->where('book_artical_id', $artical_id)->pluck('author_id')->toArray();
-                $newAuthors = $request->author_ids;
-                $duplicateAuthors = array_intersect($existingAuthors, $newAuthors);
-                if (!empty($duplicateAuthors)) {
-                } else {
-                    $article_id = $artical->id;
-                    $book_id = $request->input('book_id');
-                    foreach ($request->author_ids as $author_id) {
-                        $author = Author::where('id', $author_id)->first();
-                        $authorArticle = new BookArticalAuthor();
-                        $authorArticle->author_name = $author->name;
-                        $authorArticle->book_artical_id = $article_id;
-                        $authorArticle->book_id = $book_id;
-                        $authorArticle->author_id = $author_id;
-                        $authorArticle->save();
+
+            if($request->filled('author_ids')){
+                if ($request->author_ids) {
+                    $existingAuthors = DB::table('book_artical_authors')->where('book_artical_id', $artical_id)->pluck('author_id')->toArray();
+                    $newAuthors = $request->author_ids;
+                    $duplicateAuthors = array_intersect($existingAuthors, $newAuthors);
+                    if (!empty($duplicateAuthors)) {
+                    } else {
+                        $article_id = $artical->id;
+                        $book_id = $request->input('book_id');
+                        foreach ($request->author_ids as $author_id) {
+                            $author = Author::where('id', $author_id)->first();
+                            $authorArticle = new BookArticalAuthor();
+                            $authorArticle->author_name = $author->name;
+                            $authorArticle->book_artical_id = $article_id;
+                            $authorArticle->book_id = $book_id;
+                            $authorArticle->author_id = $author_id;
+                            $authorArticle->save();
+                        }
                     }
                 }
             }

@@ -45,12 +45,12 @@
                         <div class="col-md-4 mb-2">
                             <label for="tags"> Searchable Tags</label>
                             <input type="text" name="tags" id="tags" class="form-control"
-                                value="{{ $artical->tags }}" required>
+                                value="{{ $artical->tags }}" >
                         </div>
                         <div class="col-md-4 mb-2">
                             <label for="doi">DOI</label>
                             <input type="text" name="doi" id="doi" class="form-control"
-                                value="{{ $artical->doi }}" required>
+                                value="{{ $artical->doi }}" >
                         </div>
 
                         <div class="col-md-4 mb-2">
@@ -65,7 +65,7 @@
                         </div>
                         <div class="col-md-12 mb-2">
                             <label for="abstract">Abstract</label>
-                            <textarea type="text" name="abstract" id="abstract" class="form-control" required> {{ $artical->abstract }} </textarea>
+                            <textarea type="text" name="abstract" id="abstract" class="form-control" > {{ $artical->abstract }} </textarea>
                         </div>
                         <div class="col-md-12 mb-2">
                             <label for="author" class="mb-2 w-100 d-flex justify-content-between">Select Authors <span data-bs-toggle="modal" data-bs-target="#newAuthorModal">New Author ( alt + n )</span> </label>

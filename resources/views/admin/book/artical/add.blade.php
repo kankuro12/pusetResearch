@@ -43,7 +43,7 @@
                         </div>
                         <div class="col-md-4 mb-2">
                             <label for="tags">Searchable Tags</label>
-                            <input type="text" name="tags" id="tags" class="form-control" required>
+                            <input type="text" name="tags" id="tags" class="form-control" >
                         </div>
 
                         <div class="col-md-4 mb-2">
@@ -62,7 +62,7 @@
                         </div>
                         <div class="col-md-12 mb-2">
                             <label for="abstract">Abstract</label>
-                            <textarea type="text" name="abstract" id="abstract" class="form-control" required></textarea>
+                            <textarea type="text" name="abstract" id="abstract" class="form-control"></textarea>
                         </div>
                         <div class="col-md-12 mb-2">
                             <label for="author" class="mb-2 w-100 d-flex justify-content-between">Select Authors <span data-bs-toggle="modal" data-bs-target="#newAuthorModal">New Author ( alt + n )</span> </label>

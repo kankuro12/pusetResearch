@@ -90,7 +90,7 @@
                         </li>
                         <li class="nav-item" id="item">
                             <a class="nav-link"
-                                href="{{ route('team')}}"> EDITORIAL </a>
+                                href="{{ route('team')}}"> EDITORIAL TEAM</a>
                         </li>
 
                         <li class="nav-item" id="item">

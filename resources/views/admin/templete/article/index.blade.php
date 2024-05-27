@@ -17,8 +17,16 @@
                                 {{ $author->name }}
                             </span>
                             <span class="affiliation">
-                                {{ $author->designation }} <br>
-                                {{ $author->organization }}
+
+                                @if(!empty($author->designation))
+                                    {{ $author->designation }} <br>
+                                @endif
+                                @if(!empty($author->organization))
+                                {{ $author->organization }} <br>
+                                @endif
+                                @if(!empty($author->link))
+                                    <a href="{{$author->link}}">{{$author->link}}</a>
+                                @endif
                             </span>
 
                         </div>

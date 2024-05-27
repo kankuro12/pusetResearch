@@ -15,15 +15,15 @@
                 </div>
                 <div class="col-md-4 mb-2">
                     <label for="link">Link</label>
-                    <input type="text" name="link" id="link" value="{{$author->link}}" class="form-control" required>
+                    <input type="text" name="link" id="link" value="{{$author->link}}" class="form-control" >
                 </div>
                 <div class="col-md-4 mb-2">
                     <label for="designation">Designation</label>
-                    <input type="text" name="designation" id="designation" value="{{$author->designation}}" class="form-control" required>
+                    <input type="text" name="designation" id="designation" value="{{$author->designation}}" class="form-control" >
                 </div>
                 <div class="col-md-8 mb-2">
                     <label for="organization">Organization</label>
-                    <input type="text" name="organization" id="organization" value="{{$author->organization}}" class="form-control" required>
+                    <input type="text" name="organization" id="organization" value="{{$author->organization}}" class="form-control" >
                 </div>
                <div class="col-md-4 mb-2 text-start d-flex align-items-end p-1">
                     <button class="btn btn-primary btn-sm">

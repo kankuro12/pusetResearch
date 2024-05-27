@@ -46,9 +46,9 @@ class AuthorController extends Controller
             return view('admin.author.edit', compact('author'));
         } else {
             $author->name = $request->name;
-            $author->link = $request->link;
-            $author->designation = $request->designation;
-            $author->organization = $request->organization;
+            $author->link = $request->link??"";
+            $author->designation = $request->designation??"";
+            $author->organization = $request->organization??"";
             $author->save();
         }
         $c=new BookController();

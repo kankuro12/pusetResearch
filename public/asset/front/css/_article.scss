@@ -37,15 +37,11 @@
 
             .head {
                 padding: 0 0 10px;
-
                 .authorname {
-                    display: flex;
-                    align-items: center;
-                    column-gap: 10px;
                     color: var(--text);
                     font-size: 13px;
                     line-height: 13px;
-                    margin: 0 0 10px 0px;
+                    margin: 10px 0 10px 0px;
                 }
 
                 h3 {

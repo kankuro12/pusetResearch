@@ -107,7 +107,7 @@ class BookController extends Controller
         $originalSlug=$slug;
         if($id==null){
             while(DB::table($table)->where('slug',$slug)->count()>0){
-                $slug.=$slug."-". $increment;
+                $slug.=$originalSlug."-". $increment;
                 $increment+=1;
             }
         }else{

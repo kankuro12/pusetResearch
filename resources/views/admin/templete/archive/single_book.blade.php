@@ -20,7 +20,7 @@
             </div>
         </div>
     </div>
-    @foreach ($bookArticles->where('book_id',$book->id)->groupBy('artical_type_id') as $key=>$articles)
+    @foreach ($bookArticles->where('book_id',$book->id)->sortBy('en_page_no')->groupBy('artical_type_id') as $key=>$articles)
         <div class="container_b p-0">
             <div class="editorial">
                 <h5>
@@ -33,15 +33,6 @@
             @foreach ($articles->sortBy('en_page_no') as $item)
                 <div class="data">
                     <div class="head">
-                        <div class="authorname">
-                            <i class="fa-regular fa-user"></i>
-                            @php
-                                $bas = $bookArticlesAuthors->where('book_artical_id',$item->id);
-                            @endphp
-                            @foreach ($bas as $ba)
-                                <a href="">{{ $authors->where('id',$ba->author_id)->first()->name }} </a>
-                            @endforeach
-                        </div>
                         <div class="title">
                             <h3>
                                 <a href="{{ route('articleSingle', ['article' => $item->slug??$item->id]) }}">{{ $item->title }}</a>
@@ -51,10 +42,25 @@
                             </div>
 
                         </div>
+                        @php
+                            $bas = $bookArticlesAuthors->where('book_artical_id',$item->id);
+                        @endphp
+                        @if ($bas->count()>0)
+                            <div class="authorname">
+                                <i class="fa-regular fa-user"></i>
+                                @foreach ($bas as $ba)
+                                    <a href="">{{ $authors->where('id',$ba->author_id)->first()->name }}@if(!$loop->last),@endif </a>
+                                @endforeach
+                            </div>
+                        @endif
                     </div>
                     <div class="bottom">
                         <div class="short_desc">
-                            {{$item->abstract}}
+                            @if(strlen($item->abstract)>160)
+                                {{ substr($item->abstract,0,160)."..." }}
+                            @else
+                                {{ $item->abstract }}
+                            @endif
                         </div>
 
                         <div >
@@ -66,7 +72,7 @@
 
                     </div>
                 </div>
-                <hr>
+                @if(!$loop->last)<hr/>@endif
             @endforeach
         </div>
     @endforeach

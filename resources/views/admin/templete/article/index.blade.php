@@ -43,6 +43,7 @@
                             </p>
                         @else
                             {{ $article->abstract }}
+
                         @endif
                     </div>
                 </div>

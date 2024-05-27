@@ -54,21 +54,29 @@
 
                     <div class="data">
                         <div class="head">
-                            <div class="authorname">
-                                <i class="fa-regular fa-user"></i>
-                                @foreach ($authors as $author)
-                                    <a href="">{{ $author->name }}, </a>
-                                @endforeach
-                            </div>
                             <h3>
                                 <a href="{{ route('articleSingle', ['article' => $item->slug??$item->id]) }}">{{ $item->title }}</a>
                             </h3>
+                            @if($authors->count()>0)
+                            <div class="authorname">
+                                <i class="fa-regular fa-user"></i>
+                                @foreach ($authors as $author)
+                                    <a href="">{{ $author->name }}@if(!$loop->last),@endif  </a>
+                                @endforeach
+                            </div>
+                            @endif
                         </div>
                         <div class="bottom">
                             <div class="row">
                                 <div class="col-md-10">
                                     <div class="short_desc">
-                                        <p>{{ $item->abstract }}</p>
+                                        <p>
+                                            @if(strlen($item->abstract)>160)
+                                                {{ substr($item->abstract,0,160)."..." }}
+                                            @else
+                                                {{ $item->abstract }}
+                                            @endif
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="col-md-2 text-end">

@@ -224,14 +224,10 @@ header .navbar #dropdown:hover #navbarDropdown {
   padding: 0 0 10px;
 }
 .article .container .data .head .authorname {
-  display: flex;
-  align-items: center;
-  -moz-column-gap: 10px;
-       column-gap: 10px;
   color: var(--text);
   font-size: 13px;
   line-height: 13px;
-  margin: 0 0 10px 0px;
+  margin: 10px 0 10px 0px;
 }
 .article .container .data .head h3 {
   font-size: 18px;

@@ -37,9 +37,16 @@ class FrontController extends Controller
     public function policy(){
         return view('front.policy.index');
     }
-    public function contact()
+    public function contact(Request $request)
+
+
     {
-        return view('front.contact.index');
+        if($request->getMethod()=="POST"){
+
+        }else{
+
+            return view('front.contact.index');
+        }
     }
     public function register(Request $request)
     {
@@ -89,5 +96,11 @@ class FrontController extends Controller
     public function team(){
 
         return view('front.team.index');
+    }
+
+    public function message($slug){
+        $filename=str_replace("-","_",$slug);
+        return view('front.message.index',compact('filename'));
+
     }
 }

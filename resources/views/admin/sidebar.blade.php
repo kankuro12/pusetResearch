@@ -22,7 +22,13 @@
             <a class="nav-link" id="faq" href="{{ route('admin.faq.index')}}">FAQ</a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" id="message" href="{{ route('admin.message.index')}}">MESSAGES</a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" id="setting" href="{{ route('admin.setting.index')}}">Setting</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link"  href="{{ route('admin.logout')}}" onclick="return confirm('Logout?')">Logout</a>
         </li>
     </ul>
 </div>

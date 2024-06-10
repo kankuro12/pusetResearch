@@ -97,19 +97,7 @@
                             <a class="nav-link" href="{{ route('archive') }}"
                                 id="item_a">ARCHIVE</a>
                         </li>
-                        {{-- <li class="nav-item dropdown" id="dropdown">
-                            <a class="nav-link dropdown-toggle" href="#"
-                                id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                ISSUE
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Current</a>
-                                </li>
-                                <li><a class="dropdown-item" href="{{route('archiveIssue')}}">Archives</a>
-                                </li>
-                            </ul>
-                        </li> --}}
+                        @includeIf('front.cache.more')
                     </ul>
                 </div>
 

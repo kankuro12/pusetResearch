@@ -29,6 +29,10 @@ class LoginController extends Controller
         return redirect()->route('front.login');
     }
 
+    public function adminLogout() {
+        Auth::logout();
+        return redirect()->route('admin.login');
+    }
     public function clientLogout(){
         Auth::logout();
         return redirect()->route('front.login');

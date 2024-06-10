@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\AuthorController;
+use App\Http\Controllers\admin\BoardMessageController;
 use App\Http\Controllers\admin\BookController;
 use App\Http\Controllers\admin\ContactController;
 use App\Http\Controllers\admin\FaqController;
@@ -23,7 +24,7 @@ Route::get('/', [FrontController::class, 'index'])->name('index');
 Route::get('layout', [FrontController::class, 'layout'])->name('layout');
 Route::get('about', [FrontController::class, 'about'])->name('about');
 Route::get('policy', [FrontController::class, 'policy'])->name('policy');
-Route::get('contact', [FrontController::class, 'contact'])->name('contact');
+Route::match(['get','post'],'contact', [FrontController::class, 'contact'])->name('contact');
 Route::get('guidelines', [FrontController::class, 'submission'])->name('submission');
 
 Route::get('archive',[FrontController::class,'archiveIssue'])->name('archive');
@@ -31,6 +32,7 @@ Route::get('book/single/{book_id}',[FrontController::class,'bookSingle'])->name(
 Route::get('articleSingle/{article}', [FrontController::class, 'articleSingle'])->name('articleSingle');
 
 Route::get('team',[FrontController::class,'team'])->name('team');
+Route::get('message/{slug}',[FrontController::class,'message'])->name('message');
 
 
 //register login
@@ -41,6 +43,8 @@ Route::get('clientLogout',[LoginController::class,'clientLogout'])->name('client
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::match(['get', 'post'], 'login', [LoginController::class, 'adminLogin'])->name('login');
+    Route::get('logout', [LoginController::class, 'adminLogout'])->name('logout');
+
     Route::middleware('role:0')->group(function () {
 
         Route::get('/', [DashbordController::class, 'index'])->name('index');
@@ -53,6 +57,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::get('del/{author_id}', [AuthorController::class, 'del'])->name('del');
             Route::get('list', [AuthorController::class, 'list'])->name('list');
         });
+
+        Route::prefix('message')->name('message.')->group(function(){
+            Route::get('',[BoardMessageController::class,'index'])->name('index');
+            Route::match(['get','post'],'add',[BoardMessageController::class,'add'])->name('add');
+            Route::match(['get','post'],'edit/{id}',[BoardMessageController::class,'edit'])->name('edit');
+            Route::match(['get'],'del/{id}',[BoardMessageController::class,'del'])->name('del');
+        });
+
         Route::prefix('book')->name('book.')->group(function () {
             Route::get('index', [BookController::class, 'index'])->name('index');
             Route::match(['GET', 'POST'], 'add', [BookController::class, 'add'])->name('add');

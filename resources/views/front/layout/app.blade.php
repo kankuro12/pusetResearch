@@ -14,7 +14,7 @@
     @if (!View::hasSection('meta'))
             @include('front.cache.meta')
     @endif
-    <link rel="stylesheet" href="{{ asset('asset/front/css/index.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/front/css/index.css') }}?v=1">
 
     @yield('style')
 

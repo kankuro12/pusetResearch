@@ -593,7 +593,7 @@ footer .container .copyright {
   margin-top: 5px;
 }
 .archiveIssue .archive .chapters a {
-  display: inline-block;
+  display: inline;
   white-space: wrap;
   font-size: 15px;
   text-decoration: underline;

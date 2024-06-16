@@ -591,12 +591,17 @@ footer .container .copyright {
 }
 .archiveIssue .archive .chapters {
   margin-top: 5px;
+  max-height: 60px;
+  line-height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .archiveIssue .archive .chapters a {
-  display: inline;
+  display: inline-block;
   white-space: wrap;
   font-size: 15px;
   text-decoration: underline;
+  margin-right: 5px;
 }
 .archiveIssue .archive p {
   font-size: 14px;

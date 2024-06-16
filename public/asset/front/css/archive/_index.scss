@@ -39,11 +39,17 @@
         }
         .chapters{
             margin-top: 5px;
+            max-height: 60px;
+            line-height: 20px;
+            overflow: hidden;
+            text-overflow: ellipsis;
             a{
-                display: inline;
+                display: inline-block;
                 white-space: wrap;
                 font-size: 15px;
                 text-decoration: underline;
+                margin-right: 5px;
+
             }
 
         }

@@ -639,6 +639,10 @@ footer .container .copyright {
   }
   .archiveIssue .archive .chapters {
     margin-top: 5px;
+    max-height: 60px;
+    line-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .archiveIssue .archive .chapters a {
     display: inline;

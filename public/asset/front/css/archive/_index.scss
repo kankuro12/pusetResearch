@@ -94,6 +94,10 @@
             }
             .chapters{
                 margin-top: 5px;
+                max-height: 60px;
+                line-height: 20px;
+                overflow: hidden;
+                text-overflow: ellipsis;
                 a{
                     display: inline;
                     white-space: wrap;

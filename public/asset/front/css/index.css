@@ -594,7 +594,7 @@ footer .container .copyright {
   padding: 0 0 10px;
 }
 .archiveSingle .container_b .data .head .authorname {
-  display: flex;
+  display: block;
   align-items: center;
   -moz-column-gap: 10px;
        column-gap: 10px;
@@ -977,4 +977,8 @@ footer .container .copyright {
 }
 #message p {
   margin-bottom: 5px;
+}
+
+body {
+  color: #103831 !important;
 }/*# sourceMappingURL=index.css.map */

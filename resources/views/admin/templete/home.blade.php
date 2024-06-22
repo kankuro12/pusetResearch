@@ -54,9 +54,13 @@
 
                     <div class="data">
                         <div class="head">
-                            <h3>
+                            <h3 class="d-flex justify-content-between">
                                 <a href="{{ route('articleSingle', ['article' => $item->slug??$item->id]) }}">{{ $item->title }}</a>
+                                <div class="page_no">
+                                    {{ $item->st_page_no }} - {{ $item->en_page_no }}
+                                </div>
                             </h3>
+
                             @if($authors->count()>0)
                             <div class="authorname">
                                 <i class="fa-regular fa-user"></i>
@@ -65,8 +69,15 @@
                                 @endforeach
                             </div>
                             @endif
+
+                            <div class="mt-3">
+                                <button>
+                                    <i class="fa-regular fa-file-pdf"></i> <a
+                                        href="{{ vasset($item->file) }}">PDF</a>
+                                </button>
+                            </div>
                         </div>
-                        <div class="bottom">
+                        {{-- <div class="bottom">
                             <div class="row">
                                 <div class="col-md-10">
                                     <div class="short_desc">
@@ -85,13 +96,10 @@
                                     </div>
                                 </div>
                                 <div class="col-md-2">
-                                    <button>
-                                        <i class="fa-regular fa-file-pdf"></i> <a
-                                            href="{{ vasset($item->file) }}">PDF</a>
-                                    </button>
+
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                     </div>
                     @if ($articlesLen - 1 > $articleKey)

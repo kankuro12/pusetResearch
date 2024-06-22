@@ -5,6 +5,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
 :root {
   --text: #001e43;
+  --text-secondary:#58736E;
 }
 
 body {
@@ -240,23 +241,25 @@ header .navbar #dropdown:hover #navbarDropdown {
 .article .container .data .head h3 a {
   color: var(--text);
 }
+.article .container .data .head h3 .page_no {
+  color: var(--text);
+  font-size: 15px;
+  white-space: nowrap;
+}
+.article .container .data .head button {
+  border: none;
+  background-color: var(--text-secondary);
+  padding: 8px 20px;
+  font-size: 13px;
+}
+.article .container .data .head button i {
+  color: white;
+}
+.article .container .data .head button a {
+  color: white;
+}
 .article .container .data .bottom .short_desc p {
   color: var(--text);
-}
-.article .container .data .bottom .page_no {
-  color: var(--text);
-}
-.article .container .data .bottom button {
-  border: none;
-  background-color: var(--text);
-  padding: 6px 20px;
-  font-size: 15px;
-}
-.article .container .data .bottom button i {
-  color: white;
-}
-.article .container .data .bottom button a {
-  color: white;
 }
 
 footer a {

@@ -55,13 +55,13 @@
                         @endif
                     </div>
                     <div class="bottom">
-                        <div class="short_desc">
+                        {{-- <div class="short_desc">
                             @if(strlen($item->abstract)>160)
                                 {{ substr($item->abstract,0,160)."..." }}
                             @else
                                 {{ $item->abstract }}
                             @endif
-                        </div>
+                        </div> --}}
 
                         <div >
                             <button>

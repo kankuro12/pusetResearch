@@ -41,6 +41,8 @@ header {
     padding:10px 30px;
 
     .navbar {
+        a.nav-link{
+        }
         .navbar-brand{
             img{
                 max-height: 50px;
@@ -54,21 +56,24 @@ header {
             #item {
 
                 a {
-                    font-size: 16px;
+                    color:var(--text);
                     font-weight: 500;
+                    font-size: 18px;
+
                 }
             }
 
             #dropdown {
 
                 a {
-                    font-size: 16px;
+                    color:var(--text);
                     font-weight: 500;
+                    font-size: 18px;
 
                 }
 
                 .dropdown-item {
-                    color: #636c77;
+                    color: var(--text);
                 }
 
                 ul {

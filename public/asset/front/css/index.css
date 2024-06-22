@@ -69,15 +69,17 @@ header .navbar .navbar-toggler-icon {
   width: 1rem;
 }
 header .navbar ul.navbar-nav #item a {
-  font-size: 16px;
+  color: var(--text);
   font-weight: 500;
+  font-size: 18px;
 }
 header .navbar ul.navbar-nav #dropdown a {
-  font-size: 16px;
+  color: var(--text);
   font-weight: 500;
+  font-size: 18px;
 }
 header .navbar ul.navbar-nav #dropdown .dropdown-item {
-  color: #636c77;
+  color: var(--text);
 }
 header .navbar ul.navbar-nav #dropdown ul .side_menu {
   display: none;

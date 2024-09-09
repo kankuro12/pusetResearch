@@ -141,7 +141,7 @@ class BookController extends Controller
         $books = DB::table('books')->get();
         $bookArticles=DB::table('book_articals')->orderBy('en_page_no')->get();
         $authors=DB::table('authors')->get();
-        $bookArticlesAuthors=DB::table('book_artical_authors')->get();
+        $bookArticlesAuthors=DB::table('book_artical_authors')->orderBy('id')->get();
         $types=DB::table('artical_types')->get();
 
 

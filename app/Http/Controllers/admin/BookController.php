@@ -240,7 +240,7 @@ class BookController extends Controller
     {
         $artical = BookArtical::where('id', $artical_id)->first();
         if ($request->getMethod() == "GET") {
-            $articalAuthors = DB::table('book_artical_authors')->where('book_artical_id', $artical_id)->get();
+            $articalAuthors = DB::table('book_artical_authors')->where('book_artical_id', $artical_id)->orderBy('id')->get();
             $book = Book::where('id', $book_id)->first();
             $articalTypes = DB::table('artical_types')->get();
             return view('admin.book.artical.edit', compact('book', 'artical', 'articalTypes', 'articalAuthors'));

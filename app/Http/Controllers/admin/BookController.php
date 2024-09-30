@@ -219,9 +219,10 @@ class BookController extends Controller
             $authorArticle = new BookArticalAuthor();
             $article_id = $artical->id;
             $book_id = $request->input('book_id');
-            if($request->filled('author_ids')){
 
-                foreach ($request->author_ids as $author_id) {
+            if($request->filled('author_ids')){
+                $author_ids=explode(',',$request->author_ids);
+                foreach ($author_ids as $author_id) {
                     $author = Author::where('id', $author_id)->first();
                     $authorArticle = new BookArticalAuthor();
                     $authorArticle->author_name = $author->name;
@@ -261,14 +262,16 @@ class BookController extends Controller
 
             if($request->filled('author_ids')){
                 if ($request->author_ids) {
+                    $author_ids=explode(',',$request->author_ids);
+
                     $existingAuthors = DB::table('book_artical_authors')->where('book_artical_id', $artical_id)->pluck('author_id')->toArray();
-                    $newAuthors = $request->author_ids;
+                    $newAuthors = $author_ids;
                     $duplicateAuthors = array_intersect($existingAuthors, $newAuthors);
                     if (!empty($duplicateAuthors)) {
                     } else {
                         $article_id = $artical->id;
                         $book_id = $request->input('book_id');
-                        foreach ($request->author_ids as $author_id) {
+                        foreach ($author_ids as $author_id) {
                             $author = Author::where('id', $author_id)->first();
                             $authorArticle = new BookArticalAuthor();
                             $authorArticle->author_name = $author->name;
@@ -332,6 +335,12 @@ class BookController extends Controller
     public function delAuthor($articleAuthor_id)
     {
         BookArticalAuthor::where('id', $articleAuthor_id)->delete();
+        $this->render();
+
+        return redirect()->back()->with('success', 'successfully deleted');
+    }
+    public function delAuthorAll($artical_id){
+        BookArticalAuthor::where('book_artical_id', $artical_id)->delete();
         $this->render();
 
         return redirect()->back()->with('success', 'successfully deleted');

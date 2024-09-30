@@ -66,8 +66,10 @@
                         </div>
                         <div class="col-md-12 mb-2">
                             <label for="author" class="mb-2 w-100 d-flex justify-content-between">Select Authors <span data-bs-toggle="modal" data-bs-target="#newAuthorModal">New Author ( alt + n )</span> </label>
-                            <select name="author_ids[]" id="author" multiple="multiple" class="author form-control"></select>
+                            <select id="author" multiple="multiple" class="author form-control" onChange="authorSelectChanged(this,event)"></select>
+                            <input type="hidden" name="author_ids" id="author_ids" value="">
                         </div>
+                        .
                         <div class="col-md-12 mb-2 text-end">
                             <a href="{{ route('admin.book.article.indexArticle', ['book_id' => $book->id]) }}"
                                 class="btn btn-danger btn-sm" onClick="return yes();">
@@ -133,10 +135,34 @@
             }
 
         }
+
+        var selectedValues=[];
+        function authorSelectChanged(ele){
+            for (let i = 0; i < ele.options.length; i++) {
+                let value = ele.options[i].value;
+                if (ele.options[i].selected && !selectedValues.includes(value)) {
+                    // Add the newly selected value
+                    selectedValues.push(value);
+                } else if (!ele.options[i].selected && selectedValues.includes(value)) {
+                    // Remove the unselected value
+                    selectedValues = selectedValues.filter(item => item !== value);
+                }
+            }
+
+            console.log('Selected values:', selectedValues);
+            $('#author_ids').val(selectedValues.join(","));
+
+        }
+
+
         $(document).ready(function() {
             $('#artical_type_id').select2();
             $('.author').select2({
                 height: 300,
+                sorter: function(data) {
+                    // Do not sort, keep the order as is
+                    return data;
+                }
             });
 
             axios.get("{{ route('admin.author.list') }}")
@@ -150,7 +176,7 @@
                     });
 
                     authorSelect=$('#author').select2({
-                        data: results
+                        data: results,
                     });
                 })
                 .catch(function(error) {

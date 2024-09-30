@@ -69,9 +69,11 @@
                         </div>
                         <div class="col-md-12 mb-2">
                             <label for="author" class="mb-2 w-100 d-flex justify-content-between">Select Authors <span data-bs-toggle="modal" data-bs-target="#newAuthorModal">New Author ( alt + n )</span> </label>
-                            <select name="author_ids[]" id="author" multiple="multiple" class="author form-control" >
+                            <select id="author" multiple="multiple" class="author form-control" onchange="authorSelectChanged(this);" >
 
                             </select>
+                            <input type="hidden" name="author_ids" id="author_ids" value="">
+
                         </div>
                     </div>
                 </div>
@@ -108,6 +110,11 @@
                                         class="btn btn-danger">Delete</a></td>
                             </tr>
                         @endforeach
+                        <tr>
+                            <td colspan="2"></td>
+                            <td><a href="{{ route('admin.book.article.articleAuthor.delAuthorAll', ['artical_id' =>  $artical->id]) }}"
+                                class="btn btn-danger">Delete All</a></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -165,6 +172,25 @@
             }
 
         }
+
+        var selectedValues=[];
+        function authorSelectChanged(ele){
+            for (let i = 0; i < ele.options.length; i++) {
+                let value = ele.options[i].value;
+                if (ele.options[i].selected && !selectedValues.includes(value)) {
+                    // Add the newly selected value
+                    selectedValues.push(value);
+                } else if (!ele.options[i].selected && selectedValues.includes(value)) {
+                    // Remove the unselected value
+                    selectedValues = selectedValues.filter(item => item !== value);
+                }
+            }
+
+            console.log('Selected values:', selectedValues);
+            $('#author_ids').val(selectedValues.join(","));
+
+        }
+
         $(document).ready(function() {
             $('#artical_type_id').select2();
             $('.author').select2({

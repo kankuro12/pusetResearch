@@ -82,6 +82,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
                     Route::get('indexAuthor/{book_id}/{article_id}', [BookController::class, 'indexAuthor'])->name('indexAuthor');
                     Route::match(['POST'], 'addAuthor', [BookController::class, 'addAuthor'])->name('addAuthor');
                     Route::get('delAuthor/{articleAuthor_id}', [BookController::class, 'delAuthor'])->name('delAuthor');
+                    Route::get('delAuthorAll/{artical_id}', [BookController::class, 'delAuthorAll'])->name('delAuthorAll');
                     Route::post('saveAuthor/{book_id}/{article_id}', [BookController::class, 'saveAuthor'])->name('saveAuthor');
                 });
             });

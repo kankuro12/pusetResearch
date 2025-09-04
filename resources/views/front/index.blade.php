@@ -16,6 +16,10 @@
             </svg>
             <h2 class="mt-4">We don't have a current publication</h2>
             <p>We will be releasing soon.</p>
+            <hr>
+            <p>
+                Please review our <a href="{{ url('/guidelines') }}" class="text-primary font-semibold underline">guidelines and instructions</a> to submit your research.
+            </p>
         </div>
     @endif
 @endsection

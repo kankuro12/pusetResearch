@@ -40,7 +40,7 @@
                                 <input type="password" name="password" id="password" placeholder="Password" class="form-control">
                             </div>
                             <div class="form-group mb-4">
-                                {!! app('captcha')->display() !!}
+                                {!! app('captcha')->display(['data-callback' => 'onRecaptchaSuccess', 'data-expired-callback' => 'onRecaptchaExpired', 'data-error-callback' => 'onRecaptchaError']) !!}
                                 @if ($errors->has('g-recaptcha-response'))
                                     <span class="text-danger">{{ $errors->first('g-recaptcha-response') }}</span>
                                 @endif
@@ -55,7 +55,7 @@
                                 <a href="#">Forget Password</a>
                             </div>
                         </div>
-                        <button type="submit">
+                        <button type="submit" id="loginBtn" disabled style="opacity: 0.6; cursor: not-allowed;">
                             Login
                         </button>
                     </form>
@@ -67,4 +67,44 @@
 
 @section('js')
     {!! app('captcha')->renderJs() !!}
+    <script>
+        // Debug: Check if functions are loaded
+        console.log('reCAPTCHA callback functions loaded');
+
+        function enableLoginButton() {
+            console.log('Enabling login button');
+            const loginBtn = document.getElementById('loginBtn');
+            if (loginBtn) {
+                loginBtn.disabled = false;
+                loginBtn.style.opacity = '1';
+                loginBtn.style.cursor = 'pointer';
+            }
+        }
+
+        function disableLoginButton() {
+            console.log('Disabling login button');
+            const loginBtn = document.getElementById('loginBtn');
+            if (loginBtn) {
+                loginBtn.disabled = true;
+                loginBtn.style.opacity = '0.6';
+                loginBtn.style.cursor = 'not-allowed';
+            }
+        }
+
+        // reCAPTCHA callback functions - these must be in global scope
+        window.onRecaptchaSuccess = function(response) {
+            console.log('reCAPTCHA Success:', response);
+            enableLoginButton();
+        };
+
+        window.onRecaptchaExpired = function() {
+            console.log('reCAPTCHA Expired');
+            disableLoginButton();
+        };
+
+        window.onRecaptchaError = function() {
+            console.log('reCAPTCHA Error');
+            disableLoginButton();
+        };
+    </script>
 @endsection

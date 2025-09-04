@@ -59,8 +59,7 @@ class User extends Authenticatable
      */
     public function markEmailAsVerified(): bool
     {
-        return $this->update([
-            'email_verified_at' => now(),
-        ]);
+        $this->email_verified_at = now();
+        return $this->save();
     }
 }

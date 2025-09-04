@@ -17,14 +17,13 @@ class EmailVerificationController extends Controller
     {
         $email = urldecode($email);
 
+        // dd($email, $token);
         // Verify the token
         if (EmailVerification::verifyToken($email, $token)) {
             // Find the user and mark email as verified
             $user = User::where('email', $email)->first();
-
             if ($user) {
                 $user->markEmailAsVerified();
-
                 return redirect()->route('front.login')->with('success', 'Email verified successfully! You can now login to your account.');
             }
         }

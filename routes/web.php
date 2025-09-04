@@ -121,6 +121,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::get('del/{guideline_id}', [GuidelineController::class, 'del'])->name('del');
             Route::get('list', [GuidelineController::class, 'list'])->name('list');
         });
+        Route::prefix('popup')->name('popup.')->group(function () {
+            Route::get('index', [\App\Http\Controllers\admin\PopupController::class, 'index'])->name('index');
+            Route::get('list', [\App\Http\Controllers\admin\PopupController::class, 'list'])->name('list');
+            Route::match(['GET','POST'], 'add', [\App\Http\Controllers\admin\PopupController::class, 'add'])->name('add');
+            Route::match(['GET','POST'], 'edit/{popup_id}', [\App\Http\Controllers\admin\PopupController::class, 'edit'])->name('edit');
+            Route::get('del/{popup_id}', [\App\Http\Controllers\admin\PopupController::class, 'del'])->name('del');
+        });
         Route::prefix('faq')->name('faq.')->group(function () {
             Route::get('index', [FaqController::class, 'index'])->name('index');
             Route::match(['POST'], 'add', [FaqController::class, 'add'])->name('add');

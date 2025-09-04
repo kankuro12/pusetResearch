@@ -4,6 +4,10 @@
 
 @endsection
 @section('content')
+
+    @if(View::exists('front.cache.popups'))
+        @include('front.cache.popups')
+    @endif
     @if(View::exists('front.cache.home'))
         @include('front.cache.home')
     @else
@@ -23,3 +27,16 @@
         </div>
     @endif
 @endsection
+
+@push('scripts')
+<script>
+    // Very light popup click handler: when a popup element is clicked, follow its link
+    document.addEventListener('click', function(e){
+        var el = e.target.closest('.site-popup');
+        if(el && el.dataset.link){
+            var link = el.dataset.link;
+            if(link){ window.open(link, '_blank'); }
+        }
+    });
+</script>
+@endpush

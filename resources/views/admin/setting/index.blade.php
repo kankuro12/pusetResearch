@@ -31,7 +31,8 @@
                 <strong>Other setting</strong>
                 <div class="mt-2" style="display: flex; column-gap: 30px">
                     <a class="link" href="{{route('admin.setting.contact.index')}}">Contact</a>
-                    <a class="link" href="{{route('admin.setting.artical_type.indexArtical')}}">Article Types</a>
+                    <a class="link" href="{{route('admin.setting.generalLayout.general_index')}}">General Layout</a>
+                    <a class="link" href="{{route('admin.popup.index')}}">Manage Popup</a>
                 </div>
             </div>
         </div>

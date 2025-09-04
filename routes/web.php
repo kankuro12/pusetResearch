@@ -182,6 +182,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
             // legacy unverified view & manual verify by form (kept for compatibility)
             Route::get('unverified', [\App\Http\Controllers\admin\UserVerificationController::class, 'unverified'] ?? [\App\Http\Controllers\admin\UserVerificationController::class, 'index'])->name('unverified');
             Route::post('verify/{user_id}', [\App\Http\Controllers\admin\UserVerificationController::class, 'verify'])->name('verify');
+
+            // Admin: user detail
+            Route::get('admin/users/{id}', [\App\Http\Controllers\admin\UserVerificationController::class, 'show'])->name('show');
         });
     });
 });

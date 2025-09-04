@@ -162,4 +162,13 @@ class UserVerificationController extends Controller
 
         return response()->json(['status' => 'success', 'message' => "User {$action}", 'verified' => $user->email_verified_at ? 'Yes' : 'No']);
     }
+
+    /**
+     * Display the specified user.
+     */
+    public function show($id)
+    {
+        $user = \App\Models\User::with('submissions')->findOrFail($id);
+        return view('admin.users.show', compact('user'));
+    }
 }

@@ -7,4 +7,5 @@
 
     <button type="button" class="btn btn-sm btn-danger btn-toggle-block" data-id="{{ $user->id }}">{{ $user->email_verified_at ? 'Block' : 'Unblock' }}</button>
     @endif
+    <a href="{{ route('admin.users.show', $user->id) }}" class="btn btn-sm btn-info">Details</a>
 </div>

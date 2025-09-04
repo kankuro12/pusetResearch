@@ -15,6 +15,7 @@ use App\Http\Controllers\client\ClientController;
 use App\Http\Controllers\client\InfoController as ClientInfoController;
 use App\Http\Controllers\client\SubmissionController as ClientSubmissionController;
 use App\Http\Controllers\DashbordController;
+use App\Http\Controllers\EmailVerificationController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\LoginController;
@@ -40,6 +41,11 @@ Route::match(['GET', 'POST'], 'register', [FrontController::class, 'register'])-
 Route::get('login', [FrontController::class, 'login'])->name('front.login');
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('clientLogout',[LoginController::class,'clientLogout'])->name('clientLogout');
+
+// Email Verification Routes
+Route::get('email/verify/{email}/{token}', [EmailVerificationController::class, 'verify'])->name('email.verify');
+Route::get('email/resend', [EmailVerificationController::class, 'showResendForm'])->name('email.resend.form');
+Route::post('email/resend', [EmailVerificationController::class, 'resend'])->name('email.resend');
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::match(['get', 'post'], 'login', [LoginController::class, 'adminLogin'])->name('login');

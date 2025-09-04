@@ -60,7 +60,8 @@
                                 Login
                             </button>
                             <div class="register-link">
-                                Don't have an account? <a href="{{ route('client.register') }}">Register</a>
+                                Don't have an account? <a href="{{ route('register') }}">Register</a><br>
+                                <small>Need to verify your email? <a href="{{ route('email.resend.form') }}">Resend verification email</a></small>
                             </div>
                     </form>
                 </div>

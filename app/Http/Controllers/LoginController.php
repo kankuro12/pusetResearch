@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -20,8 +21,18 @@ class LoginController extends Controller
             'g-recaptcha-response.required' => 'Please verify that you are not a robot.',
             'g-recaptcha-response.captcha' => 'Captcha error! Please try again later or contact site admin.',
         ]);
+
         $remember = $request->has('remember');
+
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'role' => 1], $remember)) {
+            $user = User::where('email', $request->email)->first();
+
+            // Check if email is verified
+            if (!$user->hasVerifiedEmail()) {
+                Auth::logout();
+                return redirect()->back()->with('error', 'Please verify your email address before logging in. Check your inbox for the verification link.');
+            }
+
             return redirect()->route('client.index')->with('success', 'Login Success');
         } else {
             return redirect()->back()->with('error', 'Credential Mismatch');

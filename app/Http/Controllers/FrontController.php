@@ -10,9 +10,12 @@ use App\Models\Client;
 use App\Models\Team;
 use App\Models\TeamMember;
 use App\Models\User;
+use App\Models\EmailVerification;
+use App\Mail\EmailVerificationMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use PhpParser\Node\Expr\FuncCall;
 
 class FrontController extends Controller
@@ -80,8 +83,17 @@ class FrontController extends Controller
             $client->affiliation =$request->affiliation;
             $client->save();
 
-            Auth::user($user);
-            return  redirect()->route('front.login')->with('success','Successfully Registered');
+            // Generate verification token and send email
+            $token = EmailVerification::generateToken($user->email);
+            $verificationUrl = route('email.verify', [
+                'email' => urlencode($user->email),
+                'token' => $token
+            ]);
+
+            // Send verification email
+            Mail::to($user->email)->send(new EmailVerificationMail($verificationUrl, $user->name));
+
+            return redirect()->route('front.login')->with('success', 'Registration successful! Please check your email and click the verification link to activate your account.');
         }
     }
 

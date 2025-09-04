@@ -15,6 +15,10 @@ class LoginController extends Controller
         $request->validate([
             'email' => 'required|email',
             'password' => 'required|string',
+            'g-recaptcha-response' => 'required|captcha',
+        ], [
+            'g-recaptcha-response.required' => 'Please verify that you are not a robot.',
+            'g-recaptcha-response.captcha' => 'Captcha error! Please try again later or contact site admin.',
         ]);
         $remember = $request->has('remember');
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'role' => 1], $remember)) {
@@ -55,11 +59,13 @@ class LoginController extends Controller
             $data = [
                 "email" => $request->input($loginInfo['u']),
                 "password" => $request->input($loginInfo['p']),
+                "g-recaptcha-response" => $request->input('g-recaptcha-response'),
             ];
 
             $rules = [
                 'email' => ['required', 'email'],
-                'password' => ['required']
+                'password' => ['required'],
+                'g-recaptcha-response' => ['required', 'captcha'],
             ];
 
 
@@ -68,6 +74,8 @@ class LoginController extends Controller
                 'email.required' => 'The email field is required.',
                 'email.email' => 'Please enter a valid email address.',
                 'password.required' => 'The password field is required.',
+                'g-recaptcha-response.required' => 'Please verify that you are not a robot.',
+                'g-recaptcha-response.captcha' => 'Captcha error! Please try again later or contact site admin.',
             ];
 
 

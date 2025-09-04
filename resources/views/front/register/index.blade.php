@@ -67,6 +67,12 @@
                                             placeholder="Re-type Password" class="form-control">
 
                                     </div>
+                                    <div class="form-group mb-4">
+                                        {!! app('captcha')->display() !!}
+                                        @if ($errors->has('g-recaptcha-response'))
+                                            <span class="text-danger">{{ $errors->first('g-recaptcha-response') }}</span>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-10">
@@ -92,5 +98,5 @@
 @endsection
 
 @section('js')
-
+    {!! app('captcha')->renderJs() !!}
 @endsection

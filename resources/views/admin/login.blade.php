@@ -117,6 +117,12 @@
                             <input type="password" class="form-control" id="password" name="{{ $loginInfo['p'] }}"
                                 placeholder="Password" required>
                         </div>
+                        <div class="form-group mb-3">
+                            {!! app('captcha')->display() !!}
+                            @if ($errors->has('g-recaptcha-response'))
+                                <span class="text-danger">{{ $errors->first('g-recaptcha-response') }}</span>
+                            @endif
+                        </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-block btn-submit"
                                 style="border: none; height: auto;">Login</button>
@@ -127,6 +133,7 @@
         </div>
     </div>
 
+    {!! app('captcha')->renderJs() !!}
 </body>
 
 </html>

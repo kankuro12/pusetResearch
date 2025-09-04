@@ -39,6 +39,12 @@
                             <div class="form-group mb-4">
                                 <input type="password" name="password" id="password" placeholder="Password" class="form-control">
                             </div>
+                            <div class="form-group mb-4">
+                                {!! app('captcha')->display() !!}
+                                @if ($errors->has('g-recaptcha-response'))
+                                    <span class="text-danger">{{ $errors->first('g-recaptcha-response') }}</span>
+                                @endif
+                            </div>
                         </div>
                         <div class="savepassword">
                             <div class="left">
@@ -57,4 +63,8 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('js')
+    {!! app('captcha')->renderJs() !!}
 @endsection

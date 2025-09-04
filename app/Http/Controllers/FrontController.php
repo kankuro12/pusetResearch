@@ -60,6 +60,10 @@ class FrontController extends Controller
                 'agree' => 'accepted',
                 'email'=>'required|email|unique:users,email',
                 'password' => 'required|string|min:6|confirmed',
+                'g-recaptcha-response' => 'required|captcha',
+            ], [
+                'g-recaptcha-response.required' => 'Please verify that you are not a robot.',
+                'g-recaptcha-response.captcha' => 'Captcha error! Please try again later or contact site admin.',
             ]);
 
             $user = new User();

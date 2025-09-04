@@ -7,13 +7,17 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <h4>All Users</h4>
+            <div class="d-flex justify-content-between align-items-center">
+                <h4>All Users</h4>
+                <a href="{{ route('admin.users.create') }}" class="btn btn-sm btn-success">Create User</a>
+            </div>
             <table id="users-table" class="table table-striped">
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
                         <th>Email</th>
+                        <th>Submissions</th>
                         <th>Verified</th>
                         <th>Created</th>
                         <th>Actions</th>
@@ -56,14 +60,21 @@
 @endsection
 
 @section('js')
+    @include('admin.layout.datatable')
     <script>
         $(function(){
+            // Configure axios CSRF header globally
+            if (document.querySelector('meta[name="csrf-token"]')) {
+                axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            }
+
             const table = $('#users-table').DataTable({
                 ajax: '{!! route('admin.users.datatable') !!}',
                 columns: [
                     { data: 'id' },
                     { data: 'name' },
                     { data: 'email' },
+                    { data: 'no_of_submissions' },
                     { data: 'verified' },
                     { data: 'created_at' },
                     { data: 'actions', orderable:false, searchable:false }
@@ -81,10 +92,6 @@
             $('#cp_save').on('click', function(){
                 const userId = $('#cp_user_id').val();
                 const data = $('#changePasswordForm').serialize();
-                // ensure axios has CSRF header
-                if (document.querySelector('meta[name="csrf-token"]')) {
-                    axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-                }
                 axios.post(`/admin/users/change-password/${userId}`, data)
                     .then(res => {
                         toastr.success(res.data.message || 'Password updated');
@@ -100,9 +107,32 @@
                     });
             });
 
-            // toggle block
+            // verify user (only if currently unverified)
+            $(document).on('click', '.btn-verify', function(){
+                const id = $(this).data('id');
+                const row = table.row($(this).closest('tr')).data();
+                const isVerified = row && row.verified && row.verified !== 'No' && row.verified !== 0 && row.verified !== '0';
+                if (isVerified) {
+                    toastr.info('User is already verified');
+                    return;
+                }
+
+                axios.post(`/admin/users/verify/${id}`)
+                    .then(res => {
+                        toastr.success(res.data.message || 'User verified');
+                        table.ajax.reload();
+                    }).catch(() => toastr.error('Error verifying user'));
+            });
+
+            // toggle block (only allowed for verified users)
             $(document).on('click', '.btn-toggle-block', function(){
                 const id = $(this).data('id');
+                const row = table.row($(this).closest('tr')).data();
+                const isVerified = row && row.verified && row.verified !== 'No' && row.verified !== 0 && row.verified !== '0';
+                if (!isVerified) {
+                    toastr.error('Only verified users can be blocked/unblocked');
+                    return;
+                }
                 axios.post(`/admin/users/toggle-block/${id}`)
                     .then(res => {
                         toastr.success(res.data.message);

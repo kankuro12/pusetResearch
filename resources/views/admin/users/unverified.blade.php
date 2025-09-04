@@ -9,7 +9,13 @@
 
 @section('content')
     <div class="shadow mt-3 p-3 bg-white rounded">
-        <h4>Unverified Users</h4>
+        <div class="d-flex justify-content-between align-items-center">
+            <h4>Unverified Users</h4>
+            <div>
+                <a href="{{ route('admin.users.index') }}" class="btn btn-sm btn-primary">All Users</a>
+                <a href="{{ route('admin.users.create') }}" class="btn btn-sm btn-success">Create User</a>
+            </div>
+        </div>
 
         @if(session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>

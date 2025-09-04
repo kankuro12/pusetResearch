@@ -13,6 +13,10 @@
             <a class="nav-link" id="unverified_users" href="{{ route('admin.users.unverified') }}">Unverified Users</a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" id="users" href="{{ route('admin.users.index') }}">Users</a>
+        </li>
+
+        <li class="nav-item">
             <a class="nav-link" id="book" href="{{ route('admin.book.index')}}">Issues</a>
         </li>
         <li class="nav-item">

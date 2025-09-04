@@ -175,6 +175,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::post('change-password/{user_id}', [\App\Http\Controllers\admin\UserVerificationController::class, 'changePassword'])->name('changePassword');
             Route::post('toggle-block/{user_id}', [\App\Http\Controllers\admin\UserVerificationController::class, 'toggleBlock'])->name('toggleBlock');
 
+            // create user (admin)
+            Route::get('create', [\App\Http\Controllers\admin\UserVerificationController::class, 'create'])->name('create');
+            Route::post('store', [\App\Http\Controllers\admin\UserVerificationController::class, 'store'])->name('store');
+
             // legacy unverified view & manual verify by form (kept for compatibility)
             Route::get('unverified', [\App\Http\Controllers\admin\UserVerificationController::class, 'unverified'] ?? [\App\Http\Controllers\admin\UserVerificationController::class, 'index'])->name('unverified');
             Route::post('verify/{user_id}', [\App\Http\Controllers\admin\UserVerificationController::class, 'verify'])->name('verify');

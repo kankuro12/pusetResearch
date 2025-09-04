@@ -22,6 +22,42 @@ class UserVerificationController extends Controller
     }
 
     /**
+     * Show create user form
+     */
+    public function create()
+    {
+        return view('admin.users.create');
+    }
+
+    /**
+     * Store new user created by admin (auto-verified, role=1)
+     */
+    public function store(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:191',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        // client role
+        $user->role = 1;
+        // auto verify when admin creates
+        $user->email_verified_at = now();
+        $user->save();
+
+        return redirect()->route('admin.users.index')->with('success', 'User created and verified');
+    }
+
+    /**
      * Verify a user manually
      */
     public function verify(Request $request, $user_id)
@@ -55,7 +91,10 @@ class UserVerificationController extends Controller
      */
     public function listJson(Request $request): JsonResponse
     {
-        $users = User::orderBy('id','desc')->get();
+        $users = User::withCount('submissions')
+            ->orderBy('id', 'desc')
+            ->where('role', 1)
+            ->get();
 
         $data = $users->map(function($user){
             return [
@@ -64,6 +103,7 @@ class UserVerificationController extends Controller
                 'email' => $user->email,
                 'created_at' => $user->created_at ? $user->created_at->format('Y-m-d H:i') : '',
                 'verified' => $user->email_verified_at ? 'Yes' : 'No',
+                'no_of_submissions' => $user->submissions_count,
                 'actions' => view('admin.users._actions', compact('user'))->render(),
             ];
         });

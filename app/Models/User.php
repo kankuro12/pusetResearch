@@ -54,6 +54,16 @@ class User extends Authenticatable
         return !is_null($this->email_verified_at);
     }
 
+    public function submissions()
+    {
+        return $this->hasMany(Submission::class);
+    }
+
+    public function noOfSubmissions()
+    {
+        return $this->submissions()->count();
+    }
+
     /**
      * Mark the user's email as verified
      */

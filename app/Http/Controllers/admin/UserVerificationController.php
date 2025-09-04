@@ -168,7 +168,27 @@ class UserVerificationController extends Controller
      */
     public function show($id)
     {
-        $user = \App\Models\User::with('submissions')->findOrFail($id);
-        return view('admin.users.show', compact('user'));
+        $user = \App\Models\User::findOrFail($id);
+
+        $submissions = \Illuminate\Support\Facades\DB::table('submissions')
+            ->where('submissions.user_id', $user->id)
+            ->join('files','files.id','=','submissions.file_id')
+            ->join('clients','clients.user_id','=','submissions.user_id')
+            ->select(
+                'submissions.id',
+                'submissions.user_id as uid',
+                'submissions.title as t',
+                'submissions.status as s',
+                'submissions.description as d',
+                'submissions.file_id as f',
+                'submissions.created_at as c',
+                'submissions.updated_at as u',
+                'clients.name as n',
+                'clients.affiliation as a',
+                'files.path as p'
+            )
+            ->get();
+
+        return view('admin.users.show', compact('user', 'submissions'));
     }
 }

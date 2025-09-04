@@ -184,7 +184,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::post('verify/{user_id}', [\App\Http\Controllers\admin\UserVerificationController::class, 'verify'])->name('verify');
 
             // Admin: user detail
-            Route::get('admin/users/{id}', [\App\Http\Controllers\admin\UserVerificationController::class, 'show'])->name('show');
+            Route::get('{id}', [\App\Http\Controllers\admin\UserVerificationController::class, 'show'])->name('show');
         });
     });
 });

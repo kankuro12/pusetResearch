@@ -15,7 +15,11 @@
             @includeIf('front.cache.meta')
     @endif
     <link rel="stylesheet" href="{{ asset('asset/front/css/index.css') }}?v=1">
-
+    <style>
+        .inner-banner{
+            background: #b94749;
+        }
+    </style>
     @yield('style')
 
 </head>

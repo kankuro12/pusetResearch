@@ -68,7 +68,7 @@
 
                                     </div>
                                     <div class="form-group mb-4">
-                                        {!! app('captcha')->display() !!}
+                                        {!! app('captcha')->display(['data-callback' => 'onRegisterRecaptchaSuccess', 'data-expired-callback' => 'onRegisterRecaptchaExpired', 'data-error-callback' => 'onRegisterRecaptchaError']) !!}
                                         @if ($errors->has('g-recaptcha-response'))
                                             <span class="text-danger">{{ $errors->first('g-recaptcha-response') }}</span>
                                         @endif
@@ -85,7 +85,7 @@
 
                                     </div>
                                 </div>
-                                <button type="submit">
+                                <button type="submit" id="registerBtn" disabled style="opacity: 0.6; cursor: not-allowed;">
                                     Register
                                 </button>
                             </div>
@@ -99,4 +99,68 @@
 
 @section('js')
     {!! app('captcha')->renderJs() !!}
+    <script>
+        // Debug: Check if functions are loaded
+        console.log('Register page reCAPTCHA callback functions loaded');
+
+        function enableRegisterButton() {
+            console.log('Enabling register button');
+            const registerBtn = document.getElementById('registerBtn');
+            if (registerBtn) {
+                registerBtn.disabled = false;
+                registerBtn.style.opacity = '1';
+                registerBtn.style.cursor = 'pointer';
+            }
+        }
+
+        function disableRegisterButton() {
+            console.log('Disabling register button');
+            const registerBtn = document.getElementById('registerBtn');
+            if (registerBtn) {
+                registerBtn.disabled = true;
+                registerBtn.style.opacity = '0.6';
+                registerBtn.style.cursor = 'not-allowed';
+            }
+        }
+
+        // reCAPTCHA callback functions for register form - must be in global scope
+        window.onRegisterRecaptchaSuccess = function(response) {
+            console.log('Register reCAPTCHA Success:', response);
+            enableRegisterButton();
+        };
+
+        window.onRegisterRecaptchaExpired = function() {
+            console.log('Register reCAPTCHA Expired');
+            disableRegisterButton();
+        };
+
+        window.onRegisterRecaptchaError = function() {
+            console.log('Register reCAPTCHA Error');
+            disableRegisterButton();
+        };
+
+        // Additional validation: Check if terms checkbox is checked
+        document.addEventListener('DOMContentLoaded', function() {
+            const agreeCheckbox = document.getElementById('agree');
+            const registerBtn = document.getElementById('registerBtn');
+
+            function checkFormValidity() {
+                // Only enable if both reCAPTCHA is completed AND terms are agreed
+                const recaptchaResponse = document.querySelector('#g-recaptcha-response');
+                const isRecaptchaValid = recaptchaResponse && recaptchaResponse.value.length > 0;
+                const isTermsAgreed = agreeCheckbox.checked;
+
+                if (isRecaptchaValid && isTermsAgreed) {
+                    enableRegisterButton();
+                } else {
+                    disableRegisterButton();
+                }
+            }
+
+            // Listen for terms checkbox changes
+            if (agreeCheckbox) {
+                agreeCheckbox.addEventListener('change', checkFormValidity);
+            }
+        });
+    </script>
 @endsection

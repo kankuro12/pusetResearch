@@ -55,9 +55,13 @@
                                 <a href="#">Forget Password</a>
                             </div>
                         </div>
-                        <button type="submit" id="loginBtn" disabled style="opacity: 0.6; cursor: not-allowed;">
-                            Login
-                        </button>
+                        <div>
+                            <button type="submit" id="loginBtn" disabled style="opacity: 0.6; cursor: not-allowed;">
+                                Login
+                            </button>
+                            <div class="register-link">
+                                Don't have an account? <a href="{{ route('client.register') }}">Register</a>
+                            </div>
                     </form>
                 </div>
             </div>

@@ -24,7 +24,7 @@
                         </a>
                     </div>
                 </div> --}}
-                @include('front.cache.guidelines')
+                @includeIf('front.cache.guidelines')
             </div>
         </div>
     </div>

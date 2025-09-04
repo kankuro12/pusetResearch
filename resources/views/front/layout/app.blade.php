@@ -12,7 +12,7 @@
     <link rel="icon" type="image/x-icon" href="{{asset($general->fav)}}">
     @yield('meta')
     @if (!View::hasSection('meta'))
-            @include('front.cache.meta')
+            @includeIf('front.cache.meta')
     @endif
     <link rel="stylesheet" href="{{ asset('asset/front/css/index.css') }}?v=1">
 

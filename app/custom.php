@@ -61,7 +61,7 @@ function getGeneralLayout()
     return (Cache::rememberForever('generallayouts', function () {
         return DB::table('generallayouts')->first();
     }) ?? ((object)[
-        'copy_right_name' => '', 'short_desc' => '', 'long_Desc' => '', 'logo' => '', 'content' => ''
+        'copy_right_name' => '', 'short_desc' => '', 'long_Desc' => '', 'logo' => '', 'content' => '','fav'=>''
     ]));
 }
 

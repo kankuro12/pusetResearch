@@ -5,5 +5,5 @@
 @section('top_name')
 @endsection
 @section('content')
-@include('front.cache.about')
+@includeIf('front.cache.about')
 @endsection

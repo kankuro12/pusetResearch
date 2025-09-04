@@ -8,7 +8,7 @@ Archive
 @section('content')
     <div class="archiveIssue">
         @if(View::exists('front.cache.archive'))
-            @include('front.cache.archive')
+            @includeIf('front.cache.archive')
         @else
             <h5>The journal doesn't have older issues.</h5>
         @endif
